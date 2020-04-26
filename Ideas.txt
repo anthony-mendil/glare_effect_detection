@@ -1,0 +1,40 @@
+- per sceenshots und paint oder so farb werte der karten ermitteln
+- farben in Lab format umrechnen und dann delta e formel benutzen
+- mit formel ähnlichkeit zwischen einander berechnen (mit glare effect und ohne)
+
+Idee: 
+- Ohne:
+	-> einfach ausrechnen
+- Mit: 
+	-> 100 oder mehr Durchläufe: Sceenshort, Farbwerte der 
+	Farben extrahieren und ähnlichkeit berechnen dann am ende mittelwert
+	für Faktor jeder Positionskombination ermitteln der immer aufgerechnet wird 
+	Problem: Automatsierung der Screenshots und Farbenextraktion
+
+	- es gibt python funktionn die aus bildern farb werte an koordinaten extrahiert
+	-> man könnte spiel 100 mal manuell starten und screenshot 
+	machen und dann automatisiert script über alle bilder laufen lassen
+	und die farbwerte der einzelnen karten bestimmen
+		-> viereckigen bereich nehmen und mittelwert bilden 
+		weil licht streifen hat
+	- einziges Problem: ich brauche alle karten im spiel umgedreht 
+	(gibt es die möglichkeit im spiel? wenn nein kann man sie hinzufügen?)
+
+fragen: sin die benutzen farben bei normalem modus und glare effect die selben ?
+-> ja 
+
+14 mal 14 mögliche positionen für jede 2 karten -> 196 möglihkeiten an anornungen 
+aus jedem bild erhalte ich für 2 farben 4 möglichkeiten wenn die unterschiedlich sind (eine wenn die gleich sind)
+
+Code für berechnung von lab 
+# https://stackoverflow.com/questions/13405956/convert-an-image-rgb-lab-with-python
+
+
+Normalisierung der delta e werte: Normalisierung auf Original Farben berechnen um
+realistische bereiche für ähnliche  und nicht ähnliche Farben zu haben. (also ein
+genberelles modell zum fitten von delta e werten)
+Dann delta e werte von glare effect damit transformieren.
+-> sollte sinnvolle werte ergeben.
+Möglichkeiten: Min max Scaling, Normaliszatoin
+
+vielleicht mehr als 100 screenshots.
