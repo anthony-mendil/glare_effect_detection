@@ -32,7 +32,11 @@ card_corners = [
     (1160, 830)
 ]
 
+# Loading the screenshots from which the rgb values will be extracted.
 def load_images(image_dir):
+    '''
+    :param image_dir: The full path to the directory the images are stored in. 
+    '''
     images = []
     for r, _, f in os.walk(image_dir):
         for file_name in f:
@@ -42,12 +46,11 @@ def load_images(image_dir):
                 images.append(image)
     return images 
 
-# Extracts the rgb values for the image.
-# Calculates average for the area.
-# Returns list of average colors for all 14 cards. 
-# Determining of color is correct: checked values.
+# Calculates the rgb average rbg value for each 
+# card in an image.
 def determine_glare_rgb_values(image):
     glare_rgb_values = []
+    # Calculating the average color of each card.
     for corner in card_corners:
         x_border = corner[0] + 150
         y_border = corner[1] + 150
@@ -159,18 +162,34 @@ def create_similarity_matrix_average(matrices_list):
         similarity_matrix += '%s=%s,' %(key, np.mean(cell_values))
     return similarity_matrix
 
+def determine_max_distance():
+    max_distance = 0
+    for r1 in range(256):
+        print(r1)
+        for g1 in range(256):
+            for b1 in range(256):
+                for r2 in range(256):
+                    for g2 in range(256):
+                        for b2 in range(256):
+                            distance = determine_distance((r1, g1, b1), (r2, g2, b2))
+                            if distance > max_distance:
+                                max_distance = distance
+    return max_distance
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Used to create a static similarity matrix \
         for the simulating games with the glare effect.')
-    parser.add_argument("--i", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\Original_colors_screenshots"), \
+    parser.add_argument("--i", default=('/home/anthony/ba_glare_effect/Original_colors_screenshots'), \
         help='The directory the glare effect screenshots are stored in.')
-    parser.add_argument("--c", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\colors_of_cards_original.txt"), \
+    parser.add_argument("--c", default=('/home/anthony/ba_glare_effect/colors_of_cards_original.txt'), \
         help='The file containing the original colors of the crads in the screenshots.')
 
     args = parser.parse_args()
     image_dir = args.i
     colors_path = args.c
+
+    print(determine_max_distance())
+    exit()
 
     # Mapping for glare effect and original colors.
     # Usually 0-based but increased by one.
@@ -178,7 +197,6 @@ if __name__ == '__main__':
     color_mapping = {'orange': 1, 'brown': 2, 'green': 3, 'dark green': 4, 
         'light green': 5, 'dark red': 6, 'red': 7}
     
-
     # Mapping for color blindness. (Markus)
     # Usually 0-based but increased by one.
     '''
