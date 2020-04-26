@@ -38,3 +38,35 @@ Dann delta e werte von glare effect damit transformieren.
 Möglichkeiten: Min max Scaling, Normaliszatoin
 
 vielleicht mehr als 100 screenshots.
+
+
+Kommentare von mazen:
+Versuch 1: max wert finden und scaling machen. höchster wert is 1 und kleinster wert 0
+	vielelicht vergeleichen mit markus.
+Vergleichen cie1976 und cie2000 alles ausrechnenn und skaliieren mir max wert (finden durch for loop durch alle rbgb werte)
+und vergleichen mit markus.
+
+Versuch 2: 
+
+Nächste aufgabe: Simulieren mit dem Simulator von Mazen
+Bisschen modifizieren wie zum beispiel 1.1 2.2 und so weiter bei glare effect macht sinn.
+Java code angucken und verstehen.
+Am besten branche mit genau dem sleben code in java. 
+Simulator erweitern um 1.1 usw.
+Statistics in python script anpassen. 
+Mehr dokumentieren.
+Was ich probiert und getestet habe. 
+Dann ihm bescheid sagen und ich kriege zugriff auf simulator. 
+
+Rgb mit original farben überprüfen bei gimp zum beispiel.
+
+Rechercheieren wie viel Screenshots man haben muss für verschiedene POistionts kombinationen.
+Auch aufschreieben für bachelor arbeit.
+
+Vielleiihct statt seklber lab zu berechen: https://python-colormath.readthedocs.io/en/latest/color_objects.html und
+https://python-colormath.readthedocs.io/en/latest/conversions.html 
+
+
+
+
+
