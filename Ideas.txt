@@ -40,11 +40,14 @@ Möglichkeiten: Min max Scaling, Normaliszatoin
 vielleicht mehr als 100 screenshots.
 
 
+--> für min max scaling entscheiden 
+
+
 Kommentare von mazen:
 Versuch 1: max wert finden und scaling machen. höchster wert is 1 und kleinster wert 0
 	vielelicht vergeleichen mit markus.
 Vergleichen cie1976 und cie2000 alles ausrechnenn und skaliieren mir max wert (finden durch for loop durch alle rbgb werte)
-und vergleichen mit markus.
+und vergleichen mit markus. --> verglichen aber immernoch nicht die gleichen werte. 
 
 Versuch 2: 
 
@@ -59,12 +62,14 @@ Was ich probiert und getestet habe.
 Dann ihm bescheid sagen und ich kriege zugriff auf simulator. 
 
 Rgb mit original farben überprüfen bei gimp zum beispiel.
+--> mit gimp überprüft: Farbwerte bei originalen Farben stimmen. Glare effect kann man nicht testen, da mittelwert gebildet wird. 
+
 
 Rechercheieren wie viel Screenshots man haben muss für verschiedene POistionts kombinationen.
 Auch aufschreieben für bachelor arbeit.
 
 Vielleiihct statt seklber lab zu berechen: https://python-colormath.readthedocs.io/en/latest/color_objects.html und
-https://python-colormath.readthedocs.io/en/latest/conversions.html 
+https://python-colormath.readthedocs.io/en/latest/conversions.html --> wurde geändert  
 
 
 

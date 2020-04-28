@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# This script is used to create a similarity matrix
+# out of screenshots taken in the memory game app.
+# Watch out to use the correct mapping of colors. 
+
 import os
 import argparse
 from PIL import Image 
 import numpy as np
 import itertools
-from colormath.color_objects import LabColor
+from colormath.color_objects import LabColor, sRGBColor
 from colormath.color_diff import delta_e_cie1976, delta_e_cie2000
+from colormath.color_conversions import convert_color
+import scipy
 
-# 150 * 150 pixels are taken for each card. Not whole card because 
-# small differneces may appear between pictures in terms of the pixel. 
+# 150 x 150 pixels are taken for each card.
 # The tuple value represents the koordinates of the top left corner for each card. 
-# cards are about 250x250 and have 30 pixels between them -> 280 pixels until next one.
-# Manually checked. Worls only if the resoulktion of the screenshots is 1080p.
-# Otherwise adjust values. 
+# cards are about 250 x 250 and have 30 pixels between them, which results in 
+# 280 pixels on a axis until the next corner. The values were manually checked. 
+# Worls only if the resoulution of the screenshots is 1920 x 1080. 
+# In the Emulator a Pixel 2 was used to play the game and create the screenshots.
 card_corners = [
     (320, 270),
     (600, 270),
@@ -49,9 +55,13 @@ def load_images(image_dir):
 # Calculates the rgb average rbg value for each 
 # card in an image.
 def determine_glare_rgb_values(image):
+    '''
+    :param image: The screenshot of the memory game with all cards turned.
+    '''
     glare_rgb_values = []
-    # Calculating the average color of each card.
     for corner in card_corners:
+        # With the corner koordinates these borders 
+        # create the are in which to extract all pixel values.
         x_border = corner[0] + 150
         y_border = corner[1] + 150
         card_values = []
@@ -59,80 +69,94 @@ def determine_glare_rgb_values(image):
             for y in range(corner[1], y_border, 1):
                 coordinates = x, y
                 pixel_values = image.getpixel(coordinates)
+                # Ignoring alpha values. They are always 255 on the screenshots. 
                 card_values.append(pixel_values[:-1])
+        # Calculating the average r, g and b values in the are of the card. 
         card_r = int(round(np.mean([color[0] for color in card_values])))
         card_g = int(round(np.mean([color[1] for color in card_values])))
         card_b = int(round(np.mean([color[2] for color in card_values])))
         glare_rgb_values.append((card_r, card_g, card_b))
     return glare_rgb_values
 
+# Reading the colour names on the screenshots from a text file.
 def load_original_colors(colors_path):
+    '''
+    :param colors_path: The full path to the text file containing the 
+    color names for all cards in all screenshots in the correct order.
+    '''
     if os.path.exists(colors_path):
-            with open(colors_path, "r") as colors_file:
-                return colors_file.read()
+        # Reading the text in the text file. 
+        with open(colors_path, "r") as colors_file:
+            return colors_file.read()
 
 # Determines dinstance between colors with delta e fomula. 
 def determine_distance(color_1_rgb, color_2_rgb):
-    lab_1 = rgb2lab(color_1_rgb)
-    lab_1 = LabColor(lab_1[0], lab_1[1], lab_1[2])
-    lab_2 = rgb2lab(color_2_rgb)
-    lab_2 = LabColor(lab_2[0], lab_2[1], lab_2[2])
-    detlta_e = delta_e_cie1976(lab_1, lab_2)
-    # Das ist erweiterung die besser sein soll und als standard festgelegt wurde. (wikpedia)
-    # detlta_e = delta_e_cie2000(lab_1, lab_2, Kl=1, Kc=1, Kh=1)
+    '''
+    :param color_1_rgb: The first color.
+    :param color_2_rgb: The second color.
+    '''
+    # Converting the colors from the sRGB to the Lab color space.
+    lab_1 = convert_color(color_1_rgb, LabColor)
+    lab_2 = convert_color(color_2_rgb, LabColor)
+
+    if cie_1976:
+        # Old formula for color differneces. 
+        detlta_e = delta_e_cie1976(lab_1, lab_2)
+    else:
+        # Updated formula that is supposed to picture color differences 
+        # more accurately. 
+        detlta_e = delta_e_cie2000(lab_1, lab_2, Kl=1, Kc=1, Kh=1)
     return detlta_e
-
-def rgb2lab(inputColor):
-    rgb = []
-    for rgb_value in inputColor:
-        rgb_value = float(rgb_value) / 255
-        if rgb_value > 0.04045:
-            rgb_value = ((rgb_value + 0.055) / 1.055) ** 2.4
-        else:
-            rgb_value = rgb_value / 12.92
-        rgb.append(rgb_value * 100)
-
-    values = []
-    values.append(float(rgb[0] * 0.4124 + rgb[1] * 0.3576 + rgb[2] * 0.1805) / 95.047)
-    values.append(float(rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722) / 100.0)
-    values.append(float(rgb[0] * 0.0193 + rgb[1] * 0.1192 + rgb[2] * 0.9505) / 108.883)
-   
-    for value_idx in range(len(values)):
-        if values[value_idx] > 0.008856:
-            values[value_idx] = values[value_idx] ** (0.3333333333333333)
-        else:
-            values[value_idx] = (7.787 * values[value_idx]) + (16 / 116)
-
-    Lab = []
-    Lab.append((116 * values[1]) - 16)
-    Lab.append(500 * (values[0] - values[1]))
-    Lab.append(200 * (values[1] - values[2]))
-    return Lab
 
 # Returns a matrix for a screenshot.
 def create_similarity_matrix(rgb_values, original_colors):
+    '''
+    :param rgb_values: The average rgb values for all the cards 
+    on a screenshot of a glare effect memory game. 
+    :param original_colors: A list containing tuples with the card name, 
+    the mappimg number for the card, and the index for each card on the screenshot.
+    '''
     combinations_for_calculation = []
     matrix_values = []
+    # Iterating over all combinations of card colros on the screenshot.
     for i in range(len(rgb_values)):
+        # The color name, the mapping and the index of the first card for comparison.
         original_color_1 = original_colors[i]
+        # The rgb values for the first card for comparison from the glare effect screenshot.
         glare_rgb_1 = rgb_values[i]
+        glare_rgb_1 = sRGBColor(glare_rgb_1[0], glare_rgb_1[1], glare_rgb_1[2], is_upscaled=True)
 
         for l in range(len(rgb_values)):
+            # The color name, the mapping and the index of the second card. for comparison
             original_color_2 = original_colors[l]
+            # The rgb values for the second card for comparison 
+            # from the glare effect screenshot.
             glare_rgb_2 = rgb_values[l]
+            glare_rgb_2 = sRGBColor(glare_rgb_2[0], glare_rgb_2[1], glare_rgb_2[2], is_upscaled=True)
+
+            # Only adding the values, if the cards compared are not not same card 
+            # and the same comparison with switched values and positions
+            # has not been included yet.
             if original_color_1[2] != original_color_2[2] and \
                     (original_color_2, original_color_1) not in combinations_for_calculation:
+                # Adding the combination to the alredy included combinations.
                 combinations_for_calculation.append((original_color_1, original_color_2))
+                # The mapping of both colors in order to determine the place in the 
+                # similarity matrix.
                 position = (original_color_1[1], original_color_2[1])
-                matrix_values.append((determine_distance(glare_rgb_1, glare_rgb_2), position, \
-                    (original_color_1[2], original_color_2[2])))
+                # Adding the the distance between the two colors and the position in
+                # similarity matrix to the list of values for the matrix.
+                matrix_values.append((determine_distance(glare_rgb_1, glare_rgb_2), position))
     
+    # The entries in the similarity matrix
     values = {'1.1': [], '1.2': [], '1.3': [], '1.4': [], '1.5': [], '1.6': [], \
         '1.7': [], '2.2': [], '2.3': [], '2.4': [], '2.5': [], '2.6': [], '2.7': [], \
         '3.3': [], '3.4': [], '3.5': [], '3.6': [], '3.7': [], '4.4': [], '4.5': [], \
         '4.6': [], '4.7': [], '5.5': [], '5.6': [], '5.7': [], '6.6': [], '6.7': [], \
         '7.7': []}
 
+    # Adding each distance value in the corresponding list of values 
+    # for the similarity matrix.
     for value in matrix_values:
         position = value[1]
         if position[0] < position[1]:
@@ -141,160 +165,119 @@ def create_similarity_matrix(rgb_values, original_colors):
             matrix_pos = '%s.%s' %(position[1], position[0])
         values[matrix_pos].append(value[0])
 
-    # Result: For cells comparing the same color there is only one value (comparing the two cards)
-    # and for cells comparing different colors there are four values (2 * 2).
-    # Values with 1 - (value / 100)
-    values = {key: 1 - (np.mean(values[key]) / 100.0) for key in values.keys()}
-    # Values unchanged
-    #values = {key: np.mean(values[key]) for key in values.keys()}
+    # Calculating the average for each color combination.
+    # Note: For entires comparing the same color there is only one value 
+    # (comparing the two cards) and for entries comparing different colors 
+    # there are four values (2 * 2).
+    values = {key: np.mean(values[key]) for key in values.keys()}
+    # The maximum distance in this similarity matrix.
+    max_distance_matrix = max(values.values())
+    global max_distance
+    # Updating the overall maximum color distance. 
+    if max_distance_matrix > max_distance: max_distance = max_distance_matrix
     return values
 
 # Determines average of all matrices. 
-def create_similarity_matrix_average(matrices_list):
+def create_similarity_matrix_average(matrices_list, downscale):
+    '''
+    :param matrices_list: A list containing all determined 
+    similarity matrices for the screenshots.
+    :param downscale: Wether to downscale the data to 
+    values between 0 and 1.
+    '''
+    # Exiting if there are no matrices. 
     if not matrices_list:
         exit()
     
     similarity_matrix = ''
     for key in matrices_list[0].keys():
+        # All values for a specific color combination.
         cell_values = []
         for matrix in matrices_list:
             cell_values.append(matrix[key])
-        similarity_matrix += '%s=%s,' %(key, np.mean(cell_values))
+        # Calcualting the average and downscaling the values if desired.
+        if downscale:    
+            similarity_matrix += '%s=%s,' %(key, (np.mean(cell_values)) / max_distance)
+        else: 
+            similarity_matrix += '%s=%s,' %(key, np.mean(cell_values))
     return similarity_matrix
 
-def determine_max_distance():
-    max_distance = 0
-    for r1 in range(256):
-        print(r1)
-        for g1 in range(256):
-            for b1 in range(256):
-                for r2 in range(256):
-                    for g2 in range(256):
-                        for b2 in range(256):
-                            distance = determine_distance((r1, g1, b1), (r2, g2, b2))
-                            if distance > max_distance:
-                                max_distance = distance
-    return max_distance
 
 if __name__ == '__main__':
+
+    # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a static similarity matrix \
         for the simulating games with the glare effect.')
-    parser.add_argument("--i", default=('/home/anthony/ba_glare_effect/Original_colors_screenshots'), \
+    parser.add_argument("--i", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\screenshots_original_colors"), \
         help='The directory the glare effect screenshots are stored in.')
-    parser.add_argument("--c", default=('/home/anthony/ba_glare_effect/colors_of_cards_original.txt'), \
-        help='The file containing the original colors of the crads in the screenshots.')
+    parser.add_argument("--c", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\color_names\colors_of_cards_original.txt"), \
+        help='The file containing the original colors of the crads on the screenshots.')
+    parser.add_argument('--color_blindness_mapping', action='store_true', \
+        help='Pass if the mapping for color blindness should be used.')
+    parser.add_argument('--cie1976', action='store_true', \
+        help='Pass if the cie1976 formular for color difference should be used. Otherwise cie2000 will be.')
+    parser.add_argument('--unscaled', action='store_true', \
+        help='Pass if the similarity matrix should be normalized.')
 
+    # Assigning parameters. 
     args = parser.parse_args()
     image_dir = args.i
     colors_path = args.c
+    color_blindness_mapping = args.color_blindness_mapping
+    global cie_1976
+    cie_1976 = args.cie1976
+    downscale = not args.unscaled
 
-    print(determine_max_distance())
-    exit()
+    # The maximum distance between all colors over all matrices.
+    # Will be updated when calculating the matrices for each screenshot
+    # and used for scaling the distances down to be between 0 and 1.
+    global max_distance
+    max_distance = 0
 
-    # Mapping for glare effect and original colors.
-    # Usually 0-based but increased by one.
-    
-    color_mapping = {'orange': 1, 'brown': 2, 'green': 3, 'dark green': 4, 
-        'light green': 5, 'dark red': 6, 'red': 7}
-    
-    # Mapping for color blindness. (Markus)
-    # Usually 0-based but increased by one.
-    '''
-    color_mapping = {'dark green': 1, 'brown': 2, 'red': 3, 'light green': 4, 
-        'green': 5, 'orange': 6, 'dark red': 7}
-    '''
+    # Choosing the mapping depending on the use case. 
+    # These mappings are extracted from the memory game app.
+    if not color_blindness_mapping:
+        # Mapping for glare effect an the originl colors.
+        color_mapping = {'orange': 1, 'brown': 2, 'green': 3, 'dark green': 4, 
+            'light green': 5, 'dark red': 6, 'red': 7}
+    else:
+        # Mapping for color blindness. 
+        color_mapping = {'dark green': 1, 'brown': 2, 'red': 3, 'light green': 4, 
+            'green': 5, 'orange': 6, 'dark red': 7}
 
+    # Loading the screenshots. 
     images = load_images(image_dir)
+    # Loading the original colors.
     original_colors = load_original_colors(colors_path)
+
+    # A list of a strings containing color names, one string for each screenshot.
     original_colors = original_colors.split(';\n')
+    # Splitting each string into the colors and combining it with 
+    # the mapping number for the color.
     original_colors = [[(color, color_mapping[color]) for color in colors.split(',')] for colors in original_colors]
+    # Adding the index of the card on the screenshot for
+    # each color for each screenshot. 
     for colors_idx in range(len(original_colors)):
         for color_idx in range(len(original_colors[colors_idx])):
             current = original_colors[colors_idx][color_idx]
             original_colors[colors_idx][color_idx] = (current[0], current[1], color_idx)
 
     print(len(images), len(original_colors))
+    # Exiting if the number of images does not equal the number of color lists.
     if len(images) != len(original_colors): exit()
     
-
     matrices = []
+    # Determining a similarity matrix for each screenshot.
     for i in range(len(images)):
         image = images[i]
+        # The color name, the mapping and the index for each card on a screenshot.
         original_colors_image = original_colors[i]
         rgb_values = determine_glare_rgb_values(image)
         matrix = create_similarity_matrix(rgb_values, original_colors_image)
         matrices.append(matrix)
     
-    similarity_matrix = create_similarity_matrix_average(matrices)
+    # Calculating the average 
+    similarity_matrix = create_similarity_matrix_average(matrices, downscale)
+
     print(similarity_matrix)
-
-    # TODO: Problem: Some numbers are way over 100. So 100 is not right for normalizing. 
-    # Find out maximum difference!
-
-    '''
-    Similarity matrix for original colors, original delta e values: (0 means colors are the same)
-    (One screenshot)
-    1.1=0.0,1.2=45.88020192130337,1.3=87.63889833094898,1.4=90.70742471085778,
-    1.5=113.30992788739906,1.6=51.862180706594536,1.7=40.33367951509932,2.2=0.0,
-    2.3=66.32289607228708,2.4=51.691944268794856,2.5=113.24204675286033,
-    2.6=29.574531519406307,2.7=62.89410952235542,3.3=0.0,3.4=40.62647540540791,
-    3.5=59.14027694122307,3.6=94.12780926821966,3.7=121.33131219183188,4.4=0.0,
-    4.5=99.76072401547708,4.6=73.55644926181418,4.7=113.16585058997806,5.5=0.0,
-    5.6=140.80037175459495,5.7=153.251618780184,6.6=0.0,6.7=46.9793450950003,7.7=0.0,
-
-    Similarity matrix for original colors, values with 1 - (value / 100): (1 means colors are the same)
-    (One screenshot)
-    1.1=1.0,1.2=0.5411979807869663,1.3=0.12361101669051022,1.4=0.09292575289142224,
-    1.5=-0.13309927887399065,1.6=0.4813781929340546,1.7=0.5966632048490068,
-    2.2=1.0,2.3=0.33677103927712926,2.4=0.48308055731205146,2.5=-0.13242046752860337,
-    2.6=0.704254684805937,2.7=0.37105890477644576,3.3=1.0,3.4=0.5937352459459209,
-    3.5=0.4085972305877693,3.6=0.05872190731780336,3.7=-0.21331312191831886,4.4=1.0,
-    4.5=0.002392759845229242,4.6=0.26443550738185817,4.7=-0.13165850589978056,5.5=1.0,
-    5.6=-0.40800371754594944,5.7=-0.5325161878018401,6.6=1.0,6.7=0.530206549049997,7.7=1.0,
-
-    Similarity matrix for color blindness, original delta e values: (0 means colors are the same)
-    (One screenshot)
-    1.1=0.0,1.2=26.582540732771232,1.3=47.52212704528696,1.4=33.18960760526932,
-    1.5=18.493888873556916,1.6=36.52304106753959,1.7=23.78652925062888,2.2=0.0,
-    2.3=21.5101187827116,2.4=25.508635800441034,2.5=26.256681225008673,
-    2.6=13.356568589430752,2.7=17.377098502448394,3.3=0.0,3.4=38.17523290865369,
-    3.5=46.38741668336888,3.6=17.86706005934495,3.7=31.329656953512146,4.4=0.0,
-    4.5=19.97096151002481,4.6=20.315614972133346,4.7=40.253326090901076,5.5=0.0,
-    5.6=30.893470743450504,5.7=34.08022166235096,6.6=0.0,6.7=29.98784173181083,7.7=0.0,
-
-    Similarity matrix for color blindness, values with 1 - (value / 100): (1 means colors are the same)
-    (One screenshot)
-    1.1=1.0,1.2=0.7341745926722877,1.3=0.5247787295471305,1.4=0.6681039239473068,
-    1.5=0.8150611112644308,1.6=0.6347695893246041,1.7=0.7621347074937111,
-    2.2=1.0,2.3=0.7848988121728839,2.4=0.7449136419955897,2.5=0.7374331877499133,
-    2.6=0.8664343141056925,2.7=0.826229014975516,3.3=1.0,3.4=0.6182476709134631,
-    3.5=0.5361258331663112,3.6=0.8213293994065505,3.7=0.6867034304648785,4.4=1.0,
-    4.5=0.8002903848997519,4.6=0.7968438502786666,4.7=0.5974667390909892,5.5=1.0,
-    5.6=0.691065292565495,5.7=0.6591977833764904,6.6=1.0,6.7=0.7001215826818917,7.7=1.0,
-
-    Similarity matrix for glare effect, original delta e values: (0 means colors are the same)
-    (100 screenshots)
-    1.1=1.0655059768862616,1.2=2.1033477172793793,1.3=2.40607096326105,
-    1.4=2.3454120380778942,1.5=3.230645943244361,1.6=2.4034607167961646,
-    1.7=2.771497109247035,2.2=1.5573933590440925,2.3=2.644273667937867,
-    2.4=1.8615846342661035,2.5=3.8369900046563066,2.6=1.8271657068017348,
-    2.7=2.647358432447738,3.3=1.6033740153195593,3.4=2.1642063387102133,
-    3.5=2.682343819608548,3.6=3.0107563575329506,3.7=3.8462754739981357,
-    4.4=0.909767473312609,4.5=3.587028996948641,4.6=1.8080276834470603,
-    4.7=2.932199524408625,5.5=1.029177494318413,5.6=4.438560257586556,
-    5.7=5.044602030509317,6.6=0.8481936793805458,6.7=1.9579847432371604,
-    7.7=1.4301216683858966,
-
-    Similarity matrix for glare effect, values with 1 - (value / 100): (1 means colors are the same)
-    (100 screenshots)
-    1.1=0.9893449402311373,1.2=0.9789665228272064,1.3=0.9759392903673892,
-    1.4=0.9765458796192212,1.5=0.9676935405675562,1.6=0.9759653928320382,
-    1.7=0.9722850289075297,2.2=0.9844260664095592,2.3=0.9735572633206213,
-    2.4=0.9813841536573392,2.5=0.961630099953437,2.6=0.9817283429319827,
-    2.7=0.9735264156755226,3.3=0.9839662598468043,3.4=0.9783579366128979,
-    3.5=0.9731765618039145,3.6=0.9698924364246703,3.7=0.9615372452600187,
-    4.4=0.9909023252668738,4.5=0.9641297100305134,4.6=0.9819197231655292,
-    4.7=0.9706780047559138,5.5=0.989708225056816,5.6=0.9556143974241342,
-    5.7=0.9495539796949067,6.6=0.9915180632061946,6.7=0.9804201525676285,
-    7.7=0.985698783316141,
-    '''
+    print(max_distance)
