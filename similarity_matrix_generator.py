@@ -15,6 +15,8 @@ from colormath.color_diff import delta_e_cie1976, delta_e_cie2000
 from colormath.color_conversions import convert_color
 import scipy
 
+# TODO: Add description of return values.
+
 # 150 x 150 pixels are taken for each card.
 # The tuple value represents the koordinates of the top left corner for each card. 
 # cards are about 250 x 250 and have 30 pixels between them, which results in 
@@ -118,7 +120,7 @@ def create_similarity_matrix(rgb_values, original_colors):
     '''
     combinations_for_calculation = []
     matrix_values = []
-    # Iterating over all combinations of card colros on the screenshot.
+    # Iterating over all combinations of card colors on the screenshot.
     for i in range(len(rgb_values)):
         # The color name, the mapping and the index of the first card for comparison.
         original_color_1 = original_colors[i]
@@ -202,15 +204,52 @@ def create_similarity_matrix_average(matrices_list, downscale):
             similarity_matrix += '%s=%s,' %(key, np.mean(cell_values))
     return similarity_matrix
 
+# For calculating how many of the combinations are includes in the calcuation. 
+def determine_coverage(original_colors):
+    '''
+    :param original_colors: A list containing tuples with the card name, 
+    the mappimg number for the card, and the index for each card on the 
+    screenshot for all screenshots.
+    '''
+    # The calculations are based on having 14 cards on the field.
+    # The number of position combinations for the same colors.
+    number_of_combinations_same_colors = int(7 * (14 * 13 / 2))
+    # The number of position combinations for different colors.
+    number_of_combinations_different_colors = 21 * 14 * 13
+    # Total number of combinations.
+    number_of_total_combinations = number_of_combinations_same_colors \
+        + number_of_combinations_different_colors
+
+    # All the combinations without duplicates.
+    combinations = []
+    # Iterating over all combinations of cards of all screenshots.
+    for colors in original_colors:
+        for i in range(len(colors)):
+            # First color for combination.
+            original_color_1 = colors[i]
+            for l in range(len(colors)):
+                # Second color for combination.
+                original_color_2 = colors[l]
+                # Only adding the values, if the cards compared are not not same card 
+                # and the same comparison or a comparison with switched values 
+                # and positions has not been included yet.
+                if original_color_1[2] != original_color_2[2] and \
+                        (original_color_2, original_color_1) not in combinations and \
+                        (original_color_1, original_color_2) not in combinations:
+                    # Adding the combination to the alredy included combinations.
+                    combinations.append((original_color_1, original_color_2))    
+    # The percentage of coverage.  
+    return len(combinations) / number_of_total_combinations
+
 
 if __name__ == '__main__':
 
     # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a static similarity matrix \
         for the simulating games with the glare effect.')
-    parser.add_argument("--i", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\screenshots_original_colors"), \
+    parser.add_argument("--i", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\screenshots_glare_effect"), \
         help='The directory the glare effect screenshots are stored in.')
-    parser.add_argument("--c", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\color_names\colors_of_cards_original.txt"), \
+    parser.add_argument("--c", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\color_names\colors_of_cards_glare_effect.txt"), \
         help='The file containing the original colors of the crads on the screenshots.')
     parser.add_argument('--color_blindness_mapping', action='store_true', \
         help='Pass if the mapping for color blindness should be used.')
@@ -262,9 +301,15 @@ if __name__ == '__main__':
             current = original_colors[colors_idx][color_idx]
             original_colors[colors_idx][color_idx] = (current[0], current[1], color_idx)
 
-    print(len(images), len(original_colors))
+    if len(images) == len(original_colors):
+        print('Number of screenshots use: %s' %len(images))
     # Exiting if the number of images does not equal the number of color lists.
-    if len(images) != len(original_colors): exit()
+    else:
+        print('The numbers of screenshots and original colors differs.')
+        exit()
+
+    coverage = determine_coverage(original_colors)
+    print('Combination coverage: %s' %coverage)
     
     matrices = []
     # Determining a similarity matrix for each screenshot.
@@ -279,5 +324,8 @@ if __name__ == '__main__':
     # Calculating the average 
     similarity_matrix = create_similarity_matrix_average(matrices, downscale)
 
+    print('Done creating similarity matrix:')
     print(similarity_matrix)
-    print(max_distance)
+    
+    if downscale:
+        print('Maximum distance used for scaling: %s' %max_distance)

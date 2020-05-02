@@ -71,7 +71,29 @@ Auch aufschreieben für bachelor arbeit.
 Vielleiihct statt seklber lab zu berechen: https://python-colormath.readthedocs.io/en/latest/color_objects.html und
 https://python-colormath.readthedocs.io/en/latest/conversions.html --> wurde geändert  
 
+Kometare:
+Erstmal 270 screenshots fertig machen und similarity matrix original erstellen 
+Dann selbe matrix in mapped erzeugen. 
+Unterschied in original und mapped unterschied ist nur card code. 
+Es gibt 20 spiele die ich kriege. 
 
 
+Zwei Paper: original paper cmm
+alter name jam 
+-> mit dem paper verstehen wie das funktioniert 
+und dann im repo: bei jam vielleicht nichts machen. 
+zweites paper: verschiedene play strategies -> behaviour/playingstrategyWinStrategy.java
+bei uns wir wollen eigentlich nur win. Klasse angucken und verstehen (zwei properties werden auch im paper erklärt)
+
+Herausfinden: bedeutet 0 gleiche farbe oder 1. WIe wird similarity matrix benutzt?
+2. Muss  ich was an cmm ändern? (wahrscheinlich nicht)
+
+Alle meine arbeit wahrscheinlich in winstrateg (vielleicht noch gamecard)
+
+er schickt mir 20 mal 2 dateien:
+mapped und original. Mapped nur similarity matrix ausauchen. Python Script ändern von mazen. 
+
+am ende schreibe ich ein main class in examples
+in src schreibe ich den code. 
 
 
