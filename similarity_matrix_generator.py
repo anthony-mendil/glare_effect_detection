@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# This script is used to create a similarity matrix
+# This script is used to create a similarity matrix (original, not mapped)
 # out of screenshots taken in the memory game app.
 # Watch out to use the correct mapping of colors. 
 
@@ -40,10 +40,11 @@ card_corners = [
     (1160, 830)
 ]
 
-# Loading the screenshots from which the rgb values will be extracted.
 def load_images(image_dir):
     '''
+    Loading the screenshots from which the rgb values will be extracted.
     :param image_dir: The full path to the directory the images are stored in. 
+    :return:
     '''
     images = []
     for r, _, f in os.walk(image_dir):
@@ -54,11 +55,11 @@ def load_images(image_dir):
                 images.append(image)
     return images 
 
-# Calculates the rgb average rbg value for each 
-# card in an image.
 def determine_glare_rgb_values(image):
     '''
+    Calculates the rgb average rbg value for each card in an image.
     :param image: The screenshot of the memory game with all cards turned.
+    :return:
     '''
     glare_rgb_values = []
     for corner in card_corners:
@@ -80,22 +81,24 @@ def determine_glare_rgb_values(image):
         glare_rgb_values.append((card_r, card_g, card_b))
     return glare_rgb_values
 
-# Reading the colour names on the screenshots from a text file.
 def load_original_colors(colors_path):
     '''
+    Reading the colour names on the screenshots from a text file.
     :param colors_path: The full path to the text file containing the 
     color names for all cards in all screenshots in the correct order.
+    :return:
     '''
     if os.path.exists(colors_path):
         # Reading the text in the text file. 
         with open(colors_path, "r") as colors_file:
             return colors_file.read()
 
-# Determines dinstance between colors with delta e fomula. 
 def determine_distance(color_1_rgb, color_2_rgb):
     '''
+    Determines dinstance between colors with delta e formula. 
     :param color_1_rgb: The first color.
     :param color_2_rgb: The second color.
+    :return:
     '''
     # Converting the colors from the sRGB to the Lab color space.
     lab_1 = convert_color(color_1_rgb, LabColor)
@@ -110,13 +113,14 @@ def determine_distance(color_1_rgb, color_2_rgb):
         detlta_e = delta_e_cie2000(lab_1, lab_2, Kl=1, Kc=1, Kh=1)
     return detlta_e
 
-# Returns a matrix for a screenshot.
 def create_similarity_matrix(rgb_values, original_colors):
     '''
+    Returns a matrix for a screenshot.
     :param rgb_values: The average rgb values for all the cards 
     on a screenshot of a glare effect memory game. 
     :param original_colors: A list containing tuples with the card name, 
     the mappimg number for the card, and the index for each card on the screenshot.
+    :return:
     '''
     combinations_for_calculation = []
     matrix_values = []
@@ -179,13 +183,14 @@ def create_similarity_matrix(rgb_values, original_colors):
     if max_distance_matrix > max_distance: max_distance = max_distance_matrix
     return values
 
-# Determines average of all matrices. 
 def create_similarity_matrix_average(matrices_list, downscale):
     '''
+    Determines average of all matrices. 
     :param matrices_list: A list containing all determined 
     similarity matrices for the screenshots.
     :param downscale: Wether to downscale the data to 
     values between 0 and 1.
+    :return:
     '''
     # Exiting if there are no matrices. 
     if not matrices_list:
@@ -204,12 +209,13 @@ def create_similarity_matrix_average(matrices_list, downscale):
             similarity_matrix += '%s=%s,' %(key, np.mean(cell_values))
     return similarity_matrix
 
-# For calculating how many of the combinations are includes in the calcuation. 
 def determine_coverage(original_colors):
     '''
+    For calculating how many of the combinations are includes in the calcuation. 
     :param original_colors: A list containing tuples with the card name, 
     the mappimg number for the card, and the index for each card on the 
     screenshot for all screenshots.
+    :return:
     '''
     # The calculations are based on having 14 cards on the field.
     # The number of position combinations for the same colors.
