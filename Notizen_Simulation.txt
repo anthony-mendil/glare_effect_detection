@@ -12,3 +12,15 @@ Funktionsweise:
 Fragen:
 - ich sehe zwar update von expolre und exploit aber ich sehe im code keine abfrage was das ist und wo entscheiden wird was gemacht wird 
 - sind die eingaben so wie in dem falsch gemaped logs nur richtig gemapped? Also ich korregiere die logs mit pythonscript und speicher die in einem extra ordner ab als txts
+
+
+beide logs sind eingaben für configGenerator
+
+eine klasse um config zu erzeugen (memory config versucht zu verhalten zu simulieren): configGenerator -> ich bekomme 2 memory configs pro person 
+
+eine klasse um zu simulieren: WinStrategyGameSimulator: Pro memory config 500 spiele (also 1000 pro person weil 2 configs pro person) 
+Dann test: Sind diese 
+
+
+
+nochmal upfdtateCardExpolitingProbality angucen. -> ichmuss aber nichts ändern bei winstrategy (neue erkenntnis)
