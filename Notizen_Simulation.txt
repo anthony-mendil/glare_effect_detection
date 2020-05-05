@@ -1,0 +1,14 @@
+Eingaben:
+- MemorInput wird mit gameCards (Parameter für Konstruktor (Erbt von MemoPlayingStrategy)) erstellt -> sequenz von karten die in der reiehnfolge gewählt werden
+(MemoInput.java)
+- anderer Input: maxNumofRounds
+- anderer Input: memoryObstacle (in ein Interactionobstacle -> obstacleINfluence und workload?)
+- configaration (SessionSpreadAndInhibitConfiguration) hat mehrere Parameter. Weiß nichtgenau was das macht.
+
+Funktionsweise:
+- Funktionier so: generateGUIInput() wählt karten aus und aktualisiert immmer die cards reveal probabilities und exploring und expoiting probability 
+-> gibt sequenz zurück an gewählzen karten bis das spiel entweder zuende ist oder die maximalen züge erreicht sind 
+
+Fragen:
+- ich sehe zwar update von expolre und exploit aber ich sehe im code keine abfrage was das ist und wo entscheiden wird was gemacht wird 
+- sind die eingaben so wie in dem falsch gemaped logs nur richtig gemapped? Also ich korregiere die logs mit pythonscript und speicher die in einem extra ordner ab als txts

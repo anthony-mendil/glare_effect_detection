@@ -6,6 +6,9 @@ import argparse
 import os
 from io import StringIO
 
+global counter 
+counter = 0
+
 # Similarity matrix for glare effect. Created with 300 screenshots.
 similarity_matrix = ['1.1=0.1358699983300959', '1.2=0.2159772743951057','1.3=0.30618357051356393',
 	'1.4=0.26688764647597807','1.5=0.45477804580967557','1.6=0.27274591749087007',
@@ -47,8 +50,7 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     original_col_names = cards + cards_ts
     mapped_col_names = similarities_assignments + cards + cards_ts + statistics_and_label
     
-
-    # data frames
+    # Dataframe for original log.
     original_log_df = pd.read_csv(original_log, header=None, names=original_col_names, index_col=False)
 
     with open(mapped_cards_original_sim_matrix_log, "r") as log_file:
@@ -72,57 +74,59 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     for ts in cards_ts:
         mapped_motives_mapped_sim_matrix = mapped_motives_mapped_sim_matrix.astype({ts: int})
 
-    # map sim matrices in all games
-    for game_index in range(len(mapped_log_df)):
-        # mapper
-        motives_mapper = {}
+    # map sim matrix
+    # mapper
+    motives_mapper = {}
 
-        for card_num in range(1, 41):
-            mapped_card = mapped_log_df.loc[game_index, 'card_' + str(card_num)]
-            mapped_motive = int(mapped_card)
-            if mapped_motive == 0:
-                break
+    for card_num in range(1, 41):
+        mapped_card = mapped_log_df.loc[0, 'card_' + str(card_num)]
+        mapped_motive = int(mapped_card)
+        if mapped_motive == 0:
+            break
 
-            original_card = original_log_df.loc[game_index, 'card_'+str(card_num)]
-            original_motive = int(original_card)
+        original_card = original_log_df.loc[0, 'card_'+str(card_num)]
+        original_motive = int(original_card)
 
-            if mapped_motive not in motives_mapper:
-                motives_mapper[mapped_motive] = original_motive
+        if mapped_motive not in motives_mapper:
+            motives_mapper[mapped_motive] = original_motive
 
-        # mapper is ready for this game
-        print('Motives for game ' + str(game_index) + ' are mapped!')
-        print(motives_mapper)
+    global counter 
+    # mapper is ready for this game
+    print('Motives for game ' + str(counter) + ' are mapped!')
+    counter += 1
 
-        # do map the similarity matrix entries
-        for assignment in similarities_assignments:
-            # map the assignment key
-            from_motive = str(motives_mapper[int(assignment[0])])  # X in the mapped X.Y
-            to_motive = str(motives_mapper[int(assignment[2])])  # Y in the mapped X.Y
+    print(motives_mapper)
 
-            if (from_motive + '.' + to_motive) in mapped_log_df.columns:
-                assignment_mapped_key = from_motive + '.' + to_motive
-            else:
-                assignment_mapped_key = to_motive + '.' + from_motive
+    # do map the similarity matrix entries
+    for assignment in similarities_assignments:
+        # map the assignment key
+        from_motive = str(motives_mapper[int(assignment[0])])  # X in the mapped X.Y
+        to_motive = str(motives_mapper[int(assignment[2])])  # Y in the mapped X.Y
 
-            # get the assignment value
-            # Before: ... = str(mapped_log_df.get_value(index=game_index, column=assignment_mapped_key))
-            assignment_mapped_value = str(mapped_log_df.at[game_index, assignment_mapped_key])
+        if (from_motive + '.' + to_motive) in mapped_log_df.columns:
+            assignment_mapped_key = from_motive + '.' + to_motive
+        else:
+            assignment_mapped_key = to_motive + '.' + from_motive
 
-            # mapped assignment
-            mapped_assignment = assignment + '=' + assignment_mapped_value[4:]  # just the value, drop the 'X.Y='
+        # get the assignment value
+        # Before: ... = str(mapped_log_df.get_value(index=game_index, column=assignment_mapped_key))
+        assignment_mapped_value = str(mapped_log_df.at[0, assignment_mapped_key])
 
-            print('assignment=' + assignment)
-            print('assignment_mapped_key=' + assignment_mapped_key)
-            print('mapped assignment: ' + mapped_assignment)
+        # mapped assignment
+        mapped_assignment = assignment + '=' + assignment_mapped_value[4:]  # just the value, drop the 'X.Y='
 
-            # add the mapped assignment
-            mapped_motives_mapped_sim_matrix.at[game_index, assignment] = mapped_assignment
+        print('assignment=' + assignment)
+        print('assignment_mapped_key=' + assignment_mapped_key)
+        print('mapped assignment: ' + mapped_assignment)
 
-        # set the mapped cards, ts , statistics and labels of this game: game_index
-        mapped_motives_mapped_sim_matrix.loc[[game_index], cards + cards_ts + statistics_and_label] =\
-            mapped_log_df.loc[[game_index], cards + cards_ts + statistics_and_label]
+        # add the mapped assignment
+        mapped_motives_mapped_sim_matrix.at[0, assignment] = mapped_assignment
 
-        # End games loop
+    # set the mapped cards, ts , statistics and labels of this game: game_index
+    mapped_motives_mapped_sim_matrix.loc[[0], cards + cards_ts + statistics_and_label] =\
+        mapped_log_df.loc[[0], cards + cards_ts + statistics_and_label]
+
+    # End games loop
 
     print('Done!')
     print(mapped_motives_mapped_sim_matrix)
@@ -141,9 +145,12 @@ def load_logs(log_dir):
             if '.txt' in file_name:
                 full_path = os.path.join(r, file_name)
                 logs.append(full_path)
-                #with open(full_path, "r") as log_file:
-                    #logs.append(log_file.read())
     return logs
+
+def create_log_text(log_dataframe):
+    values = log_dataframe.values.tolist()[0]
+    values = ','.join(['%s' %value for value in values])
+    return values
 
 if __name__ == "__main__":
 
@@ -158,8 +165,14 @@ if __name__ == "__main__":
     original_logs = load_logs(r'%s\original' %log_dir)
     mapped_wrong_logs = load_logs(r'%s\mapped_wrong' %log_dir)
 
+    if len(original_logs) != len(mapped_wrong_logs):
+        exit()
+
     mapped_correct_logs = []
     for i in range(len(original_logs)):
-        mapped_motives_mapped_sim_matrix = map_similarity_matrix(original_logs[i], \
+        mapped_correct_log = map_similarity_matrix(original_logs[i], \
         mapped_wrong_logs[i])
-        mapped_correct_logs.append(mapped_motives_mapped_sim_matrix)
+        correct_log_text = create_log_text(mapped_correct_log)
+        mapped_name = mapped_wrong_logs[i].split('\\')[-1].strip()
+        with open(r'%s\mapped_correct\%s' %(log_dir, mapped_name), 'w') as mapped_correct:
+            mapped_correct.write(correct_log_text)
