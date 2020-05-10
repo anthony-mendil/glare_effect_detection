@@ -250,12 +250,14 @@ def determine_coverage(original_colors):
 
 if __name__ == '__main__':
 
+    wd = os.getcwd()
+
     # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a static similarity matrix \
         for the simulating games with the glare effect.')
-    parser.add_argument("--i", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\screenshots_glare_effect"), \
+    parser.add_argument("--i", default=("%s\\screenshots_glare_effect" %wd), \
         help='The directory the glare effect screenshots are stored in.')
-    parser.add_argument("--c", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\color_names\colors_of_cards_glare_effect.txt"), \
+    parser.add_argument("--c", default=("%s\\color_names\\colors_of_cards_glare_effect.txt" %wd), \
         help='The file containing the original colors of the crads on the screenshots.')
     parser.add_argument('--color_blindness_mapping', action='store_true', \
         help='Pass if the mapping for color blindness should be used.')

@@ -10,6 +10,7 @@ global counter
 counter = 0
 
 # Similarity matrix for glare effect. Created with 300 screenshots.
+# With 0.9957 coverage of all combinations.
 similarity_matrix = ['1.1=0.1358699983300959', '1.2=0.2159772743951057','1.3=0.30618357051356393',
 	'1.4=0.26688764647597807','1.5=0.45477804580967557','1.6=0.27274591749087007',
 	'1.7=0.35545683642475645','2.2=0.12561928232079897','2.3=0.3067811561649673',
@@ -33,6 +34,16 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     :return: mapped_motives_mapped_sim_matrix which is the mapped log with corresponding mapped similarity matrix
     '''
 
+    
+    # logs schema for visual obstacle.
+    similarities_assignments = ['1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
+                                '2.3', '2.4', '2.5', '2.6', '2.7',
+                                '3.4', '3.5', '3.6', '3.7',
+                                '4.5', '4.6', '4.7',
+                                '5.6', '5.7',
+                                '6.7']
+    '''
+    
     # logs schema
     similarities_assignments = ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
                                 '2.2', '2.3', '2.4', '2.5', '2.6', '2.7',
@@ -41,6 +52,7 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
                                 '5.5', '5.6', '5.7',
                                 '6.6', '6.7',
                                 '7.7']
+    '''
 
     cards = ['card_' + str(i) for i in range(1, 41)]  # card_1...card_40
     cards_ts = ['card_t' + str(i) for i in range(1, 41)]  # card_t1...card_t40
@@ -56,8 +68,9 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     with open(mapped_cards_original_sim_matrix_log, "r") as log_file:
         old_log = log_file.read().split(',')
 
-    new_log = similarity_matrix
-    new_log.extend(old_log[21:])
+    #new_log = similarity_matrix
+    #new_log.extend(old_log[21:])
+    new_log = old_log
 
     log = ''
     for entry in new_log:
@@ -154,16 +167,22 @@ def create_log_text(log_dataframe):
 
 if __name__ == "__main__":
 
+    wd = os.getcwd()
+
     # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a correcly mapped similarity matrix.')
-    parser.add_argument("--l", default=(r"C:\Users\dylin\Documents\BA_Glare_Effect\logs"), \
+    parser.add_argument("--l", default=("%s\\test_logs\\1\\" %wd), \
         help='The directory the logs are stored in.')
 
     args = parser.parse_args()
     log_dir = args.l
 
-    original_logs = load_logs(r'%s\original' %log_dir)
-    mapped_wrong_logs = load_logs(r'%s\mapped_wrong' %log_dir)
+    if not os.path.exists(log_dir):
+        print('The path for the logs does not exist. Exiting...')
+        exit()
+
+    original_logs = load_logs('%s\\original' %log_dir)
+    mapped_wrong_logs = load_logs('%s\\mapped_wrong' %log_dir)
 
     if len(original_logs) != len(mapped_wrong_logs):
         exit()
@@ -174,5 +193,5 @@ if __name__ == "__main__":
         mapped_wrong_logs[i])
         correct_log_text = create_log_text(mapped_correct_log)
         mapped_name = mapped_wrong_logs[i].split('\\')[-1].strip()
-        with open(r'%s\mapped_correct\%s' %(log_dir, mapped_name), 'w') as mapped_correct:
+        with open('%s\\mapped_correct\\%s' %(log_dir, mapped_name), 'w') as mapped_correct:
             mapped_correct.write(correct_log_text)
