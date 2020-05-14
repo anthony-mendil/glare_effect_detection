@@ -1,0 +1,20 @@
+Skripts:  seperated_memory_levels_visualObstacle2_datacollection2020.py und
+memory levels_analysy.py
+
+
+ähniches skript wie erstes schreiben
+
+subjectlog gathered true 
+plotted levels: True True False False 
+game1 -> echte 20 logs 
+(label -> real_glareeffects)
+
+game2 -> 20000 simulierte 
+Name: name der datei
+label: simulated_glare effect
+
+game3 und 4 einfach weg lassen
+
+bei den unteren beiden: für ergebnis plots
+-> wenn das "" ist dann show 
+und wenn man pfade angibt wird es gespeichert

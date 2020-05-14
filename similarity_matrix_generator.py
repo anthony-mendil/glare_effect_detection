@@ -310,7 +310,7 @@ if __name__ == '__main__':
             original_colors[colors_idx][color_idx] = (current[0], current[1], color_idx)
 
     if len(images) == len(original_colors):
-        print('Number of screenshots use: %s' %len(images))
+        print('Number of screenshots used: %s' %len(images))
     # Exiting if the number of images does not equal the number of color lists.
     else:
         print('The numbers of screenshots and original colors differs.')

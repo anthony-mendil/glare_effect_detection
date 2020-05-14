@@ -1,0 +1,480 @@
+decay (LOW): -0.4069295899121982
+decay (HIGH): -0.7
+spreadTransfer: 0.2369979560961772
+spreadThreshold: 0.42408865622825603
+retrievalTau: 0.8571466673262539
+retrievalNoise: 0.17261334171389803
+thresholdScale: 9.98667848252325
+thresholdOffset: 0.40510276179242477
+boundaryLimit: 0.5898039691858904
+similarityFactor: 0.7794859891753114
+similarityFactorDecay: 0.5601655633346656
+#####
+decay (LOW): -0.1838176756351213
+decay (HIGH): -0.7
+spreadTransfer: 0.5490132632573652
+spreadThreshold: 0.015599733358893201
+retrievalTau: 0.48407208446590894
+retrievalNoise: 0.7197436442367992
+thresholdScale: 1.0898732799965618
+thresholdOffset: 0.04401476209233268
+boundaryLimit: 0.3562063993711998
+similarityFactor: 0.2183264162133396
+similarityFactorDecay: 0.8336866671852377
+#####
+decay (LOW): -0.576323648216865
+decay (HIGH): -0.7
+spreadTransfer: 0.4290242560809102
+spreadThreshold: 0.24978851802344088
+retrievalTau: 0.15066278317514287
+retrievalNoise: 0.8573361565893486
+thresholdScale: 2.9546453739717418
+thresholdOffset: 0.11145247094661237
+boundaryLimit: 0.4093602474580623
+similarityFactor: 0.4455237846102972
+similarityFactorDecay: 0.36264104659362206
+#####
+decay (LOW): -0.9448129128252997
+decay (HIGH): -0.7
+spreadTransfer: 0.34340582824790505
+spreadThreshold: 0.2629674966163645
+retrievalTau: 0.0324882778002694
+retrievalNoise: 0.26672022580451565
+thresholdScale: 8.680369840522607
+thresholdOffset: 0.19210869676481257
+boundaryLimit: 0.571880745963571
+similarityFactor: 0.7208975404026629
+similarityFactorDecay: 0.28011037373274617
+#####
+decay (LOW): -0.9810297660504522
+decay (HIGH): -0.7
+spreadTransfer: 0.32217021852975575
+spreadThreshold: 0.1502204931759763
+retrievalTau: 0.45032679761926026
+retrievalNoise: 0.8927303660300778
+thresholdScale: 2.1218776593066027
+thresholdOffset: 0.31871558377689335
+boundaryLimit: 0.7112215262405543
+similarityFactor: 0.3799577537397172
+similarityFactorDecay: 0.19436537841127094
+#####
+decay (LOW): -0.5898453435542862
+decay (HIGH): -0.7
+spreadTransfer: 0.7109529809491473
+spreadThreshold: 0.7850064772189573
+retrievalTau: 0.01026705693849339
+retrievalNoise: 0.3888096317956035
+thresholdScale: 3.6445163837021117
+thresholdOffset: 0.6853091503196159
+boundaryLimit: 0.5961265639924515
+similarityFactor: 0.23798455727525347
+similarityFactorDecay: 0.18578561891635686
+#####
+decay (LOW): -0.6988205299793738
+decay (HIGH): -0.7
+spreadTransfer: 0.7303376008601745
+spreadThreshold: 0.6134536313734756
+retrievalTau: 0.1480711493587296
+retrievalNoise: 0.6147198864712142
+thresholdScale: 3.091124401154988
+thresholdOffset: 0.13670060333369147
+boundaryLimit: 0.1284212247053779
+similarityFactor: 0.5925386706347737
+similarityFactorDecay: 0.7408224935563527
+#####
+decay (LOW): -0.7479184878007004
+decay (HIGH): -0.7
+spreadTransfer: 0.7145068210414343
+spreadThreshold: 0.7210138971160341
+retrievalTau: 0.5578805580892354
+retrievalNoise: 0.2795057756168563
+thresholdScale: 1.6582786828074816
+thresholdOffset: 0.03535066786337904
+boundaryLimit: 0.6175944362458011
+similarityFactor: 0.5156954124995553
+similarityFactorDecay: 0.1727135336457728
+#####
+decay (LOW): -0.6220739720981519
+decay (HIGH): -0.7
+spreadTransfer: 0.2648997709776943
+spreadThreshold: 0.08042855417971684
+retrievalTau: 0.5892623768606234
+retrievalNoise: 0.6010115160972972
+thresholdScale: 7.7960505680193455
+thresholdOffset: 0.11361953530839544
+boundaryLimit: 0.788529965730997
+similarityFactor: 0.8069566355287243
+similarityFactorDecay: 0.1671835642753825
+#####
+decay (LOW): -0.5999560997465382
+decay (HIGH): -0.7
+spreadTransfer: 0.6310419709951608
+spreadThreshold: 0.20177597451076135
+retrievalTau: 0.9973165216386803
+retrievalNoise: 0.6937220111173525
+thresholdScale: 0.8433021649132562
+thresholdOffset: 0.5128933706785876
+boundaryLimit: 0.7488113926035681
+similarityFactor: 0.13416795354323494
+similarityFactorDecay: 0.5866183836479517
+#####
+decay (LOW): -0.7685869526816719
+decay (HIGH): -0.7
+spreadTransfer: 0.0452523785246122
+spreadThreshold: 0.8413816291835056
+retrievalTau: 0.9427210503298016
+retrievalNoise: 0.8058130674201294
+thresholdScale: 4.238833800201666
+thresholdOffset: 0.14026101770803978
+boundaryLimit: 0.4640089753937309
+similarityFactor: 0.20794195018574796
+similarityFactorDecay: 0.1544552856895265
+#####
+decay (LOW): -0.40352633325826326
+decay (HIGH): -0.7
+spreadTransfer: 0.15942806879598678
+spreadThreshold: 0.22746245854891572
+retrievalTau: 0.004032723046419107
+retrievalNoise: 0.7438893252506551
+thresholdScale: 3.639597275068941
+thresholdOffset: 0.36048303035647666
+boundaryLimit: 0.23326766046945135
+similarityFactor: 0.16034435705951966
+similarityFactorDecay: 0.210840055326267
+#####
+decay (LOW): -0.9283253637863674
+decay (HIGH): -0.7
+spreadTransfer: 0.3875077478409116
+spreadThreshold: 0.4052490925823504
+retrievalTau: 0.5393862189775697
+retrievalNoise: 0.6608804175354309
+thresholdScale: 1.6936129486113414
+thresholdOffset: 0.9371378223800292
+boundaryLimit: 0.8757086670370007
+similarityFactor: 0.10853899892988164
+similarityFactorDecay: 0.7587315789751198
+#####
+decay (LOW): -0.7729401571045408
+decay (HIGH): -0.7
+spreadTransfer: 0.3654733025273942
+spreadThreshold: 0.7051319075963347
+retrievalTau: 0.009624735234423854
+retrievalNoise: 0.7224610618694729
+thresholdScale: 6.325798231665953
+thresholdOffset: 0.770813253929086
+boundaryLimit: 0.7638704323628568
+similarityFactor: 0.3146180468387211
+similarityFactorDecay: 0.569228917894263
+#####
+decay (LOW): -0.13780206981135146
+decay (HIGH): -0.7
+spreadTransfer: 0.5499408120727279
+spreadThreshold: 0.056490873675887066
+retrievalTau: 0.9101684601020352
+retrievalNoise: 0.9594273075183296
+thresholdScale: 2.059491550837529
+thresholdOffset: 0.941602709212513
+boundaryLimit: 0.8991582931187795
+similarityFactor: 0.5515786662177165
+similarityFactorDecay: 0.5598026498838028
+#####
+decay (LOW): -0.61109457481507
+decay (HIGH): -0.7
+spreadTransfer: 0.7908858042390813
+spreadThreshold: 0.1235249527767552
+retrievalTau: 0.023538499311466635
+retrievalNoise: 0.31621544516027184
+thresholdScale: 6.4368346629961755
+thresholdOffset: 0.15699308150907665
+boundaryLimit: 0.34092054822886086
+similarityFactor: 0.17579195153078286
+similarityFactorDecay: 0.3478625830039238
+#####
+decay (LOW): -0.6660485491849911
+decay (HIGH): -0.7
+spreadTransfer: 0.11394442778734362
+spreadThreshold: 0.8897351877478397
+retrievalTau: 0.9990186718334169
+retrievalNoise: 0.8989387132622417
+thresholdScale: 8.779584075823019
+thresholdOffset: 0.749337159312961
+boundaryLimit: 0.6197514985109879
+similarityFactor: 0.7364811838184395
+similarityFactorDecay: 0.5356668250169814
+#####
+decay (LOW): -0.9662851964352931
+decay (HIGH): -0.7
+spreadTransfer: 0.6212681231090145
+spreadThreshold: 0.8976478891070012
+retrievalTau: 0.7164802112022952
+retrievalNoise: 0.6874736704389105
+thresholdScale: 5.468489010377194
+thresholdOffset: 0.8431401980210833
+boundaryLimit: 0.612313437143304
+similarityFactor: 0.6146673496866539
+similarityFactorDecay: 0.24550549484538953
+#####
+decay (LOW): -0.6019072207696665
+decay (HIGH): -0.7
+spreadTransfer: 0.47632086843666804
+spreadThreshold: 0.5931153072680995
+retrievalTau: 0.9883361992327317
+retrievalNoise: 0.06062988678816945
+thresholdScale: 9.935223088331501
+thresholdOffset: 0.7609949417022289
+boundaryLimit: 0.23891320491536422
+similarityFactor: 0.28878831290730733
+similarityFactorDecay: 0.8668426119331286
+#####
+decay (LOW): -0.3088677385413361
+decay (HIGH): -0.7
+spreadTransfer: 0.2994192525743575
+spreadThreshold: 0.262803103489274
+retrievalTau: 0.5455376214770365
+retrievalNoise: 0.377219262627367
+thresholdScale: 7.134422817150933
+thresholdOffset: 0.8696501347891944
+boundaryLimit: 0.44175261610919037
+similarityFactor: 0.8383691658839053
+similarityFactorDecay: 0.5184910808979883
+#####
+decay (LOW): -0.4866208316517787
+decay (HIGH): -0.7
+spreadTransfer: 0.012109465130852006
+spreadThreshold: 0.7580300855215142
+retrievalTau: 0.19062277034098077
+retrievalNoise: 0.4771646718285901
+thresholdScale: 0.7481317609126705
+thresholdOffset: 0.4470265344209201
+boundaryLimit: 0.2793609733294775
+similarityFactor: 0.46645570112119417
+similarityFactorDecay: 0.302461618618845
+#####
+decay (LOW): -0.4066818565908018
+decay (HIGH): -0.7
+spreadTransfer: 0.8002859081265044
+spreadThreshold: 0.8626680496777686
+retrievalTau: 0.1758973103562645
+retrievalNoise: 0.13984150043192792
+thresholdScale: 5.387484112116
+thresholdOffset: 0.030299796836691706
+boundaryLimit: 0.37709849221412073
+similarityFactor: 0.46521787102138645
+similarityFactorDecay: 0.8096528705153565
+#####
+decay (LOW): -0.5581397492355173
+decay (HIGH): -0.7
+spreadTransfer: 0.37400860072473463
+spreadThreshold: 0.17269138392061711
+retrievalTau: 0.1622436088630741
+retrievalNoise: 0.12246373713561115
+thresholdScale: 0.6985816372309488
+thresholdOffset: 0.9473006841385307
+boundaryLimit: 0.520290598764821
+similarityFactor: 0.2062205565435007
+similarityFactorDecay: 0.732071164367008
+#####
+decay (LOW): -0.31324235167491854
+decay (HIGH): -0.7
+spreadTransfer: 0.390121510120821
+spreadThreshold: 0.35442673573152556
+retrievalTau: 0.8954040568366232
+retrievalNoise: 0.2870187734092332
+thresholdScale: 5.304224328692108
+thresholdOffset: 0.012121096237577289
+boundaryLimit: 0.8802116067581399
+similarityFactor: 0.35064168926387373
+similarityFactorDecay: 0.568317101788307
+#####
+decay (LOW): -0.3050492376852749
+decay (HIGH): -0.7
+spreadTransfer: 0.17877494281808987
+spreadThreshold: 0.4605986725914317
+retrievalTau: 0.1397632832347423
+retrievalNoise: 0.9041989524830478
+thresholdScale: 6.90992750301813
+thresholdOffset: 0.31080980965121396
+boundaryLimit: 0.8635203433996816
+similarityFactor: 0.1410246963449816
+similarityFactorDecay: 0.7110282156812148
+#####
+decay (LOW): -0.6569850462809169
+decay (HIGH): -0.7
+spreadTransfer: 0.5110489633310892
+spreadThreshold: 0.45951697865949015
+retrievalTau: 0.07661546115504769
+retrievalNoise: 0.17172455633415917
+thresholdScale: 3.6742518005116187
+thresholdOffset: 0.22417630052760598
+boundaryLimit: 0.5298280102970406
+similarityFactor: 0.11788053610399774
+similarityFactorDecay: 0.5590074062332903
+#####
+decay (LOW): -0.1982456344426854
+decay (HIGH): -0.7
+spreadTransfer: 0.1074591432265326
+spreadThreshold: 0.36995345915242855
+retrievalTau: 0.6461690091098403
+retrievalNoise: 0.9799624515147832
+thresholdScale: 2.85516520422063
+thresholdOffset: 0.7455902112764151
+boundaryLimit: 0.8076817331503725
+similarityFactor: 0.15173440962430224
+similarityFactorDecay: 0.2989077143022554
+#####
+decay (LOW): -0.9068408616313676
+decay (HIGH): -0.7
+spreadTransfer: 0.40839635075767305
+spreadThreshold: 0.7398197011052764
+retrievalTau: 0.003945206462530111
+retrievalNoise: 0.4694855789063136
+thresholdScale: 9.530178768420692
+thresholdOffset: 0.2572348865356592
+boundaryLimit: 0.8936838973182614
+similarityFactor: 0.17232201449941922
+similarityFactorDecay: 0.231580055325031
+#####
+decay (LOW): -0.7984895213973194
+decay (HIGH): -0.7
+spreadTransfer: 0.9417984518296177
+spreadThreshold: 0.1325536672364886
+retrievalTau: 0.7350154365876939
+retrievalNoise: 0.2686819592230713
+thresholdScale: 8.594827201856997
+thresholdOffset: 0.2769560486548681
+boundaryLimit: 0.24718135575430714
+similarityFactor: 0.3963622421758026
+similarityFactorDecay: 0.6526525462121506
+#####
+decay (LOW): -0.622290939112182
+decay (HIGH): -0.7
+spreadTransfer: 0.5308940183625002
+spreadThreshold: 0.9600921951014028
+retrievalTau: 0.5221641992490714
+retrievalNoise: 0.9544110712117875
+thresholdScale: 4.640555938022077
+thresholdOffset: 0.3776621075645452
+boundaryLimit: 0.1775295186816048
+similarityFactor: 0.596271581650881
+similarityFactorDecay: 0.8575002579143056
+#####
+decay (LOW): -0.9434062174889511
+decay (HIGH): -0.7
+spreadTransfer: 0.7454457120246666
+spreadThreshold: 0.5751698569168304
+retrievalTau: 0.8105051602411087
+retrievalNoise: 0.6520523668829683
+thresholdScale: 3.2041719981997545
+thresholdOffset: 0.19187096704564327
+boundaryLimit: 0.8334902372047506
+similarityFactor: 0.5507437632262877
+similarityFactorDecay: 0.8547001154566747
+#####
+decay (LOW): -0.6856809634545792
+decay (HIGH): -0.7
+spreadTransfer: 0.533156740799456
+spreadThreshold: 0.5334296178614286
+retrievalTau: 0.29082867290364584
+retrievalNoise: 0.7019556277226637
+thresholdScale: 4.062757602443834
+thresholdOffset: 0.6590882357738013
+boundaryLimit: 0.7474517278647947
+similarityFactor: 0.6112781107296226
+similarityFactorDecay: 0.26471607964964927
+#####
+decay (LOW): -0.2651943982791043
+decay (HIGH): -0.7
+spreadTransfer: 0.2076331057987312
+spreadThreshold: 0.2228921179802036
+retrievalTau: 0.12134310534554485
+retrievalNoise: 0.8327273816191054
+thresholdScale: 5.4216271389670085
+thresholdOffset: 0.6062188233360101
+boundaryLimit: 0.7222031788674285
+similarityFactor: 0.14419202969228753
+similarityFactorDecay: 0.35511601451344454
+#####
+decay (LOW): -0.8617287841318382
+decay (HIGH): -0.7
+spreadTransfer: 0.3108950199360968
+spreadThreshold: 0.11937964169311005
+retrievalTau: 0.31524593669067913
+retrievalNoise: 0.9236805560578789
+thresholdScale: 4.086827386523241
+thresholdOffset: 0.7895933281577807
+boundaryLimit: 0.7577260037538341
+similarityFactor: 0.6005067697210353
+similarityFactorDecay: 0.7023892424657406
+#####
+decay (LOW): -0.5879542168676808
+decay (HIGH): -0.7
+spreadTransfer: 0.6173963340266648
+spreadThreshold: 0.6844181931098103
+retrievalTau: 0.040448589198158476
+retrievalNoise: 0.6258179431633825
+thresholdScale: 2.480542195551413
+thresholdOffset: 0.03738399211009341
+boundaryLimit: 0.40107968477033584
+similarityFactor: 0.49658929592347434
+similarityFactorDecay: 0.24220820266345378
+#####
+decay (LOW): -0.554170603186054
+decay (HIGH): -0.7
+spreadTransfer: 0.13217429421707785
+spreadThreshold: 0.6290157184051749
+retrievalTau: 0.12855796509500333
+retrievalNoise: 0.8357790790435986
+thresholdScale: 7.2839302268739115
+thresholdOffset: 0.025994036941136
+boundaryLimit: 0.4446761752666197
+similarityFactor: 0.14164870711958874
+similarityFactorDecay: 0.7314977749434897
+#####
+decay (LOW): -0.6964322297946336
+decay (HIGH): -0.7
+spreadTransfer: 0.16171693090565512
+spreadThreshold: 0.8582267420979569
+retrievalTau: 0.1678918237768589
+retrievalNoise: 0.22528793472483272
+thresholdScale: 9.309646173783175
+thresholdOffset: 0.5112434919376305
+boundaryLimit: 0.34959560043482524
+similarityFactor: 0.2797064685655299
+similarityFactorDecay: 0.8705977361707582
+#####
+decay (LOW): -0.9043803480444252
+decay (HIGH): -0.7
+spreadTransfer: 0.23767951081588545
+spreadThreshold: 0.8125907714412963
+retrievalTau: 0.237001431990973
+retrievalNoise: 0.014814521571825612
+thresholdScale: 0.7840286203508535
+thresholdOffset: 0.9891316246125376
+boundaryLimit: 0.2729947830254449
+similarityFactor: 0.15067733156401075
+similarityFactorDecay: 0.7638680167153015
+#####
+decay (LOW): -0.8000360900517343
+decay (HIGH): -0.7
+spreadTransfer: 0.9492246459954992
+spreadThreshold: 0.9036358267228375
+retrievalTau: 0.4938710470963453
+retrievalNoise: 0.5230481752363236
+thresholdScale: 0.5940231440040799
+thresholdOffset: 0.12561150337530036
+boundaryLimit: 0.8261310025419903
+similarityFactor: 0.18394423219292558
+similarityFactorDecay: 0.36630595157170864
+#####
+decay (LOW): -0.8410960149516087
+decay (HIGH): -0.7
+spreadTransfer: 0.825512286306794
+spreadThreshold: 0.42257237751793464
+retrievalTau: 0.1623837771027023
+retrievalNoise: 0.987273137184339
+thresholdScale: 4.646649966878191
+thresholdOffset: 0.9911011847977748
+boundaryLimit: 0.6805598038361061
+similarityFactor: 0.7067195647149355
+similarityFactorDecay: 0.12064222320231677
+#####

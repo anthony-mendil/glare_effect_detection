@@ -24,3 +24,14 @@ Dann test: Sind diese
 
 
 nochmal upfdtateCardExpolitingProbality angucen. -> ichmuss aber nichts ändern bei winstrategy (neue erkenntnis)
+
+_________________________________
+
+
+
+todo: noch kleines script schreiben das aus dem ordner alle logs in eine datei tut für simulator.
+
+____________________
+
+Es gab ein Probanten der nicht alle karten mindestens einmal umgedreht hat und der code funktiniert nur wenn game cards komplett sind.
+Deshalb musste ich den log entfernen. Statt 21 also nur 20.

@@ -33,16 +33,6 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     use original staic coding (non mapped)!
     :return: mapped_motives_mapped_sim_matrix which is the mapped log with corresponding mapped similarity matrix
     '''
-
-    
-    # logs schema for visual obstacle.
-    similarities_assignments = ['1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
-                                '2.3', '2.4', '2.5', '2.6', '2.7',
-                                '3.4', '3.5', '3.6', '3.7',
-                                '4.5', '4.6', '4.7',
-                                '5.6', '5.7',
-                                '6.7']
-    '''
     
     # logs schema
     similarities_assignments = ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
@@ -52,7 +42,6 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
                                 '5.5', '5.6', '5.7',
                                 '6.6', '6.7',
                                 '7.7']
-    '''
 
     cards = ['card_' + str(i) for i in range(1, 41)]  # card_1...card_40
     cards_ts = ['card_t' + str(i) for i in range(1, 41)]  # card_t1...card_t40
@@ -68,9 +57,9 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     with open(mapped_cards_original_sim_matrix_log, "r") as log_file:
         old_log = log_file.read().split(',')
 
-    #new_log = similarity_matrix
-    #new_log.extend(old_log[21:])
-    new_log = old_log
+    new_log = []
+    new_log.extend(similarity_matrix)
+    new_log.extend(old_log[21:])
 
     log = ''
     for entry in new_log:
@@ -147,18 +136,20 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     return mapped_motives_mapped_sim_matrix
 
 def load_logs(log_dir):
-    '''
-    Loading the screenshots from which the rgb values will be extracted.
-    :param image_dir: The full path to the directory the images are stored in. 
-    :return:
-    '''
-    logs = []
-    for r, _, f in os.walk(log_dir):
-        for file_name in f:
-            if '.txt' in file_name:
-                full_path = os.path.join(r, file_name)
-                logs.append(full_path)
-    return logs
+    original_logs = []
+    mapped_wrong_logs = []
+    for probant in os.listdir(log_dir):
+        if os.path.isdir(os.path.join(log_dir, probant)):
+            full__base_path = os.path.join(log_dir, probant, 'behavioural', \
+                probant, 'glare')
+            for log_file in os.listdir(full__base_path):
+                if '_original' in log_file:
+                    full_path_original = os.path.join(full__base_path, log_file)
+                    original_logs.append(full_path_original)
+                elif '_mapped' in log_file:
+                    full_path_mapped_wrong = os.path.join(full__base_path, log_file)
+                    mapped_wrong_logs.append(full_path_mapped_wrong)
+    return (original_logs, mapped_wrong_logs)
 
 def create_log_text(log_dataframe):
     values = log_dataframe.values.tolist()[0]
@@ -171,7 +162,7 @@ if __name__ == "__main__":
 
     # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a correcly mapped similarity matrix.')
-    parser.add_argument("--l", default=("%s\\test_logs\\1\\" %wd), \
+    parser.add_argument("--l", default=("%s\\DBN_Data_Collection" %wd), \
         help='The directory the logs are stored in.')
 
     args = parser.parse_args()
@@ -181,17 +172,20 @@ if __name__ == "__main__":
         print('The path for the logs does not exist. Exiting...')
         exit()
 
-    original_logs = load_logs('%s\\original' %log_dir)
-    mapped_wrong_logs = load_logs('%s\\mapped_wrong' %log_dir)
+    logs = load_logs(log_dir)
+    original_logs = logs[0]
+    mapped_wrong_logs = logs[1]
 
     if len(original_logs) != len(mapped_wrong_logs):
         exit()
 
-    mapped_correct_logs = []
+
+    mapped_correct_logs = ''
     for i in range(len(original_logs)):
         mapped_correct_log = map_similarity_matrix(original_logs[i], \
         mapped_wrong_logs[i])
         correct_log_text = create_log_text(mapped_correct_log)
-        mapped_name = mapped_wrong_logs[i].split('\\')[-1].strip()
-        with open('%s\\mapped_correct\\%s' %(log_dir, mapped_name), 'w') as mapped_correct:
-            mapped_correct.write(correct_log_text)
+        mapped_correct_logs += correct_log_text + '\n'
+
+    with open('%s\\mapped_logs\\original_logs_mapped.txt' %wd, 'w') as mapped_correct:
+        mapped_correct.write(mapped_correct_logs)
