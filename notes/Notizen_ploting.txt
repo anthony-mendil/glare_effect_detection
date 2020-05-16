@@ -18,3 +18,23 @@ game3 und 4 einfach weg lassen
 bei den unteren beiden: für ergebnis plots
 -> wenn das "" ist dann show 
 und wenn man pfade angibt wird es gespeichert
+
+_________________________
+
+(mein Script: galre_effect_plotting.py)
+
+Gut in BA: 
+Wir verfolgen dien ansatz für die matrix und gucken wie gut er ist. 
+Ergebnis der simulation war sehr gut deshalb wurde kein weiterer Ansatz probiert.
+Plots zeigen. 
+_________________________
+
+TODO Gespräch:
+- warum genau passiert der Fehler? Sicher gehen dass es kein Probelm gibt
+(mit max_num_rounds=20)
+- zeigen was ich genau alles verändert habe an simulator und so 
+(steht im wiki, wollte mazen sehen)
+- Bei den wurde ja immer glare effect simuliert. 
+Muss ich auch noch welche simulieren mit originaler similarity matrix und ohne 
+glare effect um 20000 samples oder so zu haben wo die nicht geblendet wurden? 
+- wie ist das später mit eeg wenn ich das benutzen möchte: Kann man nicht simulieren oder?
