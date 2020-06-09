@@ -38,3 +38,13 @@ TODO Gespräch:
 Muss ich auch noch welche simulieren mit originaler similarity matrix und ohne 
 glare effect um 20000 samples oder so zu haben wo die nicht geblendet wurden? 
 - wie ist das später mit eeg wenn ich das benutzen möchte: Kann man nicht simulieren oder?
+
+
+- sorting_simulated_data_quality.py (er hat mir die zwei dateien geschicks)
+- num indidual -> 20
+- num_sim_data_for_sorting bei test mit  3 und später dann mit 1000 (also allen)
+- in den tupeln bei 170 oder so jeweils unr eine
+eigentlih brauche ich kein loop
+
+machine learing mastery website: cnn rechercieren 
+kleine Präsentation wie man das benutzt und wie man es für unser thema benutzen könnte.  

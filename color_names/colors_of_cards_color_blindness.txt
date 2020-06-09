@@ -1,1 +1,0 @@
-dark red,orange,light green,red,green,brown,light green,dark green,brown,red,orange,dark red,dark green,green

@@ -1,0 +1,35 @@
+
+- sorting_simulated_data_quality.py (er hat mir die zwei dateien geschicks)
+- num indidual -> 20
+- num_sim_data_for_sorting bei test mit  3 und später dann mit 1000 (also allen)
+- in den tupeln bei 170 oder so jeweils unr eine
+eigentlih brauche ich kein loop
+
+- plotting datei so ändern 
+1 und 2 real daten (original und glare effect)
+3 und 4 simulierte (original und glare effect)
+
+Todo:
+- sortieren
+- gleiche features wie lstm benutzen (in papers gucken)
+- gucken was number of filters macht bei cnn 
+	--> Machinelearning Mastery: ML Mastery
+
+approach 1 und 2:
+einmal mit card codes und einmal ohne und vergleichen
+
+
+4 statistical (von paper 3) features mit card codes und genau der slebe approach mit den 2 statistival von mir
+
+vielleicht:
+approach 1 keine filter 
+und bei 2 schon. NACHGUCKEN!?
+
+
+1   	2	1	1.1	2.1	
+2	...	
+3
+4
+5
+6
+7

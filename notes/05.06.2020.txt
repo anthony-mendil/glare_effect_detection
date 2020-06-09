@@ -1,0 +1,51 @@
+- es gibt schon 5 features pro timestamp
+- card code und 4 statistical features 
+- kann paper noch mal angucken 
+- um guten vergleich zu machen genau die gleichen features nehemen 
+- und dann gucken 
+
+memorystattictic/src/prediction_model_RD_bestSD_kfold7.py
+
+load_and_prepare_real_data z.974 für originbalk
+-> alle levels einlesen in df
+-> brauche nur 2: noObst und glare effect
+- pool level flags welceh ich nehmen möcte: habe nur 2 
+- verschiedene anzahl von zügen probieren 
+von 1180 bis 1221 werden die features berechnet   
+- 1178 bis 1180 if weg machen. Das ist falsch 
+neue datei: prediction_glare_effect
+- load_and_prepare_bestsimulated_training data z.176 ()
+- erstmal nur mit real data trainieren, also simulierte daten auslassenn
+
+- wenn man zu viele simuliertte nimmt mach lstm overfiting für simulierte daten 
+
+src/lda_features.py berechnet die features. einfach benutzen.
+
+- bis morgen prediction_model_RD_bestSD_kfold7.py kopieren ain glare effect umgenennemn und 
++ mini skript die das ausführt + manuell ein feature vektor testen (manuell ausrechnen und miot einem in df vergleichen)
+
+
+- für andere fächer: cross valifddation statt nur einmal splitten damit alle mal testdaten waren 
+
+
+-------------------------
+
+code für check:
+- df lesen 
+- 40 karten angucken ob alle codes von 1.1 bis 7.2 haben wenn ja gültig sonst sein
+output true false mit index oder. 
+Mit no obstacle testen: wir haben 22 mal 2 -> aber nur g1 -> 21 die person raus nehmen die kein glare effect hat und dann 
+laufen lassen für 
+
+Double check: break point und semi atumotaisch gucken 
+6 particpants sind ungültig. 
+
+p3,p4,p9,p14,p17, p18
+
+mein skript erweeiter für aslle 9 fälle 
+die oben sollten jeweils für mindestens eine bedingung testen  
+
+
+
+
+

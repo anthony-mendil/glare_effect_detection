@@ -27,13 +27,13 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     '''
     this function maps the similarity matrix in :param mapped_cards_original_sim_matrix_log to use dynamic card coding 
     in sim matrix entries using the dynamic (mapped) card coding in this param and the original card coding from the 
-    original log :param original_log
+    original log.
+    
     :param original_log: contains non mapped motives, i.e. static motives (original motives)
     :param mapped_cards_original_sim_matrix_log: it has dynamic card coding but its sim matrix entries 
     use original staic coding (non mapped)!
     :return: mapped_motives_mapped_sim_matrix which is the mapped log with corresponding mapped similarity matrix
     '''
-    
     # logs schema
     similarities_assignments = ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
                                 '2.2', '2.3', '2.4', '2.5', '2.6', '2.7',
@@ -136,6 +136,12 @@ def map_similarity_matrix(original_log, mapped_cards_original_sim_matrix_log):
     return mapped_motives_mapped_sim_matrix
 
 def load_logs(log_dir):
+    '''
+    Loads the original logs and the wrongly mapped logs.
+
+    :param log_dir: The directory the logs are stored in.
+    :return: The original logs and the wrongly mapped logs.
+    '''
     original_logs = []
     mapped_wrong_logs = []
     for probant in os.listdir(log_dir):
@@ -145,13 +151,20 @@ def load_logs(log_dir):
             for log_file in os.listdir(full__base_path):
                 if '_original' in log_file:
                     full_path_original = os.path.join(full__base_path, log_file)
-                    original_logs.append(full_path_original)
+                    original_logs.append((full_path_original, probant))
                 elif '_mapped' in log_file:
                     full_path_mapped_wrong = os.path.join(full__base_path, log_file)
                     mapped_wrong_logs.append(full_path_mapped_wrong)
     return (original_logs, mapped_wrong_logs)
 
 def create_log_text(log_dataframe):
+    '''
+    Creates a log string out of the dataframe in the format 
+    in that it is saved in the file. 
+
+    :param log_dataframe: The log dataframe.
+    :return: The log string.
+    '''
     values = log_dataframe.values.tolist()[0]
     values = ','.join(['%s' %value for value in values])
     return values
@@ -179,13 +192,22 @@ if __name__ == "__main__":
     if len(original_logs) != len(mapped_wrong_logs):
         exit()
 
+    logs_for_mapper = list(zip(original_logs, mapped_wrong_logs))
 
     mapped_correct_logs = ''
-    for i in range(len(original_logs)):
-        mapped_correct_log = map_similarity_matrix(original_logs[i], \
-        mapped_wrong_logs[i])
-        correct_log_text = create_log_text(mapped_correct_log)
-        mapped_correct_logs += correct_log_text + '\n'
+    for entry in logs_for_mapper:
+        probant = entry[0][1]
+        original_log = entry[0][0]
+        mapped_wrong_log = entry[1]
 
-    with open('%s\\mapped_logs\\original_logs_mapped.txt' %wd, 'w') as mapped_correct:
+        if (probant not in original_log) or (probant not in mapped_wrong_log):
+            print('The probant was not correcly allocated.')
+            exit()
+
+        mapped_correct_log = map_similarity_matrix(original_log, \
+        mapped_wrong_log)
+        correct_log_text = create_log_text(mapped_correct_log)
+        mapped_correct_logs += '%s:' %probant + correct_log_text + '\n'
+
+    with open('%s\\mapped_logs\\unchecked\\glare_effect\\mapped_logs_glare_effect_with_probants.txt' %wd, 'w') as mapped_correct:
         mapped_correct.write(mapped_correct_logs)
