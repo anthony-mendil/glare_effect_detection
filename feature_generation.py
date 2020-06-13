@@ -201,10 +201,10 @@ class Data_preparator():
         print("lda_y_realData: " + str(np.shape(self.lda_y_realData)))
 
         np.save(base_path_features + 'realData', self.realData)
-        np.save(base_path_features + 'X_realData', self.realData)
-        np.save(base_path_features + 'y_realData', self.realData)
-        np.save(base_path_features + 'lda_X_realData', self.realData)
-        np.save(base_path_features + 'lda_y_realData', self.realData)
+        np.save(base_path_features + 'X_realData', self.X_realData)
+        np.save(base_path_features + 'y_realData', self.y_realData)
+        np.save(base_path_features + 'lda_X_realData', self.lda_X_realData)
+        np.save(base_path_features + 'lda_y_realData', self.lda_y_realData)
 
 if __name__ == "__main__":
     feature_generator = Data_preparator()
