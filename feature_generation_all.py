@@ -66,12 +66,12 @@ class Data_preparator():
         self.sequence_length = sequence_length
         self.cardsCodes_statistics_features = cardsCodes_statistics_features 
 
-    def load_and_prepare_real_data(self, two_labels=True,
+    def load_and_prepare_real_data_all(self, two_labels=True,
                                     num_of_rounds=20,
                                     pooled_levels=[True, True, False, False, False, False, False,
                                                     False, False],
-                                    base_path='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\mapped_logs\\glare_effect_noObst_valid_logs\\',
-                                    base_path_features='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\real\\'):
+                                    base_path='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\raw\\real\\all\\',
+                                    base_path_features='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\features\\real\\all\\'):
 
         """This function loads the real data, according to base_path,
         from for_simulation, for_validation or for testing"""
@@ -206,6 +206,151 @@ class Data_preparator():
         np.save(base_path_features + 'lda_X_realData', self.lda_X_realData)
         np.save(base_path_features + 'lda_y_realData', self.lda_y_realData)
 
+    def load_and_prepare_simulated_data_all(self, two_labels=True,
+                                    num_of_rounds=20,
+                                    pooled_levels=[True, True, False, False, False, False, False,
+                                                    False, False],
+                                    base_path='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\raw\\simulated\\all\\',
+                                    base_path_features='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\features\\simulated\\all\\'):
+
+        """This function loads the real data, according to base_path,
+        from for_simulation, for_validation or for testing"""
+
+        # data path and schema
+        path_prefix = base_path
+        first_level = 'simulated_noObst_sorted.log'
+        second_level = 'simulated_glare_effect_sorted.log'
+        # columns
+        #similarity_cols_noObst = ['sim_' + str(i) for i in range(1, 22)]
+        #similarity_cols_glare = ['sim_' + str(i) for i in range(1, 29)]
+        cards_cols = ['card_' + str(i) for i in range(1, 41)]
+        #timestamps_cols = ['timestamp_' + str(i) for i in range(1, 41)]
+        metrics_cols = ['metric_' + str(i) for i in range(1, 5)]
+        label_col = ['label']
+        rmse = ['rmse']
+        #all_cols_noObst = similarity_cols_noObst + cards_cols + timestamps_cols + metrics_cols + label_col
+        #all_cols_glare = similarity_cols_glare + cards_cols + timestamps_cols + metrics_cols + label_col
+
+        all_cols_simulated = rmse + cards_cols + metrics_cols + label_col
+
+
+        # I. load simulatedData
+        rounds = ['card_' + str(i) for i in range(1, (num_of_rounds * 2) + 1)]
+        rounds_and_label = rounds + ['label']
+
+        if pooled_levels[0]:
+            firstLevelMemory_simulatedData = pd.read_csv(
+                path_prefix + first_level, names=all_cols_simulated, header=None)
+
+            firstLevelMemory_simulatedData.label = 0
+            firstLevelMemory_simulatedData = firstLevelMemory_simulatedData.loc[:, rounds_and_label]
+
+            print('firstLevelMemory_simulatedData has been loaded!')
+
+        # if (not two_labels) or memory_obstacle_newApp:
+        if pooled_levels[1]:
+            secondLevelMemory_simulatedData = pd.read_csv(
+                path_prefix + second_level, names=all_cols_simulated, header=None)
+
+            secondLevelMemory_simulatedData.label = 1
+            secondLevelMemory_simulatedData = secondLevelMemory_simulatedData.loc[:, rounds_and_label]
+
+            print('secondLevelMemory_simulatedData has been loaded!')
+
+        # II. concatenate and shuffle validationData
+        self.simulatedData = []
+        if pooled_levels[0]:
+            self.simulatedData.extend([firstLevelMemory_simulatedData])
+        if pooled_levels[1]:
+            self.simulatedData.extend([secondLevelMemory_simulatedData])
+        
+
+        self.simulatedData = pd.concat(self.simulatedData, ignore_index=True)
+        self.simulatedData = self.simulatedData.sample(frac=1)  # Shuffle
+        print("simulatedData: " + str(self.simulatedData.shape))
+
+        # III Preparation of X_validation, y_validation, lda_X_validation and lda_y_validation
+
+        ############
+        # 2. Baseline Model: prepare X_lda, y_lda & trainingData_with_features
+        
+        game_lda_features = []
+        game_cards_with_lda_features = []
+        all_games_lda_features = []
+        all_games_cards_with_lda_features = []
+        for game in range(0, len(self.simulatedData)):
+            # prepare the game lda features
+            temp = self.simulatedData.iloc[game:game + 1, :]
+            cards_used = ['card_' + str(i) for i in range(1, (num_of_rounds * 2) + 1)]
+            lda_features_generator = FeaturesGenerator(game_log=temp.loc[:, cards_used],
+                                                            sequence_length=num_of_rounds * 2)
+            game_lda_features.append(lda_features_generator.get_undiscovered_cards())
+            game_lda_features.append(lda_features_generator.get_unseen_cards())
+            game_lda_features.append(lda_features_generator.get_max_seen_number())
+            game_lda_features.append(lda_features_generator.get_zero_cards())
+
+            if True in self.cardsCodes_statistics_features[1:]:  # i.e. statistical features == True
+            # prepare statistical features
+                cards_no_features = temp.loc[:, cards_used]  # .values.tolist()
+                incremental_df = pd.DataFrame()
+                incremental_df['card_1'] = cards_no_features['card_1']
+                for card, _ in zip(cards_no_features, range(0, len(cards_no_features.columns))):
+                    incremental_df[card] = cards_no_features[card]
+
+                    lda_features_generator = FeaturesGenerator(game_log=incremental_df,
+                                                                    sequence_length=len(incremental_df.columns))
+                    undiscovered_cards = lda_features_generator.get_undiscovered_cards()
+                    unseen_cards = lda_features_generator.get_unseen_cards()
+                    max_seen_number = lda_features_generator.get_max_seen_number()
+                    zero_cards = lda_features_generator.get_zero_cards()
+                    card_code = math.floor(incremental_df.iloc[0][card] * 10) / 10
+                    # features_used
+                    all_features = [card_code, undiscovered_cards, unseen_cards, max_seen_number, zero_cards]
+                    features_used = [all_features[i] for i, flag in enumerate(self.cardsCodes_statistics_features)
+                                        if flag]
+                    game_cards_with_lda_features.append(features_used)
+
+            # append to all_games lists
+            all_games_lda_features.append(game_lda_features)
+            all_games_cards_with_lda_features.append(game_cards_with_lda_features)
+            game_lda_features = []
+            game_cards_with_lda_features = []
+
+        # lda_X_validation
+        self.lda_X_simulatedData = np.array(all_games_lda_features)
+        # X_validation and y_validation
+        if True in self.cardsCodes_statistics_features[1:]:
+            self.X_simulatedData = np.array(all_games_cards_with_lda_features)
+        else:
+            self.X_simulatedData = np.array(self.simulatedData.loc[:, rounds])
+            # in case of one feature (card code), reshape to ensure the (#samples, #timesteps, #features) for LSTM
+            self.X_simulatedData = np.reshape(self.X_simulatedData, (self.X_simulatedData.shape[0], self.X_simulatedData.shape[1], 1))
+
+        self.y_simulatedData = self.simulatedData.label
+        self.y_simulatedData = np.array(self.y_simulatedData)
+        # reshaping y_validation
+        self.y_simulatedData = np.reshape(self.y_simulatedData, (self.y_simulatedData.shape[0], 1))
+        # lda_y_validation
+        self.lda_y_simulatedData = self.y_simulatedData
+        # reshaping lda_y_validation
+        self.lda_y_simulatedData = np.reshape(self.lda_y_simulatedData, (len(self.lda_y_simulatedData)))
+        # one hot encoding for y_validation
+        num_classes = 2
+        self.y_simulatedData = to_categorical(self.y_simulatedData, num_classes=num_classes)
+
+        print("X_simulatedData: " + str(np.shape(self.X_simulatedData)))
+        print("y_simulatedData: " + str(np.shape(self.y_simulatedData)))
+
+        print("lda_X_simulatedData: " + str(np.shape(self.lda_X_simulatedData)))
+        print("lda_y_simulatedData: " + str(np.shape(self.lda_y_simulatedData)))
+
+        np.save(base_path_features + 'simulatedData', self.simulatedData)
+        np.save(base_path_features + 'X_simulatedData', self.X_simulatedData)
+        np.save(base_path_features + 'y_simulatedData', self.y_simulatedData)
+        np.save(base_path_features + 'lda_X_simulatedData', self.lda_X_simulatedData)
+        np.save(base_path_features + 'lda_y_simulatedData', self.lda_y_simulatedData)
+    
+
 if __name__ == "__main__":
     feature_generator = Data_preparator()
-    feature_generator.load_and_prepare_real_data()
+    feature_generator.load_and_prepare_simulated_data_all()

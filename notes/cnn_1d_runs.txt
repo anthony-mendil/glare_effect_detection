@@ -1,0 +1,23 @@
+batch size = 32
+nr filters = 32 
+kernel_size = 5
+learning_rate=0.00001
+epoch 200 - 230  -> 0.825, 0.8
+
+batch size = 32
+nr filters = 64 
+kernel_size = 5
+learning_rate=0.00001
+best epoch  -> 0.775
+
+batch size = 16
+nr filters = 32 
+kernel_size = 5
+learning_rate=0.00001
+best epoch  -> 0.825 but not so consistent
+
+batch size = 64
+nr filters = 32 
+kernel_size = 5
+learning_rate=0.00001
+epoch 180 - 230  -> 0.825 (ein paar mal sogar 0.85)
