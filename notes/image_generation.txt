@@ -1,0 +1,30 @@
+# 4 statistival features + card code 
+# so wenig wie möglich platz aber so viel wie nötig 
+'''
+card code:
+- 7 * 40
+- 7 * 40
+--> 14 * 40
+
+#Card left in game
+--> ändern zu: pairs left in game ? um weniger platz zu verschwenden
+- statt 15 * 40 -> 8 * 40
+
+#Never revealed cards
+- 14 * 40 (eigentlich nur 13 nötig..mal gucken)
+
+maximum number revealing the same card 
+- theoretisch 20 * 40 ? weil man in je zwei zügen maximal einmal die selbe karte nehmen kann -> 40/2 = 20
+
+#rounds since game done 
+man braucht mindestens 14 Züge um alle 7 paare umzudrehen
+(gucken ob im daten round 2 schritte sind oder einer)
+--> 40 - 14 = 26 man kann maximal  24 haben : 0-24 sind 25 werte
+- 25 * 40
+
+
+-> 14 + 14 + 13 + 20 + 25 = 86
+
+Insgesamt Bildgröße:
+40 breit und 86  hoch 
+'''
