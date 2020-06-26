@@ -1,0 +1,11 @@
+vermutung: schwer über 85% zu kommen weil ein paar leutre mega gut bei glare ffect waren und es genau so aussieht wie bei no obst
+--> klassifiukato ordnet es falsch zu weil die leute so gut sind all gäbe es kein obstacle 
+--> in der realistät ist es wahrscheinlich nicht so schlimm wenn das nicht erkannt wird. 
+Die leute sind so gut dass sie trotzdem klarkommen. 
+
+real data label zeigen!
+
+Fraglich ob man überhapt möchte das sowas korrekt erkannt wird, weil dann vielleicht auchnoObst als glare effect klassifiziert wird.
+
+Später diese perosnen raus lassen und gucken wie sich das auf das ergebnis auswirkt. 
+Alles in ba schrieben!
