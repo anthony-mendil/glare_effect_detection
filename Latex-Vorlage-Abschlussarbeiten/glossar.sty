@@ -1,0 +1,28 @@
+% GLOSSAR.STY
+% Erzeugt ein Glossar oder Abk"urzungsverzeichnis
+\makeglossary
+
+%  Unterdrückt Ausgabe der Seitenzahl. Um in jeder 
+%  Erklärung auf eine Seite zu verweisen, kann
+%  definiert werden:
+%  \newcommand{\glspage}[1]{ (Seite~#1)}
+\newcommand{\glspage}[1]{}
+
+%  \glentry{Stichwort}{Erklärungstext}
+\newcommand{\glentry}[2]
+  {\glossary{#1@[#1] #2|glspage}}
+ 
+%  Schließt den Buchstaben vor neuer Gruppe ein
+\newcommand{\glsgroup}[1]
+   {{\item[] \textbf{\Large #1}}}
+
+%\newcommand{\glsgroup}[1]{{\listpart{\makebox[0pt][l]{%
+%        \rule[-2pt]{\textwidth}{0.5pt}}{\textbf{\large #1}}}}}
+
+
+%  Bindet das Verzeichnis ein
+\newcommand{\glshead}{\chapter*{Glossar}}
+\newcommand{\printglossary}
+  {\InputIfFileExists{\jobname.gls}
+     {\glshead}
+     {}}

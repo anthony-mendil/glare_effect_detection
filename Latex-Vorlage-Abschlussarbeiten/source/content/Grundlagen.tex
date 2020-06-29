@@ -1,0 +1,171 @@
+\chapter{Problemstellung und Stand der Technik}
+\section{Erster Abschnitt}
+	\subsection{Aufzählungen}
+\todo[inline]{Hier Punkte die zu erledigen sind}
+
+\begin{itemize}
+	\item Dies
+	\item[\dots] ist eine 
+	\item Aufzählung
+\end{itemize}
+
+\begin{enumerate}
+	\item Dies
+	\item ist eine nummerierte
+	\item Aufzählung
+\end{enumerate}
+
+Weitere Infos u.a. auf:\\
+\url{http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Aufz%C3%A4hlung}\\
+
+\subsection{Minipages}
+\begin{minipage}[h!][9cm][t]{3cm}
+	Dies ist ein Beispieltext innerhalb einer Minipage. Diese Minipage ist 4cm breit und 59cm hoch	
+\end{minipage}
+
+So sieht die generelle Anweisung aus:
+\begin{verbatim}
+	\begin{minipage}[ÄUSSERE POSITION][HÖHE][INNERE POSITION]{BREITE}
+	Beispieltext
+  \end{minipage}
+\end{verbatim}
+Weitere Infos u.a. auf:\\
+\url{http://www.golatex.de/wiki/minipage}\\
+\url{http://www.weinelt.de/latex/minipage.html}\\
+\url{http://www.namsu.de/Extra/befehle/Minipage.html}\\
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, 
+
+\section{Grafiken}
+Nachfolgend ein paar Beispiele zum Einbinden von Grafiken.
+Weitere Infos u.a. auf:\\
+\url{ftp://ftp.dante.de/tex-archive/info/l2picfaq/german/l2picfaq.pdf}\\
+\url{http://latex.mschroeder.net/}\\
+\url{http://latex.hpfsc.de/content/latex_tutorial/grafiken}\\
+\url{http://de.wikibooks.org/wiki/LaTeX-Kompendium:_Schnellkurs:_Grafiken}\\
+
+\begin{figure}
+\centering
+\includegraphics[width=0.2\textwidth]{source/images/vmcu-env}
+\caption{Breite entspricht der 20\% d. Textweite}
+\label{fig:vmcu:overview1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=8cm]{source/images/vmcu-env}
+\caption{8cm breit}
+\label{fig:vmcu:overview2}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=3cm, angle=90]{source/images/vmcu-env}
+\caption{3cm breit, 90° gedreht}
+\label{fig:dl2:1}
+\end{figure}
+
+
+\begin{figure}[ht]
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{source/images/vmcu-env}
+\caption{links, 40\% d. Textweite}
+\label{fig:vmcu:overview3}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[t]{0.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{source/images/vmcu-env}
+\caption{rechts, 40\% d. Textweite}
+\label{fig:vmcu:overview4}
+\end{minipage}
+\end{figure}
+
+
+\section{Tabellen}
+Die nachfolgenden beiden Tabellen-Beispiele sind der Internetseite \url{http://en.wikibooks.org/wiki/LaTeX/Tables} entnommen.
+
+Die folgende Tabelle stammt aus \url{http://www.maths.leeds.ac.uk/latex/TableHelp1.pdf}
+Sie sehen, dass um das \textit{tabular} ein \textit{table}-Element eingefügt wurde. Mit diesem können Sie die Tabelle platzieren und den Umbruch bestimmen. Diese Tabelle taucht auch im Tabellenverzeichnis am Anfang der Arbeit auf! Nutzen Sie dafür \textit{caption}.
+
+\begin{table}[ht]
+\caption{Nonlinear Model Results} % title of Table
+\centering % used for centering table
+\begin{tabular}{c c c c} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+Case & Method\#1 & Method\#2 & Method\#3 \\ [0.5ex] % inserts table
+%heading
+\hline % inserts single horizontal line
+1 & 50 & 837 & 970 \\ % inserting body of the table
+2 & 47 & 877 & 230 \\
+3 & 31 & 25 & 415 \\
+4 & 35 & 144 & 2356 \\
+5 & 45 & 300 & 556 \\ [1ex] % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:nonlin} % is used to refer this table in the text
+\end{table}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,\\
+
+\begin{tabular}{l*{6}{c}r}
+Team              & P & W & D & L & F  & A & Pts \\
+\hline
+Manchester United & 6 & 4 & 0 & 2 & 10 & 5 & 12  \\
+Celtic            & 6 & 3 & 0 & 3 &  8 & 9 &  9  \\
+Benfica           & 6 & 2 & 1 & 3 &  7 & 8 &  7  \\
+FC Copenhagen     & 6 & 2 & 1 & 2 &  5 & 8 &  7  \\
+\end{tabular}\\
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et m ipsum dolor sit amet. Lorem ipsum dolor sit amet, \\
+
+\begin{tabular}{llr}
+\hline
+\multicolumn{2}{c}{Item} \\
+\cline{1-2}
+Animal & Description & Price (\$) \\
+\hline
+Gnat  & per gram & 13.65 \\
+      & each     &  0.01 \\
+Gnu   & stuffed  & 92.50 \\
+Emu   & stuffed  & 33.33 \\
+Armadillo & frozen & 8.99 \\
+\hline
+\end{tabular}
+
+
+
+
+
+	
+\section{Texte}
+Das Listing \ref{java1} auf Seite \pageref{java1} zeigt einen Beispielauszug einer \enquote{SQL}-Verbindung aus. Ferner ist in Grafik \ref{fig:vmcu:overview4} der \enquote{Virtual Micro Controller} (VMCU) zu sehen. Aus den beiden Quellen \citep[23]{Sell2009a}, \citep[1]{Seiler20112}, \cite{Sell2011} und \cite{Seiler2011a} geht hervor, dass moderne eLearning-Umgebungen heutzutage aus der Lehre nicht mehr wegzudenken sind. Wie beschrieben, kann gerade im technischen Bereich von internetgestützten Plattformen profitiert werden. 
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+
+
+\section{To Do Notes}
+
+\tdu{Ein Beispiel-Todo}
+\td{und noch ein Todo}
+Die Todo Notes lassen sich in der Datei "header.tex" deaktivieren. Dort sind auch die Farben etc. definiert.
+\begin{verbatim}
+\usepackage[color=red, shadow]{todonotes}
+\end{verbatim}
+
+\section{Listings}
+
+\lstinputlisting[language=XML-changed,caption=Beschreibung eines GFX Displays, label=xml1]{source/listings/bsp.xml}
+\lstinputlisting[language=Java, firstline=3, lastline=10,caption=Ausschnitte aus dem Java Source Code,label=java2]{source/listings/bsp.java}
+\newpage
+\lstinputlisting[language=Java,caption=Ein Java Source Code,label=java1]{source/listings/bsp.java}
+
+\section{PDF Dokumente einbinden}
+Mit dem Befehl \lstinline[language=Tex]$\includepdf[parameter]{bsp.pdf}$ lassen sich PDF-Dokumente direkt einbinden.
+\includepdf[pagecommand={}, pages=-, frame=true, scale=0.68]{source/pdf/bsp.pdf}
+
+

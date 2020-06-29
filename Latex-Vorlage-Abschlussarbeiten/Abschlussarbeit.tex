@@ -1,0 +1,96 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vorlage f. Abschlussarbeiten														%
+%	Hochschule Bochum, it:matters														%
+% MIRo-Lab																								%
+%	Autor:		Dr. Sven Seiler <sven.seiler@hs-bochum.de>		%
+%																													%
+%Frühere Autoren:																					%
+%						Martin Bölter	<martin.boelter@hs-bochum.de>		%
+%						Jens Jakobi	<jens.jakobi@hs-bochum.de>				%
+%																													%
+%																													%
+% Version: 0.91, 07-02-2013																%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Für diese Vorlage übernehmen die Autoren keine Gewähr.
+% Bitte klären Sie mit Ihren Prüfern ab, ob und in welcher
+% Form Sie diese Vorlage für Ihre Arbeit verwenden dürfen.
+\newcommand{\DeinName}{Anthony Mendil}
+\newcommand{\TitelArbeit}{Using bevavioural data and brain activity to determine whether players were blinded during a game of memory}
+\newcommand{\Labor}{Cognitive Systems Lab (CSL)}
+\newcommand{\PrueferEins}{Dr. Felix Putze}
+\newcommand{\PrueferZwei}{Unknown}
+\newcommand{\Supervisor}{Mazen Salous}
+\newcommand{\fachbereich}{Mathematics and Computer Science}
+% entweder ein Datum händisch eintragen, oder den Befehl \today nutzen
+\newcommand{\Datum}{\today}
+
+\makeglossary
+
+
+%
+% Einbinden des Headers, hier können auch weitere Einstellungen vorgenommen werden.
+\input{source/header}
+
+
+% Beginn des Dokuments
+\begin{document}
+
+
+%Zitiert alle Referenzen, ohne Sie hier zu listen. Dadurch erscheinen alle Quellen im %Literaturverzeichnis, auch wenn sie im Text nicht genutzt werden.
+%Bitte nur für Testzwecke verwenden.
+\nocite{*}
+
+
+% Einbinden des Deckblatts
+
+\frontmatter
+\include{source/Titelseite}
+
+
+
+\include{source/content/EidesstattlicheErklaerung}
+%\includepdf[noautoscale=true]{source/content/Deckblatt_der_Diplomarbeit0901.pdf}
+
+% Der Abstract, bitte in englischer Sprache verfassen!
+\include{source/content/Abstract}
+
+% Einbinden des Inhaltsverzeichnisses
+%\todo[inline]{Inhaltsverzeichnis-Schachtelungswerte auf Standard zurücksetzen!}
+%\setcounter{secnumdepth}{4} % Schachtelungstiefe der Nummerierung von Überschriften
+%\setcounter{tocdepth}{4} % Schachtelungstiefe des Inhaltsverzeichnisses
+\tableofcontents 
+
+%Einbinden des Hauptteils
+\mainmatter
+\include{source/content/Einleitung}
+\include{source/content/Grundlagen}
+%\include{source/content/Test}
+
+%Das Fazit
+\include{source/content/Fazit}
+%Einbinden des Abbildungsverzeichnisses
+
+\backmatter
+%Liste der Tabellen
+\listoftables
+%Einbinden des Tabellenverzeichnisses
+\listoffigures
+%Einbinden des Sourcecodeverzeichnisses
+\lstlistoflistings
+
+% Quellenverzeichnis
+\bibliographystyle{plain}
+\bibliography{source/bib/references}
+
+% Anhang
+\appendix
+\include{source/content/Danksagung}
+\end{document}
+
+
+
+%
+% EOF
+%

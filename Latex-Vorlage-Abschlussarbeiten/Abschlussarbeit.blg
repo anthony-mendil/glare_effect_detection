@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7420 64-bit)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Abschlussarbeit.aux
+A level-1 auxiliary file: source/Titelseite.aux
+A level-1 auxiliary file: source/content/EidesstattlicheErklaerung.aux
+A level-1 auxiliary file: source/content/Abstract.aux
+A level-1 auxiliary file: source/content/Einleitung.aux
+A level-1 auxiliary file: source/content/Grundlagen.aux
+A level-1 auxiliary file: source/content/Fazit.aux
+The style file: plain.bst
+A level-1 auxiliary file: source/content/Danksagung.aux
+Database file #1: source/bib/references.bib
+You've used 13 entries,
+            2118 wiz_defined-function locations,
+            585 strings with 6589 characters,
+and the built_in function-call counts, 4746 in all, are:
+= -- 455
+> -- 203
+< -- 14
++ -- 76
+- -- 63
+* -- 326
+:= -- 752
+add.period$ -- 49
+call.type$ -- 13
+change.case$ -- 67
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 220
+empty$ -- 414
+format.name$ -- 63
+if$ -- 1056
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 13
+newline$ -- 69
+num.names$ -- 34
+pop$ -- 95
+preamble$ -- 1
+purify$ -- 55
+quote$ -- 0
+skip$ -- 141
+stack$ -- 0
+substring$ -- 185
+swap$ -- 77
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 50
+warning$ -- 0
+while$ -- 38
+width$ -- 15
+write$ -- 162

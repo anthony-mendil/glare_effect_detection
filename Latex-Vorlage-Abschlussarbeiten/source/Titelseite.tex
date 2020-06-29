@@ -1,0 +1,67 @@
+% erste Seite (Titelseite) der Diplomarbeit mit Titel, Name usw...
+
+\newsavebox{\Prof}
+\savebox{\Prof}{Erster Prüfer }
+
+\newsavebox{\Betr}
+\savebox{\Betr}{Zweiter Prüfer }
+
+\newsavebox{\Examiner}
+\savebox{\Examiner}{}
+
+
+
+\begin{titlepage}
+%\begin{textblock}{50}(150,30)
+  %\includegraphics[height=3cm]{source/images/BO-Logo_m_Wortmarke_P10cmWebHQ}
+	%\includegraphics[height=1cm]{source/images/BO-Logo_m_Wortmarke_L10cmWebHQ}	
+%	\includegraphics[height=4cm]{source/images/BO-Logo_m_Wortmarke_P10cmWebHQ}
+%\end{textblock}
+\begin{center}
+%\includegraphics[height=2cm]{source/images/logo_mirolab.png}
+
+{\large University of Bremen}\\[1mm]
+{\small Faculty: \fachbereich}\\
+{\small Computer Science Bachelor}
+\vspace{1.5cm}
+
+{\huge \TitelArbeit}
+
+\vspace{1,5cm}
+
+{\large Bachelor Thesis}
+
+\vspace{1cm}
+
+by\\[2mm]
+
+\textbf{\large{\DeinName}}\\
+
+\vspace{1cm}
+\Labor\\[1cm]
+
+Examiner: \\[2mm]
+
+\usebox{\Examiner \PrueferEins} \\
+\usebox{\Examiner \PrueferZwei} \\
+
+\vspace{1cm}
+
+Supervisor: \\[2mm]
+
+\usebox{\Examiner \Supervisor} \\
+
+\vspace{1cm}
+Bremen, date 
+\end{center}
+\begin{textblock}{50}(30,250)
+  %\includegraphics[height=3cm]{source/images/BO-Logo_m_Wortmarke_P10cmWebHQ}
+	\includegraphics[height=1cm]{source/images/uni_logo}	
+	
+\end{textblock}
+
+%% Hier kann natürlich auch jedes andere Logo eingebunden werden! %%
+\begin{textblock}{40}(142,248)
+  \includegraphics[height=1.5cm]{source/images/csl_logo}
+\end{textblock}
+\end{titlepage}
