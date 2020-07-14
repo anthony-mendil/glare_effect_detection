@@ -1,0 +1,18 @@
+stochastisceh modelle
+selbe traningdaten nicht umdbedingt selbe Ergbenisse 
+um zu stabilisieruen machen wir 20 iterationen 
+iteration für jedes modell
+ein modell ist ein split 
+
+
+so umändern dass preo split ein datei erstellt wird mit den 20 durchläufen
+dateiname enthält split number 
+
+multiprocessing hinzufügen 
+
+
+durchschnitt berechnug anpassen sodass es von den ordners geladen wird 
+
+script anstelle jupyter notebook normales script benutzen
+
+ ssh antmen@mll-knecht.csl.uni-bremen.de
