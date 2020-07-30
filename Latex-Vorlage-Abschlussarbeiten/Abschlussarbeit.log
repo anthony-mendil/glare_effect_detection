@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  25 JUN 2020 23:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  22 JUL 2020 10:09
 entering extended mode
 **./Abschlussarbeit.tex
 (Abschlussarbeit.tex
@@ -1621,7 +1621,7 @@ Package rerunfilecheck Info: File `Abschlussarbeit.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  27930 strings out of 480769
- 531386 string characters out of 2894272
+ 530730 string characters out of 2894272
  1010300 words of memory out of 3000000
  43149 multiletter control sequences out of 15000+200000
  571475 words of font info for 80 fonts, out of 3000000 for 9000
@@ -1637,7 +1637,7 @@ nts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX
  2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/dylin/AppData/Local/Programs
 /MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/dylin/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Abschlussarbeit.pdf (22 pages, 415989 bytes).
+Output written on Abschlussarbeit.pdf (22 pages, 415995 bytes).
 PDF statistics:
  429 PDF objects out of 1000 (max. 8388607)
  365 compressed objects within 4 object streams
