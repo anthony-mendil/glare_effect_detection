@@ -1,0 +1,89 @@
+\documentclass{wissdoc2}
+
+% Header that includes all the definitions required for things to actually build
+\include{thesis_header}
+
+%% ---------------------------------
+%% | Information about the thesis  |
+%% ---------------------------------
+\newcommand{\myname}{Anthony Mendil}
+\newcommand{\mytitle}{Behaviour-based detection of Visual Interaction Obstacles with 1D and 2D Convolutional Neural Networks}
+\newcommand{\mythesis}{Bachelor Thesis}
+
+\newcommand{\advisor}    {Mazen Salouz}
+
+
+\newcommand{\reviewer} {Felix Putze}
+\newcommand{\reviewertwo} {Unknown}
+
+
+\newcommand{\timestart}{1. Mustermonat 1851}
+\newcommand{\timeend}{3. Mustermonat 1963}
+
+%% -------------------------------
+%% |  Information for PDF file   |
+%% -------------------------------
+\hypersetup{
+ pdfauthor={\myname},
+ pdftitle={\mytitle},
+ pdfsubject={...},
+ pdfkeywords={...}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Here, main documents begins %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Remove the following line for German text
+\selectlanguage{english}
+
+\frontmatter
+\pagenumbering{roman}
+{\fontfamily{phv}\selectfont
+\include{titlepage}
+}
+\blankpage
+\include{erklaerung}
+\blankpage
+\include{abstract}
+\blankpage
+
+% Table of contents
+{\parskip 0pt\tableofcontents}
+{\parskip 0pt\listoffigures}
+{\parskip 0pt\listoftables}
+\blankpage
+
+%% -----------------
+%% |   Main part   |
+%% -----------------
+\mainmatter
+\pagenumbering{arabic}
+
+\include{chapter1_introduction}
+%\include{chapter2_fundamentals}
+%...
+
+%% --------------------
+%% |   Appendix part, if needed   |
+%% --------------------
+\appendix
+%\include{anhang_a}
+%\include{anhang_b}
+
+%% --------------------
+%% |   Bibliography   |
+%% --------------------
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+
+\bibliographystyle{alpha}
+\bibliography{thesis}
+
+% Index
+\cleardoublepage
+\phantomsection
+\printindex
+\end{document}
