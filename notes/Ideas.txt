@@ -97,3 +97,10 @@ am ende schreibe ich ein main class in examples
 in src schreibe ich den code. 
 
 
+
+im arbeit darüer schrieben wie wir simulator verbessert haben und und von Mazen: 
+Gut..Also wenn wir glare_effects Simulation mit noObs Simulation vergleichen, sieht man fast perfekt Simulation in glare_effects (das kann man auch von sehr ähnliche std whiskers in glare_effects sehen), bei noObs gibt es noch Unterschiede in std whiskers, insbesonderes in MatchingPairs, das ist weil echte Spiele enden doch bevor Round20, aber bei simulierte Spiele gibt es doch Paar Spiele daueren mehr als 20Rounds, und diese Spiele sind natürlich mit schlechte (höchste) RMSE, so wenn wir , wie immer, die Simulierte Logs sortieren, und z.B. nur beste 100 Pro person nehmen, geht noch auch besser, solche Analyze wäre auch schön in deinem BA Diss..
+
+
+
+
