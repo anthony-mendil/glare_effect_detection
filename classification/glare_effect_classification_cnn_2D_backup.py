@@ -23,10 +23,54 @@ n_participants_per_split = 19 # 20 but one is removed in each split for testing
 simulations_per_participant = 1000
 numbers_of_simulation = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20]
 #n_added_simulations_per_participant = 20
-n_runs = 1#20
-n_epochs = 10#30
+n_runs = 20
+n_epochs = 30
 steps = 40
 
+'''
+def load_data_splits(base_path='C:\\Users\\dylin\\Documents\\BA_Glare_Effect\\classification_data\\features\\', splits=20):
+    real_data_splits_train = []
+    real_data_splits_test = []
+    simulated_data_splits_train = []
+    for split in range(1, splits + 1):
+        # Real data for training
+        X_realData_train = np.load(base_path + 'real\\Split%s\\for_simulation\\X_realData_train.npy' %str(split))
+        y_realData_train = np.load(base_path + 'real\\Split%s\\for_simulation\\y_realData_train.npy' %str(split))
+        real_data_splits_train.append((X_realData_train, y_realData_train))
+        
+        # Real data for testing
+        X_realData_test = np.load(base_path + 'real\\Split%s\\for_testing\\X_realData_test.npy' %str(split))
+        y_realData_test = np.load(base_path + 'real\\Split%s\\for_testing\\y_realData_test.npy' %str(split))
+        real_data_splits_test.append((X_realData_test, y_realData_test))
+    
+        # Simulated data for training
+        X_simulatedData_train = np.load(base_path + 'simulated\\Split%s\\X_simulatedData_train.npy' %str(split))
+        y_simulatedData_train = np.load(base_path + 'simulated\\Split%s\\y_simulatedData_train.npy' %str(split))
+        simulated_data_splits_train.append((X_simulatedData_train, y_simulatedData_train))
+    return real_data_splits_train, real_data_splits_test, simulated_data_splits_train
+'''
+
+'''
+def add_simulated_data(X_train, y_train, simulated_train_set, n_added_simulations_per_participant):
+    for n in range(n_added_simulations_per_participant):
+        for i in range(n_participants_per_split):
+
+            X_train_simulated_1 = simulated_train_set[0][(i * simulations_per_participant) + n]
+            y_train_simulated_1 = simulated_train_set[1][(i * simulations_per_participant) + n]
+            X_train_simulated_2 = simulated_train_set[0][(simulations_per_participant * n_participants_per_split) \
+                                                         + (i * simulations_per_participant) + n]
+            y_train_simulated_2 = simulated_train_set[1][(simulations_per_participant * n_participants_per_split) \
+                                                         + (i * simulations_per_participant) + n]
+            
+            X_train_simulated = np.concatenate((X_train_simulated_1[np.newaxis, :, :], \
+                                               X_train_simulated_2[np.newaxis, :, :]), axis=0)
+            y_train_simulated = np.concatenate((y_train_simulated_1[np.newaxis, :], \
+                                               y_train_simulated_2[np.newaxis, :]), axis=0)
+
+            X_train = np.concatenate((X_train, X_train_simulated), axis=0)
+            y_train = np.concatenate((y_train, y_train_simulated), axis=0)
+    return X_train, y_train
+'''
 
 def create_image(game, components=[True, True, True, True, True]):
     card_codes = np.zeros((7, steps))
@@ -68,6 +112,7 @@ def create_image(game, components=[True, True, True, True, True]):
         
     return image
 
+
 def create_images(X_data, components=[True, True, True, True, True]):
     #data_images = []
     #for split in range(len(data)):
@@ -81,6 +126,13 @@ def create_images(X_data, components=[True, True, True, True, True]):
     #data_images.append(split_data)
     return np.asarray(images)
     
+# TODO: remove
+#def create_images(components=[True, True, True, True, True]):
+#    real_data_splits_train_images = create_images_for_split(real_data_splits_train, components)
+#    real_data_splits_test_images = create_images_for_split(real_data_splits_test, components)
+#    simulated_data_splits_train_images = create_images_for_split(simulated_data_splits_train, components)
+#    return real_data_splits_train_images, real_data_splits_test_images, simulated_data_splits_train_images 
+
 def add_simulated_data(X_train, y_train, simulated_train_set, n_added_simulations_per_participant):
     for n in range(n_added_simulations_per_participant):
         for i in range(n_participants_per_split):
@@ -101,6 +153,48 @@ def add_simulated_data(X_train, y_train, simulated_train_set, n_added_simulation
             y_train = np.concatenate((y_train, y_train_simulated), axis=0)
     return X_train, y_train
 
+'''
+def mean_score_of_run(histories, epochs):
+    mean_val_losses = []
+    mean_val_accuracies = []
+    mean_losses = []
+    mean_accuracies = []
+    for i in range(epochs):
+        val_losses = []
+        val_accuracies = []
+        losses = []
+        accuracies = []
+        for l in range(len(histories)):
+            history = histories[l]
+            val_losses.append(history.history['val_loss'][i])
+            val_accuracies.append(history.history['val_accuracy'][i])
+            losses.append(history.history['loss'][i])
+            accuracies.append(history.history['accuracy'][i])
+        mean_val_losses.append(np.mean(val_losses))
+        mean_val_accuracies.append(np.mean(val_accuracies))
+        mean_losses.append(np.mean(losses))
+        mean_accuracies.append(np.mean(accuracies))
+    return mean_val_losses, mean_val_accuracies, mean_losses, mean_accuracies
+
+def mean_score_over_all_runs(mean_run_scores, n_runs):
+    val_losses = np.asarray(mean_run_scores[0][0])
+    val_accuracies = np.asarray(mean_run_scores[0][1])
+    losses = np.asarray(mean_run_scores[0][2])
+    accuracies = np.asarray(mean_run_scores[0][3])
+                            
+    for i in range(1, n_runs):
+        val_losses += np.asarray(mean_run_scores[i][0])
+        val_accuracies += np.asarray(mean_run_scores[i][1])
+        losses += np.asarray(mean_run_scores[i][2])
+        accuracies += np.asarray(mean_run_scores[i][3])
+                                 
+    val_losses /= n_runs
+    val_accuracies /= n_runs
+    losses /= n_runs
+    accuracies /= n_runs
+    
+    return val_losses, val_accuracies, losses, accuracies
+'''
 
 def mean_score_of_split(histories, epochs):
     mean_val_losses = []
@@ -204,7 +298,6 @@ def load_histories(file_dir, sd):
 
 def split_training(split):
 
-    #base_path= '/home/anthony/Dokumente/Uni/Bachelor/6.Semester/ba_glare_effect/classification_data/features/'
     base_path= '/share/documents/students/amendil/classification_data/features/'
 
     # Real data for training
@@ -247,7 +340,6 @@ if __name__ == "__main__":
     now = datetime.now()
     time = now.strftime('%Y-%m-%d %H:%M:%S.%f')[:-2]
     global file_dir
-    #file_dir = '/home/anthony/Dokumente/Uni/Bachelor/6.Semester/ba_glare_effect/classification_results' + '/2d_cnn_%s' %time
     file_dir = '/share/documents/students/amendil/classification_results' + '/2d_cnn_%s' %time
 
     prepare_directories(file_dir)
@@ -288,3 +380,66 @@ if __name__ == "__main__":
         plt.xlabel('epoch')
         plt.legend(['train(RD_SD%sx)' %n_added_simulations_per_participant, 'validation(RD)'], loc='upper right')
         fig.savefig(file_dir + '/sd%sx_loss.png' %n_added_simulations_per_participant)
+
+
+
+    #real_data_splits_train, real_data_splits_test, simulated_data_splits_train = load_data_splits()
+
+    #game = real_data_splits_train[0][0][0]
+    #print(game.shape)
+
+    #real_data_splits_train_images, real_data_splits_test_images, simulated_data_splits_train_images = \
+        #create_images(components=[True, True, True, True, True])
+
+    #mean_run_scores = []
+    '''
+    for i in trange(n_runs, desc='Runs'): 
+        histories = []
+        for train_set, test_set, simulated_train_set in tqdm(zip(real_data_splits_train_images, \
+                                        real_data_splits_test_images, simulated_data_splits_train_images), total=20, desc='Folds'):
+            
+            X_train = train_set[0]
+            y_train = train_set[1]
+            X_test = test_set[0]
+            y_test = test_set[1]
+            
+            #print(X_test[0])
+            
+            #plt.imshow(X_test[1], origin='lower') 
+            
+            # Adding simulated data. 
+            X_train, y_train = add_simulated_data(X_train, y_train, simulated_train_set)   
+            
+            #print(X_train.shape)
+            #print(y_train.shape) 
+
+            # Shuffling training data
+            temp_train = list(zip(X_train, y_train.tolist()))
+            random.shuffle(temp_train)
+            X_train, y_train = zip(*temp_train)
+            
+            create_and_train(np.asarray(X_train), np.asarray(y_train), np.asarray(X_test), y_test)
+            
+        mean_run_score = mean_score_of_run(histories=histories, epochs=n_epochs)
+        mean_run_scores.append(mean_run_score)
+
+    mean_val_losses, mean_val_accuracies, mean_losses, mean_accuracies = mean_score_over_all_runs(mean_run_scores, n_runs)
+
+    plt.title('glareObs_noAdapt: Best validation accuracy %s%% (at epoch %s)' \
+          %(round(mean_val_accuracies.max() * 100, 2), np.argmax(mean_val_accuracies) + 1))
+    plt.plot(mean_accuracies)
+    plt.plot(mean_val_accuracies)
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train(RD_SD%sx)' %n_added_simulations_per_participant, 'validation(RD)'], loc='lower right')
+    plt.show()
+
+    plt.title('glareObs_noAdapt: Lowest validation loss %s (at epoch %s)' \
+          %(round(mean_val_losses.min(), 4), np.argmin(mean_val_losses) + 1))
+    plt.plot(mean_losses)
+    plt.plot(mean_val_losses)
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train(RD_SD%sx)' %n_added_simulations_per_participant, 'validation(RD)'], loc='upper right')
+    plt.show()
+    '''
