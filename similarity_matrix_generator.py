@@ -15,11 +15,9 @@ from colormath.color_diff import delta_e_cie1976, delta_e_cie2000
 from colormath.color_conversions import convert_color
 import scipy
 
-# TODO: Add description of return values.
-
 # 150 x 150 pixels are taken for each card.
 # The tuple value represents the koordinates of the top left corner for each card. 
-# cards are about 250 x 250 and have 30 pixels between them, which results in 
+# cards are about 250 x 250 and have about 30 pixels between them, which results in 
 # 280 pixels on a axis until the next corner. The values were manually checked. 
 # Worls only if the resoulution of the screenshots is 1920 x 1080. 
 # In the Emulator a Pixel 2 was used to play the game and create the screenshots.
@@ -44,7 +42,7 @@ def load_images(image_dir):
     '''
     Loading the screenshots from which the rgb values will be extracted.
     :param image_dir: The full path to the directory the images are stored in. 
-    :return:
+    :return: The images.
     '''
     images = []
     for r, _, f in os.walk(image_dir):
@@ -57,9 +55,9 @@ def load_images(image_dir):
 
 def determine_glare_rgb_values(image):
     '''
-    Calculates the rgb average rbg value for each card in an image.
+    Calculates the rgb average rbg values for each card in an image.
     :param image: The screenshot of the memory game with all cards turned.
-    :return:
+    :return: The average rbg values in the specified 150 x 150 pixel areas for each card. 
     '''
     glare_rgb_values = []
     for corner in card_corners:
@@ -86,7 +84,8 @@ def load_original_colors(colors_path):
     Reading the colour names on the screenshots from a text file.
     :param colors_path: The full path to the text file containing the 
     color names for all cards in all screenshots in the correct order.
-    :return:
+    :return: The colours names of all cards in all games. In the order 
+    of the cards on the field. 
     '''
     if os.path.exists(colors_path):
         # Reading the text in the text file. 
@@ -98,7 +97,7 @@ def determine_distance(color_1_rgb, color_2_rgb):
     Determines dinstance between colors with delta e formula. 
     :param color_1_rgb: The first color.
     :param color_2_rgb: The second color.
-    :return:
+    :return: The delta_e distance between the two colours. 
     '''
     # Converting the colors from the sRGB to the Lab color space.
     lab_1 = convert_color(color_1_rgb, LabColor)
@@ -115,12 +114,12 @@ def determine_distance(color_1_rgb, color_2_rgb):
 
 def create_similarity_matrix(rgb_values, original_colors):
     '''
-    Returns a matrix for a screenshot.
+    Creates a similarity matrix for a screenshot.
     :param rgb_values: The average rgb values for all the cards 
     on a screenshot of a glare effect memory game. 
     :param original_colors: A list containing tuples with the card name, 
     the mappimg number for the card, and the index for each card on the screenshot.
-    :return:
+    :return: The similarity matrix calculated from a single game. 
     '''
     combinations_for_calculation = []
     matrix_values = []
@@ -190,7 +189,7 @@ def create_similarity_matrix_average(matrices_list, downscale):
     similarity matrices for the screenshots.
     :param downscale: Wether to downscale the data to 
     values between 0 and 1.
-    :return:
+    :return: The average similarity matrix.
     '''
     # Exiting if there are no matrices. 
     if not matrices_list:
@@ -212,16 +211,27 @@ def create_similarity_matrix_average(matrices_list, downscale):
 def determine_coverage(original_colors):
     '''
     For calculating how many of the combinations are includes in the calcuation. 
+    The calculations are based on having 14 cards on the field.
     :param original_colors: A list containing tuples with the card name, 
     the mappimg number for the card, and the index for each card on the 
     screenshot for all screenshots.
-    :return:
+    :return: The coverage of combinations of positions for all colour combinations. 
     '''
-    # The calculations are based on having 14 cards on the field.
+    # Number of cells in the similariyty matrix that describe 
+    # the difference between two same colours. 
+    cells_for_same_colour_comparisons = 7
+    # Number of cells in the similariyty matrix that describe 
+    # the difference between two different colours. 
+    cells_for_different_colour_comparisons = 21
+    # The number of cards on the game field. 
+    number_of_cards = 14
+
     # The number of position combinations for the same colors.
-    number_of_combinations_same_colors = int(7 * (14 * 13 / 2))
+    number_of_combinations_same_colors = int(cells_for_same_colour_comparisons \
+        * (number_of_cards * (number_of_cards - 1) / 2))
     # The number of position combinations for different colors.
-    number_of_combinations_different_colors = 21 * 14 * 13
+    number_of_combinations_different_colors = cells_for_different_colour_comparisons \
+        * number_of_cards * (number_of_cards - 1)
     # Total number of combinations.
     number_of_total_combinations = number_of_combinations_same_colors \
         + number_of_combinations_different_colors

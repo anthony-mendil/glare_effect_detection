@@ -20,6 +20,65 @@
 \newcommand{\timestart}{1. Mustermonat 1851}
 \newcommand{\timeend}{3. Mustermonat 1963}
 
+\usepackage{graphicx}
+\usepackage{listings}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=red!20, 
+text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+%\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+%text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+minimum height=2em]
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize,        % size of fonts used for the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve},     % string literal style
+	captionpos=b, 
+	numbers=left, 
+	frame=single, 
+	tabsize=2, 
+	numberblanklines=false,
+	escapeinside=||
+}
+
+\let\origthelstnumber\thelstnumber
+\makeatletter
+
+
+\newcommand*\Suppressnumber{%
+	\lst@AddToHook{OnNewLine}{%
+		\let\thelstnumber\relax%
+		\advance\c@lstnumber-\@ne\relax%
+	}%
+}
+
+\newcommand*\Reactivatenumber[1]{%
+	\lst@AddToHook{OnNewLine}{%
+		\let\thelstnumber\origthelstnumber%
+		\setcounter{lstnumber}{\numexpr#1-1\relax}%
+		%\advance\c@lstnumber\@ne\relax%
+	}%
+}
+
+\makeatother
+
 %% -------------------------------
 %% |  Information for PDF file   |
 %% -------------------------------
@@ -62,7 +121,17 @@
 \pagenumbering{arabic}
 
 \include{chapter1_introduction}
-%\include{chapter2_fundamentals}
+\include{memory_game}
+\include{simulator}
+\include{collected_data}
+\include{data_preperation}
+\include{modells}
+\include{training_and_analysis}
+
+
+%\include{Simulation}
+
+
 %...
 
 %% --------------------
