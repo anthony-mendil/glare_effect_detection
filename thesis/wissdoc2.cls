@@ -28,6 +28,14 @@
 \usepackage[T1]{url}
 \usepackage{hyperref}
 
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={green!50!black},
+	citecolor={blue!80!black},
+	urlcolor={blue!80!black}
+}
+
 % Typography improvements
 \usepackage{microtype}
 
