@@ -1,1 +1,7 @@
 \chapter{Training and Analysis}
+notes bei models:\\
+- stride = wie viele schritte auf einmal, default 1 deshalb vermute ich bei mir 1\\
+- maxpooling: pool size = 2*2, und bei keras wird stride dann defauklt auch zu 2*2 (=pool size)\\
+- input size = 85*40 glaube ich\\
+- filter weights are randomly initialized, so that they dont all initially learn the same feauters. To briefly explain the behaviour of filters a seperation bettween two cases can be made: The first case is that not all features of high quality have been learned yet, high quality meaning that learning them would lower the cost function. In that case it is highly unlikely that each filter would begin to resemble other filters, as that would most certainly result in an increase of the cost function and therefore no gradient descent algorithm would head in that direction. The other case is that all features of high quality have already been leanred by a subset of the avaibable filters. In this case the cost function would not be increased if the remaining filters learn similar features than the other filters. \\
+- in einem der schritte wird eine zeile usgelassen, aber ich trainiere nicht nochmal alles neu (oder?)
