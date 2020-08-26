@@ -1,40 +1,35 @@
 \chapter{Data Preparation}
-generell diagramm with steps 
-
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[node distance = 4cm, auto]
-	% Place nodes
-	\node [block] (matrix) {Create similarity matrix for glare effect};
-	\node [block, right of=matrix, node distance=5cm] (mapping) {Mapping};
-	\node [block, right of=mapping, node distance=5cm] (valid) {Valid logs collection};
-	\node [block, below of=matrix] (quality) {quality plotting};
-	\node [block, below of=mapping] (sorting) {Sorting of logs};
-	\node [block, below of=valid] (simulate) {Simulation};
-	\node [decision, below of=quality, node distance=4cm] (decide) {Are simulated logs realistic?};
-	\node [block, below of=simulate] (change) {Change simulator};
-	\node [block, below of=decide] (generate) {Generate features};
-	\node [block, below of=change] (train) {Proceed with traning};
-	
-	% Draw edges
-	\path [line] (matrix) -- (mapping);
-	\path [line] (mapping) -- (valid);
-	\path [line] (valid) -- (simulate);
-	\path [line] (simulate) -- (sorting);
-	\path [line] (quality) -- (decide);
-	\path [line] (sorting) -- (quality);
-	\path [line, pos=0.12] (decide) -- node {No}(change);
-	\path [line] (change) -- (simulate);
-	\path [line] (decide) -- node [midway] {Yes}(generate);
-	\path [line] (generate) -- (train);
-	
-	\end{tikzpicture}
-	\caption[Bild kurz]{hi}
-\end{figure}
-
-It would have been possible if the simualtions for glare effcet are fundamentally wrong to go back to the beginning and change the approch of creating the similarity matrix or find a new approch. However, the simualtinos of glare effect were very good, which can be seen in \todo{ref}, which is why the spproach was kept and not changed. Further training was not done with all iterations. Only with first and last one for comparison. 
-
-
+%\begin{figure}[H]
+%	\centering
+%	\begin{tikzpicture}[node distance = 4cm, auto]
+%	% Place nodes
+%	\node [block] (matrix) {Create similarity matrix for glare effect};
+%	\node [block, right of=matrix, node distance=5cm] (mapping) {Mapping};
+%	\node [block, right of=mapping, node distance=5cm] (valid) {Valid logs collection};
+%	\node [block, below of=matrix] (quality) {quality plotting};
+%	\node [block, below of=mapping] (sorting) {Sorting of logs};
+%	\node [block, below of=valid] (simulate) {Simulation};
+%	\node [decision, below of=quality, node distance=4cm] (decide) {Are simulated logs realistic?};
+%	\node [block, below of=simulate] (change) {Change simulator};
+%	\node [block, below of=decide] (generate) {Generate features};
+%	\node [block, below of=change] (train) {Proceed with traning};
+%	
+%	% Draw edges
+%	\path [line] (matrix) -- (mapping);
+%	\path [line] (mapping) -- (valid);
+%	\path [line] (valid) -- (simulate);
+%	\path [line] (simulate) -- (sorting);
+%	\path [line] (quality) -- (decide);
+%	\path [line] (sorting) -- (quality);
+%	\path [line, pos=0.12] (decide) -- node {No}(change);
+%	\path [line] (change) -- (simulate);
+%	\path [line] (decide) -- node [midway] {Yes}(generate);
+%	\path [line] (generate) -- (train);
+%	
+%	\end{tikzpicture}
+%	\caption[Bild kurz]{hi}
+%\end{figure}
+To prepare the data for the training many steps were neccesary. One big step is to increse the available dta by simulaing user behaviour. Therefore the simulator	tor in chapter \todo{ref} is used. Games with no opbstacle can be simulated without furteher steps. However, in order to sucessfully simulate glare effect games, a special similarity matrix is required. While without any obstacles the color differnes are independent from the position of the crads, this is not the case in glare effect games since the intensity of the light is not the same across the whole field. As a result the first step is to create a similarity matrix that descirbes the differneces of colours under the influence of sunlight. Once completed, it replaces the old similarity matrix in the glare effect logs. Additionally all logs need to be remapped since they were mapped statically instead of dynamically. As not all logs are valid and can be used in the simulator, the invalid log must be removed. These valid logs are then used to simulate user behaviour and thereby create new logs. These simulated logs are sorted by their quality and the simualtion is evaluateed. If the performance in the simulated games is similar to that in the original games it is preceeded with the gerneration of the features for the training. Otherwise changes to the simulator ar made and the simulation, the sorting and the evaluation is repeated. In case of very bad simulations of glare effcet logs it would have also been possible to change the approch of creating the similarity matrix or find a new approch. However, the simualtinos of glare effect were very good, which can be seen in \todo{ref}, which is why the spproach was kept.
 
 \section{Similarity matrix creation}
 
@@ -50,11 +45,11 @@ The aim is to create a similarity matrix that descibes the differneces between c
 	\label{fig:glareEffect}
 \end{figure}
 
-As a result simply extracting the rgb values for one pixel of each card in one game and calculating the differneces has two major problems: Firstly, the differences are highly influenced by the position of the specific cards. For instance might light green and yellow only be seperable for the human eyes if not direclty in the area of the brighhtest light. Secondly, extracting single pixels for each card in an image could lead to color values that do not represent the overall observed colour due to varying brightnesses on differnet points of a card. This behaviour is undesired, as the final similarity matrix is supposed to represent the differneces of the observed colours of the cards. \todo{vielleicht quelle suchen die sagt das menschen farbenm ion bereichen mitteln oder so} In order to solve these problems a more complex approach then simply extracting single pixels out of a game was needed. \\\\
-The problem of the positional influence can be solved by using more than one game for corcaluating the color differences and taking the means differneces. \todo{besser beschrieben wie gesamtes idee, delta e color differnece} The idea is that by creating using so many games that all or most combinations of positions and colours are included and calculating the mean of all comparissons for , the result will not be influenced by the position of the cards. However, first needs to be determined which number of games satisfies this condition. Each game consists of 14 cards, with each two cards having the same colours. When determining the difference between two colours there are two differnet cases: 
+As a result simply extracting the rgb values for one pixel of each card in one game and calculating the differneces has two major problems: Firstly, the differences are highly influenced by the position of the specific cards. If the matrix is calculated using a single glare effect game the differneces are only representative for exactly that game and may be completely differnet if the cards are positioned differently. Secondly, extracting single pixels for each card in an image could lead to color values that do not represent the overall observed colour due to varying brightnesses on differnet points of a card. This behaviour is undesired, as the final similarity matrix is supposed to represent the differneces of the observed colours of the cards. \todo{vielleicht quelle suchen die sagt das menschen farbenm ion bereichen mitteln oder so} In order to solve these problems a more complex approach then simply extracting single pixels out of a game was needed. \\\\
+The problem of the positional influence can be solved by creating similarity matrices for more than one game and calculating the mean color differences of those matrices. The idea is that by creating using so many games that all or most combinations of positions and colours are included and calculating the mean of all comparissons for , the result will not be influenced by the position of the cards.  However, first needs to be determined which number of games satisfies this condition. Each game consists of 14 cards, with each two cards having the same colours. When determining the difference between two colours there are two differnet cases: 
 \begin{itemize}
-	\item 1. The colours are not the same: In each game there are exactly 4 combinations of positions for those two colours, because there are two cards for each colour (comparing for instance green1 and yellow1, green1 and yellow2, green2 and yellow1 and green2 and yellow2). 
-	\item 2. The colours are the same: In each game there is only one combination of positions for those colours (comparing green1 and green2).  
+	\item 1. The colours are not the same: In each game there are exactly 4 combinations of positions for those two colours, because there are two cards for each colour. 
+	\item 2. The colours are the same: In each game there is only one combination of positions for those colours.  
 \end{itemize}
 
 \begin{figure}[H]
@@ -113,15 +108,11 @@ Now we calculate how many screenshots must be taken to include a specific combin
 	n &\geq 271.111 %\llap{$\implies$\hspace{50pt}} at beginnging for implication arrow
 	\end{align*}
 \end{center}
-This means that about 272 screenshots of games are needed in the second case. As there are more screenshots needed for the second case, the first case is also included. This inclusion is caused by the fact that each screenshot includes comparissons for the  fist  as well as the second case. To have a buffer the decision was made to take screenshots of 300 games. In theory these screenshot include any arbitrary but fixed combinations of positions and colours with a probability of over 95\%.\\\\
-To assure that these screenshots actually include most of the combinations and therefore eliminate the positional influence of cards, the coverage of combinations can be additionally calculated. Therefore the number of unique combinations included in the 300 screenshots must be divided by the overall number of possible combinations. The number of unique combinations can be counted during the process of creating the similarity matrix, but the number of possible combinations must seperatly determined. The similarity matrix for glare effect has 28 entries, from which 7 are comparissons between same and 21 between different colours. With \textit{C\textsubscript{1}} and \textit{C\textsubscript{2}}  being the possible combinations for two arbitrayry but fixed coloured cards in the two cases mentioned above, the number of overall possible combinations C is
-\begin{align*}
-C &= 21 \cdot C\textsubscript{1} + 7 \cdot C\textsubscript{2}\\
-&= 21 \cdot 182 + 7 \cdot 91\\
-&= 4459. 
-\end{align*}
-Furthermore is was verified that certain combinations are not included significantly more often than others and in that sense have stronger influence on the result. This was not the case ...\todo{code ergänzen und nachprüfen wie oft die combinationen vorkamen..histogramm?}. \\\\
-Nonetheless, this does not solve the second problem of extracting single pixels that can potentially be directly in the area of a sunbeam. This can be fixed, by extracting all pixels in a certain are of the card and averaging their rgb values. %By averaging all colours in a certain area, the result will be more representitive of what the player actually sees \todo{Quelle finden wo sowas über visuellen kram gesagt wird}. 
+This means that about 272 screenshots of games are needed in the second case. As there are more screenshots needed for the second case, the first case is also included. This inclusion is caused by the fact that each screenshot includes comparissons for the  fist  as well as the second case. To have a buffer the decision was made to take screenshots of 300 games. In theory these screenshot include any arbitrary but fixed combinations of positions and colours with a probability of over 95\%, which should eliminate the problem of the positional influence.\\
+
+Nonetheless, this does not solve the second problem of extracting single pixels that can potentially be directly in the area of a sunbeam. This can be fixed, by extracting all pixels in a certain are of the card and averaging their rgb values. \\\\ %By averaging all colours in a certain area, the result will be more representitive of what the player actually sees \todo{Quelle finden wo sowas über visuellen kram gesagt wird}. 
+To sum it up, the chosen approach is to take 300 screenshots of glare effect games with all cards turned face up, extracting areas of rgb values for each card, calculating a similarity matrix for each game and finally averaging the color differences across all similarity matrices. As expained in chapter \todo{ref} the colour differneces are represented by the delta e score, to accuractly depict how humans observe colour differneces. To achieve values between 0 and 1, the colour differneces additionally need to be scaled down.
+ 
 
 \subsection{Screenshot extraction}
 To play the memory game and take screenshots an emulator for the pixel 2 in android studio was used. In order to take the screenshots in the needed way and collect additionally necessary information some changes to the memory game were made. In the way the game is intended there are always only maximum two cards turned face up. However, for the screenshots all cards need to be turned around so that the colour differneces can be calculated. Therefore the memory game was adjusted so that all cards are turned face up once the player turns a card. Additionally it was changed so that cards stay face up once they get turned around for the first time. This makes it possible to take screenshots with the colours of all cards visible. Furthermore, for the creation of the similarity matrix it needs to be known what the original colours without the influnece of the simulated sun are. To collect the screenshots and the according colours of the cards in each game a semi-automatic approach was chosen. Once a game is started and a card is flipped, resulting in all cards being turned face up, the colours of all cards are saved in a list. Then a screenshot is manually taken and afterwards the game is exited to enter the main menu. From there on the process is repeated 300 times. As a result there are 300 hundred screenshots of games and a two dimensional list that includes the colours of the cards in the 300 games. The first dimension specifies the game and the second dimension the index of the card. The values of this list are stored in a text file before the game is completely closed. To assure that no mistakes were made when taking the screenshots, the number of collected screenshots is observed during the whole process and afterwards all screenshots are manually checked so that all cards are turned face up.
@@ -200,8 +191,16 @@ combinations.append((original_color_1, original_color_2))
 return len(combinations) / number_of_total_combinations
 \end{lstlisting}
 
-\subsection{Manual testing}
-To verify the correcteness of the color extraction and the calculation of the similarity matrix, the main funtionalities are manually tested. The colour extraction was tested by extracting colours of a screenshot with the skript and compoaring the rgb values to the actual values in the images using gimp. Furthermore the calculation of the delta e score was tested, by comaring results of the script with those of an online calculator.  
+\subsection{Testing}
+To verify the correcteness of the color extraction and the calculation of the similarity matrix, the main funtionalities are manually tested. The colour extraction was tested by extracting colours of a screenshot with the skript and compoaring the rgb values to the actual values in the images using gimp. Furthermore the calculation of the delta e score was tested, by comaring results of the script with those of an online calculator. \\
+
+To assure that the 300 games actually include most of the combinations and therefore eliminate the positional influence of cards, the coverage of combinations can be additionally calculated. Therefore the number of unique combinations included in the 300 screenshots must be divided by the overall number of possible combinations. The number of unique combinations can be counted during the process of creating the similarity matrix, but the number of possible combinations must seperatly determined. The similarity matrix for glare effect has 28 entries, from which 7 are comparissons between same and 21 between different colours. With \textit{C\textsubscript{1}} and \textit{C\textsubscript{2}}  being the possible combinations for two arbitrayry but fixed coloured cards in the two cases mentioned above, the number of overall possible combinations C is
+\begin{align*}
+	C &= 21 \cdot C\textsubscript{1} + 7 \cdot C\textsubscript{2}\\
+	&= 21 \cdot 182 + 7 \cdot 91\\
+	&= 4459. 
+\end{align*}
+The 300 games used for creating this matrix include 99.57\% of all possible combinations. Furthermore is was verified that certain combinations are not included significantly more often than others and in that sense have stronger influence on the result. \todo{code ergänzen und nachprüfen wie oft die combinationen vorkamen..histogramm?}. 
 
 \subsection{Final Matrix}
 In figure \ref{fig:simMatrix} the final similarity matrix can be seen, dsiplaying how colour differneces are observed under the influence of the simulated sunlight, averaged over 300 games. As mentioned before, the lower the delta e score the more similar the cards appear to the human eye. 
@@ -211,46 +210,208 @@ In figure \ref{fig:simMatrix} the final similarity matrix can be seen, dsiplayin
 	\caption[Bild kurz]{Add caption}
 	\label{fig:simMatrix}
 \end{figure}
-The 300 games used for creating this matrix include 99.57\% of all possible combinations. Before actually using the constructed simialry matrix in the simulator it is unknown if the chosen approach results in high quality simulations. If this is not the case it is possible to change the concept or try other approches. 
+\todo{bild nochmal plotten mit neuen label: downscaled delta e score. Sagen was maximuam war, also welche downscaled komma zahl ca sagt man sieht keinen unterschied mehr.}
+
+Before actually using the constructed simialry matrix in the simulator it is unknown if the chosen approach results in high quality simulations. If this is not the case it is possible to change the concept or try other approches. 
 
 \section{Adaptation and correction of logs}
-- structure of logs and mapper that maps logs and replaces old matrix with new one\\
-- methode für mapping bereits vorhanden, aber es mussten einige anpassungen gemacht werden und ergänzungen: neue matrix einfügen statt der alten, bentzte funktionen wurden nicht mehr unterstützt und mussten geändert werden, methode wurde in ein neues skript eingebaut welches das mapping für alle logs macht und das ergebnis in einer neuen datei speichert.\\
-- was ich gemacht habe um zu überprüfen ob mapping nocfh korrekt ist: vergleichen von altem und neuen mapping 
+One problem with the logs is, that the mapping was done statically when they were created. However, the simulator requires dynamic mapping. \todo{unterschied erklären} To do so there was already a script available, that was used after replacing some deprecated functions from libraries with supported ones. Furthermore the code was extended so that the old placehoulder similarity matrices in the logs are replaced by the new one. As the code was initially written for similarityg matrices with 21 entries and the one for glare effcet has 28 entries, the code for remmaping the logs had to be adapted. In the other visual obstacles that were already worked on Finally all remapped logs are saved in new files. To check whether the remapping is still done correctly, the resulting logs were compared to logs that were remapped by the original script. The only thing that was not original were the replaced deprecated functions as this was neccesary to execute the script. Besides differnet similarity values due to differnet matrices as well as the fact that the logs now also contained entries for same coloured cards, the mapping was identical. 
 
 \section{Removal of invalid logs}
 For the simualation to work, the game log that is used for the simulation must have had all cards turned around at least once. Initially, this was not the case. Therefore a script was written that collects all no obstacle and all glare effect logs, validates them and saves only the valid ones in new files. It need to be noted, that if at least one the two logs from a participant is invalid, both logs are removed. Otherwise the training data could include no obstacle games but no glare effcect logs from a participant and vise versa, which should be avoided \todo{mehr erklären wieso das nicht gut ist und vielleicht quelle finden}. A log is invalid if not all cards were turned at least once. 
 \begin{lstlisting}[language=python, caption=Add caption]
 def validate_log(log):
-'''
-Validates logs.
-:param log: The log to validate. 
-:return: If the log is valid.
-'''
-needed_entries = ['1.1,', '2.1,', '3.1,', '4.1,', '5.1,', '6.1,', '7.1,', '1.2,', '2.2,', '3.2,', '4.2,', '5.2,', '6.2,', '7.2,']
-for needed_entry in needed_entries:
-if needed_entry not in log:
-return False
-return True
+	'''
+	Validates logs.
+	:param log: The log to validate. 
+	:return: If the log is valid.
+	'''
+	needed_entries = ['1.1,', '2.1,', '3.1,', '4.1,', '5.1,', '6.1,', '7.1,', '1.2,', '2.2,', '3.2,', '4.2,', '5.2,', '6.2,', '7.2,']
+	for needed_entry in needed_entries:
+		if needed_entry not in log:
+			return False
+	return True
 \end{lstlisting}
 
 \section{Simulation of user behaviour}
-Multiple additions were made to the simulator. In total four classes were added. Two are for generating configuration files for the simulation of game with and without the glare effect obstacle (NoObst\_ConfigGenerator\_dataCollection2020.java and GlareEffect\_ConfigGenerator\_dataCollection2020.java) and the other two for using those files to simulate new games based on the user behaviour in the original games (NoObstWinStrategyTrainingDataGenerator\_dataCollection2020.java and GlareEffectWinStrategyTrainingDataGenerator\_dataCollection2020.java). These classes utilize the functionalities already implemented in the simulator. \todo{Code grob für jeweils eine zeigen}
-
+Multiple additions were made to the simulator. In total four classes were added. Two are for generating configuration files for the simulation of game with and without the glare effect obstacle (NoObst\_ConfigGenerator\_dataCollection2020.java and GlareEffect\_ConfigGenerator\_dataCollection2020.java) and the other two for using those files to simulate new games based on the user behaviour in the original games (NoObstWinStrategyTrainingDataGenerator\_dataCollection2020.java and GlareEffectWinStrategyTrainingDataGenerator\_dataCollection2020.java). These classes utilize the functionalities already implemented in the simulator. \todo{grob erklären wie code funktioniert} However, as the simulator only worked with similarity matrices that have 21 entries, instead of the 28 of the matrix for glare effect games, the simulator was expanded so that it can also handle matrices with 28 entries. After all changes and additions were completed, each log was used to simulate 1000 games, resulting in 40000 logs. From these logs 20000 are no obstacle games and the other 20000 are glare effect games. The 40000 logs contain 1000 no obstcle and 1000 glare effect logs for each of the 20 probants.  
 
 
 \section{Sorting logs by quality}
-- wichtigh um beim training immer nur die besten n zu nehmen
+The siulated logs ware sorted by their quality, using the root mean squaed error between the perfoamces....\todo{klären genau was da gemacht wird mit mazen, ich galube rmse für alle perfomace werte in einem game und dem originalen game} as measurement. This is important because it enables to only use the best n simulated logs for training instead of using all of them or a random subset. 
 
 \section{Evaluation of simulation}
-- intial results\\
-- problems\\
-- chnages\\
-- final results \\
-- im realfall benutzen wir nicht alle simulationen sondern nur die besten. die werden vorher nach güte sortiert und dann nur die besten 1-10 und 20 genommen. Bilder zeigen wie es da aussieht bei finalem. \\
-- resulkts show that the similarity matrix used creates very good simulations of glare effect games. \\
-- t-stochastic test kram (siehe mazens nachricht)
+To evaluate whether the performance in the simlated logs is similar to the one in the original logs two perofmance measurements are used: The matching pairs in each round and the penalties in each round. \todo{erklären was penalty ist} The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{fig:simIn2}. \todo{erklären was whiskers sind}
+
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/simulationInitial1.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simIn1}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/simulationInitial2.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simIn2}
+	\end{figure}
+\end{minipage}
+
+It can be seen that the simualtions of glare effect games are very good, meaning that the constructed similarity matrix creates good simulation results. As a result there is no need to fin a differnet approach for creating the similarity matrix. However, escpecially when looking at the matching pairs per round after the tenth round, it is noticeable that the perofmance in the simualted no obstacle games is not as good as in the original ones. This observation inspired two changes to the simulator. The first one was ...\todo{änderungen erklären und begründen}. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}.
+
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/simulationOptimized1.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simOp1}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/simulationOptimized2.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simOp2}
+	\end{figure}
+\end{minipage} 
+
+
+
+\todo{fertig schreiebn}\\
+Some imporements are visually noticable howver ...statistcal test...\\
+- t-stochastic test kram (siehe mazens nachricht) -> paired t test: gucken ob no obstacle und glare effet signifikant unterscheidlich sind -> ja sind sie \\
+- vielleicth auch gucken ob verbesserung das signifikant besser gemacht hat, aber kann eventuell auch vernachlässigt werden weil man es visuell sieht und der unterscheid nicht starks sein wird. Dennoch könnte es gut sein dass zu machen. //
+
+However, during the training not all of the simulations are used. Only a certain number of the best simulations are used. The reason for this is that using to many simulations during training results in a strong adaption towards the simulations which in turn results in worse accuracy on real games. Therefore a sweet spot of the ratio between real and simulated games must be found. This can be seen in chapter \todo{ref zu training chapter}. Figures \ref{fig:simOp101} and \ref{fig:simOp102} show the performance differnece between real and simulated games if only the best 10 simualted games from each probant are used, resulting in a ration of 1 real game to 10 simulated games.
+
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/sd10x/Figure_3.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simOp101}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/sd10x/Figure_4.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:simOp102}
+	\end{figure}
+\end{minipage} 
+
+Overall the quality of the simualtions is very high when comparing the performance in the simalted and teh origianl games. If only the best simulations are used the perfomace becomes even more similar.   
 
 \section{Feature generation}
-- directory preperatrion\\
-- feature creation\\
+
+\subsection{1D CNN features}
+
+For the 1D CNN five statistcal features for each step are used: The card codes, the number of cards left, the number of never revealed cards,  the highest number of times the same card was revealed and the number of steps  since all pairs were found. They are calculated using the game logs from \todo{ref zu dem data chapter}. 
+These features can be direclty fed into the 1d CNN explained in chapter ..\todo{ref}. 
+
+The code for calculating the statistal features out of game logs was already given. A script was written that incorparates this funtionality in order to calculate the features for all logs. Additionally, after creating the neccessary directory structure the script saves the files for the splits of the raw data and the features. The reason for saving the features is that they do not have to calculated before evrey training and instead can be loaded from files. The reason for also saving the raw data even though this work does not need them anymore is, that the working group that was collaborated with also trained other models and does not directly load the features but instead caalculates them before each training. \todo{das ist komisch erklärt. vielleicht besser erlätern}
+
+\subsection{2D CNN features}
+
+For the second approach of using a 2D CNN further steps are taken. Therefore synthetic images in gray scale colours are created using the features mentioned above. As the images are in gray scale colours, only one color channel is needed. One can visually think of this approach as creating graphs for each feature that display their values in each timestep, taking a photograph of each graph and stacking them on top of eachother. This can be clarified by looking at the code that produces the synthetic images.  
+
+\begin{lstlisting}[language=python, caption=Add caption]
+def create_image(game, components=[True, True, True, True, True]):
+	'''
+	Creates synthetic images out of the five staticial features.
+	:param game: The statical features in each step. 
+	:param components: Five values describing which of the features 
+	should be used to create the image. 
+	:return: The synthetic image.
+	'''
+	card_codes = np.zeros((7, steps))
+	cards_left = np.zeros((8, steps))
+	never_revealed_cards = np.zeros((14, steps))
+	max_same_card_reveals = np.zeros((20, steps))
+	rounds_since_done = np.zeros((27, steps))
+	
+	x_position = 0
+	for step in game:
+		card_code = math.floor(step[0])
+		first_or_second = int(round((step[0] % 1) * 10))
+		if card_code != 0:
+			card_codes[card_code - 1][x_position] = first_or_second 
+		pairs_left[int(step[1] / 2)][x_position] = 1
+		never_revealed_cards[int(step[2])][x_position] = 1
+		max_same_card_reveals[int(step[3])][x_position] = 1
+		rounds_since_done[int(step[4])][x_position] = 1
+		x_position += 1
+	
+	image = np.zeros((0, steps))
+	if components[0]:   
+		image = np.vstack((image, card_codes))
+	if components[1]:
+		image = np.vstack((image, max_same_card_reveals))
+	if components[2]:  
+		image = np.vstack((image, rounds_since_done))
+	if components[3]:
+		image = np.vstack((image, cards_left))
+	if components[4]:   
+		image = np.vstack((image, never_revealed_cards))
+	
+	return image
+\end{lstlisting}
+
+By using pseudo colors, the images can be displayed with colours, like in figure \ref{fig:synImOr}. These 75 $\cdot$ 40 $\cdot$ 1 (height $\cdot$ width $\cdot$ colour channels) images are direclty fed to the 2D CNN explained in chapter .. \todo{rerf}. By setting the origin of the image to the lower instead of the upper left corner a more naural looking image is created and can be seen in figure \ref{fig:synIm}. 
+
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{images/synImageOriginal.png}
+	\caption[Bild kurz]{Add caption}
+	\label{fig:synImOr}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=7cm]{images/synImage.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:synIm}
+	\end{figure}
+\end{minipage}
+
+The width of the image is 40 because that the number of steps recorded. Table \todo{ref} shows which of the areas in the image describe which statical feature. The different vertical spaces given to statistical features were purposefully chosen. The aim was to use as much space as neccessary but as little as possible. The card codes have 7 pixels of vertical space since there are 7 different colours in the game. As each round consists of two cards being turned face up and the impossibility to chose the same card twice in one turn, a card can be at maximum revealed 20 times during 20 rounds. Considering that this value is at minimum 1 because it is not possible to flip no cards, the range of 20 values is sufficient for this value. Furthermore 14 steps are at minimum needed to complete the game, since there are 14 cards. As a result this value can range from 0 to 26, meaning a vertical space of 27 is needed. In order to save space, the statistcal feature of the number of cards left was converted to the number of pairs left. By dividing by 2 the vertical space neccessary to visualize this feature is halved, without information being lost. Last but not least the number of never revealed cards can range from 0 to 13. The value 14 is not possible because two cards have to be chosen each turn. The stacking order was chosen so that the coloured pixels of different statistical features rarely touch each other. \todo{cnn anpassen und neu trainieren. Dimesnion zahlen anpassen in bachelor arbeit. Alle bilder nochmal machen. Code korrigiere in tex}
+\begin{table}[H]
+	\centering
+	\caption{add caption. Upper and lower boundaries are inclusive.}%\label{tab1}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Statistical feature & Range & Vertical space in the image \\
+		\hline
+		Card codes & 1-7 & 0-6 \\
+		Maximum of same card reveals & 1-20 & 7-26 \\
+		Steps since game ended & 0-26 & 27-53 \\
+		Pairs left & 0-7 & 54-61\\
+		Never revealed cards & 0-13 & 62-75 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+The decision was made in the card code section to use different colours depending on if its the first or second card of a colour. The idea is that this emphasizes important behavioural characteristics that help deciding whether the visual obstacle being the sunlight is involved or not. By comparing the the card code sections of two images from which one is created using a glare effect and the other one with a no obstacle game, these visual differneces become clear. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{images/cardCodesNoObst.png}
+	\caption[Bild kurz]{Add caption}
+	\label{fig:ccNo}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{images/cardCodesGlare.png}
+	\caption[Bild kurz]{Add caption}
+	\label{fig:ccGlare}
+\end{figure}
+
+In \ref{fig:ccNo}, showing the image for an no obstacle game, there are yellow pixels directly left of green ones, meaning that the probant flipped a card, knew that he had already seen the matching card and direclty flipped it. However, this happens less often in figure \ref{fig:ccGlare} which shows the image for an glare effect game. This is not the case in every game, but the theory is that separated colours in the image are more likely in glare effect games than in no obstacel games. Therefore it could be beneficial for the model to also learn these characteristics. If the same colour was used for all card codes, there would be no visual differnece between flipping the same card in consequtive turns and flipping two different cards with the same colour. This of course would also mean that the model could not differentiate bewteen those two cases. 
+
+

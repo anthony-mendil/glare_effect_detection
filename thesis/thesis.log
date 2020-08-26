@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  16 AUG 2020 21:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  25 AUG 2020 18:09
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1228,26 +1228,26 @@ File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )) (thesis.aux (titlepage.aux) (erklaerung.aux)
 (abstract.aux) (chapter1_introduction.aux) (memory_game.aux) (simulator.aux)
 (collected_data.aux) (data_preperation.aux) (modells.aux)
-(training_and_analysis.aux))
+(training_and_analysis.aux) (prospect.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
-LaTeX Font Info:    ... okay on input line 95.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 95
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 97
 .
 
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
@@ -1303,7 +1303,7 @@ df.mkii"
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box95
-Package hyperref Info: Link coloring ON on input line 95.
+Package hyperref Info: Link coloring ON on input line 97.
 
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
 ty"
@@ -1319,21 +1319,21 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count361
 )
-LaTeX Info: Redefining \ref on input line 95.
-LaTeX Info: Redefining \pageref on input line 95.
-LaTeX Info: Redefining \nameref on input line 95.
+LaTeX Info: Redefining \ref on input line 97.
+LaTeX Info: Redefining \pageref on input line 97.
+LaTeX Info: Redefining \nameref on input line 97.
  (thesis.out) (thesis.out)
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 95.
+LaTeX Info: Redefining \microtypecontext on input line 97.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 95.
+LaTeX Info: Redefining \showhyphens on input line 97.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1349,7 +1349,7 @@ Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count362
  ABD: EveryShipout initializing macros
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 10
-2.
+4.
 
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1phv.fd"
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
@@ -1422,7 +1422,7 @@ Package epstopdf Info: Source file: <logos/titlepage.eps>
 ed-to.pdf logos/titlepage.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
-<logos/titlepage-eps-converted-to.pdf, id=106, 598.235pt x 846.16125pt>
+<logos/titlepage-eps-converted-to.pdf, id=138, 598.235pt x 846.16125pt>
 File: logos/titlepage-eps-converted-to.pdf Graphic file (type pdf)
 <use logos/titlepage-eps-converted-to.pdf>
 Package pdftex.def Info: logos/titlepage-eps-converted-to.pdf  used on input li
@@ -1562,12 +1562,12 @@ Package epstopdf Info: Source file: <logos/titlepage.eps>
 (epstopdf)                    size: 5272 bytes
 (epstopdf)             Command: <epstopdf --outfile=logos/titlepage-eps-convert
 ed-to.pdf logos/titlepage.eps>
-(epstopdf)             \includegraphics on input line 117.
+(epstopdf)             \includegraphics on input line 119.
 Package epstopdf Info: Output file is already uptodate.
 File: logos/titlepage-eps-converted-to.pdf Graphic file (type pdf)
 <use logos/titlepage-eps-converted-to.pdf>
 Package pdftex.def Info: logos/titlepage-eps-converted-to.pdf  used on input li
-ne 117.
+ne 119.
 (pdftex.def)             Requested size: 142.26378pt x 201.22362pt.
 ) [4] [5]
 \openout2 = `memory_game.aux'.
@@ -1578,25 +1578,21 @@ ne 117.
 
 ]
 Chapter 2.
-) [7]
+) [7] [8]
 \openout2 = `simulator.aux'.
 
- (simulator.tex [8
-
-
-
-]
+ (simulator.tex
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
+) [9
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 8.
 
-) [9]
+
+]
 \openout2 = `collected_data.aux'.
 
  (collected_data.tex [10
@@ -1605,236 +1601,680 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 ]
 Chapter 4.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
+.
+("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 3--126
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
- []
-
-[11]
+[11] [12]) [13]
 \openout2 = `data_preperation.aux'.
 
- (data_preperation.tex [12
+ (data_preperation.tex [14
 
 
 
 ]
 Chapter 5.
-[13]
-<images/glareEffect.png, id=275, 1283.54532pt x 812.28468pt>
+<images/glareEffect.png, id=344, 1283.54532pt x 812.28468pt>
 File: images/glareEffect.png Graphic file (type png)
 <use images/glareEffect.png>
-Package pdftex.def Info: images/glareEffect.png  used on input line 48.
+Package pdftex.def Info: images/glareEffect.png  used on input line 43.
 (pdftex.def)             Requested size: 426.79134pt x 270.08746pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 48--51
 
  []
 
-[14 <./images/glareEffect.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-6.
-
+1.
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<images/noObstTurnedNotes.png, id=282, 1285.80376pt x 812.28468pt>
+[16 <./images/glareEffect.png>]
+<images/noObstTurnedNotes.png, id=356, 1285.80376pt x 812.28468pt>
 File: images/noObstTurnedNotes.png Graphic file (type png)
 <use images/noObstTurnedNotes.png>
-Package pdftex.def Info: images/noObstTurnedNotes.png  used on input line 62.
+Package pdftex.def Info: images/noObstTurnedNotes.png  used on input line 57.
 (pdftex.def)             Requested size: 426.79134pt x 269.61647pt.
+ [17 <./images/noObstTurnedNotes.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
-[15 <./images/noObstTurnedNotes.png>] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--125
-
- []
-
-[17]
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstlang1.
 sty"
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
+) [19]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 131.
- [18] [19pdfTeX warning (ext4): destination with the same identifier (name{lstn
-umber.5.2.\\thelstnumber\040}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{lstnumber.5.2.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.201 \end{lstlisting}
-                      ]
-<images/simMatrix.png, id=357, 766.062pt x 616.4631pt>
-File: images/simMatrix.png Graphic file (type png)
-<use images/simMatrix.png>
-Package pdftex.def Info: images/simMatrix.png  used on input line 210.
-(pdftex.def)             Requested size: 426.79134pt x 343.45798pt.
- [20 <./images/simMatrix.png>] [21pdfTeX warning (ext4): destination with the s
-ame identifier (name{lstnumber.5.3.18}) has been already used, duplicate ignore
-d
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
-er.5.3.18}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.253 
-      ])
-Underfull \hbox (badness 10000) in paragraph at lines 255--127
+nput line 122.
+ [20]
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
-[22]
+<images/simMatrix.png, id=418, 766.062pt x 616.4631pt>
+File: images/simMatrix.png Graphic file (type png)
+<use images/simMatrix.png>
+Package pdftex.def Info: images/simMatrix.png  used on input line 209.
+(pdftex.def)             Requested size: 426.79134pt x 343.45798pt.
+[21pdfTeX warning (ext4): destination with the same identifier (name{lstnumber.
+5.2.\\thelstnumber\040}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{lstnumber.5.2.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.212 \end{figure}
+                  ] [22 <./images/simMatrix.png>] [23pdfTeX warning (ext4): des
+tination with the same identifier (name{lstnumber.5.3.18}) has been already use
+d, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      pdfTeX warning (ext4): destination with the same identifier (name{lstnumb
+er.5.3.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.242 
+      ]
+<images/simulationInitial1.png, id=445, 462.528pt x 345.4506pt>
+File: images/simulationInitial1.png Graphic file (type png)
+<use images/simulationInitial1.png>
+Package pdftex.def Info: images/simulationInitial1.png  used on input line 249.
+
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 249--250
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 250--250
+[] [] 
+ []
+
+<images/simulationInitial2.png, id=446, 462.528pt x 345.4506pt>
+File: images/simulationInitial2.png Graphic file (type png)
+<use images/simulationInitial2.png>
+Package pdftex.def Info: images/simulationInitial2.png  used on input line 257.
+
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 257--258
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 258--258
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 246--262
+[]$[]$ $[]$ 
+ []
+
+<images/simulationOptimized1.png, id=449, 462.528pt x 345.4506pt>
+File: images/simulationOptimized1.png Graphic file (type png)
+<use images/simulationOptimized1.png>
+Package pdftex.def Info: images/simulationOptimized1.png  used on input line 26
+8.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 268--269
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 269--269
+[] [] 
+ []
+
+<images/simulationOptimized2.png, id=450, 462.528pt x 345.4506pt>
+File: images/simulationOptimized2.png Graphic file (type png)
+<use images/simulationOptimized2.png>
+Package pdftex.def Info: images/simulationOptimized2.png  used on input line 27
+6.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 276--277
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 277--277
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 265--281
+[]$[]$ $[]$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24 <./images/simulationInitial1.png> <./images/simulationInitial2.png>]
+<images/sd10x/Figure_3.png, id=459, 462.528pt x 345.4506pt>
+File: images/sd10x/Figure_3.png Graphic file (type png)
+<use images/sd10x/Figure_3.png>
+Package pdftex.def Info: images/sd10x/Figure_3.png  used on input line 294.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 294--295
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 295--295
+[] [] 
+ []
+
+<images/sd10x/Figure_4.png, id=460, 462.528pt x 345.4506pt>
+File: images/sd10x/Figure_4.png Graphic file (type png)
+<use images/sd10x/Figure_4.png>
+Package pdftex.def Info: images/sd10x/Figure_4.png  used on input line 302.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 302--303
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 303--303
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 291--307
+[]$[]$ $[]$ 
+ []
+
+[25 <./images/simulationOptimized1.png> <./images/simulationOptimized2.png> <./
+images/sd10x/Figure_3.png> <./images/sd10x/Figure_4.png>] [26pdfTeX warning (ex
+t4): destination with the same identifier (name{lstnumber.5.4.18}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.350 	image 
+             = np.zeros((0, steps))]pdfTeX warning (ext4): destination with the
+ same identifier (name{lstnumber.5.4.18}) has been already used, duplicate igno
+red
+<to be read again> 
+                   \relax 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.19}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.350 	image 
+             = np.zeros((0, steps))pdfTeX warning (ext4): destination with the 
+same identifier (name{lstnumber.5.4.18}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.351 	if 
+          components[0]:pdfTeX warning (ext4): destination with the same identi
+fier (name{lstnumber.5.4.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.352 		image 
+              = np.vstack((image, card_codes))pdfTeX warning (ext4): destinatio
+n with the same identifier (name{lstnumber.5.4.18}) has been already used, dupl
+icate ignored
+<to be read again> 
+                   \relax 
+l.353 	if 
+          components[1]:pdfTeX warning (ext4): destination with the same identi
+fier (name{lstnumber.5.4.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.354 		image 
+              = np.vstack((image, max_same_card_reveals))pdfTeX warning (ext4):
+ destination with the same identifier (name{lstnumber.5.4.18}) has been already
+ used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.355 	if 
+          components[2]:pdfTeX warning (ext4): destination with the same identi
+fier (name{lstnumber.5.4.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.356 		image 
+              = np.vstack((image, rounds_since_done))pdfTeX warning (ext4): des
+tination with the same identifier (name{lstnumber.5.4.18}) has been already use
+d, duplicate ignored
+<to be read again> 
+                   \relax 
+l.357 	if 
+          components[3]:pdfTeX warning (ext4): destination with the same identi
+fier (name{lstnumber.5.4.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.358 		image 
+              = np.vstack((image, cards_left))pdfTeX warning (ext4): destinatio
+n with the same identifier (name{lstnumber.5.4.18}) has been already used, dupl
+icate ignored
+<to be read again> 
+                   \relax 
+l.359 	if 
+          components[4]:pdfTeX warning (ext4): destination with the same identi
+fier (name{lstnumber.5.4.18}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.360 		image 
+              = np.vstack((image, never_revealed_cards))pdfTeX warning (ext4): 
+destination with the same identifier (name{lstnumber.5.4.18}) has been already 
+used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.362 	return 
+              imagepdfTeX warning (ext4): destination with the same identifier 
+(name{lstnumber.5.4.19}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.362 	return 
+              image
+<images/synImageOriginal.png, id=478, 321.45094pt x 554.82281pt>
+File: images/synImageOriginal.png Graphic file (type png)
+<use images/synImageOriginal.png>
+Package pdftex.def Info: images/synImageOriginal.png  used on input line 370.
+(pdftex.def)             Requested size: 199.16928pt x 343.77493pt.
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 371--371
+[] [] 
+ []
+
+<images/synImage.png, id=479, 325.96782pt x 553.31718pt>
+File: images/synImage.png Graphic file (type png)
+<use images/synImage.png>
+Package pdftex.def Info: images/synImage.png  used on input line 378.
+(pdftex.def)             Requested size: 199.16928pt x 338.08865pt.
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 379--379
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 367--383
+[]$[]$ $[]$ 
+ []
+
+[27pdfTeX warning (ext4): destination with the same identifier (name{lstnumber.
+5.4.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.399 \end{table}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{lstnumber.5.4.18}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.399 \end{table}
+                  <./images/synImageOriginal.png> <./images/synImage.png>]
+<images/cardCodesNoObst.png, id=486, 1107.38719pt x 225.09094pt>
+File: images/cardCodesNoObst.png Graphic file (type png)
+<use images/cardCodesNoObst.png>
+Package pdftex.def Info: images/cardCodesNoObst.png  used on input line 404.
+(pdftex.def)             Requested size: 426.79134pt x 86.75128pt.
+<images/cardCodesGlare.png, id=487, 1031.35312pt x 211.54031pt>
+File: images/cardCodesGlare.png Graphic file (type png)
+<use images/cardCodesGlare.png>
+Package pdftex.def Info: images/cardCodesGlare.png  used on input line 410.
+(pdftex.def)             Requested size: 426.79134pt x 87.53903pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [28 <./images/cardCodesNoObst.png>]) [29 <./images/cardCodesGlare.png>]
 \openout2 = `modells.aux'.
 
  (modells.tex
-Chapter 6.
-) [23
+[30
 
 
 
 ]
+Chapter 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--18
+
+ []
+
+[31] [32]
+Chapter 7.
+<images/1dCnnStructure.png, id=514, 1190.19656pt x 626.34pt>
+File: images/1dCnnStructure.png Graphic file (type png)
+<use images/1dCnnStructure.png>
+Package pdftex.def Info: images/1dCnnStructure.png  used on input line 40.
+(pdftex.def)             Requested size: 426.79134pt x 224.5934pt.
+[33
+
+ <./images/1dCnnStructure.png>]
+<images/2dCnnStructure.png, id=521, 1248.91594pt x 603.0028pt>
+File: images/2dCnnStructure.png Graphic file (type png)
+<use images/2dCnnStructure.png>
+Package pdftex.def Info: images/2dCnnStructure.png  used on input line 51.
+(pdftex.def)             Requested size: 426.79134pt x 206.05795pt.
+ [34 <./images/2dCnnStructure.png>]) [35]
 \openout2 = `training_and_analysis.aux'.
 
- (training_and_analysis.tex [24
+
+(training_and_analysis.tex [36
 
 
 
 ]
-Chapter 7.
-) [25] [26
+Chapter 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+) [37]
+\openout2 = `prospect.aux'.
+
+ (prospect.tex [38
 
 
-] (thesis.bbl) [27
 
-] [28
+]
+Chapter 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
+
+ []
+
+) [39] [40
+
+
+] (thesis.bbl) [41
+
+] [42
 
 ]
 No file thesis.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 158.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 158.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 161.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
 (thesis.aux (titlepage.aux) (erklaerung.aux) (abstract.aux)
 (chapter1_introduction.aux) (memory_game.aux) (simulator.aux)
 (collected_data.aux) (data_preperation.aux) (modells.aux)
-(training_and_analysis.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 158.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 158.
+(training_and_analysis.aux) (prospect.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 161.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 161.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: A664D5D1A6781D2B1CBE7ABA90805419;1516.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 158.
+(rerunfilecheck)             Checksum: 2BA9FE479E7D68FEC40DA23AF8EAE28A;1969.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
  ) 
 Here is how much of TeX's memory you used:
- 29486 strings out of 480769
- 561150 string characters out of 2894272
- 1304763 words of memory out of 3000000
- 44535 multiletter control sequences out of 15000+200000
- 616847 words of font info for 129 fonts, out of 3000000 for 9000
+ 29544 strings out of 480769
+ 561996 string characters out of 2894272
+ 1308426 words of memory out of 3000000
+ 44521 multiletter control sequences out of 15000+200000
+ 617658 words of font info for 135 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,15n,100p,1867b,2093s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.e
-nc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.e
+ 63i,15n,100p,2193b,2025s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
+c}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.e
 nc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.e
 nc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-math
 ex.enc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-
@@ -1853,11 +2293,12 @@ iKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Users/dylin/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/dylin/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Users/dylin/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dylin/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/dylin/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (42 pages, 770182 bytes).
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Users/dylin/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/dyli
+n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on thesis.pdf (56 pages, 1332966 bytes).
 PDF statistics:
- 484 PDF objects out of 1000 (max. 8388607)
- 122 named destinations out of 1000 (max. 500000)
- 27881 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 657 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
+ 28517 words of extra memory for PDF output out of 29859 (max. 10000000)
 

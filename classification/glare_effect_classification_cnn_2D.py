@@ -29,6 +29,13 @@ steps = 40
 
 
 def create_image(game, components=[True, True, True, True, True]):
+    '''
+    Creates synthetic images out of the five staticial features.
+    :param game: The statical features in each step. 
+    :param components: Five values describing which of the features 
+    should be used to create the image. 
+    :return: The synthetic image.
+    '''
     card_codes = np.zeros((7, steps))
     cards_left = np.zeros((8, steps))
     never_revealed_cards = np.zeros((14, steps))
@@ -36,19 +43,15 @@ def create_image(game, components=[True, True, True, True, True]):
     rounds_since_done = np.zeros((25, steps))
     
     x_position = 0
-    
     for step in game:
         card_code = math.floor(step[0])
         first_or_second = int(round((step[0] % 1) * 10))
-        
         if card_code != 0:
-            card_codes[card_code - 1][x_position] = first_or_second
-            
+            card_codes[card_code - 1][x_position] = first_or_second 
         cards_left[int(step[1] / 2)][x_position] = 1
         never_revealed_cards[int(step[2])][x_position] = 1
         max_same_card_reveals[int(step[3])][x_position] = 1
         rounds_since_done[int(step[4])][x_position] = 1
-        
         x_position += 1
         
     # Try leaving out some features and compare results!
@@ -147,8 +150,8 @@ def mean_score_over_all_splits(mean_split_scores, n_splits):
 def create_and_train(X_train, y_train, X_test, y_test, run ,split, file_dir, sd, n_epochs=n_epochs):
     opt = keras.optimizers.Adam(learning_rate=0.00001)
 
-    X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], X_train.shape[2], 1)
-    X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], X_test.shape[2], 1)
+    X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], X_train.shape[2], 1) # adding fake depth channel
+    X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], X_test.shape[2], 1) # adding fake depth channel
     cnn_input_shape = X_train[0].shape
     #epochs = n_epochs
     #cnn_batch_size = 32 #1000

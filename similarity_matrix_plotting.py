@@ -51,7 +51,7 @@ ax = sns.heatmap(
     cmap='RdBu_r',
     square = True,
     linewidth=1, 
-    cbar_kws={'label': 'delta e score'},
+    cbar_kws={'label': 'downscaled delta e score'},
     mask=mask,
     annot=True
 )

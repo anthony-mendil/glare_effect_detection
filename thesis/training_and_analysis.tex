@@ -1,7 +1,16 @@
 \chapter{Training and Analysis}
-notes bei models:\\
-- stride = wie viele schritte auf einmal, default 1 deshalb vermute ich bei mir 1\\
-- maxpooling: pool size = 2*2, und bei keras wird stride dann defauklt auch zu 2*2 (=pool size)\\
-- input size = 85*40 glaube ich\\
-- filter weights are randomly initialized, so that they dont all initially learn the same feauters. To briefly explain the behaviour of filters a seperation bettween two cases can be made: The first case is that not all features of high quality have been learned yet, high quality meaning that learning them would lower the cost function. In that case it is highly unlikely that each filter would begin to resemble other filters, as that would most certainly result in an increase of the cost function and therefore no gradient descent algorithm would head in that direction. The other case is that all features of high quality have already been leanred by a subset of the avaibable filters. In this case the cost function would not be increased if the remaining filters learn similar features than the other filters. \\
-- in einem der schritte wird eine zeile usgelassen, aber ich trainiere nicht nochmal alles neu (oder?)
+
+- auch zeigen dass es sinnvoll ist simulierte daten mit zu vermwendet, also sd0x mit bestem vergleichen und so\\
+
+- vielleiht gucken welche falsch erkannt werden und woran es liegt, also wenn die zum beispiel echt schlect oder gut sind obwohl es nicht so sein sollte (rausnhemen und gucken wie ergebnisse sind, vielleicht nur bei bestem modell)\\
+- in gleichen tabellen ergebnise vor änderung am simulator und nach änderung betrachten und vergleichen\\
+- training auf welchem rechner/n,was von: cpu oder gpu oder beides, hardware kurz erwähnen, vpn (fernzugriff)\\
+- train test splt, leave one out k fold (+ begründung mit deep learing ..reliable results etc, randomness) \\
+- kurz erklären wieso weniger züge besser sind bei dieser hci erkennung\\
+- (vielleicht kram zu adaptive learning rate ändern und gucken wie es so ist, ansonsten begründen wieso ich das nicht brauche) \\
+- 20 steps und 40 steps für beide trainieren mit sd0x bis sd10x plus sd20x\\
+- (entweder so dass 1d cnn mit 20 steps auch konvergence erreicht oder danach nochmal anpassung von 20 steps 1d cnn damit es kovergiert)\\
+- darüber schreiben dass letzen n züge nicht mehr so gut simuliert sind (zeigen) und deshalb 40 steps nicht so viel besser ist \\
+- mit maximalen guten steps (glaube 16 züge oder so) trainieren und vergleichen\\
+- statistical tests um signifikante unterschiede /keine unterschiede zu zeigen für verschiedene modelle etc (siehe mazens nachricht)\\
+- letztlich war es wert 2D cnn auszupribieren. Werden selten für sowas verwendet haben in diesem fall aber signifank besser ergebnisse erzielt. 

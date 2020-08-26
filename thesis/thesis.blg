@@ -5,11 +5,17 @@ A level-1 auxiliary file: titlepage.aux
 A level-1 auxiliary file: erklaerung.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: chapter1_introduction.aux
+A level-1 auxiliary file: memory_game.aux
+A level-1 auxiliary file: simulator.aux
+A level-1 auxiliary file: collected_data.aux
+A level-1 auxiliary file: data_preperation.aux
+A level-1 auxiliary file: modells.aux
+A level-1 auxiliary file: training_and_analysis.aux
 The style file: alpha.bst
 Database file #1: thesis.bib
 You've used 1 entry,
             2543 wiz_defined-function locations,
-            569 strings with 4661 characters,
+            575 strings with 4763 characters,
 and the built_in function-call counts, 384 in all, are:
 = -- 38
 > -- 8
