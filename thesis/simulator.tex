@@ -1,15 +1,22 @@
-\chapter{Simulator}
+\chapter{CMM-based Cognitive User Simulation}
+The cognitive system lab developed the computer program cognitive memory model (CMM).
+It utilizes concepts of the act-r-theory to model the cognitive human memory. ACT-R is a cognitive architecture that aims to describe and integrate  central basic mechanisms of human cognition. \todo{ref:  \url{https://www.google.com/search?q=intimates+deutsch&oq=iminates+&aqs=chrome.1.69i57j0l7.2543j0j15&sourceid=chrome&ie=UTF-8}} In the context of the matching pairs game the CMM was used to implement a generative model. By modelling memorized and forgotten revealed cards and deciding in each turn whether to explore unknown cards or to exploit the gathered knowledge to reveal matching pairs, the course of a matching pairs game can be simulated taking the capability of human memory into account. Furthermore it is possible to define a similarity matrix to simulate similarities between cards in matching pairs games. This matrix includes similarity values for each colour combination of cards. Such a similarity matrix can be used in the context of visual interaction obstacles to emulate human confusion. In related research it was used to simulate the confusion caused by colour blindness and the usage of a red-green card set. For this thesis the only two modes that are relevant are the glare effect (no assistance) and the no obstacle (no assistance) modes. In order to simualte no obstacle games no simialrity matrix is needed, but for glare effect games a new similarity matrix is created in section \todo{ref}.
 
-Neural networks greatly benefit from lots of data. As there are only 40 \todo{richtige zahl herausfinden} overall games from participantzs available, more data can potentially improve the classification results.  The cognitive systems lab already implemented a system that takes the original game logs and simulates user behaviour in order to create new logs. As a result it is possible to create any number of games out of a single original one, from which some may be better than others. However, in order to simulate glare effect games multiple addtional steps and changes are neccesary. \todo{vielleicht so ein worklow diagramm erstellen..erstellung verebsserung etc}\\
 
 
-- vielleict begrüdung: referenz zu denen. weil es zietgt dass man unter verwnedung simulierter spiele eine deutliche verberseerung der ergebnisse auf den echten spelen sehen kann...\\
-- vielleich statt die beiden unter abscxhnitte infach nur beides in einem 
-\section{Concept}
-- generelle funktionsweise des simualtors\\
-- logs müssen dynamically mapped sein, sind aber statisch, das ist begründung für ref ... remapping
-\section{Similarity Matrix}
-- auch erklären was similarity matrix ist, struktur und wie die benutz wird\\
-- and colour representation cie etc delta e color differnece, vs rgb was das bringt\\ 
-- no special similarity matrxi for noosbst needed. The differneces can simply be calculated. it is already used in the simulator. However a new similarity matrix needs to be created for simulating glare effect games. 
-- für no obst wird identity similariity matrix verwendet: diagonale ist 
+%- to capture the differnce between colours in the way humans observe it, the rgb scale is not suitable... grund. Therefore cie is usd
+%- was wichtig für diese arbeit ist: no óbsracel un glare 
+%- für no obstacle hat die wird keine similarity matrix verwendet. (bzw. werte der matrix so gewählt dass sie keinen einfluss haben)
+%- für glare effect muss eine neue definiertt werden wie in chapter ref
+%- so wie ich es gemacht habe mit den werten
+%- as metioned formerly the cie1976 is used. es gibt ein neues dass die unterschiede realistis her darstellt cie2000. deshalbw ird das stattdesen benutzt bei erstellung der matrix für glare effect
+
+To accurately simulate the performance of human memory multiple parameters are randomly initialized and then repetedly optimized using a genetic optimization algorithm. These parameters can be further extended. The genetic algorithm works by repeadily simulating game sessions and updating the parameters by applying mutation and selection operations. To select the best parameter values two performance measurements are defined and used to compare the simulated game sessions and a real game as reference. These perfomarmce measurements are the number of matching pairs and the number of penalties per round. Penalties are given if a card is revealed whose partner has already been seen before but the pair was not picked up. The optimization of the parameter population is repeated over many generations so that the performance in the simalted games best fits that in the real game. As example one of the paramameters optimimzed by the genetic optimization algorithm is the similarity decay. It reduces the similarity effects during the course of the game, since the user may learn to adapt to the visual interaction obstacle and therefore be less effected by it. Furthermore the similarity effect is continuelasly reduced as there are less cards in the game after pairs were discovered. 
+
+As input the simulator takes a number of game logs and simulated a specified amount of new sessions using the genetic optimization algorithm. For instance 20 game logs can be passed to simulate 1000 new sessions out of each game log, resulting in 20000 simulated games. The data contained in the game logs is shown in section \todo{ref}. In the context of simulating no obstacle games improvements to the simulator were made that are explained in section \todo{ref}. 
+
+%\section{Similarity Matrix}
+%- auch erklären was similarity matrix ist, struktur und wie die benutz wird\\
+%- and colour representation cie etc delta e color differnece, vs rgb was das bringt\\ 
+%- no special similarity matrxi for noosbst needed. The differneces can simply be calculated. it is already used in the simulator. However a new similarity matrix needs to be created for simulating glare effect games. 
+%- für no obst wird identity similariity matrix verwendet: diagonale ist 

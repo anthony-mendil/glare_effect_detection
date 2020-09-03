@@ -265,16 +265,16 @@ if __name__ == '__main__':
     # Argument handling.
     parser = argparse.ArgumentParser(description='Used to create a static similarity matrix \
         for the simulating games with the glare effect.')
-    parser.add_argument("--i", default=("%s\\screenshots_glare_effect" %wd), \
+    parser.add_argument("--i", default=("%s\\similarity_matrix_data\\screenshots_glare_effect" %wd), \
         help='The directory the glare effect screenshots are stored in.')
-    parser.add_argument("--c", default=("%s\\color_names\\colors_of_cards_glare_effect.txt" %wd), \
+    parser.add_argument("--c", default=("%s\\similarity_matrix_data\\color_names\\colors_of_cards_glare_effect.txt" %wd), \
         help='The file containing the original colors of the crads on the screenshots.')
     parser.add_argument('--color_blindness_mapping', action='store_true', \
         help='Pass if the mapping for color blindness should be used.')
     parser.add_argument('--cie1976', action='store_true', \
         help='Pass if the cie1976 formular for color difference should be used. Otherwise cie2000 will be.')
     parser.add_argument('--unscaled', action='store_true', \
-        help='Pass if the similarity matrix should be normalized.')
+        help='Pass if the similarity matrix should not be normalized.')
 
     # Assigning parameters. 
     args = parser.parse_args()
