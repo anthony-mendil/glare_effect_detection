@@ -236,9 +236,10 @@ Before actually using the constructed simialry matrix in the simulator it is unk
 One problem with the logs is, that the mapping was done statically when they were created. However, the simulator requires dynamic mapping. The difference is emplained in chapter \todo{ref}. To do so there was already a script available, that was used after replacing some deprecated functions from libraries with supported ones. Furthermore the code was extended so that the old placehoulder similarity matrices in the logs are replaced by the new one. As the code was initially written for similarityg matrices with 21 entries and the one for glare effcet has 28 entries, the code for remmaping the logs had to be adapted. Finally all remapped logs are saved in new files. To check whether the remapping is still done correctly, the resulting logs were compared to logs that were remapped by the original script. The only thing that was not original were the replaced deprecated functions as this was neccesary to execute the script. Besides differnet similarity values due to differnet matrices as well as the fact that the logs now also contained entries for same coloured cards, the mapping was identical. 
 
 \section{Removal of invalid logs}
-For the simualation to work, the game log that is used for the simulation must have had all cards turned around at least once. If this is not the case the log is classified as invalid. Additionally to removing invalid logs, the aim is to create a balanced data set for training. Therefore the number of games from each participant in each game mode have to be equal. This means that neither is it allowed to have more no obstacle than glare effect games, nor is it allowed to include more no obstacle games from a particiapnt than glare effect games, and vice versa.\todo{quelle finden für balanced kram wieso das wichtig ist und begründen: vermutlich sowas wie: gerenelization weil sonst stärkere tendez su einer klasse und so (für gleiche anzahl), und gleiche participants muss man dann suchen} As stated in chapter \todo{ref} from the 22 participants there are 44 no obstacle and 21 glare effect game logs.
+For the simualation to work, the game log that is used for the simulation must have had all cards turned around at least once. If this is not the case the log is classified as invalid. Additionally to removing invalid logs, the aim is to create a balanced data set for training. Therefore the number of games in each game mode has to be equal. Using twice as many no obstacle games for training than glare effect games can lead to games being more often classified to have no obstacle only because they appeared more often during training. As a result the model would be less capable of detecting actual visual interaction obstacles. Furthermore the decision was made that the number of games from each participant in each game mode should be equal, too. This means that the data should not contain more no obstacle games from a particiapnt than glare effect games, and vice versa.
+%\todo{consicder precision and recall in real world scenarios? but can i assume anythn? For instance that people are less often blinded than no}.  
 
-To collect the data used for the simulation, a script was written that collects one no obstacle and one glare effect log from each participant. Half of the available no obstacle logs are not collected, because there are not as many glare effect logs. Once the logs are collected, they are validated and the valid ones are saved in new files. If at least one the two logs from a participant from different game modes is invalid, both are removed. Otherwise the training data would be inconsistent in that sense that the logs from different game modes could be from different participants. From the 22 no obstacle and 21 glare effect logs collected by the script, one glare effect log was invalid. This resulted in 20 no obstacle and 20 glare effect logs being used for simulation. These 40 real logs combined with those simulated form the data used for training. 
+As stated in chapter \todo{ref} from the 22 participants there are 44 no obstacle and 21 glare effect game logs. To collect the data used for the simulation, a script was written that collects one no obstacle and one glare effect log from each participant. Half of the available no obstacle logs are not collected, because there are not as many glare effect logs. Once the logs are collected, they are validated and the valid ones are saved in new files. If at least one the two logs from a participant from different game modes is invalid, both are removed. Otherwise the training data would be inconsistent in that sense that the logs from different game modes could be from different participants. From the 22 no obstacle and 21 glare effect logs collected by the script, one glare effect log was invalid. This resulted in 20 no obstacle and 20 glare effect logs being used for simulation. These 40 real logs combined with those simulated form the data used for training. 
 \begin{lstlisting}[language=python, caption=Add caption]
 def validate_log(log):
 	'''
@@ -256,14 +257,14 @@ def validate_log(log):
 \section{Simulation of user behaviour}
 The whole process of simulating user behaviour is divided into two parts: First configuartion files are created, using a generic optimization algorithm, that contain the optimized parameter values and secondly these configuration files are used to simulate games.
 
-Multiple additions were made to the simulator. In total four classes were added. Two are for generating configuration files for the simulation of game with and without the glare effect obstacle (NoObst\_ConfigGenerator\_dataCollection2020.java and GlareEffect\_ConfigGenerator\_dataCollection2020.java) and the other two for using those files to simulate new games based on the user behaviour in the original games (NoObstWinStrategyTrainingDataGenerator\_dataCollection2020.java and GlareEffectWinStrategyTrainingDataGenerator\_dataCollection2020.java). These classes utilize the functionalities already implemented in the simulator. \todo{grob erklären wie code funktioniert} However, as the simulator only worked with similarity matrices that have 21 entries, instead of the 28 of the matrix for glare effect games, the simulator was expanded so that it can also handle matrices with 28 entries. After all changes and additions were completed, each log was used to simulate 1000 games, resulting in 40000 logs. From these logs 20000 are no obstacle games and the other 20000 are glare effect games. The 40000 logs contain 1000 no obstcle and 1000 glare effect logs for each of the 20 probants.  
+Multiple additions were made to the simulator. In total four classes were added. Two are for generating configuration files for the simulation of game with and without the glare effect obstacle (NoObst\_ConfigGenerator\_dataCollection2020.java and GlareEffect\_ConfigGenerator\_dataCollection2020.java) and the other two for using those files to simulate new games based on the user behaviour in the original games (NoObstWinStrategyTrainingDataGenerator\_dataCollection2020.java and GlareEffectWinStrategyTrainingDataGenerator\_dataCollection2020.java). These classes utilize the functionalities already implemented in the simulator. \todo{grob erklären wie code funktioniert? momentan glaube ich eher nicht} However, as the simulator only worked with similarity matrices that have 21 entries, instead of the 28 of the matrix for glare effect games, the simulator was adjusted so that it can also handle matrices with 28 entries. After all changes and additions were completed, each log was used to simulate 1000 games, resulting in 40000 logs. From these logs 20000 are no obstacle games and the other 20000 are glare effect games. The 40000 logs contain 1000 no obstcle and 1000 glare effect logs for each of the 20 probants.  
 
 
 \section{Sorting logs by quality}
 The siulated logs ware sorted by their quality, using the root mean squaed error between the perfoamces....\todo{klären genau was da gemacht wird mit mazen, ich galube rmse für alle perfomace werte in einem game und dem originalen game} as measurement. This is important because it enables to only use the best n simulated logs for training instead of using all of them or a random subset. 
 
 \section{Evaluation of simulation}
-To evaluate whether the performance in the simlated logs is similar to the one in the original logs two perofmance measurements are used: The matching pairs in each round and the penalties in each round. \todo{erklären was penalty ist} The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{fig:simIn2}. \todo{erklären was whiskers sind}
+To evaluate whether the performance in the simlated logs is similar to the one in the original logs two perofmance measurements are used: The matching pairs in each round and the penalties in each round. Penalties are given if a card is revealed whose partner has already been seen before but the pair was not picked up. The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{fig:simIn2}. \todo{erklären was whiskers sind. ich glaube einfach nur std abweichung?}
 
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
@@ -282,7 +283,9 @@ To evaluate whether the performance in the simlated logs is similar to the one i
 	\end{figure}
 \end{minipage}
 
-It can be seen that the simualtions of glare effect games are very good, meaning that the constructed similarity matrix creates good simulation results. As a result there is no need to fin a differnet approach for creating the similarity matrix. However, escpecially when looking at the matching pairs per round after the tenth round, it is noticeable that the perofmance in the simualted no obstacle games is not as good as in the original ones. This observation inspired two changes to the simulator. The first one was to introduce a new parameter for the optimization algothithm to optimize. It was called randomizing decy and is a value between 0 and 1, and adresses the problem of worser performance in the löast turn compared to real games. The boundary limit, describing..., is multiplied with the randomizing decay each round beginning with the 20th round. This reduces the ... and therefore results in better perfomance in the last 10 steps. The second change was to reduce the probability of revealing a random card (instead of puruing a win strategy) by 0.2 (randomrevealprobabilty is a random value betwen 0 and 1). This was done to increase the overall performance in the simulations by reducing the randomness. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}.
+It can be seen that the simualtions of glare effect games are very similar to the real games, meaning that the constructed similarity matrix creates good simulation results. As a result there is no need to find a different approach for creating the similarity matrix, and no changes to the simulator regarding the simulations of glare effect games are made. However, the simulation of no obstacle games is not quite as accurate. Especially the number of matching pairs after the tenth round in the simulated games is lower than in the real games. Furthermore, however less noticeable, is are the penalties in the simulated games between round 8 and 18 lower than in the real games.
+
+The fact that matching pairs per round for the no obstacle simulations are noticeably lower than in the real games inspired two changes to the simulator. The first one was to introduce a new parameter for the optimization algothithm to optimize. It was called randomizing decy and is a value between 0 and 1, and adresses the problem of worser performance in the löast turn compared to real games. The boundary limit, describing..., is multiplied with the randomizing decay each round beginning with the 20th round. This reduces the ... and therefore results in better perfomance in the last 10 steps. The second change was to reduce the probability of revealing a random card (instead of puruing a win strategy) by 0.2 (randomrevealprobabilty is a random value betwen 0 and 1). This was done to increase the overall performance in the simulations by reducing the randomness. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}. \todo{herausfinden und fertig beschreiben was die änderungen bewirken. Frage: wieso ist in ersten 10 zügen keine änderung obwohl die eine änderung eigentlich generell performance verbessert}
 
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
@@ -301,13 +304,14 @@ It can be seen that the simualtions of glare effect games are very good, meaning
 	\end{figure}
 \end{minipage} 
 
+It is noticeable that the number of matching pairs per round in the simulated no obstacle games is closer to the real games. However, this reduction of randomness also resulted in less penalties. It can be seen that the penalties per round are less close to the real games than before the changes. It seems that the improvements regarding the matching pairs overweight the deteriorations of the penalties, but if these changes actually improve the overall quality of the simulations will be seen when comparing the classification results before and after the changes. This is done in chapter \todo{ref}. Due to the relatively small changes it is likely that the classification results give no clear answer on whether the changes were beneficial for the quality of the simulations.
 
-
-\todo{fertig schreiebn}\\
-It is visble that a improvement to the simulator was made regarding the perfomrance measurements. (ich glaube lkeine statistischen tests fdafür nur wenn ich nopch zeit habe..). Although the graphs show that the simuletad data is very close to the original one, statistcal test will give futher knowledge and certainty. \\
-- t-stochastic test kram (siehe mazens nachricht) -> paired t test: gucken ob no obstacle und glare effet signifikant unterscheidlich sind -> ja sind sie \\
-- vielleicth auch gucken ob verbesserung das signifikant besser gemacht hat, aber kann eventuell auch vernachlässigt werden weil man es visuell sieht und der unterscheid nicht starks sein wird. Dennoch könnte es gut sein dass zu machen. \\
-- auch schriewben was paired ttest überhapt ist und wozu es gut ist.
+Although major tendencies of similarities and differences are visually noticable in figure \todo{ref} and figure \todo{ref}, a more accurate analysis is needed to to make reliable statements. Therefore multiple paired samples t-test are performed, comparing real no obstacle, simulated no obstacel, real glare effect and simualted glare effect games with each other. For each combination two tests are performed. One comparing the mean penalties per round and the other one comparing the mean numbers of matching pairs per round. The resulting p values can bee seen in table \todo{ref} and table \todo{ref}. These values express whether the compared lists of mean values are significantly different or not. Values higher than 0.05 indicate no significant difference, while values below 0.05 indicate a significant difference. All paired sample t-tests were performed after the changes to the simulator. It would be optimal if all comparissons between different game mode show significant difference, while comparissons between real and simulted games show no significant difference.
+%\todo{fertig schreiebn}\\
+%It is visble that a improvement to the simulator was made regarding the perfomrance measurements. (ich glaube lkeine statistischen tests fdafür nur wenn ich nopch zeit habe..). Although the graphs show that the simuletad data is very close to the original one, statistcal test will give futher knowledge and certainty. \\
+%- t-stochastic test kram (siehe mazens nachricht) -> paired t test: gucken ob no obstacle und glare effet signifikant unterscheidlich sind -> ja sind sie \\
+%- vielleicth auch gucken ob verbesserung das signifikant besser gemacht hat, aber kann eventuell auch vernachlässigt werden weil man es visuell sieht und der unterscheid nicht starks sein wird. Dennoch könnte es gut sein dass zu machen. \\
+%- auch schriewben was paired ttest überhapt ist und wozu es gut ist.
 
 \begin{table}[H]
 	\centering
@@ -337,9 +341,7 @@ It is visble that a improvement to the simulator was made regarding the perfomra
 	\end{tabular}
 \end{table}
 
-Problem: Glare simualted und real haben signifikanten unterschied. gleiches gilt für no obstacle simulated und real. 
-
-Tried to find the amount of simulated games per real games and the ranghe of steps to be included so that all values are as desired. The search was manually done by varying the number of steps and the ratio of simulated and real data. However, a configuration resuts in all values as desired could not be found. If less simulations are used, although the red emphasized undesired values change to the better the fomerly given and desired non significant difference in matching pairs between simualed and real glare effect games vansiheds and turns significant. This results at leats in their beeing oinly one undesired value instead of 3. An example of such an configuration can bee seen in ref (10 steps und sd10x) ..: 
+It can be seen that all tests comparing different game mods show significant difference in penalties per round as well as matching pairs per round, which is desired. However significant difference is not dersired in the four test comparing real and simulated games of the same mode, which are highlighted by colours. The only test showing no significant difference it the one between matching pairs per round in real and simulated glare effect games, highlighted in green. The other three tests express undesired significant differences between real games and their simulations. As the simulated games are sorted by their quality in section \todo{ref}, it is possible to only use a certain number of best simulations for the comparissons, and see whether this improves the undesired properties mentioned above. Furthermore the number of rounds in the comparisson can be changed, so that not all 20 rounds are included. The concideration of including less rounds is of importance, beacuse it can reveal which parts of the game are simulated accurately and which are not. The search for an better configuration of those two settings was manually done by varying the number of steps and the ratio between simulated and real data. The aim was to inlude as many simulatins and steps as possible while achieving significant differences only in tests where it is desired. A configuration that was better in the sense of achieving this aim consisted of using only the best 10 simulated games per game mode from each participant and only including the first 10 rounds of each game. The results can be seen in table \todo{ref} and \todo{ref}. The two performance measurements whn only using the best 10 simulated games per game mode from each participant are aditionally portrayed in figure \todo{ref} and \todo{ref}.
 
 \begin{table}[H]
 	\centering
@@ -369,37 +371,6 @@ Tried to find the amount of simulated games per real games and the ranghe of ste
 	\end{tabular}
 \end{table}
 
-A configuration in the middle could not be found as increasinf the number of simulations or the number of steps included results in opther undesired values.
-
-It should be empghazised that this does not mean that the simulation of the glaree ffect games is bad. This only means that the paired t test finds a significant difference between the simulations and the real glatre effect games. If the two lists of mean values that supposedly are significantly different are manually compared it can be seen that in reality the difference is not that significanrt.
-
-\begin{table}[H]
-	\centering
-	\caption{mean values of matching pairs for real and simulated games. sd10x. for the first 10 rounds}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		& r1   &  r2  & r3 & r4   &  r5  & r6& r7   &  r8  & r9	&	r10\\
-		\hline
-	 	real&0.2 &0.3	&  0.45  &  0.65   &0.85 &  1.2   &    1.4 & 1.6 &  1.75 &1.95	\\
-	 	\hline
-	 	simulated&0.135 &0.27 &	0.405 &0.6  & 0.79 & 1.105& 1.34 & 1.53 & 1.72 & 1.915		\\
-		\hline
-	\end{tabular}
-\end{table}
-
-
-The highest differnece is in round 6 with a differnece of 0.095 matching pairs in that round. This shows that it does not mean that all glare effect simulations used are bad regarding the matching pairs, only because the ttest finds a significant difference. 
-The fact that the paired t test concludes a significant differnece could be related to the fact that the range of the value sis verry small ranging only from .. to .. meaning a samall differnece is much according tpo the ttest..\todo{checken ob das logisch ist, also gucken was der ttest überhaupt macht und das begründen} (auschnitt beschrieben wenn ich weniger nehme.). This would also fit with the fact that using more steps and therefore having a bigger range of values for matching pairs in glare effect games, the difference is not significant (see example where all data is used, ref).
-
-altoough no clear boundary was found in which all simulations have no significant ifference to the according real games was not found it can be said that the simulator is capable to at least simulate the first 10 rounds realistic enough to not be significantly different accord to the paired t test, given only the 10 best simulations are used. This analysis also indicated, that it is not ideal to use all simulated data for training as their is a significant difference between the simulated and the real games. As it can be seen in chapter results, using a certain amount of simualtions increaeses the overall performance copmared to only using real games. This observation paired with the knowledge that using too many simulations will result in a significant difference between the simulated and the real games, leads to the theory theory that there should be a sweet spot regaridng how many simulations to use. By using differnet amount of steps and simualetd data this this sweet spot is tried to be discovered in chapter ref to rsults.  
-
-meaning the smulator is not perfect..but..
-
-
-\todo{das hier nach besser einordnen. Vielleicht stattdessen sd10x nehmen und sagen, wenn man das plottet was oben beschrieben wird dann sieht man auch dass die simulirten spiele den echten im schnitt noch ähnlciher sind. insbesondere die ersten 10 züge. Der simulator hat vor allem in späteren zügen problme mit der genauiogkeit. }
-
-However, during the training not all of the simulations are used. Only a certain number of the best simulations are used. The reason for this is that using to many simulations during training results in a strong adaption towards the simulations which in turn results in worse accuracy on real games. Therefore a sweet spot of the ratio between real and simulated games must be found. This can be seen in chapter \todo{ref zu training chapter}. Figures \ref{fig:simOp101} and \ref{fig:simOp102} show the performance differnece between real and simulated games if only the best 10 simualted games from each probant are used, resulting in a ration of 1 real game to 10 simulated games.
-
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
@@ -417,16 +388,35 @@ However, during the training not all of the simulations are used. Only a certain
 	\end{figure}
 \end{minipage} 
 
-Overall the quality of the simualtions is very high when comparing the performance in the simalted and teh origianl games. If only the best simulations are used the perfomace becomes even more similar.   
+A configuration that only results in desired outcomes of statistical tests was not found. If less simulations are used, the three formerly significant differences become insignificant, but the difference in matching pairs bewtween simulated and real glare eeffect games becomes significant. Therefore using the 10 best simulations and the first 10 steps is a good compromise. It should be empghazised that this does not mean that the simulation of the glaree ffect games is bad reagrding the number of matching pairs per round. This only means that the paired sample t-test finds a significant difference in that comparisson. If the two lists of mean values that supposedly are significantly different are manually compared it can be seen that in reality the difference is very small. These values can be seen in table \todo{ref}.
+
+\begin{table}[H]
+	\centering
+	\caption{mean values of matching pairs for real and simulated games. sd10x. for the first 10 rounds}%\label{tab1}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		& r1   &  r2  & r3 & r4   &  r5  & r6& r7   &  r8  & r9	&	r10\\
+		\hline
+	 	real&0.2 &0.3	&  0.45  &  0.65   &0.85 &  1.2   &    1.4 & 1.6 &  1.75 &1.95	\\
+	 	\hline
+	 	simulated&0.135 &0.27 &	0.405 &0.6  & 0.79 & 1.105& 1.34 & 1.53 & 1.72 & 1.915		\\
+		\hline
+	\end{tabular}
+\end{table}
+
+The highest differnece is in round 6 with a differnece of 0.095 matching pairs in that round. This shows that it does not mean that all glare effect simulations used are bad regarding the matching pairs, only because the statistical test finds a significant difference. The fact that the paired sample t-test concludes a significant differnece could be related to the fact that the range of the value sis very small ranging only from .. to .. meaning a samall differnece is much according tpo the ttest..\todo{checken ob das logisch ist, also gucken was der ttest überhaupt macht und das begründen} (auschnitt beschrieben wenn ich weniger nehme.). This would also fit with the fact that using more steps and therefore having a bigger range of values for matching pairs in glare effect games, the difference is not significant (see example where all data is used, ref).
+
+Although no clear boundary was found in which all simulations have no significant difference to the according real games was not found it can be said that the simulator is capable to simulate the first 10 rounds realistic enough to not be significantly different according to the paired sample t-test, given only the 10 best simulations are used. Having said that, this does not mean that the siumlor is not capable of realistly simulating the other rounds, but only that a state of no significant difference between simualtions and real games is achievable when using the first ten steps instead of all 20 steps. This analysis also indicates, that it is not ideal to use all simulated data for training as their is a significant difference between the simulated and the real games. As it can be seen in chapter results, using a certain amount of simualtions increaeses the overall performance copmared to only using real games. This observation paired with the knowledge that using too many simulations will result in a significant difference between the simulated and the real games, leads to the theory that there should be a sweet spot regaridng how many simulations to use. By using differnet amount of steps and simualetd data this sweet spot is tried to be discovered in chapter \todo{ref}.
+
+Nonetheless the aim of no significant difference between real and simuleted games is set very high. Overall the simulations and real games are very similar when comparing them with the two performance measurements. If only the best simulations are used the performance becomes even more similar.   
 
 \section{Feature generation}
 
 \subsection{1D CNN features}
-
 For the 1D CNN five statistcal features for each step are used: The card codes, the number of cards left, the number of never revealed cards,  the highest number of times the same card was revealed and the number of steps  since all pairs were found. They are calculated using the game logs from \todo{ref zu dem data chapter}. 
 These features can be direclty fed into the 1d CNN explained in chapter ..\todo{ref}. 
 
-The code for calculating the statistal features out of game logs was already given. A script was written that incorparates this funtionality in order to calculate the features for all logs. Additionally, after creating the neccessary directory structure the script saves the files for the splits of the raw data and the features. The reason for saving the features is that they do not have to calculated before evrey training and instead can be loaded from files. The reason for also saving the raw data even though this work does not need them anymore is, that the working group that was collaborated with also trained other models and does not directly load the features but instead caalculates them before each training. \todo{das ist komisch erklärt. vielleicht besser erlätern}
+The code for calculating the statistal features out of game logs was already given. A script was written that incorparates this funtionality in order to calculate the features for all logs. Additionally, after creating the neccessary directory structure the script saves the files for the splits of the raw data and the features. The reason for saving the features is that they do not have to calculated before evrey training and instead can be loaded from files. The reason for also saving the raw data even though this work does not need them anymore is, that the working group that was collaborated with also trained other models and does not directly load the features but instead caalculates them before each training.
 
 \subsection{2D CNN features}
 
@@ -474,7 +464,7 @@ def create_image(game, components=[True, True, True, True, True]):
 	return image
 \end{lstlisting}
 
-By using pseudo colors, the images can be displayed with colours, like in figure \ref{fig:synImOr}. These 75 $\cdot$ 40 $\cdot$ 1 (height $\cdot$ width $\cdot$ colour channels) images are direclty fed to the 2D CNN explained in chapter .. \todo{rerf}. By setting the origin of the image to the lower instead of the upper left corner a more naural looking image is created and can be seen in figure \ref{fig:synIm}. 
+By using pseudo colors, the images can be displayed with colours, like in figure \ref{fig:synImOr}. These 76 $\cdot$ 40 $\cdot$ 1 (height $\cdot$ width $\cdot$ colour channels) images are direclty fed to the 2D CNN explained in chapter .. \todo{rerf}. By setting the origin of the image to the lower instead of the upper left corner a more naural looking image is created and can be seen in figure \ref{fig:synIm}. 
 
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
@@ -493,7 +483,7 @@ By using pseudo colors, the images can be displayed with colours, like in figure
 	\end{figure}
 \end{minipage}
 
-The width of the image is 40 because that the number of steps recorded. Table \todo{ref} shows which of the areas in the image describe which statical feature. The different vertical spaces given to statistical features were purposefully chosen. The aim was to use as much space as neccessary but as little as possible. The card codes have 7 pixels of vertical space since there are 7 different colours in the game. As each round consists of two cards being turned face up and the impossibility to chose the same card twice in one turn, a card can be at maximum revealed 20 times during 20 rounds. Considering that this value is at minimum 1 because it is not possible to flip no cards, the range of 20 values is sufficient for this value. Furthermore 14 steps are at minimum needed to complete the game, since there are 14 cards. As a result this value can range from 0 to 26, meaning a vertical space of 27 is needed. In order to save space, the statistcal feature of the number of cards left was converted to the number of pairs left. By dividing by 2 the vertical space neccessary to visualize this feature is halved, without information being lost. Last but not least the number of never revealed cards can range from 0 to 13. The value 14 is not possible because two cards have to be chosen each turn. The stacking order was chosen so that the coloured pixels of different statistical features rarely touch each other. \todo{cnn anpassen und neu trainieren. Dimesnion zahlen anpassen in bachelor arbeit. Alle bilder nochmal machen. Code korrigiere in tex}
+The width of the image is 40 because that the number of steps recorded. Table \todo{ref} shows which of the areas in the image describe which statical feature. The different vertical spaces given to statistical features were purposefully chosen. The aim was to use as much space as neccessary but as little as possible. The card codes have 7 pixels of vertical space since there are 7 different colours in the game. As each round consists of two cards being turned face up and the impossibility to chose the same card twice in one turn, a card can be at maximum revealed 20 times during 20 rounds. Considering that this value is at minimum 1 because it is not possible to flip no cards, the range of 20 values is sufficient for this value. Furthermore 14 steps are at minimum needed to complete the game, since there are 14 cards. As a result this value can range from 0 to 26, meaning a vertical space of 27 is needed. In order to save space, the statistcal feature of the number of cards left was converted to the number of pairs left. By dividing by 2 the vertical space neccessary to visualize this feature is halved, without information being lost. Instead of representing the numbers left on the fiel, the value now represents the number of pairs left. Last but not least the number of never revealed cards can range from 0 to 13. The value 14 is not possible because two cards have to be chosen each turn. The stacking order was chosen so that the coloured pixels of different statistical features rarely touch each other. 
 \begin{table}[H]
 	\centering
 	\caption{add caption. Upper and lower boundaries are inclusive.}%\label{tab1}
@@ -510,7 +500,7 @@ The width of the image is 40 because that the number of steps recorded. Table \t
 	\end{tabular}
 \end{table}
 
-The decision was made in the card code section to use different colours depending on if its the first or second card of a colour. The idea is that this emphasizes important behavioural characteristics that help deciding whether the visual obstacle being the sunlight is involved or not. By comparing the the card code sections of two images from which one is created using a glare effect and the other one with a no obstacle game, these visual differneces become clear. 
+The decision was made in the card code section to use different colours depending on if its the first or second card of a colour. The idea is that this vizualizes important behavioural characteristics that help deciding whether the visual obstacle being the sunlight is involved or not. By comparing the the card code sections of two images from which one is created using a glare effect and the other one with a no obstacle game, these visual differneces become clear. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{images/cardCodesNoObst.png}
