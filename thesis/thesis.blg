@@ -1,9 +1,10 @@
-This is BibTeX, Version 0.99d (MiKTeX 2.9.7350 64-bit)
-Capacity: max_strings=4000, hash_size=5000, hash_prime=4253
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: titlepage.aux
 A level-1 auxiliary file: erklaerung.aux
 A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: notes.aux
 A level-1 auxiliary file: chapter1_introduction.aux
 A level-1 auxiliary file: memory_game.aux
 A level-1 auxiliary file: collected_data.aux
@@ -11,12 +12,14 @@ A level-1 auxiliary file: simulator.aux
 A level-1 auxiliary file: data_preperation.aux
 A level-1 auxiliary file: modells.aux
 A level-1 auxiliary file: training_and_analysis.aux
+A level-1 auxiliary file: voting.aux
 A level-1 auxiliary file: prospect.aux
+A level-1 auxiliary file: appendix.aux
 The style file: alpha.bst
 Database file #1: thesis.bib
 You've used 1 entry,
             2543 wiz_defined-function locations,
-            576 strings with 4775 characters,
+            579 strings with 4806 characters,
 and the built_in function-call counts, 384 in all, are:
 = -- 38
 > -- 8

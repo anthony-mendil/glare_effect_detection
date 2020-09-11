@@ -1,95 +1,20 @@
-
 \chapter{Introduction}
-\label{sec:intro}
+\label{introduction}
+
+
 
 - papers von denen lesen. da sind richtig gute ineleitunegn an denen man sich orierntieren kann. \\
 - 
 
+
+- relevance of topic
+- glare detectin has been done before with for example a light detector but not with behavioural data (volatile?) 
+- 
+
 Neural networks greatly benefit from lots of data. As there are only 40 \todo{richtige zahl herausfinden} overall games from participantzs available, more data can potentially improve the classification results.  The cognitive systems lab already implemented a system that takes the original game logs and simulates user behaviour in order to create new logs. As a result it is possible to create any number of games out of a single original one, from which some may be better than others. However, in order to simulate glare effect games multiple addtional steps and changes are neccesary. \\
 
-- vielleict begrüdung: referenz zu denen. weil es zietgt dass man unter verwnedung simulierter spiele eine deutliche verberseerung der ergebnisse auf den echten spelen sehen kann...\
+- gereal approach, simulation, matrix creation, often used 1d cnn, novel approach of creating synthetic images and using 2d cnns shows in many cases improved classiiction resuts. 
+Finally four voting based system one each for 5, 10, 15 and 20 rounds are implemented, combining the prediction of 400 models each to decide the final predictions.
 
-\newpage
+- vielleict begrüdung: referenz zu denen. weil es zietgt dass man unter verwnedung simulierter spiele eine deutliche verberseerung der ergebnisse auf den echten spelen sehen kann...\\
 
-- fragen an mazen:\\
-- demographic\\
-- original mapping of cards to colours\\
-- nachfragen ob static mapping so ist wie ich denke\\
-- sind whickser nur standardabweichung oder was ist das?\\
-- ist es ok dass ich meine eigene tabelle gemacht habe für delta e interpretation? im interent stand es gibt keine allgemeine..hab auch keine von cielab gefunden\\
-- ich brauche mll knecht
-
-\newpage
-
-- Einleitung: Was es für verschiedene Obstacles gibt, was schon gemacht wurde, was ich mache, wieso keine eeg daten obwohl sie da sind (sind interaktion obstacle zu erkennen und nutzung zu verbessern ist nicht da wenn man eeg maske tragen muss)\\\\
-- memory game kurz erklären\\\\
-- libraries und so die ich benutz habe? pandas keras..\\\\
-
-- \todo{vizualizing of intermediate activations reinnehmen? (ist auskommentiert!)}
-
-- \textbf{simulation}:\\
-- simulatin damit man mehr daten hat\\
-- generell simulator erklären und sinn von similarity matrix\\
-- similaity matrix erstelung und gedanken (plus anpassungen an memory game, anpassungen am simulator damit similarity matrix benutzt werden kann)\\
-- es gab invalid logs und hab code geschrieben der das überprüft damit man die rausnehmen kann. vor simulation (validLogsCollecot)\\
-- similarity matrix mapper, waren vorher nicht gmapped und mapper macht das und ersetz alte matrix durch die neue für glare effect\\
-- erklären wie ich korrektheit der matrix überprüft habe\\
-- erklären wie ich korrektheit der farbextraktion und unterschied berechnung überprüft habe (online rechner und anfangs matrix für no obst erstellt und mit alten verglichen aber gibg nicht weil struktur nicht zu erkennen war bei alter matrx von vorherigen arbeieten)\\
-- initially simulationergebnisse mit plots für qualität (plus erklärung)\\
-- sagen was noch nicht optimal und, was am simulator dafür geändert wurde (2 sachen: random decay ab 10 zügen plus eine andere sache) mit begründung und wie die ergebnisse am ende aussahen (zwischenschritte eher niht glaube ich. nur kurz erwähnen)\\
-- darüber reden wie es im realfall ist: wir benutzen nicht alle simualtionen sondern nur die besten, plots zeigen mi nur den besten (vor und nach änderung vielleicht, oder nur nach änderung (aber dann sieht man nicht das änderung sinnvoll war))\\
-- paried t-test kram um signifikante unterschiede /keine unterschiede zu zeigen für verschiedene bedingenen (siehe mazens nachricht)\\\\
-
-- \textbf{modelle}:\\
-- feature engenierring: also was die komponenten sind und so, wie sie berechnet wurden\\
-- für 1d cnn wuren die so übernommen\\
-- erklärung komponenten von 1d cnn \\
-- (villeicht auch mal nicht mit allen featires probieren, aber da hatte ich problme mit dem cnn. man müsste glaube ich die struktur ändern)\\
-- struktur 1 d cnn mit begründung\\ 
-- 2d cnn komponenten erklärunen (snythetic image erklären und zeigen wie berechnet wurde und wie es aussieht)\\
-- idee von 2d cnn für diesen fall\\
-- 2d cnn struktur erklären und begründen\\\\
-
-- \textbf{Training und analyse}:\\
-- vielleiht gucken welche falsch erkannt werden und woran es liegt, also wenn die zum beispiel echt schlect oder gut sind obwohl es nicht so sein sollte (rausnhemen und gucken wie ergebnisse sind, vielleicht nur bei bestem modell)\\
-- in gleichen tabellen ergebnise vor änderung am simulator und nach änderung betrachten und vergleichen\\
-- training auf welchem rechner/n,was von: cpu oder gpu oder beides, hardware kurz erwähnen, vpn (fernzugriff)\\
-- train test splt, leave one out k fold (+ begründung mit deep learing ..reliable results etc, randomness) \\
-- kurz erklären wieso weniger züge besser sind bei dieser hci erkennung\\
-- (vielleicht kram zu adaptive learning rate ändern und gucken wie es so ist, ansonsten begründen wieso ich das nicht brauche) \\
-- 20 steps und 40 steps für beide trainieren mit sd0x bis sd10x plus sd20x\\
-- (entweder so dass 1d cnn mit 20 steps auch konvergence erreicht oder danach nochmal anpassung von 20 steps 1d cnn damit es kovergiert)\\
-- darüber schreiben dass letzen n züge nicht mehr so gut simuliert sind (zeigen) und deshalb 40 steps nicht so viel besser ist \\
-- mit maximalen guten steps (glaube 16 züge oder so) trainieren und vergleichen\\
-- statistical tests um signifikante unterschiede /keine unterschiede zu zeigen für verschiedene modelle etc (siehe mazens nachricht)\\
-
-- in anhang alle skripte aufzählen wie markus 
-
-
-\section{Anmerkungen}
-Zitationen~\cite{Rabiner89-ATO} sind keine Wörter sondern Referenzen und stellen somit keinen Teil des Satzes dar. In anderen Worten: Der Satz muss auch noch funktionieren, wenn die Zitation einfach entfernt wird.
-
-
-Index-Einträge~\index{example intro}
-
-Wir haben Tabellen~\ref{tab:example} und Bilder~\ref{fig:example}.
-
-\begin{table}
- \centering
- \begin{tabular}{llll}
-  \toprule
-  dies & ist & eine & Tabelle \\
-  mit  &     & zwei & Zeilen \\
-  \bottomrule
- \end{tabular}
- \caption[Tabelle mit kurzer Unterschrift]{Tabelle mit einer langen Unterschrift}
- \label{tab:example}
-\end{table}
-
-
-
-\begin{figure}
- \includegraphics[width=5cm]{logos/titlepage.eps}
- \caption[Bild kurz]{Bildunterschrift}
- \label{fig:example}
-\end{figure}
