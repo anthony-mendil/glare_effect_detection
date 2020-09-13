@@ -1,4 +1,13 @@
 \chapter{Voting based system}
+
+- Notiz für sastem: split1 hat ersten log nicht also index 0 und so weiter, split2 hat log mit index 1 nicht ... (split zahl - 1 ist index). Also wenn ich die 20 labels für ein log erzeugen will daf man nur die 20 repititions aus dem split benutzen von split mit zahl = log index + 1
+
+\todo{stochastic modelle literatur sagt voting! bei selbe daten können verscheidene ergebnisse rauskommen. wissenschaftlicher begründen wieso ich voting based mache. more reliable and realistic etc. literatuir sagt das ist gut bei stochastischen modellen etc}
+
+\todo{wenn ich trainiere nochmal für die 4 sytsme einfach nochmal acc aufschreibenb}
+
+\todo{kurz erwähnen dass es offline test ist: - real world sacenario 20 modelle ohne splits, offline test leace one out, online test future work (alle data 20 repitions)}
+
 The accuracies shown in section \todo{ref} are not representitive of how the models would be used in resal life scenarios. Since the accuracy is the mean accuracy of 20 repititions for each split there is no single modeel that produces that accuracy. For using the modles in real life scenarios a voting based system is deployed. It consists of multple models classifying the input data and then voting for the final classification. The accurcy of such a system more accurately describes the real world performance. Therefore a voting based sytsem is created each for the best cnns and ratios of simulated to real data for each number of step. As mentioned in section \todo{ref} the 1d cnn creates the best accuracy for 5 and 10 rounds while the 2d cnn creates the best accuracies for 15 and 20 rounds. Hence, in total 4 voting based systems are created, one for each of the 4 number of rounds. Each of the 20 repititions of a split is tested as before, only with the two real games (one no obstacle and one glare) that were not included in the training. However instead of direclty calculating the accuracy of each repitition of that split, the output labels are saved for all repitions and used to perform a voting for the final label. Meaning that if for instance 15 out of 20 repitions classyfied the game as a glare effect game, while the other 5 classified it as a no obstacle game, the final classification will be that of a glare effect game. This is done for the two test games. Using the final labels created by the voting, the accuracy is calculated. In the example above, if assumed that both final labels would be correct, the accuracy of that split would be 100\%. This procedure is repeated for each of the 20 splits and the accuracies of are averaged. 
 
 .. table of accuracies of the 4 voting based systems ...

@@ -48,7 +48,8 @@ plt.figure(figsize=(13,13))
 ax = sns.heatmap(
     df,
     #cmap='OrRd',
-    cmap='RdBu_r',
+    #cmap='RdBu_r',
+    cmap='binary',
     square = True,
     linewidth=1, 
     cbar_kws={'label': 'downscaled delta e score'},
