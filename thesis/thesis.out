@@ -19,21 +19,24 @@
 \BOOKMARK [1][-]{section.6.3}{Removal of invalid logs}{chapter.6}% 19
 \BOOKMARK [1][-]{section.6.4}{Simulation of user behaviour}{chapter.6}% 20
 \BOOKMARK [1][-]{section.6.5}{Sorting logs by quality}{chapter.6}% 21
-\BOOKMARK [1][-]{section.6.6}{Evaluation of simulation}{chapter.6}% 22
-\BOOKMARK [1][-]{section.6.7}{Feature generation}{chapter.6}% 23
-\BOOKMARK [2][-]{subsection.6.7.1}{1D CNN features}{section.6.7}% 24
-\BOOKMARK [2][-]{subsection.6.7.2}{2D CNN features}{section.6.7}% 25
-\BOOKMARK [0][-]{chapter.7}{Convolutional neural networks}{}% 26
-\BOOKMARK [0][-]{chapter.8}{Classification}{}% 27
-\BOOKMARK [1][-]{section.8.1}{Hardware resources}{chapter.8}% 28
-\BOOKMARK [1][-]{section.8.2}{Models}{chapter.8}% 29
-\BOOKMARK [2][-]{subsection.8.2.1}{1D CNN}{section.8.2}% 30
-\BOOKMARK [2][-]{subsection.8.2.2}{2D CNN}{section.8.2}% 31
-\BOOKMARK [1][-]{section.8.3}{Training setup}{chapter.8}% 32
-\BOOKMARK [1][-]{section.8.4}{Training results and evaluation}{chapter.8}% 33
-\BOOKMARK [0][-]{chapter.9}{Voting based system}{}% 34
-\BOOKMARK [0][-]{chapter.10}{Conclusion}{}% 35
-\BOOKMARK [1][-]{section.10.1}{Prospect}{chapter.10}% 36
-\BOOKMARK [0][-]{chapter.11}{Appendix}{}% 37
-\BOOKMARK [0][-]{section*.38}{Bibliography}{}% 38
-\BOOKMARK [0][-]{section*.40}{Index}{}% 39
+\BOOKMARK [1][-]{section.6.6}{Evaluation of simulation new}{chapter.6}% 22
+\BOOKMARK [2][-]{subsection.6.6.1}{Results before and after changing the simulator}{section.6.6}% 23
+\BOOKMARK [2][-]{subsection.6.6.2}{Search for a better subset of the data}{section.6.6}% 24
+\BOOKMARK [2][-]{subsection.6.6.3}{Conclusion of the evaluation}{section.6.6}% 25
+\BOOKMARK [1][-]{section.6.7}{Feature generation}{chapter.6}% 26
+\BOOKMARK [2][-]{subsection.6.7.1}{1D CNN features}{section.6.7}% 27
+\BOOKMARK [2][-]{subsection.6.7.2}{2D CNN features}{section.6.7}% 28
+\BOOKMARK [0][-]{chapter.7}{Convolutional neural networks}{}% 29
+\BOOKMARK [0][-]{chapter.8}{Classification}{}% 30
+\BOOKMARK [1][-]{section.8.1}{Hardware resources}{chapter.8}% 31
+\BOOKMARK [1][-]{section.8.2}{Models}{chapter.8}% 32
+\BOOKMARK [2][-]{subsection.8.2.1}{1D CNN}{section.8.2}% 33
+\BOOKMARK [2][-]{subsection.8.2.2}{2D CNN}{section.8.2}% 34
+\BOOKMARK [1][-]{section.8.3}{Training setup}{chapter.8}% 35
+\BOOKMARK [1][-]{section.8.4}{Training results and evaluation}{chapter.8}% 36
+\BOOKMARK [0][-]{chapter.9}{Voting based system}{}% 37
+\BOOKMARK [0][-]{chapter.10}{Conclusion}{}% 38
+\BOOKMARK [1][-]{section.10.1}{Prospect}{chapter.10}% 39
+\BOOKMARK [0][-]{chapter.11}{Appendix}{}% 40
+\BOOKMARK [0][-]{section*.41}{Bibliography}{}% 41
+\BOOKMARK [0][-]{section*.43}{Index}{}% 42
