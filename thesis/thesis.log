@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  15 SEP 2020 14:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  15 SEP 2020 14:04
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1241,24 +1241,6 @@ LaTeX Warning: Label `fig:glareEffect' multiply defined.
 
 LaTeX Warning: Label `fig:glareEffect' multiply defined.
 
-
-LaTeX Warning: Label `fig:simIn1' multiply defined.
-
-
-LaTeX Warning: Label `fig:simIn2' multiply defined.
-
-
-LaTeX Warning: Label `fig:simOp1' multiply defined.
-
-
-LaTeX Warning: Label `fig:simOp2' multiply defined.
-
-
-LaTeX Warning: Label `fig:simOp101' multiply defined.
-
-
-LaTeX Warning: Label `fig:simOp102' multiply defined.
-
 ) (modells.aux) (training_and_analysis.aux) (voting.aux) (prospect.aux)
 (appendix.aux))
 \openout1 = `thesis.aux'.
@@ -1454,7 +1436,7 @@ Package epstopdf Info: Source file: <logos/titlepage.eps>
 ed-to.pdf logos/titlepage.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
-<logos/titlepage-eps-converted-to.pdf, id=190, 598.235pt x 846.16125pt>
+<logos/titlepage-eps-converted-to.pdf, id=174, 598.235pt x 846.16125pt>
 File: logos/titlepage-eps-converted-to.pdf Graphic file (type pdf)
 <use logos/titlepage-eps-converted-to.pdf>
 Package pdftex.def Info: logos/titlepage-eps-converted-to.pdf  used on input li
@@ -1526,23 +1508,19 @@ lepage-eps-converted-to.pdf>]) [2
 ] (thesis.lot
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14])
+ [13])
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
 
-[15] [16
-
-
-]
+[14]
 \openout2 = `notes.aux'.
 
  (notes.tex
 Chapter 1.
 [1
+
+
 
 
 
@@ -1641,12 +1619,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 ]
 Chapter 3.
 [7]
-<images/noObstTurned.png, id=521, 1285.80376pt x 812.28468pt>
+<images/noObstTurned.png, id=429, 1285.80376pt x 812.28468pt>
 File: images/noObstTurned.png Graphic file (type png)
 <use images/noObstTurned.png>
 Package pdftex.def Info: images/noObstTurned.png  used on input line 14.
 (pdftex.def)             Requested size: 398.33858pt x 251.64452pt.
-<images/glareEffect.png, id=523, 1283.54532pt x 812.28468pt>
+<images/glareEffect.png, id=431, 1283.54532pt x 812.28468pt>
 File: images/glareEffect.png Graphic file (type png)
 <use images/glareEffect.png>
 Package pdftex.def Info: images/glareEffect.png  used on input line 21.
@@ -1694,7 +1672,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
  ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [16]
-<images/noObstTurnedNotes.png, id=569, 1285.80376pt x 812.28468pt>
+<images/noObstTurnedNotes.png, id=476, 1285.80376pt x 812.28468pt>
 File: images/noObstTurnedNotes.png Graphic file (type png)
 <use images/noObstTurnedNotes.png>
 Package pdftex.def Info: images/noObstTurnedNotes.png  used on input line 62.
@@ -1711,13 +1689,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
-<images/simMatrixGrey.png, id=621, 770.88pt x 604.50844pt>
+<images/simMatrixGrey.png, id=529, 770.88pt x 604.50844pt>
 File: images/simMatrixGrey.png Graphic file (type png)
 <use images/simMatrixGrey.png>
 Package pdftex.def Info: images/simMatrixGrey.png  used on input line 222.
 (pdftex.def)             Requested size: 426.79134pt x 334.67598pt.
 [21] [22 <./images/simMatrixGrey.png>] [23] [24]
-<images/simulationInitial1.png, id=656, 462.528pt x 345.4506pt>
+<images/simulationInitial1.png, id=564, 462.528pt x 345.4506pt>
 File: images/simulationInitial1.png Graphic file (type png)
 <use images/simulationInitial1.png>
 Package pdftex.def Info: images/simulationInitial1.png  used on input line 302.
@@ -1733,7 +1711,7 @@ Overfull \hbox (64.01935pt too wide) in paragraph at lines 303--303
 [] [] 
  []
 
-<images/simulationInitial2.png, id=657, 462.528pt x 345.4506pt>
+<images/simulationInitial2.png, id=565, 462.528pt x 345.4506pt>
 File: images/simulationInitial2.png Graphic file (type png)
 <use images/simulationInitial2.png>
 Package pdftex.def Info: images/simulationInitial2.png  used on input line 310.
@@ -1758,7 +1736,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
 [25 <./images/simulationInitial1.png> <./images/simulationInitial2.png>]
-<images/simulationOptimized1.png, id=666, 462.528pt x 345.4506pt>
+<images/simulationOptimized1.png, id=574, 462.528pt x 345.4506pt>
 File: images/simulationOptimized1.png Graphic file (type png)
 <use images/simulationOptimized1.png>
 Package pdftex.def Info: images/simulationOptimized1.png  used on input line 32
@@ -1774,7 +1752,7 @@ Overfull \hbox (64.01935pt too wide) in paragraph at lines 324--324
 [] [] 
  []
 
-<images/simulationOptimized2.png, id=667, 462.528pt x 345.4506pt>
+<images/simulationOptimized2.png, id=575, 462.528pt x 345.4506pt>
 File: images/simulationOptimized2.png Graphic file (type png)
 <use images/simulationOptimized2.png>
 Package pdftex.def Info: images/simulationOptimized2.png  used on input line 33
@@ -1803,7 +1781,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29]
-<images/sd10x/Figure_3.png, id=688, 462.528pt x 345.4506pt>
+<images/sd10x/Figure_3.png, id=596, 462.528pt x 345.4506pt>
 File: images/sd10x/Figure_3.png Graphic file (type png)
 <use images/sd10x/Figure_3.png>
 Package pdftex.def Info: images/sd10x/Figure_3.png  used on input line 574.
@@ -1818,7 +1796,7 @@ Overfull \hbox (64.01935pt too wide) in paragraph at lines 575--575
 [] [] 
  []
 
-<images/sd10x/Figure_4.png, id=689, 462.528pt x 345.4506pt>
+<images/sd10x/Figure_4.png, id=597, 462.528pt x 345.4506pt>
 File: images/sd10x/Figure_4.png Graphic file (type png)
 <use images/sd10x/Figure_4.png>
 Package pdftex.def Info: images/sd10x/Figure_4.png  used on input line 582.
@@ -1838,54 +1816,170 @@ Overfull \hbox (2.61107pt too wide) in paragraph at lines 571--587
 []$[]$ $[]$ 
  []
 
-[30 <./images/sd10x/Figure_3.png> <./images/sd10x/Figure_4.png>] [31] [32]
-<images/synImageOriginal.png, id=722, 316.18124pt x 559.33969pt>
-File: images/synImageOriginal.png Graphic file (type png)
-<use images/synImageOriginal.png>
-Package pdftex.def Info: images/synImageOriginal.png  used on input line 688.
-(pdftex.def)             Requested size: 199.16928pt x 352.34319pt.
+[30 <./images/sd10x/Figure_3.png> <./images/sd10x/Figure_4.png>] [31]
+File: images/simulationInitial1.png Graphic file (type png)
+<use images/simulationInitial1.png>
+Package pdftex.def Info: images/simulationInitial1.png  used on input line 636.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 689--689
-[] [] 
- []
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-<images/synImage.png, id=723, 317.68687pt x 548.80031pt>
-File: images/synImage.png Graphic file (type png)
-<use images/synImage.png>
-Package pdftex.def Info: images/synImage.png  used on input line 696.
-(pdftex.def)             Requested size: 199.16928pt x 344.07121pt.
-
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 697--697
-[] [] 
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 636--637
+ [][] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 685--701
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 637--637
+[] [] 
+ []
+
+File: images/simulationInitial2.png Graphic file (type png)
+<use images/simulationInitial2.png>
+Package pdftex.def Info: images/simulationInitial2.png  used on input line 644.
+
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 644--645
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 645--645
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 633--649
 []$[]$ $[]$ 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (0.24718pt too wide) in paragraph at lines 650--650
+[]\T1/lmr/bx/n/14.4 Changes to the sim-u-la-tor an the re-sult-ing per-for-manc
+e
+ []
 
- [33]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[32]
+File: images/simulationOptimized1.png Graphic file (type png)
+<use images/simulationOptimized1.png>
+Package pdftex.def Info: images/simulationOptimized1.png  used on input line 65
+8.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
- [34 <./images/synImageOriginal.png> <./images/synImage.png>]
-<images/cardCodesNoObst.png, id=759, 1111.15125pt x 228.855pt>
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 658--659
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 659--659
+[] [] 
+ []
+
+File: images/simulationOptimized2.png Graphic file (type png)
+<use images/simulationOptimized2.png>
+Package pdftex.def Info: images/simulationOptimized2.png  used on input line 66
+6.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 666--667
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 667--667
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 655--671
+[]$[]$ $[]$ 
+ []
+
+[33]
+Overfull \hbox (1.5649pt too wide) in paragraph at lines 680--686
+[][]\T1/lmr/bx/n/12 TODO: das muss ich ir-gendiwe an-ders ein-bauen, besser und
+ ver-ständlicher
+ []
+
+[34]
+File: images/sd10x/Figure_3.png Graphic file (type png)
+<use images/sd10x/Figure_3.png>
+Package pdftex.def Info: images/sd10x/Figure_3.png  used on input line 831.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 831--832
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 832--832
+[] [] 
+ []
+
+File: images/sd10x/Figure_4.png Graphic file (type png)
+<use images/sd10x/Figure_4.png>
+Package pdftex.def Info: images/sd10x/Figure_4.png  used on input line 839.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 839--840
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 840--840
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 828--844
+[]$[]$ $[]$ 
+ []
+
+
+Underfull \vbox (badness 4660) has occurred while \output is active []
+
+ [35]
+[36] [37] [38] [39]
+<images/synImageOriginal.png, id=683, 316.18124pt x 559.33969pt>
+File: images/synImageOriginal.png Graphic file (type png)
+<use images/synImageOriginal.png>
+Package pdftex.def Info: images/synImageOriginal.png  used on input line 1011.
+(pdftex.def)             Requested size: 199.16928pt x 352.34319pt.
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 1012--1012
+[] [] 
+ []
+
+<images/synImage.png, id=684, 317.68687pt x 548.80031pt>
+File: images/synImage.png Graphic file (type png)
+<use images/synImage.png>
+Package pdftex.def Info: images/synImage.png  used on input line 1019.
+(pdftex.def)             Requested size: 199.16928pt x 344.07121pt.
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 1020--1020
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 1008--1024
+[]$[]$ $[]$ 
+ []
+
+[40 <./images/synImageOriginal.png> <./images/synImage.png>] [41]
+<images/cardCodesNoObst.png, id=713, 1111.15125pt x 228.855pt>
 File: images/cardCodesNoObst.png Graphic file (type png)
 <use images/cardCodesNoObst.png>
-Package pdftex.def Info: images/cardCodesNoObst.png  used on input line 734.
+Package pdftex.def Info: images/cardCodesNoObst.png  used on input line 1057.
 (pdftex.def)             Requested size: 426.79134pt x 87.90166pt.
- [35]
-<images/cardCodesGlare.png, id=765, 927.465pt x 195.73125pt>
+<images/cardCodesGlare.png, id=714, 927.465pt x 195.73125pt>
 File: images/cardCodesGlare.png Graphic file (type png)
 <use images/cardCodesGlare.png>
-Package pdftex.def Info: images/cardCodesGlare.png  used on input line 740.
+Package pdftex.def Info: images/cardCodesGlare.png  used on input line 1063.
 (pdftex.def)             Requested size: 426.79134pt x 90.07031pt.
- [36 <./images/cardCodesNoObst.png> <./images/cardCodesGlare.png>]) [37]
+ [42 <./images/cardCodesNoObst.png> <./images/cardCodesGlare.png>]) [43]
 \openout2 = `modells.aux'.
 
- (modells.tex [38
+ (modells.tex
+[44
 
 
 
@@ -1906,70 +2000,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--18
 
  []
 
-[39]) [40]
+[45]) [46]
 \openout2 = `training_and_analysis.aux'.
 
  (training_and_analysis.tex
 Chapter 8.
-[41
+[47
 
 
 
 ]
-<images/1dCnnStructureChanged.png, id=797, 1632.0975pt x 880.28876pt>
+<images/1dCnnStructureChanged.png, id=749, 1632.0975pt x 880.28876pt>
 File: images/1dCnnStructureChanged.png Graphic file (type png)
 <use images/1dCnnStructureChanged.png>
 Package pdftex.def Info: images/1dCnnStructureChanged.png  used on input line 4
 6.
 (pdftex.def)             Requested size: 426.79134pt x 230.18602pt.
- [42 <./images/1dCnnStructureChanged.png>]
-<images/2dCnnStructure_new.png, id=805, 1244.39906pt x 603.75563pt>
+ [48 <./images/1dCnnStructureChanged.png>]
+<images/2dCnnStructure_new.png, id=757, 1244.39906pt x 603.75563pt>
 File: images/2dCnnStructure_new.png Graphic file (type png)
 <use images/2dCnnStructure_new.png>
 Package pdftex.def Info: images/2dCnnStructure_new.png  used on input line 58.
 (pdftex.def)             Requested size: 426.79134pt x 207.07065pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 59.
- [43 <./images/2dCnnStructure_new.png>] [44] [45] [46] [47])
+ [49 <./images/2dCnnStructure_new.png>] [50] [51] [52] [53])
 Underfull \hbox (badness 10000) in paragraph at lines 418--135
 
  []
 
-[48]
+[54]
 \openout2 = `voting.aux'.
 
  (voting.tex
 Chapter 9.
-[49
+[55
 
 
 
-]) [50]
+]) [56]
 \openout2 = `prospect.aux'.
 
  (prospect.tex
 Chapter 10.
-) [51
+) [57
 
 
 
 ]
 \openout2 = `appendix.aux'.
 
- (appendix.tex [52
+ (appendix.tex [58
 
 
 
 ]
 Chapter 11.
-) [53] [54
+) [59] [60
 
 
-] (thesis.bbl) [55
+] (thesis.bbl) [61
 
-] [56
+] [62
 
-] (thesis.ind) [57
+] (thesis.ind) [63
 
 
 ]
@@ -1989,95 +2083,38 @@ Package rerunfilecheck Warning: File `thesis.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: D26696FEC31429797CFA61EDBF53D175;2968
-(rerunfilecheck)             After:  2261716F3D691A22F5F1D6AAAF8F9BB2;2631.
+(rerunfilecheck)             Before: 2261716F3D691A22F5F1D6AAAF8F9BB2;2631
+(rerunfilecheck)             After:  D26696FEC31429797CFA61EDBF53D175;2968.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
- 29745 strings out of 480769
- 565485 string characters out of 2894272
- 1274510 words of memory out of 3000000
- 44570 multiletter control sequences out of 15000+200000
- 628905 words of font info for 157 fonts, out of 3000000 for 9000
+ 29747 strings out of 480769
+ 565465 string characters out of 2894272
+ 1279055 words of memory out of 3000000
+ 44566 multiletter control sequences out of 15000+200000
+ 628988 words of font info for 158 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,15n,100p,2280b,1978s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{table.caption.55} has been referenced but does no
+pdfTeX warning (dest): name{table.caption.37} has been referenced but does no
 t exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{table.caption.54} has been referenced but does not 
+pdfTeX warning (dest): name{table.caption.30} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{table.caption.53} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.52} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.49} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.48} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.45} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.42} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.41} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.35} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{table.caption.32} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.51} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.35} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.50} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.32} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.47} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.46} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.44} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.43} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.37} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.30} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.58} has been referenced but does not exist
+pdfTeX warning (dest): name{section*.43} has been referenced but does not exist
 , replaced by a fixed one
 
-pdfTeX warning (dest): name{section*.56} has been referenced but does not exist
+pdfTeX warning (dest): name{section*.41} has been referenced but does not exist
 , replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.8.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.8.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.6.8} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.7.3} has been referenced but does not 
-exist, replaced by a fixed one
 
 {C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}
 {C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc
@@ -2102,9 +2139,9 @@ Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Users/dylin/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dylin/AppDat
 a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/dylin
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (73 pages, 1669435 bytes).
+Output written on thesis.pdf (77 pages, 1678566 bytes).
 PDF statistics:
- 993 PDF objects out of 1000 (max. 8388607)
- 259 named destinations out of 1000 (max. 500000)
- 32722 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 948 PDF objects out of 1000 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
+ 32690 words of extra memory for PDF output out of 35830 (max. 10000000)
 
