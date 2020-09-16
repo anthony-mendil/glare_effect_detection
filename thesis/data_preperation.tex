@@ -45,7 +45,7 @@ The aim is to create a similarity matrix that descibes the differneces between c
 	\centering
 	\includegraphics[width=14cm]{images/glareEffect.png}
 	\caption[Bild kurz]{Screenshot of the game field with simulated sunlight. Sunbeams are especially visible on the right hand side. All cards are turned face up.}
-	\label{fig:glareEffect}
+	\label{fig:glareEffect2}
 \end{figure}
 \todo{vielleicht bild raus nehmen weil es oben schon einmal ist und referenzien nach oben}
 
@@ -211,7 +211,9 @@ To assure that the 300 games actually include most of the combinations and there
 	&= 21 \cdot 182 + 7 \cdot 91\\
 	&= 4459. 
 \end{align*}
-The 300 games used for creating this matrix include 99.57\% of all possible combinations. Furthermore is was verified that certain combinations are not included significantly more often than others and in that sense have stronger influence on the result. \todo{code ergänzen und nachprüfen wie oft die combinationen vorkamen..histogramm?}. 
+The 300 games used for creating this matrix include 99.57\% of all possible combinations. The final test of the created similarity matrix, however, will be to actually use it to simulation glare effect games and see whether they are simulated accurately. This is done in section \todo{ref}. 
+
+%Furthermore is was verified that certain combinations are not included significantly more often than others and in that sense have stronger influence on the result. \todo{code ergänzen und nachprüfen wie oft die combinationen vorkamen..histogramm?}. 
 
 \subsection{Final Matrix}
 \label{final_matrix}
@@ -226,7 +228,8 @@ In figure \ref{fig:simMatrix} the final similarity matrix can be seen, dsiplayin
 The delta E score is less a definitive answer, and instead a helpflu metric to apply to a specific use case. Although there are tendencies regarding the interpretation of colour differences, there is no definitive table that descriebes what the different scores mean. One reason for this is that the perceived colour differnece may vary in different situations and circumstances. For instance, is the colour difference perceived differently depending on how long the colours are exposed to the human eye, as humans can over time adapt to the colours. This means that in a setup where all colours are always visible the colour difference will likely be perceived weaker than in the case of the memory game, as the cards are only flipped momentarily, leaving little time for adaptation. Table ref was created through own observation and in that sense is highly influenced by the strength of the sense of sight from the creator of this work. Therefore it should not be taken definitive but only serve the purpose of claryfying how the values in the matrix can roughly be interpreted.
 \begin{table}[H]
 	\centering
-	\caption{add caption.}%\label{tab1}
+	\caption{add caption.}
+	\label{tab:percept}
 	\begin{tabular}{|c|c|c|}
 		\hline
 		Delta E & Downscaled values & Perception of difference \\
@@ -290,10 +293,12 @@ rmse = \sqrt{(\frac{1}{n})\sum_{i=1}^{n}(y_{i} - x_{i})^{2}}
 Averaging the two rmse's for each simulated game and sorting the logs accordingly,   makes it possible to only use acertain number of the best simulated logs during the training instead of using all of them or a random subset. 
 %For each simulated log the rmse is determined by calculating the distance between the penalties in simulated and real games as well as between the matching pairs in real and simulated games for each round, . per round \todo{klären genau was da gemacht wird mit mazen, ich galube rmse für alle perfomace werte in einem game und dem originalen game} as measurement. This is important because it enables to only use the best n simulated logs for training instead of using all of them or a random subset. 
 
-\section{Evaluation of simulation new}
+\section{Evaluation of simulation}
+\label{evaluation_of_simulation}
 To evaluate whether the performance in the simlated logs is similar to the one in the original logs two perofmance measurements are used: The matching pairs in each round and the penalties in each round. Penalties are given if a card is revealed whose partner has already been seen before but the pair was not picked up. Some initial observations inspired changes to the simulator. The quality of the simulations regarding the performnce measurements is analysed before and after the changes to the simulator, by comparing the performance between simulations and real games. Furthermore a subset of the simulated data was discovered that mostly shows no significant differnece between the perfromnce of the simulated and the real games.
 
 \subsection{Results before and after changing the simulator}
+\label{results_before_and_after_changing_the_simulator}
 The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{fig:simIn2}. The horizontal line extending from the curves, also calles whiskers, describe the standard deviation of the corresponding value. 
 
 \begin{minipage}{0.5\textwidth}
@@ -315,7 +320,9 @@ The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{f
 
 At first glance it can be seen that the simualtions of glare effect games are very similar to the real games, meaning that the constructed similarity matrix creates good simulation results. As a result there is no need to find a different approach for creating the similarity matrix, and no changes to the simulator regarding the simulations of glare effect games are made. However, the simulation of no obstacle games is not quite as accurate. Especially the number of matching pairs after the tenth round in the simulated games is lower than in the real games. Additionally the standard deviation indicated by the whiskers regarding the no obstacle games is noticeably higher in simulated than in the real games. This is not very string in the first turns but gets worse in later turns. Furthermore, however less noticeable, is are the penalties in the simulated games between round 8 and 18 lower than in the real games.
 
-The fact that matching pairs per round for the no obstacle simulations are noticeably lower than in the real games inspired two changes to the simulator. The first one was to introduce a new parameter for the optimization algothithm to optimize. It was called randomizing decy and is a value between 0 and 1, and adresses the problem of worser performance in the löast turn compared to real games. The \textsc{boundary limit}, describing \todo{herausfinden was das ist und erklärung hinzufügen und zuende schrieben}, is multiplied with the randomizing decay each round beginning with the 10th round. This reduces the .. and therefore results in better perfomance in the last 10 steps. The second change was to reduce the probability of revealing a random card (instead of puruing a win strategy) by 0.2 (randomrevealprobabilty is a random value betwen 0 and 1). This was done to increase the overall performance in the simulations by reducing the randomness. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}. 
+The fact that matching pairs per round for the no obstacle simulations are noticeably lower than in the real games inspired some changes to the simulator. As there are less cards on the field in later rounds and the experience of the user may have improved over the course of the game, in reality the degree of randomness is likely decreased in later turns. To simulate this a new parameter was introduced that is optimized by the generic optimization algorithm. It is called \textsc{randomizing decay} and is a value between 0 and 1. After the 10th round this value is used to reduce the amount of randomness in the choice of the next card and by that increases the performance in those turns. Another value that also influences the random behaviour in the simulalations was optimized so that there is overall less randomness. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}. 
+
+%and adresses the problem of worser performance in the löast turn compared to real games. The \textsc{boundary limit}, describing \todo{herausfinden was das ist und erklärung hinzufügen und zuende schrieben}, is multiplied with the randomizing decay each round beginning with the 10th round. This reduces the .. and therefore results in better perfomance in the last 10 steps. The second change was to reduce the probability of revealing a random card (instead of puruing a win strategy) by 0.2 (randomrevealprobabilty is a random value betwen 0 and 1). This was done to increase the overall performance in the simulations by reducing the randomness. 
 
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
@@ -334,7 +341,7 @@ The fact that matching pairs per round for the no obstacle simulations are notic
 	\end{figure}
 \end{minipage} 
 
-As the changes only affected the simulation of no obstacle games, the following statements only refer to those games. It is noticeable that the number of matching pairs per round in the simulated games is closer to the real games. Additionally the standard deviation of the simulated games regarding the matching pairs per round gets noticeably smaller after the 10th round and by that is closer to that in the real games. However, the reduction of randomness also resulted in slightly less penalties after round 10 and by that the differnece in penalties between the simulations and the real games becomes bigger. On the contracry, the standard deviation of the penalties in the last 6 rounds of the simulated no obstacle games got slightliy closer to that in the real games. It seems that the improvements regarding the matching pairs overweight the deteriorations of the penalties, but if these changes actually improve the overall quality of the simulations can not be said without further analysis. 
+As the changes only affected the simulation of no obstacle games, the following statements only refer to those games. It is noticeable that the number of matching pairs per round in the simulated games is closer to the real games. Additionally the standard deviation of the simulated games regarding the matching pairs per round gets noticeably smaller after the 10th round and by that is closer to that in the real games. However, the reduction of randomness also resulted in slightly less penalties after round 10 and by that the differnece in penalties between the simulations and the real games becomes bigger. On the contracry, the standard deviation of the penalties in the last 6 rounds of the simulated no obstacle games got slightliy closer to that in the real games. Reasons for the negative impact on the penalties are unknown. It seems that the improvements regarding the matching pairs overweight the deteriorations of the penalties, but if these changes actually improve the overall quality of the simulations can not be said without further analysis. 
 %will be seen when comparing the classification results before and after the changes. This is done in chapter \todo{ref}. \todo{eigentlich ist das nicht wirklich indiz, vielelict besser: wir untersuchen vorher und nacher mit statistischen test und eventuell auch indication wenn sich die test accuracies unterscheiden später}
 
 However, another interesting observation can be made. The standard deviations of the two perfromance measurements in the last rounds of the simulated no obstacle games is notably higher than in the real games. This might be caused by the fact that there are in generel less or even no cards on the field if all pairs were discovered. This theory also fits to the fact that this is not an issue in the glare effect games, as there are more cards on the field in later turns. This concludes, that there is a possibility that the simulator struggles to accurately simulate rounds once there only a few or no cards remain on the field. 
@@ -350,6 +357,7 @@ Although major tendencies of similarities and differences are visually noticable
 \begin{table}[H]
 	\centering
 	\caption{Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:1000_mp_before}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			
@@ -366,12 +374,10 @@ Although major tendencies of similarities and differences are visually noticable
 	}
 \end{table}
 
-
-
-
 \begin{table}[H]
 	\centering
 	\caption{Before change to simulator. p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:1000_p_before}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -390,6 +396,7 @@ Although major tendencies of similarities and differences are visually noticable
 \begin{table}[H]
 	\centering
 	\caption{p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:1000_mp_after}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -411,6 +418,7 @@ Although major tendencies of similarities and differences are visually noticable
 \begin{table}[H]
 	\centering
 	\caption{p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:1000_p_after}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -457,16 +465,18 @@ s\_g 	&$7.2e-06$&			&		  			\\
 \end{table}
 \end{comment}
 
-It can be seen that all tests comparing different game mods show significant difference in penalties per round as well as matching pairs per round, which is desired. However significant difference is not dersired in the four test comparing real and simulated games of the same mode, which are highlighted by colours. Before the changes to the simulator, the matching pairs per round in simulated and real no obstacle games show significant differneces. The same goes for the penalties per round in simulated and real glare effect games. As the changes to the simulator only affected the simulation of no obstacle games the significant difference between the matchiung pairs in simulated and real glare effect games prevales. Despite the fact that the matching pairs per round in simulated no obstacle games seem closer to the real games in table figure \todo{ref}, the statistical tests still show a significant differnece between them. Additionally, the small deterioration of the penalties that were caused by the changes to the simulator and can be observed in figure \todo{ref}, led to a significant difference in the penalties per round between simulated and real no obstacle games. Before the changes to the simulator this difference was not significant.  
+It can be seen that all tests comparing different game mods show significant difference in penalties per round as well as matching pairs per round, which is desired. However significant difference is not dersired in the four test comparing real and simulated games of the same mode, which are highlighted by colours. Before the changes to the simulator, the matching pairs per round in simulated and real no obstacle games show significant differneces. The same goes for the penalties per round in simulated and real glare effect games. As the changes to the simulator only affected the simulation of no obstacle games the significant difference between the matchiung pairs in simulated and real glare effect games prevales. Despite the fact that the matching pairs per round in simulated no obstacle games seem closer to the real games in figure \todo{ref}, the statistical tests still show a significant differnece between them. Additionally, the small deterioration of the penalties that were caused by the changes to the simulator and can be observed in figure \todo{ref}, led to a significant difference in the penalties per round between simulated and real no obstacle games. Before the changes to the simulator this difference was not significant.  
 
-In total, before the changes to the simulator 2 out of 4 tests comparing games of the same mode, result in undesired significant differences. After the changes to the simulator this increased to 3 out of 4 tests. However, this does not lead to the conclusion that the changes to the simulator decreased the quality of the simulations, as the matching pairs per round in simulated no obstacle game got noticeably more accurate. 
+In total, before the changes to the simulator 2 out of 4 tests comparing games of the same mode, result in undesired significant differences. After the changes to the simulator this increased to 3 out of 4 tests. However, this does not lead to the conclusion that the changes to the simulator decreased the quality of the simulations, as the matching pairs per round shown in figure \todo{ref} in simulated no obstacle game got noticeably more accurate. 
 
-\subsection{Search for a better subset of the data}
+\subsection{Search for a subset of the data}
+\label{search_for_a_subset}
 In the statictical tests in section \todo{ref}, all all 1000 simulations per participant are used. As some simulations are better than others, using a subset only containing a number of best simulations could lead to further findings. Since the simulated games are sorted by their quality in section \todo{ref}, it is possible to only use a certain number of best simulations for the comparissons, and see whether this improves the undesired properties mentioned above. Furthermore the number of rounds in the comparisson can be changed, so that not all 20 rounds are included. The concideration of including less rounds is of importance, beacuse it can reveal which parts of the game are simulated accurately and which are not. The search for an configuration of those two settings was manually done by varying the number of steps and the ratio between simulated and real data. A configuration of those two settings that produces interesting results consisted of using only the best 10 simulated games per game mode from each participant and only including the first 10 rounds of each game. The results before the changes to the simulator can be seen in table \todo{ref} and \todo{ref}, while the results afterwards are shown in table \todo{ref} and \todo{ref}. The two performance measurements after the changes to the simulator when only using the best 10 simulated games per game mode from each participant are aditionally portrayed in figure \todo{ref} and \todo{ref}.
 
 \begin{table}[H]
 	\centering
 	\caption{Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:10_mp_before}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -485,6 +495,7 @@ In the statictical tests in section \todo{ref}, all all 1000 simulations per par
 \begin{table}[H]
 	\centering
 	\caption{Before change to simulator. p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:10_p_before}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -503,6 +514,7 @@ In the statictical tests in section \todo{ref}, all all 1000 simulations per par
 \begin{table}[H]
 	\centering
 	\caption{p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:10_mp_after}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -521,6 +533,7 @@ In the statictical tests in section \todo{ref}, all all 1000 simulations per par
 \begin{table}[H]
 	\centering
 	\caption{p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
+	\label{tab:10_p_after}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
 			\hline
@@ -585,7 +598,7 @@ s\_g 	&$0.0017$&		   &		  			\\
 	\end{figure}
 \end{minipage} 
 
-Interestingly, including all the simulated data in the tests, results in less undesired result before the changes to the simulator compared to afterwards, but using only a small subset of the data results in the opposite. Before the changes to the simulator, when including only the best 10 games and the first 10 rounds in the tests, only one of the 4 tests comparing real and simulated games of the same mode show no significant difference. This is shown in table \todo{ref} and \todo{ref}. Contrary to that, after the changes to the simulator, the test on the chosen subset result in 3 out of those 4 tests show no significant difference. 
+Interestingly, including all the simulated data in the tests, results in less undesired result before the changes to the simulator compared to afterwards, but using only a small subset of the data results in the opposite. Before the changes to the simulator, when including only the best 10 games and the first 10 rounds in the tests, only one of the 4 tests comparing real and simulated games of the same mode show no significant difference. This is shown in table \todo{ref} and \todo{ref}. Contrary to that, after the changes to the simulator, the test on the chosen subset result in 3 out of those 4 tests show no significant difference, shown in table \todo{ref} and \todo{ref}. 
 
 As all but one test produce desired results after the changes to the simulator, additional searches for a configuration that only shows desired resultrs were done.
 However, such a configuration was not found. If less simulations are used, the three formerly significant differences become insignificant, but the difference in matching pairs bewtween simulated and real glare eeffect games becomes significant. Therefore using the 10 best simulations and the first 10 steps is a good compromise. It should be empghazised that this does not mean that the simulation of the glaree ffect games is bad reagrding the number of matching pairs per round. This only means that the paired sample t-test finds a significant difference in that comparisson. If the two lists of mean values that supposedly are significantly different are manually compared it can be seen that in reality the difference is very small. These values can be seen in table \todo{ref}.
@@ -593,6 +606,7 @@ However, such a configuration was not found. If less simulations are used, the t
 \begin{table}[H]
 	\centering
 	\caption{mean values of matching pairs for real and simulated games. sd10x. for the first 10 rounds}%\label{tab1}
+	\label{tab:small_difference}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
 		\hline
 		& r1   &  r2  & r3 & r4   &  r5  & r6& r7   &  r8  & r9	&	r10\\
@@ -608,344 +622,16 @@ The highest mean differnece is in round 6 with a differnece of 0.095 matching pa
 %The fact that the paired sample t-test concludes a significant differnece could be related to the fact that the range of the value sis very small ranging only from .. to .. meaning a samall differnece is much according tpo the ttest..\todo{checken ob das logisch ist, also gucken was der ttest überhaupt macht und das begründen} (auschnitt beschrieben wenn ich weniger nehme.). This would also fit with the fact that using more steps and therefore having a bigger range of values for matching pairs in glare effect games, the difference is not significant (see example where all data is used, ref).
 
 \subsection{Conclusion of the evaluation}
+\label{conclusion_of_the_evaluation}
 Although no configuration in which all simulations have no significant difference to the according real games regarding the paired sample t-test was found, it can be said that the simulator is capable to simulate the first 10 rounds very accurately, given only the 10 best simulations are used. The statistical tests and the previous consciderations regarding the too large standard deviation in later turns indicate, that the simulator performs less good in later turns. Having said that, these are only indications that would need further tuning and testing of the simulator to be confirmed. Doing so might lead to improving the simulator. 
 
 Regarding the examination whether the changes to the simulator improved the overall quality of the simulations, no clear statement can be made. When all simualted data is used, the paired sample t-tests indicate, that the quality of the simulations may have gotten worse, while when using only the best 10 simulations and only the first 10 rounds, the tests indicate the opposite. 
 
 This analysis also indicates, that it might not ideal to use all simulated data for training as that could results in a significant difference between the simulated and the real games. Using to many simulations compared to real games could decrease the performance of the classifeirs on real data if they adapt too much to simulated games. Furthermore is should be analysed how using differnet amounts of turns in the classification impacts the classification results. In section \todo{ref} different configurations regarding ratios of simulated to real games and the number of rounds includes, are tested. 
 
-Nonetheless it should be emphasized that the aim of no significant difference between real and simuleted games is set very high. Overall the simulations and real games are very similar when comparing them with the two performance measurements. If only the best simulations are used the performance becomes even more similar.  
+Nonetheless it should be emphasized that the aim of no significant difference between real and simuleted games is set very high. As shown in table \todo{ref}, the difference can be very little and the paired sample t-test still concludes a significant difference. Overall the simulations and real games are very similar when comparing them with the two performance measurements. If only the best simulations are used the performance becomes even more similar.  
 
 There are many options in choosing a subset of the data or adjusting the various parameters of the simulator, which could encance the quality of the simulations or reveal further aspects of the simulator that could be improved. In that sense, this analysis does not claim to be complete.
-
-\begin{comment}
-	Inhalt...
-\end{comment}
-
-\section{Evaluation of simulation}
-\label{evaluation_of_simulation}
-
-
-
-\subsection{Initial results}
-To evaluate whether the performance in the simlated logs is similar to the one in the original logs two perofmance measurements are used: The matching pairs in each round and the penalties in each round. Penalties are given if a card is revealed whose partner has already been seen before but the pair was not picked up. The Initial simulation results can be seen in figure \ref{fig:simIn1} and \ref{fig:simIn2}. The horizontal line extending from the curves, also calles whiskers, describe the standard deviation of the corresponding value. 
-
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/simulationInitial1.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simIn1}
-	\end{figure}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/simulationInitial2.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simIn2}
-	\end{figure}
-\end{minipage}
-
-\subsection{Changes to the simulator an the resulting performance of the simulations}
-At first glance it can be seen that the simualtions of glare effect games are very similar to the real games, meaning that the constructed similarity matrix creates good simulation results. As a result there is no need to find a different approach for creating the similarity matrix, and no changes to the simulator regarding the simulations of glare effect games are made. However, the simulation of no obstacle games is not quite as accurate. Especially the number of matching pairs after the tenth round in the simulated games is lower than in the real games. Additionally the standard deviation indicated by the whiskers regarding the no obstacle games is noticeably higher in simulated than in the real games. This is not very string in the first turns but gets worse in later turns. Furthermore, however less noticeable, is are the penalties in the simulated games between round 8 and 18 lower than in the real games.
-
-The fact that matching pairs per round for the no obstacle simulations are noticeably lower than in the real games inspired two changes to the simulator. The first one was to introduce a new parameter for the optimization algothithm to optimize. It was called randomizing decy and is a value between 0 and 1, and adresses the problem of worser performance in the löast turn compared to real games. The \textsc{boundary limit}, describing \todo{herausfinden was das ist und erklärung hinzufügen und zuende schrieben}, is multiplied with the randomizing decay each round beginning with the 10th round. This reduces the .. and therefore results in better perfomance in the last 10 steps. The second change was to reduce the probability of revealing a random card (instead of puruing a win strategy) by 0.2 (randomrevealprobabilty is a random value betwen 0 and 1). This was done to increase the overall performance in the simulations by reducing the randomness. The results of these changes can be seen in figure \ref{fig:simOp1} and \ref{fig:simOp2}. 
-
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/simulationOptimized1.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simOp1}
-	\end{figure}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/simulationOptimized2.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simOp2}
-	\end{figure}
-\end{minipage} 
-
-As the changes only affected the simulation of no obstacle games, the following statements only refer to those games. It is noticeable that the number of matching pairs per round in the simulated games is closer to the real games. Additionally the standard deviation of the simulated games regarding the matching pairs per round gets noticeably smaller after the 10th round and by that is closer to that in the real games. However, the reduction of randomness also resulted in slightly less penalties after round 10 and by that the differnece in penalties between the simulations and the real games becomes bigger. On the contracry, the standard deviation of the penalties in the last 6 rounds of the simulated no obstacle games got slightliy closer to that in the real games. It seems that the improvements regarding the matching pairs overweight the deteriorations of the penalties, but if these changes actually improve the overall quality of the simulations will be seen when comparing the classification results before and after the changes. This is done in chapter \todo{ref}. \todo{eigentlich ist das nicht wirklich indiz, vielelict besser: wir untersuchen vorher und nacher mit statistischen test und eventuell auch indication wenn sich die test accuracies unterscheiden später}
-
-The higher standard deviations of the two perfromance measurements in the last rounds of the simulated no obstacle games might be caused by the fact that there are in generel less or even no cards on the field if all pairs were discovered. This theory also fits to the fact that this is not an issue in the glare effect games, as there are more cards on the field in later turns. This concludes, that there is a possibility that the simulator struggles to accurately simulate rounds once there only a few or no cards remain on the field. 
-
-\subsection{Statistical Tests}
-Although major tendencies of similarities and differences are visually noticable in figure \todo{ref} and figure \todo{ref}, a more accurate analysis is needed to to make reliable statements. Therefore multiple paired samples t-test are performed, comparing real no obstacle, simulated no obstacel, real glare effect and simualted glare effect games with each other. For each combination two tests are performed. One comparing the mean penalties per round and the other one comparing the mean numbers of matching pairs per round. The resulting p values can bee seen in table \todo{ref} and table \todo{ref}. These values express whether the compared lists of mean values are significantly different or not. Values higher than 0.05 indicate no significant difference, while values below 0.05 indicate a significant difference. It would be optimal if all comparissons between different game mode show significant difference, while comparissons between real and simulted games of the same type show no significant difference. All paired sample t-tests were performed before and after the changes to the simulator. This was done to see whether the changes to the simulator improved or deteriorated the results of the test or if they had any impact on them at all. The results ... \todo{beschrieben ob es einen unterschied gibt, und tabellen für vor änderung einbauen}
-
-
-\todo{das muss ich irgendiwe anders einbauen, besser und verständlicher struktur der subsections}
-%\todo{fertig schreiebn}\\
-%It is visble that a improvement to the simulator was made regarding the perfomrance measurements. (ich glaube lkeine statistischen tests fdafür nur wenn ich nopch zeit habe..). Although the graphs show that the simuletad data is very close to the original one, statistcal test will give futher knowledge and certainty. \\
-%- t-stochastic test kram (siehe mazens nachricht) -> paired t test: gucken ob no obstacle und glare effet signifikant unterscheidlich sind -> ja sind sie \\
-%- vielleicth auch gucken ob verbesserung das signifikant besser gemacht hat, aber kann eventuell auch vernachlässigt werden weil man es visuell sieht und der unterscheid nicht starks sein wird. Dennoch könnte es gut sein dass zu machen. \\
-%- auch schriewben was paired ttest überhapt ist und wozu es gut ist.
-
-
-\begin{table}[H]
-	\centering
-	\caption{p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-				&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $5.7e-06$  && $-6.2181$ &&& \textcolor{mygreen}{$0.0688$} && $-1.9292$ &&& $9.3e-07$ && $7.1041$ &\\
-			r\_n &&  \textcolor{red}{$1.8e-10$}  && $12.2469$ &&& $2.7e-06$ && $6.5765$ &&&     &&     &\\
-			s\_g &&  $1.7e-05$  && $5.7107$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-
-
-
-\begin{table}[H]
-	\centering
-	\caption{p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $4.8e-06$  && $-6.2967$ &&& \textcolor{red}{$1.1e-06$} && $-7.0423$ &&& $3.2e-06 $ && $6.4897 $ &\\
-			r\_n &&  \textcolor{red}{$0.0195$}  && $-2.5519 $ &&& $5.6e-06$ && $6.2238$ &&&     &&     &\\
-			s\_g &&  $7.2e-06$  && $6.1045$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{comment}
-	\begin{table}[H]
-	\centering
-	\caption{p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|}
-	\hline
-	& s\_n  	&  s\_g  & r\_n 		\\
-	\hline
-	r\_g 	&$p=5.7e-06$ &\textcolor{mygreen}{$0.0688$}&$9.3e-07$			\\
-	r\_n 	&\textcolor{red}{$1.8e-10$}&$2.7e-06$&		  			\\
-	s\_g 	&$1.7e-05$&			&		  			\\
-	\hline
-	\end{tabular}
-	\end{table}
-	
-	\begin{table}[H]
-	\centering
-	\caption{p values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|}
-	\hline
-	& s\_n  	&  s\_g  & r\_n 		\\
-	\hline
-	r\_g 	&$4.8e-06$&\textcolor{red}{$1.1e-06$}&$3.2e-06$			\\
-	r\_n 	&\textcolor{red}{$0.0195$}&$5.6e-06$&		  			\\
-	s\_g 	&$7.2e-06$&			&		  			\\
-	\hline
-	\end{tabular}
-	\end{table}
-\end{comment}
-
-It can be seen that all tests comparing different game mods show significant difference in penalties per round as well as matching pairs per round, which is desired. However significant difference is not dersired in the four test comparing real and simulated games of the same mode, which are highlighted by colours. The only test showing no significant difference it the one between matching pairs per round in real and simulated glare effect games, highlighted in green. The other three tests express undesired significant differences between real games and their simulations. As the simulated games are sorted by their quality in section \todo{ref}, it is possible to only use a certain number of best simulations for the comparissons, and see whether this improves the undesired properties mentioned above. Furthermore the number of rounds in the comparisson can be changed, so that not all 20 rounds are included. The concideration of including less rounds is of importance, beacuse it can reveal which parts of the game are simulated accurately and which are not. The search for an better configuration of those two settings was manually done by varying the number of steps and the ratio between simulated and real data. The aim was to inlude as many simulatins and steps as possible while achieving significant differences only in tests where it is desired. A configuration that was better in the sense of achieving this aim consisted of using only the best 10 simulated games per game mode from each participant and only including the first 10 rounds of each game. The results can be seen in table \todo{ref} and \todo{ref}. The two performance measurements whn only using the best 10 simulated games per game mode from each participant are aditionally portrayed in figure \todo{ref} and \todo{ref}.
-
-\begin{table}[H]
-	\centering
-	\caption{p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $0.0064$  && $-3.5291$ &&& \textcolor{red}{$1.5e-05$} && $8.3768$ &&& $ 0.0058$ && $3.5985$ &\\
-			r\_n &&  \textcolor{mygreen}{$0.0882$}  && $1.9120$ &&& $0.0039$ && $3.8430$ &&&     &&     &\\
-			s\_g &&  $0.0044$  && $3.7734$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\caption{p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $0.0020$  && $-4.3052$ &&& \textcolor{mygreen}{$0.0564$} && $2.1881$ &&& $0.0014$ && $4.5577$ &\\
-			r\_n &&  \textcolor{mygreen}{$0.9005$}  && $-0.1286$ &&& $0.0012$ && $4.6771$ &&&     &&     &\\
-			s\_g &&  $0.0017$  && $4.4200$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-\begin{comment}
-	\begin{table}[H]
-	\centering
-	\caption{p values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|}
-	\hline
-	& s\_n    &  s\_g  & r\_n 		\\
-	\hline
-	r\_g 	&$0.0064$&\textcolor{red}{$1.5e-05$}&$0.0058$			\\
-	r\_n 	&\textcolor{mygreen}{$0.0882$}&$0.0039$&		  			\\
-	s\_g 	&$0.0044$&		  &		  			\\
-	\hline
-	\end{tabular}
-	\end{table}
-	
-	\begin{table}[H]
-	\centering
-	\caption{p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|}
-	\hline
-	& s\_n    &  s\_g  & r\_n 		\\
-	\hline
-	r\_g 	&$0.0020$&\textcolor{mygreen}{$0.0564$}&$0.0014$			\\
-	r\_n 	&\textcolor{mygreen}{$0.9005$} &$0.0012$ &		  			\\
-	s\_g 	&$0.0017$&		   &		  			\\
-	\hline
-	\end{tabular}
-	\end{table}
-\end{comment}
-
-
-
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/sd10x/Figure_3.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simOp101}
-	\end{figure}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{images/sd10x/Figure_4.png}
-		\caption[Bild kurz]{Add caption}
-		\label{fig:simOp102}
-	\end{figure}
-\end{minipage} 
-
-A configuration that only results in desired outcomes of statistical tests was not found. If less simulations are used, the three formerly significant differences become insignificant, but the difference in matching pairs bewtween simulated and real glare eeffect games becomes significant. Therefore using the 10 best simulations and the first 10 steps is a good compromise. It should be empghazised that this does not mean that the simulation of the glaree ffect games is bad reagrding the number of matching pairs per round. This only means that the paired sample t-test finds a significant difference in that comparisson. If the two lists of mean values that supposedly are significantly different are manually compared it can be seen that in reality the difference is very small. These values can be seen in table \todo{ref}.
-
-\begin{table}[H]
-	\centering
-	\caption{mean values of matching pairs for real and simulated games. sd10x. for the first 10 rounds}%\label{tab1}
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-		\hline
-		& r1   &  r2  & r3 & r4   &  r5  & r6& r7   &  r8  & r9	&	r10\\
-		\hline
-	 	real&0.2 &0.3	&  0.45  &  0.65   &0.85 &  1.2   &    1.4 & 1.6 &  1.75 &1.95	\\
-	 	\hline
-	 	simulated&0.135 &0.27 &	0.405 &0.6  & 0.79 & 1.105& 1.34 & 1.53 & 1.72 & 1.915		\\
-		\hline
-	\end{tabular}
-\end{table}
-
-The highest mean differnece is in round 6 with a differnece of 0.095 matching pairs in that round. This shows that it does not mean that all glare effect simulations used are bad regarding the matching pairs, only because the statistical test finds a significant difference. 
-%The fact that the paired sample t-test concludes a significant differnece could be related to the fact that the range of the value sis very small ranging only from .. to .. meaning a samall differnece is much according tpo the ttest..\todo{checken ob das logisch ist, also gucken was der ttest überhaupt macht und das begründen} (auschnitt beschrieben wenn ich weniger nehme.). This would also fit with the fact that using more steps and therefore having a bigger range of values for matching pairs in glare effect games, the difference is not significant (see example where all data is used, ref).
-
-Although no clear boundary was found in which all simulations have no significant difference to the according real games regarding the paired sample t-test was found, it can be said that the simulator is capable to simulate the first 10 rounds realistic enough to not be significantly different, given only the 10 best simulations are used.  The statistical tests and the previous consciderations regarding the too large standard deviation in later turns indicate, that the simulator performs less good in later turns. Having said that, these are only indications that would need further tuning and testing of the simulator to be confirmed. Doing so might lead to improving the simulator. 
-
-This analysis also indicates, that it might not ideal to use all simulated data for training as that could results in a significant difference between the simulated and the real games. Using to many simulations compared to real games could decrease the performance of the classifeirs on real data if they adapt too much to simulated games. Furthermore is should be analysed how using differnet amounts of turns in the classification impacts the classification results. In section \todo{ref} different configurations regarding ratios of simulated to real games and the number of rounds includes, are tested. 
-
-Nonetheless it should be emphasized that the aim of no significant difference between real and simuleted games is set very high. Overall the simulations and real games are very similar when comparing them with the two performance measurements. If only the best simulations are used the performance becomes even more similar.   
-
-\newpage
-
-\begin{table}[H]
-	\centering
-	\caption{Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $1.7e-06$  && $ -6.8179$ &&&  \textcolor{mygreen}{$0.0688$} && $-1.9292$ &&& $9.3e-07$ && $7.1041$ &\\
-			r\_n &&   \textcolor{red}{$5.7e-07$}  && $7.3571$ &&& $2.7e-06$ && $6.5765$ &&&     &&     &\\
-			s\_g &&  $5.3e-06$  && $6.2480$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-
-
-
-\begin{table}[H]
-	\centering
-	\caption{Before change to simulator. p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $3.6e-06$  && $-6.4297$ &&&  \textcolor{red}{$1.1e-06$} && $-7.0423$ &&& $3.2e-06$ && $6.4897$ &\\
-			r\_n &&   \textcolor{mygreen}{$0.2011$}  && $-1.3242$ &&& $5.6e-06$ && $6.2238$ &&&     &&     &\\
-			s\_g &&  $5.4e-06$  && $6.2394$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-
-\begin{table}[H]
-	\centering
-	\caption{Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $0.0080$  && $-3.3879$ &&& \textcolor{red}{$6.3e-05$} && $7.0000$ &&&  $0.0058$ && $3.5985$ &\\
-			r\_n &&   \textcolor{red}{$0.0047$}  && $3.7292$ &&& $0.0038$ && $3.8679$ &&&     &&     &\\
-			s\_g &&  $0.0052$  && $3.6587$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\caption{Before change to simulator. p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n}
-	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c||ccccc|ccccc|ccccc|}
-			\hline
-			&&& s\_n &&&&& s\_g &&&&& r\_n  && \\
-			\hline
-			&& p && t &&& p && t &&& p && t & \\
-			\hline\hline
-			r\_g &&  $0.0024$  && $-4.1873$ &&& \textcolor{red}{$0.0491$} && $2.2730$ &&&  $0.0014$ && $4.5577$ &\\
-			r\_n &&  \textcolor{mygreen}{$0.9426$}  && $0.0740$ &&& $0.0012$ && $4.6629$ &&&     &&     &\\
-			s\_g &&  $0.0020$  && $4.2932$ &&&  	 &&     &&&     &&     &\\
-			\hline
-		\end{tabular}
-	}
-\end{table}
-
-\newpage
 
 \section{Feature generation}
 \label{feature_generation}
@@ -1026,6 +712,7 @@ The width of the image is 40 because that the number of steps recorded. Table \t
 \begin{table}[H]
 	\centering
 	\caption{add caption. Upper and lower boundaries are inclusive.}%\label{tab1}
+	\label{tab:card_areas}
 	\begin{tabular}{|l|l|l|}
 		\hline
 		Statistical feature & Range & Vertical space in the image \\
@@ -1056,7 +743,7 @@ The main reason that motivated the use of different colours derived from the fir
 	\centering
 	\includegraphics[width=15cm]{images/cardCodesNoObst.png}
 	\caption[Bild kurz]{Add caption}
-	\label{fig:ccNo}
+	\label{fig:ccN}
 \end{figure}
 \begin{figure}[H]
 	\centering

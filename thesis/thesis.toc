@@ -23,28 +23,24 @@
 \contentsline {section}{\numberline {6.3}Removal of invalid logs}{23}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Simulation of user behaviour}{24}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Sorting logs by quality}{24}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Evaluation of simulation new}{25}{section.6.6}%
+\contentsline {section}{\numberline {6.6}Evaluation of simulation}{25}{section.6.6}%
 \contentsline {subsection}{\numberline {6.6.1}Results before and after changing the simulator}{25}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}Search for a better subset of the data}{28}{subsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.6.2}Search for a subset of the data}{28}{subsection.6.6.2}%
 \contentsline {subsection}{\numberline {6.6.3}Conclusion of the evaluation}{31}{subsection.6.6.3}%
-\contentsline {section}{\numberline {6.7}Evaluation of simulation}{32}{section.6.7}%
-\contentsline {subsection}{\numberline {6.7.1}Initial results}{32}{subsection.6.7.1}%
-\contentsline {subsection}{\numberline {6.7.2}Changes to the simulator an the resulting performance of the simulations}{32}{subsection.6.7.2}%
-\contentsline {subsection}{\numberline {6.7.3}Statistical Tests}{34}{subsection.6.7.3}%
-\contentsline {section}{\numberline {6.8}Feature generation}{39}{section.6.8}%
-\contentsline {subsection}{\numberline {6.8.1}1D CNN features}{39}{subsection.6.8.1}%
-\contentsline {subsection}{\numberline {6.8.2}2D CNN features}{39}{subsection.6.8.2}%
-\contentsline {chapter}{\numberline {7}Convolutional neural networks}{45}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Classification}{47}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Hardware resources}{47}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Models}{47}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}1D CNN}{48}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}2D CNN}{49}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Training setup}{50}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Training results and evaluation}{51}{section.8.4}%
-\contentsline {chapter}{\numberline {9}Voting based system}{55}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Conclusion}{57}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Prospect}{57}{section.10.1}%
-\contentsline {chapter}{\numberline {11}Appendix}{59}{chapter.11}%
-\contentsline {chapter}{Bibliography}{61}{section*.56}%
-\contentsline {chapter}{Index}{63}{section*.58}%
+\contentsline {section}{\numberline {6.7}Feature generation}{32}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}1D CNN features}{32}{subsection.6.7.1}%
+\contentsline {subsection}{\numberline {6.7.2}2D CNN features}{32}{subsection.6.7.2}%
+\contentsline {chapter}{\numberline {7}Convolutional neural networks}{39}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Classification}{41}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Hardware resources}{41}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Models}{41}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}1D CNN}{42}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}2D CNN}{43}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Training setup}{44}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Training results and evaluation}{45}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Voting based system}{51}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Conclusion}{55}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Prospect}{55}{section.10.1}%
+\contentsline {chapter}{\numberline {11}Appendix}{57}{chapter.11}%
+\contentsline {chapter}{Bibliography}{59}{section*.49}%
+\contentsline {chapter}{Index}{61}{section*.51}%

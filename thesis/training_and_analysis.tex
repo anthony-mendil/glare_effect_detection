@@ -1,7 +1,7 @@
 \chapter{Classification}
 
 \section{Hardware resources}
-Multiple servers, provided by the cognitive system lab, were used. One of the provided servers is optimized for storing large amounts of data and was therefore used to store the histories and the results from the models during training while the other servers focus on computing power and were used to execute that training and evaluation. Mainly three servers were used for the training. Two have the hardware specification shown in table \todo{ref} and the other one those shown in table \todo{ref}. 
+Multiple servers, provided by the cognitive system lab, were used. One of the provided servers is optimized for storing large amounts of data and was therefore used to store the histories and the results from the models during training while the other servers focus on computing power and were used to execute that training and evaluation. Mainly two servers were used for the training. One has the hardware specification shown in table \todo{ref} and the other one those shown in table \todo{ref}. 
 
 
 \begin{table}[H]
@@ -169,10 +169,9 @@ child {node {...}
 
    
 \section{Training results and evaluation}
+The training results for the various configurations can be seen in table \todo{ref}, \todo{ref}, \todo{ref} and \todo{ref}. The first two tables contain the results before the changes to the simulator and the last to the results afterwards. The analyiss will only focus on the accuracy, but the loss is also listed for the sake of completeness. The best accuracies for each number of turns in each table are highlighted in green. If multiple ratios of real to simulated game for a certain number of turns produce the same accuracy only the one with the smallest amount of simulations is highlighted. The accuracies in the tables are those from the best epochs. In most of the cases the models start overfitting after a certain epoch resulting in a deterioration of the accuracy after reaching a local maximum. All models except the 1d cnns for 5 rounds and ratios of sd0x and sd1x reach such a local maximum in accuracy before the training is stopped. 
 
-The best accuracies for each number of turns in each table are highlighted in green. If multiple ratios of real to simulated game for a certain number of turns produce the same accuracy only the one with the smallest amount of simulations is highlighted. 
-
-- The analyiss will only focus on the accuracy, but the loss is also listed for the sake of completeness. 
+It should be claryfied that the chosen configurations of models to be trained make no claim to completeness. The models are not individually optimized and therefore do not neccessarily produce the best results possible. As the amount of collected real data with 20 recordings for each label is very limited, it was decided not to split the data into training, test and validation data, and instead only into training and test data. In order to optimize the models such a validation set would be neccessary. It could be used to tune the hyper parameters of the model. The reason why this is done on a separate validation set is, that the models can then be tested on the test data which was not part of the process of selecting the best hyper parameters. If the models were optimized using the test data, the results would not be representitive of the performance of the models on unknown data. 
 
 \begin{table}[H]
 	\centering
@@ -200,8 +199,6 @@ The best accuracies for each number of turns in each table are highlighted in gr
 		\end{tabular}
 	}
 \end{table}
-
-- interessant: 1d cnn 5 rounds gucken ob sich der trend weiter führt und sogar noch besser wird
 
 \begin{table}[H]
 	\centering
@@ -269,16 +266,16 @@ The best accuracies for each number of turns in each table are highlighted in gr
 			\hline\hline
 			sd0x &&     63.62\% && 0.6461 &&& 73.87\% && 0.4929 &&& 80.0\% && 0.4557 &&& 78.5\% && 0.476 &\\
 			sd1x &&     67.88\% && 0.6446 &&& 76.12\% && 0.531 &&& 79.5\% && 0.4911 &&& 79.75\% && 0.4874 &\\
-			sd2x &&     69.75\% && 0.6463 &&& \textcolor{mygreen}{79.62\%} && 0.5243 &&& 80.87\% && 0.4905 &&& 80.0\% && 0.4859 &\\
+			sd2x &&     69.75\% && 0.6463 &&& \textcolor{mygreen}{79.62\%} && 0.5243 &&& 80.87\% && 0.4905 &&& \textcolor{mygreen}{80.0\%} && 0.4859 &\\
 			sd3x &&     69.5\% && 0.6449 &&& 77.5\% && 0.5507 &&& \textcolor{mygreen}{82.25\%} && 0.4994 &&& 80.0\% && 0.4865 &\\
 			sd4x &&     69.0\% && 0.6347 &&& 72.75\% && 0.5684 &&& 80.12\% && 0.5156 &&& 80.0\% && 0.495 &\\
-			sd5x &&     69.38\% && 0.6342 &&& 73.62\% && 0.5634 &&& 80.5\% && 0.5122 &&& 0 && 0 &\\
-			sd6x &&     \textcolor{mygreen}{71.0\%} && 0.6326 &&& 74.5\% && 0.5586 &&& 80.62\% && 0.5038 &&& 0 && 0 &\\
-			sd7x &&     70.0\% && 0.6328 &&& 71.62\% && 0.555 &&& 80.0\% && 0.5061 &&& 0 && 0 &\\
-			sd8x &&     69.88\% && 0.6287 &&& 72.75\% && 0.5567 &&& 80.25\% && 0.5057 &&& 0 && 0 &\\
-			sd9x &&     69.12\% && 0.6238 &&& 72.38\% && 0.5532 &&& 79.5\% && 0.5067 &&& 0 && 0 &\\
-			sd10x &&    69.5\% && 0.6203 &&& 73.25\% && 0.5536 &&& 79.5\% && 0.5062 &&& 0 && 0 &\\
-			sd20x &&    69.88\% && 0.5935 &&& 73.0\% && 0.5494 &&& 79.62\% && 0.5005 &&& 0 && 0 &\\
+			sd5x &&     69.38\% && 0.6342 &&& 73.62\% && 0.5634 &&& 80.5\% && 0.5122 &&& 80.0\% && 0.4917 &\\
+			sd6x &&     \textcolor{mygreen}{71.0\%} && 0.6326 &&& 74.5\% && 0.5586 &&& 80.62\% && 0.5038 &&& 79.5\% && 0.4874 &\\
+			sd7x &&     70.0\% && 0.6328 &&& 71.62\% && 0.555 &&& 80.0\% && 0.5061 &&& 79.5\% && 0.4874 &\\
+			sd8x &&     69.88\% && 0.6287 &&& 72.75\% && 0.5567 &&& 80.25\% && 0.5057 &&& 79.62\% && 0.4874 &\\
+			sd9x &&     69.12\% && 0.6238 &&& 72.38\% && 0.5532 &&& 79.5\% && 0.5067 &&& 78.88\% && 0.4887 &\\
+			sd10x &&    69.5\% && 0.6203 &&& 73.25\% && 0.5536 &&& 79.5\% && 0.5062 &&& 79.0\% && 0.4904 &\\
+			sd20x &&    69.88\% && 0.5935 &&& 73.0\% && 0.5494 &&& 79.62\% && 0.5005 &&& 0\% && 0 &\\
 			\hline
 		\end{tabular}
 	}
@@ -384,40 +381,112 @@ The best accuracies for each number of turns in each table are highlighted in gr
 
 \end{comment}
 
-- \todo{ich könnte noch plots machen die verlauf entwerder mit festen sd und unterschiedlicher anzahl rounds oder mit feaster rounds und unterscheidlichem sd zeigen. Nicht muss aber wäre cool, falls es sinnvoll ist. Muss ich nochmal gucken. Vielleicht an einem beispeiel um zu zeigen dass es von vorteil sein kann simulierte daten mit zu benutzen in unserem fall}
+%- \todo{ich könnte noch plots machen die verlauf entwerder mit festen sd und unterschiedlicher anzahl rounds oder mit feaster rounds und unterscheidlichem sd zeigen. Nicht muss aber wäre cool, falls es sinnvoll ist. Muss ich nochmal gucken. Vielleicht an einem beispeiel um zu zeigen dass es von vorteil sein kann simulierte daten mit zu benutzen in unserem fall}
 
-- It should be claryfied that the chosen modells to be trained dont .. keinen anspruch haben auf vollständigkeit und den idealen punkt zu finden... as traing models takes time and the time of this work was limited. The chosen trainng cykles however to a good job at finding very good resuls. They might not be the best results possible but they show the cpability of cnns in classyfying this visual interacton obstacle. 
+%- interessant: 1d cnn 5 rounds gucken ob sich der trend weiter führt und sogar noch besser wird
 
+The results show that using a certain number of simulated games for the training can often significantly improve the classificatin resuls over using only the real data. A good example is the accuracy for sd0x compared to sd4x for 20 rounds for the 2d cnn in table \todo{ref}. Using no simulations the accuracy is 79.0\% while for a ratio of 9 simulations for each real game the accuracy is 85.0\%. Furthermore is can be seen that using to many simulations compared to real games can decrease the accuracy. In table \todo{ref}, for 10 rounds, the accuracy for sd2x is 80.0\% and less when using more simulations. This behaviour highly varies depending on the configuration of the model. Sometimes the models produce the best results without any simulations, while other times using simulations strongly outperforms using only real data. It is possible that the optimal ratios of simulated to real games are not included the tested configurations. Especially the 2d cnn for 5 rounds before the changes to the simulator achieves the best accuracy with the highest ratio that was tested. Therefore the optimal ratio could be higher than 20 simulations for each real game. 
+
+When looking at the best accuracies of 1d and 2d cnns for each number of rounds, it can be observed, that the accuracy of the 1d cnns do not get much better and sometimes even worse after more than 10 rounds, while this is not the case for 2d cnns. This can be seen in figure \todo{ref}. The fact that the 1d cnns do not profit from more than 10 rounds might be related to the findings from section \todo{ref}, that indicate that the simulaor perfroms worse in later rounds. However, if the case, this begs the questions why this does not apply to 2d cnns. There is a possibility, that the worse perfromance in later turns has a strong impact on the statistacal features fed to the 1d cnn, but once these feautures are used to create the synthetic images for the 2d cnn this negative impact decreases. Figure \todo{ref} additionally shows the ratios of simulated to real data for each of the best results. The fact that the 2d cnn after 10 rounds still have the best results when using a substantial amount of simulations while the the best results for the 1d cnns after the 10th round use very little simulations, supports the theory from above. Nonetheless the findings are not sufficient to verify the theory. For that more research would be required. However, if found to be true, it could mean that 2d cnns using synthetic images have the potential to handle inacurate simulations better than 1d cnns. From a different perspective, this could also indicate that, assuming the simulator does actually perform worse in later rounds and is improved in that regard, the accuracy of the 1d cnns after 20 rounds could be improved.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{images/bestAccPlot.png}
+	\caption[Bild kurz]{add caption}
+	\label{fig:bestAccPlot}
+\end{figure}
+
+
+
+%beobachtung: bei 2d sind simulationen länger besser. Analysieren ob es daran liegt dass die anderen keine convergence erreichen. Wenn nicht dann ist es coole entdckung. Weil es ein anzeichen dafür ist, dass die 2d cnn besser mit simulationen lernen kann als 1d cnn. This also fits to the observation, that the results from 1dcnn with more than 10 rounds dont get much better if not worse. This can be caused by the fact that the simulations are less accurate after the first 10 steps, and therefore the 1d cnn does not improve by including them. However, the 2d cnn does improve using the last steps. This is an additional indicator, that the 2d cnn can better handle simulated games. A possibility is, that the difernce between simualted and real games in the synthetic images created using the feautre is not as siificant as when direclty using the statistical features in the 1d cnn. \todo{noch mit zahlen aus den tabelen begründen. und sagen dass die alle convergence erreichen, weshalb man das sagen kann}
+
+% easy to believe that in some cases more the optimal ratio has not been reached yet, if only looking at the tables. However there are more factors that influnece the result. This becomes evident when plotting the trainig histories for accuracy and loss. ... plott wo wan sieht das divergence nicht erreicht wurde... The fact that the trainings with a lower ratio result in worse accuracy dont neccessarily are caused by the fact that more simulated games would be better, but could also be influenced by the fact that the divergence has not been reache yet, meaning that either a different learning rate or more epochs could increase the accuray. Therefore it can not be said with certainty that ore simulated games would in that case lead to the optimal result, as the optimal result could also be with less simulated but with changed hyper parameters. However, the hyper paramaters were intentinally chossen the same so that the results could be compared with each other.
  
+It was conscidered to perform statical tests comparing different models and ratios to reveal significant or insignificant differeneces. However, the decision was made that this does not realy gives reliable results, because the values in the tables \todo{ref} are not neccesarily the best accuracies achievable. As mentioned above the models were not individually optimized. Therefoe the results of ststistical tests performed on the achieved accuracies in the tables, would not justify any staements regarding whether 1d cnns or 2d cnns perform significntly better in different configurations. Such statistical test would only show significant differences or indiffierences in the results, but could not be interpreted for any valuable findings, as not all models are used to their full potential. For choosing the best configurations from those tested no statistical tests are used. Instead simply those with the highest accuracies are chosen.
 
-It would be possible to investigate more in potentially promising direction, but this was not possible due to time contrains and must be left open for future work. 
+%If hyper paremeters such as the leraning rate or the number of epochs are not chosen equal accross all models of one tabel (menaing all models for 1d cnns, etc) and instead would be chosen more indivuidually to optimize the models specifically for each number of rounds and ratoin between simuated and real games, the accuracie could be signifcantly different. Additionally the topologies of all models of one type are chosen the same, although this might not produce the best results for each configuration.
 
-In the results show that using a certain number of simulated games for the training can often significantly improve the classificatin resuls.  while to many simulations can worsen the results. This is evident when comparing for instance the 79\% without any simulations and the 85\% with 4 simulations per real game of 2d cnns for 20 rounds before the changes to the simulator. \todo{besseren vergleich findend wo man steigung, höherpunt und verschlechterung sieht}
-... show plots for both ...
-In the plots can also be seen that this difference in perfomrmnace is not based on the fact that for one of the configurations the accurys reached convergence while not for the other one. 
+\begin{table}[H]
+	\centering
+	\caption{add caption. Upper and lower boundaries are inclusive.}%\label{tab1}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|l||c|c|c|c|c|}
+			\hline
+			 & 5 r. & 10 r. & 15 r. & 20 r. & Average  \\
+			\hline
+			\hline
+			1D CNN - before & 74.88\% (sd9x) & 81.12\% (sd0x) &78.37\% (sd0x) & 81.25\% (sd2x) & 78.91\% \\
+			1D CNN - afterwards& 71.88\% (sd20x) & 81.88\% (sd0x) &78.75\% (sd5x) & 80.25\% (sd4x)  & 78.19\%  \\
+			\hline
+			2D CNN - before & 73.0\% (sd20x) & 80.0\% (sd2x) &81.5\% (sd9x) & 85.0\% (sd4x)  & 79.88\% \\
+			2D CNN - afterwards & 71.0\% (sd6x) & 79.62\% (sd2x) & 82.25\% (sd3x) & 80.0\% (sd2x) & 78.22\% \\
+			\hline
+		\end{tabular}
+	}
+\end{table}
 
-beobachtung: bei 2d sind simulationen länger besser. Analysieren ob es daran liegt dass die anderen keine convergence erreichen. Wenn nicht dann ist es coole entdckung. Weil es ein anzeichen dafür ist, dass die 2d cnn besser mit simulationen lernen kann als 1d cnn. This also fits to the observation, that the results from 1dcnn with more than 10 rounds dont get much better if not worse. This can be caused by the fact that the simulations are less accurate after the first 10 steps, and therefore the 1d cnn does not improve by including them. However, the 2d cnn does improve using the last steps. This is an additional indicator, that the 2d cnn can better handle simulated games. A possibility is, that the difernce between simualted and real games in the synthetic images created using the feautre is not as siificant as when direclty using the statistical features in the 1d cnn. \todo{noch mit zahlen aus den tabelen begründen. und sagen dass die alle convergence erreichen, weshalb man das sagen kann}
+Table \todo{ref} shoes the best result for all categories before and after training. It can be seen that although some accuracies are slightly better after the changes to the simulator the results are on average noticeably worse than before. For instance is the accuracy of 85.0\% from the 2d cnn for 20 rounds decreased to 80.0\%. The reason for this is unknown and can be highly complex, due to the many factors involved. A theory is, that reucing the randomness of the simulator and therefore making the simulated games more similar to the real games, may have resulted in decreased generalisation in the models and therefore less robustness on unknown data. However, this theory can hardly be varified. The descreased performce after the changes leads to the decision to only use the models trained on the simulated data created before the changes to the simulator. The chosen configurations can be seen in table \todo{ref}. 
 
-- easy to believe that in some cases more the optimal ratio has not been reached yet, if only looking at the tables. However there are more factors that influnece the result. This becomes evident when plotting the trainig histories for accuracy and loss. ... plott wo wan sieht das divergence nicht erreicht wurde... The fact that the trainings with a lower ratio result in worse accuracy dont neccessarily are caused by the fact that more simulated games would be better, but could also be influenced by the fact that the divergence has not been reache yet, meaning that either a different learning rate or more epochs could increase the accuray. Therefore it can not be said with certainty that ore simulated games would in that case lead to the optimal result, as the optimal result could also be with less simulated but with changed hyper parameters. However, the hyper paramaters were intentinally chossen the same so that the results could be compared with each other.
- 
+\begin{table}[H]
+	\centering
+	\caption{add caption. Upper and lower boundaries are inclusive.}%\label{tab1}
+	%\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|l||c|c|c|c|}
+			\hline
+			& 5 r. & 10 r. & 15 r. & 20 r.  \\
+			\hline
+			\hline
+			1D CNN & 74.88\% (sd9x) & 81.12\% (sd0x) & &  \\
+			\hline
+			2D CNN &  & & 81.5\% (sd9x) & 85.0\% (sd4x)  \\
+			\hline
+		\end{tabular}
+	%}
+\end{table}
 
-- All models used to calculate the best mean entries in the two tables for the results before the changes to the simulator are retrained and saved. This is only done if they are the best results regarding the number of steps. This menas that for the 1d cnns the models for 5 rounds and sd9x and for 10 rounds and sd0x are saved. For the 2d cnn the models for 15 rounds and sd9x and for 20 rounds for sd4x are saved. This results in 400 $\cdot$ 4 models. These 1600 models are used in the voting based system explained in chapter \todo{ref}. 
+The 1dnns trained, perform better for 5 and 10 rounds than 2d cnns while 2d cnns perform better for 15 and 12 rounds. Depending on the number of rounds it can therefore be benefitial to use either 1d cnns or 2d cnns. The 4 best configurations for the differnet numbers of rounds are used in section \todo{ref zu voting}. Figures \todo{ref}, \todo{ref}, \todo{ref} and \todo{ref} show the training and test accurcy during the course of training these 4 models. 
 
-- it was conscidered to perform statical tests comparing different mdels and ratios to reveal significant or insignificant differeneces. However, the decision was made that this does not realy gives reliable results, because the values in the tables \todo{ref} dont tell the whole story. As mentioned above not all configarations reach convergence meaning the value sin the table dont always represent the best accuracy achievabalbe with that configuration. If paremeters such as the leraning rate or the number of epochs are not chosen equal accross all models of one tabel (menaing all models for 1d cnns, etc) and instead would be chosen more indivuidually to optimize the models specifically for each number of rounds and ratoin between simuated and real games, the accuracie could be signifcantly different. Therefoe the results of ststistical tests performed on the achieved accuracies in the tables, would not justify any staements regarding whether 1d cnns or 2d cnns perform significntly better in different configurations. Such statistical test would only show significant differences or indiffierences in results, but could not be interpreted for any valuable findings, as some models are used to their full potential converge while others are not and therefore dont converge.  
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/bestHistories/1d_10s_sd9x_acc.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:1d10}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/bestHistories/1d_20s_sd0x_acc.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:1d20}
+	\end{figure}
+\end{minipage}
 
-- ..table shoing best result for all categories before and after training (16 values)
-It can be seen that the results after the changes to the simulator are noticeably worse than before. The reason for this is unknown and can be highly complex, due to the many factors involved. A theory is, that reucing the randomness of the simulator and therefore making the simulated games more similar to the real games, may have resulted in decreased generalisation in the models and therefore less robustness on unknown data. However, this theory can hardly be varified. The descreased performce after the changes leads to the decision to only use the models trained on the simulated data created before the changes to the simulator. 
-
-.. table for best results for teh different number of steps and what their config was (4 values)..
-It can be seen in table \todo{ref} that the 1dnns trained, perform better for 5 and 10 rounds than 2d cnns while 2d cnns perform better for 15 and 12 rounds. Depending on the number of rounds it can therefore be benefitial to use either 1d cnns or 2d cnns. 
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/bestHistories/2d_30s_sd9x_acc.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:2d30}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{images/bestHistories/2d_40s_sd4x_acc.png}
+		\caption[Bild kurz]{Add caption}
+		\label{fig:2d40}
+	\end{figure}
+\end{minipage}
 
 
 %- vielleiht gucken welche falsch erkannt werden und woran es liegt, also wenn die zum beispiel echt schlect oder gut sind obwohl es nicht so sein sollte (rausnhemen und gucken wie ergebnisse sind, vielleicht nur bei bestem modell) -> glaube eher nicht\\
 %- training auf welchem rechner/n,was von: cpu oder gpu oder beides, hardware kurz erwähnen, vpn (fernzugriff)\\
 %- train test splt, leave one out k fold (+ begründung mit deep learing ..reliable results etc, randomness) \\
-- kurz erklären wieso weniger züge besser sind bei dieser hci erkennung\\
+%- kurz erklären wieso weniger züge besser sind bei dieser hci erkennung\\
 %- (vielleicht kram zu adaptive learning rate ändern und gucken wie es so ist, ansonsten begründen wieso ich das nicht brauche) \\
 %- (entweder so dass 1d cnn mit 20 steps auch konvergence erreicht oder danach nochmal anpassung von 20 steps 1d cnn damit es kovergiert)\\
 %- darüber schreiben dass letzen n züge nicht mehr so gut simuliert sind (zeigen) und deshalb 40 steps nicht so viel besser ist (glaube nicht dass es so ist, also wahrscheinlich auslassen. Vielleicht bei 15r 1dnn aber man kann es schwer relaible begründen)\\
 %- mit maximalen guten steps (glaube 16 züge oder so) trainieren und vergleichen\\
-- statistical tests um signifikante unterschiede /keine unterschiede zu zeigen für verschiedene modelle etc (siehe mazens nachricht) ? \\
+%- statistical tests um signifikante unterschiede /keine unterschiede zu zeigen für verschiedene modelle etc (siehe mazens nachricht) ? \\
