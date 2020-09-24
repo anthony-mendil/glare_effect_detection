@@ -1,61 +1,87 @@
 \chapter{Collected Data}
 \label{collected_data}
-While the probands played the memory game, behavioral data and brain activity data was collected. Relevant for this work is only the behavioural data recorded in glare effect and no obstacle games. The data was collected from 22 probands. \todo{grobe demographic herausfinden, mazen fragen}. Each participant except one recorded 2 no obstacle and 1 glare effect game. The one exception did not record any glare effect games. As a result there are 44 no obstacle and 21 glare effect games. The data was already provided and was not collected during this bachelor thesis.
+While the subjects played the memory game, behavioural data and brain activity data was collected. Relevant for this work is only the behavioural data recorded in glare effect and no obstacle games.
+The eeg data is not used, because the aim is to exploit behavioural patterns of natural HCI situations without using any additional sensors. %Detecting interaction obstacles using only the behavioural data has also been done The same approach  like it has been done before for memory obstacles. \cite{salous_putze_2018esann}. Instead only behavioural data is used, that can be collected without being noticed by the user.
+Therefore eeg data will not be further explained. The data was collected from 22 subjects. \todo{grobe demographic herausfinden, mazen fragen}. Each subject except one recorded 2 no obstacle and 1 glare effect game. The one exception did not record any glare effect games. As a result there are 44 no obstacle and 21 glare effect games. The data was already provided and was not collected during this bachelor thesis.
 
-\section{Behavioural data}
-\label{behavioural_data}
-In order to record bavioural data, each of the 14 cards was initally given a fixed card code and is was recorded which pairs of cards were turned face up in each round. The card code consists of two numbers separated by a dot. The first number specifies the colour of the card (between 1 and 7 as there are 7 colours) and second number specifies if it is the first or second card with that colour. Once a game is started, all cards are shuffled. The initial assignment of colours to numbers between 1 and 7 is shown in table \todo{ref}.
+%\section{Behavioural data}
+%\label{behavioural_data}
 
-\begin{table}[H]
-	\centering
-	\caption{add caption.}
-	\label{tab:colorAssign}
-	\begin{tabular}{|c|c|}
-		\hline
-		Colour & Assigned number  \\
-		\hline
-		Dark green & 1 \\
-		Brown & 2 \\
-		Red & 3 \\
-		Light green & 4 \\
-		Green & 5 \\
-		Orange & 6 \\
-		Dark red & 7 \\
-		\hline
-	\end{tabular}
-\end{table}
+\begin{minipage}[b]{0.6\textwidth}
+	In order to record behavioural data, each of the 14 cards was initially given a fixed card code and is was recorded which pairs of cards were turned face up in each round. The card code consists of two numbers separated by a dot. The first number specifies the colour of the card (between 1 and 7 as there are 7 colours) and second number specifies if it is the first or second card with that colour. Once a game is started, all cards are shuffled. The initial assignment of colours to numbers between 1 and 7 is shown in table \ref{tab:colorAssign}.
+\end{minipage}
+\begin{minipage}[b]{0.4\textwidth}
+	
+	\begin{table}[H]
+		\centering
+		
+		\begin{tabular}{|c|c|}
+			\hline
+			Colour & Number  \\
+			\hline
+			Dark green & 1 \\
+			Brown & 2 \\
+			Red & 3 \\
+			Light green & 4 \\
+			Green & 5 \\
+			Orange & 6 \\
+			Dark red & 7 \\
+			\hline
+		\end{tabular}
+		\caption[Tabelle kurz]{Static assignment\\\hspace{0\textwidth}of colours to numbers}
+		\label{tab:colorAssign}
+	\end{table}
+\end{minipage}
 
-The bevioral data was saved in logs, consisting of the card codes of each round followed by the unix timestamps of when the cards were flipped. Data of 20 rounds and therefore at maximum 40 flipped cards was recorded. If the game was completed in less than 20 turns, the remaining card code entries were filled with 0.0 and the remaining timestamp entries were filled with 0. An example of the sequence of card codes recorded during a game can be seen below. The timestamps are irrelevant for this work and therefore not shown. 
-\begin{center}
-	5.2,2.2,4.2,4.1,6.1,7.2,6.2,6.1,1.2,1.1,\\
-	7.1,2.2,2.1,7.1,5.2,5.1,3.1,2.1,7.1,3.1,\\
-	7.2,7.1,3.2,2.2,2.1,2.2,3.1,3.2,0.0,0.0,\\
-	0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-\end{center}
 
-With the assignments shown in table \todo{ref}, the first card code in the sequence above means that the first card to be flipped was the second green card. In the same turn, the second card that was turned around was the second brown card. This mapping is static as colours have the same numbers across all recorded games. However, the simulator requires a dynamic mapping of the card codes. Additionally each of the dynamically mapped card codes has to receives a similarity value for the simulation mentioned in chapter \todo{ref}. Each card codes describes the two cards that were flipped in a turn and the similarity value describes how similar the colours of the two cards are. These similarity assignments for each combination of colours needed to be added to the logs. These assignments had to be made according to the dynamic mapping of card codes. The similarity values are extracted from a similarity matrix. 
 
-By dynamic mapping of the card codes is meant, that the colours are not assigned to fixed numbers but that the numbers are assigned in the reveal order specific to each game. This becomes clear, by looking the card code sequence from above, but dynamically mapped.
-\begin{center}
-	1.1,2.1,3.1,3.2,4.1,5.1,4.2,4.1,6.1,6.2,\\
-	5.2,2.1,2.2,5.2,1.1,1.2,7.1,2.2,5.2,7.1,\\
-	5.1,5.2,7.2,2.1,2.2,2.1,7.1,7.2,0.0,0.0,\\
-	0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-\end{center}
 
-In this dynamic mapping of the card codes, each entry likewise consists of 2 numbers that are seperated by a dot. However, the numbers are differently interpreted. The first number specifies what number of colour it is to be revealed and the second number specifies if it was the first or the second card of that colour. In the example above the colour green is the first to be revealed and therefore assigned to the value one. As it is the first green card revealed the second component of the card code is 1 as well. As a result the first entry is 1.1. Then a brown card is turned face up, meaning the second entry is 2.1 since is was the first brown card. Once the other red card is discovered, the entry for that step will be 2.2. This pattern continues throughout the whole sequence. This means that the mapping is specific to each game and depends on the reveal order of the cards. 
+The behavioural data was saved in logs, consisting of the card codes of each round followed by the timestamps of when the cards were flipped. Data of 20 rounds and therefore at maximum 40 flipped cards was recorded. If the game was completed in less than 20 turns, the remaining card code entries were filled with 0.0 and the remaining timestamp entries were filled with 0. An example of the sequence of card codes recorded during a game can be seen below. The timestamps are irrelevant for this work and therefore not shown. 
+
+\begin{minipage}{0.5\textwidth}
+	With the assignments shown in table \ref{tab:colorAssign}, the first card code in the first sequence on the right means that the first card to be flipped was the second green card. In the same turn, the second card that was turned around was the second brown card. This mapping is static as colours have the same numbers across all recorded games. However, the simulator requires a dynamic mapping of the card codes. By dynamic mapping of the card codes is meant, that the colours are not assigned to fixed numbers but that the numbers are assigned in the reveal order specific to each game. This becomes clear, by looking the card code sequence from above, but dynamically mapped.
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{center}
+		Static mapping:\\
+		5.2,2.2,4.2,4.1,6.1,7.2,6.2,6.1,1.2,1.1,\\
+		7.1,2.2,2.1,7.1,5.2,5.1,3.1,2.1,7.1,3.1,\\
+		7.2,7.1,3.2,2.2,2.1,2.2,3.1,3.2,0.0,0.0,\\
+		0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+		
+		
+		\begin{center}
+			Dynamic mapping:\\
+			1.1,2.1,3.1,3.2,4.1,5.1,4.2,4.1,6.1,6.2,\\
+			5.2,2.1,2.2,5.2,1.1,1.2,7.1,2.2,5.2,7.1,\\
+			5.1,5.2,7.2,2.1,2.2,2.1,7.1,7.2,0.0,0.0,\\
+			0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+		\end{center}
+	\end{center}
+\end{minipage}
+
+
+In this dynamic mapping of the card codes, each entry likewise consists of 2 numbers that are separated by a dot. However, the numbers are differently interpreted. The first number specifies what number of colour it is to be revealed and the second number specifies if it was the first or the second card of that colour. In the example above the colour green is the first to be revealed and therefore assigned to the value one. As it is the first green card revealed the second component of the card code is 1 as well. As a result the first entry is 1.1. Then a brown card is turned face up, meaning the second entry is 2.1 since is was the first brown card. Once the other red card is discovered, the entry for that step will be 2.2. This pattern continues throughout the whole sequence. This means that the mapping is specific to each game and depends on the reveal order of the cards. These card codes are the foundation for the features calculated in section \ref{feature_generation} \nameref{feature_generation}.
+
+%Additionally similarity values for each card code are added to the logs. These values are meant to describe how the colour difference of the two cards described by that card code are perceived by the human eye. These similarity values are initially just placeholders, as a similarity matrix for the glare effect has not been created, yet. Furthermore these values are only rele
+
+%\todo{umschreiebne!}
+%Additionally the logs are extended with a each of the dynamically mapped card codes receives a similarity value, provided by a similarity matrix. Each card codes describes the two cards that were flipped in a turn and the similarity value describes how similar the colours of the two cards are. These similarity assignments are relevant  for each combination of colours needed to be added to the logs. The assignments had to be made according to the dynamic mapping of card codes. The similarity values are extracted from a similarity matrix.
 %As mentioned above the similarity values for the card codes must also be dynamic.  The differnece bewteen static and dynamic similarity assignments is explained in section \todo{ref zu similarity matrix bei simulator und da erklären was die unterschiede sind und was der simulator benutzt? genauso köönte man dann aber auch die card codes mapping da erklären?}
 
-Logs with remapped card codes and added similarity values were already provided, but there was a change to be made regarding the glare effect logs before they could be used. The similarity matrix for the glare effect game was just a placehoulder and did not correclty portray the color differneces under the influence of sunlight. To successfully simulate glare effect games the simulator requires such an similarity matrix. Therefore a new one is created in section ref. The old similarity values in the glare effect logs are then replaced with the new values in section ref. Contrary to the glare effect logs, in the no obstacle logs, no changes need to be made, as the simulator does not use any similarity values when simulating no obstacle games. It should also be noted that the provided logs with remapped card codes additionally include four statistical features for the last turn. These consist of the number of remaining cards, the number of never revealed cards, the highest number of times the same card was revealed and the number of rounds since all pairs were found. These four values are ignored, as they are newly calculated for every turn in section ref. Last but not least all logs end with a label, describing in which game mode the log was created. 
+Logs with remapped card codes were already provided, but an additional component in the glare effect logs is needed in order to successfully simulate new games. The logs are used in the simulator to generate new games. When simulation the glare effect, the simulator requires a similarity matrix, that that correctly describes the colour differences of the cards under the influence of the glare effect, which does not exist, yet. The creation of this matrix is done in section \ref{similarity_matrix_cretion} \nameref{similarity_matrix_cretion} and its values are added to the glare effect logs in section \ref{incorporation_of_the_new_similarity_matrix} \nameref{incorporation_of_the_new_similarity_matrix}. Contrary to the glare effect logs, in the no obstacle logs, no changes need to be made, as the simulator does not use any similarity values when simulating no obstacle games. It should also be noted that the provided logs with remapped card codes additionally include four statistical features for the last turn. These consist of the number of remaining cards, the number of never revealed cards, the highest number of times the same card was revealed and the number of rounds since all pairs were found. These four values are ignored, as they are newly calculated for every turn as explained in section \ref{1d_cnn_features} \nameref{1d_cnn_features}. Last but not least all logs end with a label, describing in which game mode the log was created. 
+
+%there was a change to be made regarding the glare effect logs before they could be used. The similarity matrix for the glare effect game was just a placehoulder and did not correclty portray the color differneces under the influence of sunlight. To successfully simulate glare effect games the simulator requires such an similarity matrix. Therefore a new one is created in section \todo{ref}. The old similarity values in the glare effect logs are then replaced with the new values in section \todo{ref}. Contrary to the glare effect logs, in the no obstacle logs, no changes need to be made, as the simulator does not use any similarity values when simulating no obstacle games. It should also be noted that the provided logs with remapped card codes additionally include four statistical features for the last turn. These consist of the number of remaining cards, the number of never revealed cards, the highest number of times the same card was revealed and the number of rounds since all pairs were found. These four values are ignored, as they are newly calculated for every turn in section \todo{ref}. Last but not least all logs end with a label, describing in which game mode the log was created. 
+
+%Logs with remapped card codes and added similarity values were already provided, but there was a change to be made regarding the glare effect logs before they could be used. The similarity matrix for the glare effect game was just a placehoulder and did not correclty portray the color differneces under the influence of sunlight. To successfully simulate glare effect games the simulator requires such an similarity matrix. Therefore a new one is created in section \todo{ref}. The old similarity values in the glare effect logs are then replaced with the new values in section \todo{ref}. Contrary to the glare effect logs, in the no obstacle logs, no changes need to be made, as the simulator does not use any similarity values when simulating no obstacle games. It should also be noted that the provided logs with remapped card codes additionally include four statistical features for the last turn. These consist of the number of remaining cards, the number of never revealed cards, the highest number of times the same card was revealed and the number of rounds since all pairs were found. These four values are ignored, as they are newly calculated for every turn in section \todo{ref}. Last but not least all logs end with a label, describing in which game mode the log was created. 
 
 %The other neccessary change derived from the fact that although the card codes were dynamically mapped, the similarity assignments were made according to the static mapping of the card codes inestead of the dynamic mapping. This meant that the assignment of simialrity values to numbers for the cards compared were identical in all games, but the numbers of the cards stood for different colours in different games. To solve this issue the newly created similarity matrix for the glare effect was used to determine the dynamically mapped similarity values for each game.
 
 
 
-\section{Brain activity}
-\label{brain_activity}
-Eeg data collected from all proabnds during the game. However, there is one problem with using the eeg data: The overlyiong context of this work is to find interaction obstacles and ultimatley imporve the user interaction. This means that the way of discovering such an interaction obstacle should not worsen the interaction experience. If all people had to waer eeg masks when interacting with software just for the purpose of noticing interaction obstacles, the interaction experience itself would suffer. A method of recording brain activity without an deterioration of the interaction experience has not been discovered yet. Additionally it is not cost efficient for every user to use and eeg sensor. As a result the decision was made not to use eeg data and instead only use the behvioural data that is collected direclty through the interaction and stays unnoticed by the user. As eeg data is not used in this work it will not be further explained. 
-
-
+%\section{Brain activity}
+%\label{brain_activity}
+%\todo{das weg und stattdessen einfach oben als begründung kurz rein. dann hat man auch weniger sections und 2 seiten weniger}
+%Eeg data collected from all proabnds during the game. However, there is one problem with using the eeg data: The overlyiong context of this work is to find interaction obstacles and ultimatley imporve the user interaction. This means that the way of discovering such an interaction obstacle should not worsen the interaction experience. If all people had to waer eeg masks when interacting with software for the purpose of detecting interaction obstacles, the interaction experience itself would suffer. A method of recording brain activity without an deterioration of the interaction experience has not been discovered yet. Additionally it is not cost efficient for every user to use and eeg sensor. As a result the decision was made not to use eeg data and instead only use the behvioural data that is collected direclty through the interaction and stays unnoticed by the user. As eeg data is not used in this work it will not be further explained. 
 
 

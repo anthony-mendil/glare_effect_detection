@@ -5,35 +5,31 @@
 \babel@toc {english}{}
 \babel@toc {english}{}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1.1}{\ignorespaces Tabelle mit kurzer Unterschrift}}{3}{table.caption.4}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Tabelle kurz}}{7}{table.caption.6}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces add caption.\relax }}{11}{table.caption.8}%
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces add caption.\relax }}{22}{table.caption.12}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{27}{table.caption.17}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Before change to simulator. p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{27}{table.caption.18}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces p and t values in paired t-test for different comparissons of matching pairs per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{28}{table.caption.19}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces p ant t values in paired t-test for different comparissons of penalties per round. All 1000 simulated games per real game were used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{28}{table.caption.20}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Before change to simulator. p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{29}{table.caption.21}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces Before change to simulator. p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{29}{table.caption.22}%
-\contentsline {table}{\numberline {6.8}{\ignorespaces p and t values in paired t-test for different comparissons of matching pairs per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{30}{table.caption.23}%
-\contentsline {table}{\numberline {6.9}{\ignorespaces p values in paired t-test for different comparissons of penalties per round. For the simualted data only the best 10 simulated logs from each real log are used. Only the first 10 rounds are used. The following abreviatrions are used: real glare effect - r\_g, real no obstacle - r\_n, simulated glare effect - s\_g, simulated no obstacle - s\_n\relax }}{30}{table.caption.24}%
-\contentsline {table}{\numberline {6.10}{\ignorespaces mean values of matching pairs for real and simulated games. sd10x. for the first 10 rounds\relax }}{31}{table.caption.27}%
-\contentsline {table}{\numberline {6.11}{\ignorespaces add caption. Upper and lower boundaries are inclusive.\relax }}{35}{table.caption.30}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Tabelle kurz}}{18}{table.caption.10}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Tabelle kurz}}{23}{table.caption.15}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Tabelle kurz}}{23}{table.caption.16}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Tabelle kurz}}{23}{table.caption.17}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Tabelle kurz}}{23}{table.caption.18}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Tabelle kurz}}{25}{table.caption.19}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Tabelle kurz}}{25}{table.caption.20}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces Tabelle kurz}}{25}{table.caption.21}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Tabelle kurz}}{25}{table.caption.22}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Tabelle kurz}}{27}{table.caption.25}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces Tabbelle kurz}}{31}{table.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces add caption\relax }}{41}{table.caption.33}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces add caption\relax }}{41}{table.caption.34}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces 1D CNN. Best accuracies and losses for 5, 10, 15 and 20 steps. Before the changes to the simulator.\relax }}{46}{table.caption.37}%
-\contentsline {table}{\numberline {8.4}{\ignorespaces 2D CNN. Best accuracies and losses for 5, 10, 15 and 20 steps. Before the changes to the simulator.\relax }}{46}{table.caption.38}%
-\contentsline {table}{\numberline {8.5}{\ignorespaces 1D CNN. Best accuracies and losses for 5, 10, 15 and 20 steps. After the changes to the simulator.\relax }}{46}{table.caption.39}%
-\contentsline {table}{\numberline {8.6}{\ignorespaces 2D CNN. Best accuracies and losses for 5, 10, 15 and 20 steps. After the changes to the simulator.\relax }}{47}{table.caption.40}%
-\contentsline {table}{\numberline {8.7}{\ignorespaces add caption. Upper and lower boundaries are inclusive.\relax }}{48}{table.caption.42}%
-\contentsline {table}{\numberline {8.8}{\ignorespaces add caption. Upper and lower boundaries are inclusive.\relax }}{49}{table.caption.43}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {9.1}{\ignorespaces add caption.\relax }}{52}{table.caption.48}%
+\contentsline {table}{\numberline {8.1}{\ignorespaces tabelle kurz}}{48}{table.caption.38}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces tabelle kurz}}{48}{table.caption.39}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces tabelle kurz}}{48}{table.caption.40}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces tabelle kurz}}{48}{table.caption.41}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces tabelle kurz}}{50}{table.caption.43}%
+\contentsline {table}{\numberline {8.6}{\ignorespaces tabelle kurz}}{50}{table.caption.44}%
+\contentsline {table}{\numberline {8.7}{\ignorespaces tabelle kurz}}{53}{table.caption.49}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

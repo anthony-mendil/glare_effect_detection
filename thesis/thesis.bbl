@@ -1,9 +1,59 @@
-\begin{thebibliography}{Rab89}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{WLW{\etalchar{+}}16}
 
-\bibitem[Rab89]{Rabiner89-ATO}
-Lawrence~R. Rabiner.
-\newblock A tutorial on hidden {Markov} models and selected applications in
-  speech recognition.
-\newblock {\em Proceedings of the IEEE}, 77(2):257--286, 1989.
+\bibitem[ABB{\etalchar{+}}04]{actr}
+John Anderson, Daniel Bothell, Michael Byrne, Scott Douglass, Christian
+  Lebiere, and Yulin Qin.
+\newblock An integrated theory of the mind.
+\newblock {\em Psychological review}, 111:1036--60, 11 2004.
+
+\bibitem[Fis02]{fischer}
+J.~Fischer.
+\newblock Untersuchung der farbabstandsformeln des cielab farbraums auf ihre
+  eignung, farbrauschen quantitativ und physiologisch richtig zu beschreiben,
+  2002.
+
+\bibitem[Ihr19]{Markus}
+M.~Ihrig.
+\newblock Analyse und vergleich von benutzerverhalten und gehirnaktivität bei
+  verschiedenen versionen eines memory-spiels zum test adaptiver
+  hilfestellungen, 2019.
+
+\bibitem[Mir18]{Mir}
+R.~Miranda.
+\newblock Recognising \& dynamically adapting to visual and memory-based hci
+  obstacles based on behavioural data, 2018.
+
+\bibitem[Pas01]{rgb_not}
+George Paschos.
+\newblock Perceptually uniform color spaces for color texture analysis: An
+  empirical evaluation.
+\newblock {\em Image Processing, IEEE Transactions on}, 10:932 -- 937, 07 2001.
+
+\bibitem[SP18a]{salous_putze_2018esann}
+Mazen Salous and Felix Putze.
+\newblock Behaviour-based working memory capacity classification using
+  recurrent neural networks.
+\newblock In {\em {ESANN} 2018 -- 26th European Symposium on Artificial Neural
+  Networks, Computational Intelligence and Machine Learning}, pages 159--164,
+  Brugge, Belgium, 2018.
+
+\bibitem[SP18b]{memory}
+Mazen Salous and Felix Putze.
+\newblock Behaviour-based working memory capacity classification using
+  recurrent neural networks.
+\newblock 04 2018.
+
+\bibitem[SPIS19]{blind}
+Mazen Salous, Felix Putze, Markus Ihrig, and Tanja Schultz.
+\newblock Visual and memory-based hci obstacles: Behaviour-based detection and
+  user interface adaptations analysis.
+\newblock 10 2019.
+
+\bibitem[WLW{\etalchar{+}}16]{imbalance}
+S.~{Wang}, W.~{Liu}, J.~{Wu}, L.~{Cao}, Q.~{Meng}, and P.~J. {Kennedy}.
+\newblock Training deep neural networks on imbalanced data sets.
+\newblock In {\em 2016 International Joint Conference on Neural Networks
+  (IJCNN)}, pages 4368--4374, 2016.
 
 \end{thebibliography}

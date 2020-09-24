@@ -4,7 +4,6 @@ The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: titlepage.aux
 A level-1 auxiliary file: erklaerung.aux
 A level-1 auxiliary file: abstract.aux
-A level-1 auxiliary file: notes.aux
 A level-1 auxiliary file: chapter1_introduction.aux
 A level-1 auxiliary file: memory_game.aux
 A level-1 auxiliary file: simulator.aux
@@ -17,44 +16,53 @@ A level-1 auxiliary file: prospect.aux
 A level-1 auxiliary file: appendix.aux
 The style file: alpha.bst
 Database file #1: thesis.bib
-You've used 1 entry,
+Warning--entry type for "Markus" isn't style-file defined
+--line 12 of file thesis.bib
+Warning--entry type for "Mir" isn't style-file defined
+--line 19 of file thesis.bib
+Warning--entry type for "fischer" isn't style-file defined
+--line 78 of file thesis.bib
+Warning--empty booktitle in memory
+Warning--empty booktitle in blind
+You've used 9 entries,
             2543 wiz_defined-function locations,
-            579 strings with 4806 characters,
-and the built_in function-call counts, 384 in all, are:
-= -- 38
-> -- 8
-< -- 1
-+ -- 3
-- -- 2
-* -- 29
-:= -- 68
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 15
-empty$ -- 31
-format.name$ -- 4
-if$ -- 74
-int.to.chr$ -- 1
+            619 strings with 6170 characters,
+and the built_in function-call counts, 3690 in all, are:
+= -- 348
+> -- 181
+< -- 6
++ -- 64
+- -- 62
+* -- 248
+:= -- 589
+add.period$ -- 24
+call.type$ -- 9
+change.case$ -- 60
+chr.to.int$ -- 8
+cite$ -- 11
+duplicate$ -- 148
+empty$ -- 283
+format.name$ -- 73
+if$ -- 768
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 8
-num.names$ -- 3
-pop$ -- 3
+missing$ -- 6
+newline$ -- 46
+num.names$ -- 27
+pop$ -- 82
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 69
 quote$ -- 0
-skip$ -- 12
+skip$ -- 133
 stack$ -- 0
-substring$ -- 33
-swap$ -- 1
-text.length$ -- 1
-text.prefix$ -- 1
+substring$ -- 180
+swap$ -- 30
+text.length$ -- 6
+text.prefix$ -- 4
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 4
-width$ -- 2
-write$ -- 15
+type$ -- 72
+warning$ -- 2
+while$ -- 30
+width$ -- 10
+write$ -- 108
+(There were 5 warnings)

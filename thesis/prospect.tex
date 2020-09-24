@@ -1,21 +1,24 @@
 \chapter{Conclusion}
-85 \% etc.  
+\label{conclusion}
+A similarity matrix was created that successfully describes the colour differences of the cards under the influnece of a simulated sun shining on the screen. It was used in a cognitive user simulator to accurately  simulate glare effect games. This simulator was also used to simulate no obstacle games. It was attempted to improve the simulator, but it could not be clearly said if that was successfull. Although there are some indications that the realisticness of the simulations ws improved there are also others  findings that suggest the opposite. One of them being that the classification results using the simulations were worse after the changes to the simulator. Additional findings suggest that the  simulator performs less good in later rounds of the game. Furthermore it was shown that incorporating certain amounts of simulated data improves the classificatiuon results significantly. 
+
+For the classification of the visual interaction obstacle being the glare effect two approaches were implemented. Firstly, a 1d cnn was utilized that classifies a sequence of statistsical features. The second approach was less common: Creating synthetic images out of the naturally sequential data and use 2d cnns to classify the cretaed images. Classifiers for four different numbers of rounds were tested. While the best result for 5 and 10 steps were achieved by the 1d cnns, the 2d cnns putfermored the 1d cnns when using 15 and 20 rounds. Findings indicate the possibility that 2d cnns are less effected by inaccurate simulations than 1d cnns. 
+
+Four voting based systems, one each for 5, 10, 15 and 20 rounds were implemented, that decide the final classification by a voting of multiple models. The systems for 5 and 10 rounds utilze 1d cnns while those for 15 and 20 rounds 2d cnns. The accuracies of the four systems in the order of the number of rounds were 73.13\%, 80.13\%, 80.63\% and 85.0\%. As the topologies and the hyper parameters of the models are not individually optimized and instead best practice values were chosen it is advisable to optimize them before using them. Two different usages are suggested for such voting based systems. Either use a single system trained to classify games after 10 rounds, as the accuracy is high and the decision is made relatively early in the game, or use all four voting based systems over the course of the game, depending on the number of round. This would mean making a prediction every 5 rounds until round 20 and adjusting the eventual adaptation accordingly. When conscidering that the glare effect is a volatile visual obstacle meaning that adaptation may not be neccessary througout the whole game only because it was in for instance round 5, making a prediction each 5 steps would bring the advantage of being able two switch the adaption on and off more often. In the case of persistant visual obstacles such as colour blindness this is not useful, as the adaption is needed throughout the whole game.
 
 \section{Prospect}
-- es wurde zwar impolementiert nicht alle features zu verwenden, aber es wurde nie ausprobiert. Hätte man testweise machn können. \\
--Vielleicht hätte man ein weiteres statistical feature für penalties machen können, so wie es beim qualitätscheck der simulationnen berechnet wird.\\
-- statistical tests could be used to validate whether the changed to the simluator iproved the quality o the simuations. Howevr, as shown by the classification results even though they seemed to improve the quality or at least match it, the classification results were noticebly worse when usidm the simulated games ceaed by the modified simultor. There ae many variables and factors that influnece the final result, which makes it hard to validate whether changes to the simulator improved the overall results, even when using statistical tests. 
-- a user study could be done to validate the voting based systems in real scenarios. As mentioned in chapter \todo{ref} the results shown in tabel \todo{ref zu table mit voting ergebnissen} 
-- real world sacenario 20 modelle ohne splits, offline test leace one out, online test future work (alle data 20 repitions) (vielleicht wird es sogar minimal besser weil man die 20 modelle auf 20 statt auf 19 daten + simulierte ratio trainiert)
+\label{prospect}
+Regarding the simulation of user behaviour instead of only simulating once and using a number of the best sumlations, it could be simulated multiple times to take only the single best simualation from each run. This could improve the overall quality of the simulations used to train the models. Regarding the simulator further research could be done to find out whether the simulator actually performs worse in later turns, as indicated by findings in this work. It this is the case and the reasons are discovered, further attempts could be made to improve the simulator.
 
-- man hätte ausgehend von intialen trainingsergebnissen noch mehr trainieren können in die richtigunen, aber wegen zeitgründen nicht gemacht 
+Creating synthetic images out of sequnetial data and using the image for an image classification is very experimental and only one way of creating such images was tested in this work. Therefore it could be analysed how different visual representations of the sequential data influence the performance of the classifier, as it is possible that a better representation exists. 
+%- es wurde zwar impolementiert nicht alle features zu verwenden, aber es wurde nie ausprobiert. Hätte man testweise machn können. naja\\
+%-Vielleicht hätte man ein weiteres statistical feature für penalties machen können, so wie es beim qualitätscheck der simulationnen berechnet wird. naja\\
+
+As mentioned in section \ref{models} \nameref{models} the data was only split into training and test data without separate validation data as the amount of game logs collected is very small. This is also the main reason why the models were not optimized, as a separate validation set would be needed. The models could be optimized on the validation data and then tested on the test data, assuring that they perform well on data that they have never seen before. A new user study could be performed in order to collect the necessary data to optimize the models. Such an optimization could significantly improve the classification results. 
+%- a user study could be done to validate the voting based systems in real scenarios. As mentioned in chapter \todo{ref} the results shown in tabel \todo{ref zu table mit voting ergebnissen} 
+%- real world sacenario 20 modelle ohne splits, offline test leace one out, online test
+%- If addirional data wa collected in this study it could be used as validation set to optimize hyper parameters and topologies of models individually. 
+
+Last but not least it could be interesting to further inverstigae the creation of synthetic image and the rather unconventional usage of image recognition using 2d cnns on what was originally a sequence. In this work this approach outperfomred the more conventional use of 1d cnns in multiple cases. There is a possibility that the 2d cnns were more capable in handling inacurate simulations. Further research could potentially reveal that this is actually the case or that there are other aspects to using synthetic images and 2d cnns that make them outperform 1d cnns in certain sequence classifications. Both would be interesting findings.
 
 
-- outlook in study: man fragt die leute ab wann sie etwas nicht 
-mehr unterschieldoch wahrnehmen und berechnet dauraus eine neue bedeutung in der tabelle herleiten 
-
-- mehrfach simulieren und immer nur beste nehmen. Aber: sehr zeitaufwendig
-
-- weiter forshcne ob synthetic images besser mit inacurate simulations klarkommen
-
-- online test machen, hier war nur offline

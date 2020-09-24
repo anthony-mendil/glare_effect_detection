@@ -29,6 +29,19 @@
 \usetikzlibrary{shapes,arrows}
 
 \usepackage{verbatim} 
+\usepackage{capt-of}
+\usepackage{csquotes}
+\usepackage{capt-of}
+%\usepackage{subcaption}
+%\usepackage{floatrow}
+% Table float box with bottom caption, box width adjusted to content
+%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\usepackage[justification=centering]{caption}
+
+\newenvironment{conditions*}
+{\par\vspace{\abovedisplayskip}\noindent
+	\tabularx{\columnwidth}{>{$}l<{$} @{\ : } >{\raggedright\arraybackslash}X}}
+{\endtabularx\par\vspace{\belowdisplayskip}}
 
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=red!20, 
@@ -125,7 +138,7 @@ minimum height=2em]
 \mainmatter
 \pagenumbering{arabic}
 
-\include{notes}
+%\include{notes}
 \include{chapter1_introduction}
 \include{memory_game}
 \include{simulator}
@@ -160,7 +173,7 @@ minimum height=2em]
 \bibliography{thesis}
 
 % Index
-\cleardoublepage
-\phantomsection
-\printindex
+%\cleardoublepage
+%\phantomsection
+%\printindex
 \end{document}
