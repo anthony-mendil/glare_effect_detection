@@ -1,23 +1,42 @@
 \chapter{Introduction}
 \label{introduction}
 
+More and more people use electronic devices in their lives. Alone the number of smartphone users in Germany was close to ten times higher in 2019 compared to 2009 \cite{smartphone}. As a result it becomes increasingly important to ensure a good interaction experience between humans and electronic devices. A good interaction experience with a device is not only characterised by its ease of use, intuitiveness, robustness and security, but also that it can be used by everybody and in case of mobile devices at every place. Who can use the device and where it can be used is influenced by so-called interaction obstacles. Two types of such interaction obstacles are visual and memory based obstacles. While a memory obstacle could for instance be caused by a secondary task workload, visual obstacles can for example be caused by a red-green colour vision deficiency \cite[p.~1]{blind}. If a human computer interaction is based on differentiating colours, the interaction experience and performance of users with a red-green colour vision deficiency will likely be heavily harmed if no assistance is provided. The red-green colour vision deficiency is a persistent interaction obstacle that poses an issue during the whole interaction, whereas so-called transient interaction obstacles only occur temporarily. 
+
+In this work, a transient visual interaction obstacle called glare effect will be addressed. It describes a scenario in which sunlight shines onto the display, resulting in less distinguishability of the colours. Therefore, the user might not be capable to successfully interact with the device. Especially the interaction performance with mobile devices such as smartphones or tablets can be significantly impaired by the glare effect, as these devices are often used in the open. In order to compensate such obstacles cognitive adaptive systems can be implemented that first detect the obstacle and then provide a suitable user interface (UI) adaptation. Although not part of this work, an example UI adaptation for compensating the glare effect could be using shapes or sounds instead of colours as the differentiating factor. 
+
+Based on behavioural data collected using a matching pairs game, the aim of this work is to detect the visual interaction obstacle being the glare effect. The game can be played on android devices and was developed at the cognitive system lab (CSL). A game consists of 14 cards of which two cards each have the same colour and the goal is to find all 7 pairs. There are various different game modes, but the only two necessary for this work are the mode without any obstacles and the glare effect mode which imitates the effect of sunlight shining onto the display. The data used had already been collected through an user study. As the number of participants was very limited, a cognitive user simulator, also implemented at the CSL, is used to simulate additional behavioural data. In order to successfully simulate the glare effect the simulator requires a so-called similarity matrix that describes the difference of the colours of the cards under the influence of the sunlight shining onto the display. Therefore, one step is to create such a similarity matrix. Once the simulation of user behaviour is completed the real and the simulated data are used to determine whether subjects played a game without any obstacles or a game affected by the glare effect. This decision is made using one and two dimensional convolutional neural networks (1D convnets and 2D convnets). The 1D convnets use statistical features for each step in the game (one round consists of flipping two cards), while the 2D convnets use synthetic images created with those statistical features. These models are trained and tested for different configurations regarding the ratio of simulated to real data and the number of game rounds included. The results of the different configurations and models are compared and the best performing ones are selected to form the bases of ensemble-based systems. In total four ensemble-based systems, consisting of many models voting for the final prediction, are implemented for detecting the glare effect after different numbers of game rounds.
+
+%- adaption not part but the detection of the glare effect that could be incorparteed in such a sytsem (memory game ist ja schon so eins?)\\
+%- memory game , user study\\
+%- behaviour based \\
+%- cognitive user simulator (changes are made? glaube hier eher nicht unbedingt)\\
+%- 1d and 2d cnns\\
+%- voting based sytsmes \\
 
 
-- papers von denen lesen. da sind richtig gute ineleitunegn an denen man sich orierntieren kann. \\
-- 
 
 
-- relevance of topic
-- glare detectin has been done before with for example a light detector but not with behavioural data (volatile?) 
-- 
 
-Neural networks greatly benefit from lots of data. As the number of participants that provided data is very limited, more data can potentially improve the classification results.  The cognitive systems lab already implemented a system that takes the original game logs and simulates user behaviour in order to create new logs. As a result it is possible to create any number of games out of a single original one, from which some may be better than others. However, in order to simulate glare effect games multiple addtional steps and changes are neccesary. \\
+%Although a possibily would be to maually set what  obstacles effect 
 
-- gereal approach, simulation, matrix creation, often used 1d cnn, novel approach of creating synthetic images and using 2d cnns shows in many cases improved classiiction resuts. 
-Finally four voting based system one each for 5, 10, 15 and 20 rounds are implemented, combining the prediction of 400 models each to decide the final predictions.
+%Such mobile devices are used in various different locations.  
 
-- vielleict begrüdung: referenz zu denen. weil es zietgt dass man unter verwnedung simulierter spiele eine deutliche verberseerung der ergebnisse auf den echten spelen sehen kann...\\
+%- papers von denen lesen. da sind richtig gute ineleitunegn an denen man sich orierntieren kann. \\
+%- 
 
-- Einleitung: Was es für verschiedene Obstacles gibt, was schon gemacht wurde, was ich mache,
 
-- one dimensional convolurional neural netweotks refered to as 1d convnets
+%- relevance of topic
+%- glare detectin has been done before with for example a light detector but not with behavioural data (volatile?) 
+%- 
+
+%Neural networks greatly benefit from lots of data. As the number of participants that provided data is very limited, more data can potentially improve the classification results.  The cognitive systems lab already implemented a system that takes the original game logs and simulates user behaviour in order to create new logs. As a result it is possible to create any number of games out of a single original one, from which some may be better than others. However, in order to simulate glare effect games multiple addtional steps and changes are neccesary. \\
+
+%- gereal approach, simulation, matrix creation, often used 1d cnn, novel approach of creating synthetic images and using 2d cnns shows in many cases improved classiiction resuts. 
+%Finally four voting based system one each for 5, 10, 15 and 20 rounds are implemented, combining the prediction of 400 models each to decide the final predictions.
+
+%- vielleict begrüdung: referenz zu denen. weil es zietgt dass man unter verwnedung simulierter spiele eine deutliche verberseerung der ergebnisse auf den echten spelen sehen kann...\\
+
+%- Einleitung: Was es für verschiedene Obstacles gibt, was schon gemacht wurde, was ich mache,
+
+%- one dimensional convolurional neural netweotks refered to as 1d convnets

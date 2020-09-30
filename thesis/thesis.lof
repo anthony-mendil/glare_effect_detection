@@ -6,38 +6,38 @@
 \babel@toc {english}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Bild kurz}}{4}{figure.caption.4}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Bild kurz}}{4}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Screenshot of the game without any obstacles.}}{4}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Screenshot of the game field with simulated sunlight.}}{4}{figure.caption.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Bild kurz}}{10}{figure.caption.7}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Bild kurz}}{11}{figure.caption.8}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Bild kurz}}{17}{figure.caption.9}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Bild kurz}}{20}{figure.caption.11}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Bild kurz}}{20}{figure.caption.12}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Bild kurz}}{21}{figure.caption.13}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Bild kurz}}{21}{figure.caption.14}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Bild kurz}}{26}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Bild kurz}}{26}{figure.caption.24}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Bild kurz}}{30}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Bild kurz}}{30}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Bild kurz}}{32}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Bild kurz}}{32}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Screenshot of the game field with simulated sunlight.}}{10}{figure.caption.8}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Exemplary showing the number of different comparisons of two colours.}}{11}{figure.caption.9}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Final similarity matrix for the glare effect.}}{17}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparison of matching pairs per round of simulated and real glare effect an no obstacle games. Before the changes to the simulator.}}{20}{figure.caption.11}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Comparison of penalties per round of simulated and real glare effect an no obstacle games. Before the changes to the simulator.}}{20}{figure.caption.12}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Comparison of matching pairs per round of simulated and real glare effect an no obstacle games. After the changes to the simulator.}}{21}{figure.caption.13}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Comparison of penalties per round of simulated and real glare effect an no obstacle games. After the changes to the simulator.}}{21}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of matching pairs per round of simulated and real glare effect and no obstacle games in the first 10 rounds. Only the best 15 simulations per real game were used. Furthermore, the data used is from after the changes to the simulator.}}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of penalties per round of simulated and real glare effect and no obstacle games in the first 10 rounds. Only the best 15 simulations per real game were used. Furthermore, the data used is from after the changes to the simulator.}}{26}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Synthetic image created using the statistical features. Origin of the image in the top left corner.}}{30}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Synthetic image created using the statistical features. Origin of the image in the bottom left corner.}}{30}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Card code section of a synthetic image for a no obstacle game.}}{32}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Card code section of a synthetic image for a glare effect game.}}{32}{figure.caption.30}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Bild kurz}}{36}{figure.caption.31}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Bild kurz}}{37}{figure.caption.32}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Bild kurz}}{39}{figure.caption.33}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Bild kurz}}{40}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Valid locations of 3 x 3 windows in a feature map.}}{34}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The whole process of a two dimensional convolution.}}{35}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualization of a linearly growing receptive field in stacked convolutions.}}{37}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces The whole process of a one dimensional convolution.}}{38}{figure.caption.34}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Bild kurz}}{41}{figure.caption.35}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Core concepts in training neural networks.}}{39}{figure.caption.35}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Bild kurz}}{44}{figure.caption.36}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Bild kurz}}{45}{figure.caption.37}%
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Bild kurz}}{49}{figure.caption.42}%
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Bild kurz}}{51}{figure.caption.45}%
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Bild kurz}}{51}{figure.caption.46}%
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Bild kurz}}{51}{figure.caption.47}%
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Bild kurz}}{51}{figure.caption.48}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Visualization of the utilized 1D convnet topology.}}{42}{figure.caption.36}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Visualization of the utilized 2D convnet topology.}}{43}{figure.caption.37}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Best results for the different number of rounds before the changes to the simulator.}}{47}{figure.caption.42}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Average training and test accuracy of 400 1D convnets on 5 rounds and a ratio of 9 simulated games for each real game.}}{49}{figure.caption.45}%
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Average training and test accuracy of 400 1D convnets on 10 rounds using no simulated games.}}{49}{figure.caption.46}%
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Average training and test accuracy of 400 2D convnets on 15 rounds and a ratio of 9 simulated games for each real game.}}{49}{figure.caption.47}%
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Average training and test accuracy of 400 2D convnets on 20 rounds and a ratio of 4 simulated games for each real game.}}{49}{figure.caption.48}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

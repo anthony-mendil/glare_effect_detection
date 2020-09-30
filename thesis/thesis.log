@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  23 SEP 2020 23:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7420 64-bit) (preloaded format=pdflatex 2020.5.16)  29 SEP 2020 20:30
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -1527,69 +1527,58 @@ lepage-eps-converted-to.pdf>]) [2
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
 
- [10] (thesis.lof)
+ [10] (thesis.lof [11
+
+])
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [11
+ [12] (thesis.lot
+Underfull \vbox (badness 3668) has occurred while \output is active []
 
-] [12
+ [13
 
-] (thesis.lot)
+])
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
 
-[13] [14
-
-
-]
+[14]
 \openout2 = `chapter1_introduction.aux'.
 
  (chapter1_introduction.tex
 Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-
- []
-
-) [1
+[1
 
 
 
-]
+
+
+]) [2]
 \openout2 = `memory_game.aux'.
 
- (memory_game.tex [2
+ (memory_game.tex
+Chapter 2.
+[3
 
 
 
 ]
-Chapter 2.
-[3]
-<images/noObstTurned.png, id=428, 1285.80376pt x 812.28468pt>
+<images/noObstTurned.png, id=472, 1285.80376pt x 812.28468pt>
 File: images/noObstTurned.png Graphic file (type png)
 <use images/noObstTurned.png>
 Package pdftex.def Info: images/noObstTurned.png  used on input line 14.
-(pdftex.def)             Requested size: 398.33858pt x 251.64452pt.
-<images/glareEffect.png, id=430, 1283.54532pt x 812.28468pt>
+(pdftex.def)             Requested size: 384.1122pt x 242.65854pt.
+<images/glareEffect.png, id=474, 1283.54532pt x 812.28468pt>
 File: images/glareEffect.png Graphic file (type png)
 <use images/glareEffect.png>
 Package pdftex.def Info: images/glareEffect.png  used on input line 21.
-(pdftex.def)             Requested size: 398.33858pt x 252.07832pt.
+(pdftex.def)             Requested size: 384.1122pt x 243.07996pt.
 ) [4 <./images/noObstTurned.png> <./images/glareEffect.png>]
 \openout2 = `simulator.aux'.
 
  (simulator.tex
 Chapter 3.
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/lmr/m/sc/12'.
-(microtype)             Ignoring protrusion settings for this character.
 [5
 
 
@@ -1610,7 +1599,12 @@ Overfull \hbox (2.61105pt too wide) in paragraph at lines 10--35
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 41--62
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 68--68
+[] [] 
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 41--89
 []$[]$ $[]$ 
  []
 
@@ -1643,7 +1637,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6
 ("C:\Users\dylin\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<images/noObstTurnedNotes.png, id=497, 1285.80376pt x 812.28468pt>
+<images/noObstTurnedNotes.png, id=544, 1285.80376pt x 812.28468pt>
 File: images/noObstTurnedNotes.png Graphic file (type png)
 <use images/noObstTurnedNotes.png>
 Package pdftex.def Info: images/noObstTurnedNotes.png  used on input line 66.
@@ -1657,138 +1651,138 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 139.
  [15] [16]
-<images/simMatrixGrey.png, id=570, 770.88pt x 604.50844pt>
-File: images/simMatrixGrey.png Graphic file (type png)
-<use images/simMatrixGrey.png>
-Package pdftex.def Info: images/simMatrixGrey.png  used on input line 235.
-(pdftex.def)             Requested size: 426.79134pt x 334.67598pt.
- [17 <./images/simMatrixGrey.png>]
+<images/simMatrixGrey_new.png, id=621, 755.2215pt x 599.1183pt>
+File: images/simMatrixGrey_new.png Graphic file (type png)
+<use images/simMatrixGrey_new.png>
+Package pdftex.def Info: images/simMatrixGrey_new.png  used on input line 238.
+(pdftex.def)             Requested size: 426.79134pt x 338.56647pt.
+ [17 <./images/simMatrixGrey_new.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 269.
+(hyperref)                removing `\\' on input line 277.
 
 [18]
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 304--316
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 314--326
 []$[]$ $[]$ 
  []
 
 [19]
-<images/simulationInitial1.png, id=598, 462.528pt x 345.4506pt>
+<images/simulationInitial1.png, id=648, 462.528pt x 345.4506pt>
 File: images/simulationInitial1.png Graphic file (type png)
 <use images/simulationInitial1.png>
-Package pdftex.def Info: images/simulationInitial1.png  used on input line 332.
+Package pdftex.def Info: images/simulationInitial1.png  used on input line 344.
 
 (pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 332--333
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 344--345
  [][] 
  []
 
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 333--333
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 345--345
 [] [] 
  []
 
-<images/simulationInitial2.png, id=599, 462.528pt x 345.4506pt>
+<images/simulationInitial2.png, id=649, 462.528pt x 345.4506pt>
 File: images/simulationInitial2.png Graphic file (type png)
 <use images/simulationInitial2.png>
-Package pdftex.def Info: images/simulationInitial2.png  used on input line 341.
+Package pdftex.def Info: images/simulationInitial2.png  used on input line 353.
 
 (pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 341--342
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 353--354
  [][] 
  []
 
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 342--342
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 354--354
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 329--346
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 341--358
 []$[]$ $[]$ 
  []
 
 [20 <./images/simulationInitial1.png> <./images/simulationInitial2.png>]
-<images/simulationOptimized1.png, id=608, 462.528pt x 345.4506pt>
+<images/simulationOptimized1.png, id=658, 462.528pt x 345.4506pt>
 File: images/simulationOptimized1.png Graphic file (type png)
 <use images/simulationOptimized1.png>
-Package pdftex.def Info: images/simulationOptimized1.png  used on input line 35
+Package pdftex.def Info: images/simulationOptimized1.png  used on input line 37
+1.
+(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
+
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 371--372
+ [][] 
+ []
+
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 372--372
+[] [] 
+ []
+
+<images/simulationOptimized2.png, id=659, 462.528pt x 345.4506pt>
+File: images/simulationOptimized2.png Graphic file (type png)
+<use images/simulationOptimized2.png>
+Package pdftex.def Info: images/simulationOptimized2.png  used on input line 37
 9.
 (pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 359--360
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 379--381
  [][] 
  []
 
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 360--360
-[] [] 
- []
-
-<images/simulationOptimized2.png, id=609, 462.528pt x 345.4506pt>
-File: images/simulationOptimized2.png Graphic file (type png)
-<use images/simulationOptimized2.png>
-Package pdftex.def Info: images/simulationOptimized2.png  used on input line 36
-7.
-(pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
-
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 367--369
- [][] 
- []
-
-
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 369--369
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 381--381
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 356--373
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 368--385
 []$[]$ $[]$ 
  []
 
 [21 <./images/simulationOptimized1.png> <./images/simulationOptimized2.png>]
 [22] [23] [24] [25]
-<images/sd15x_10rounds/Figure_3.png, id=654, 462.528pt x 345.4506pt>
+<images/sd15x_10rounds/Figure_3.png, id=704, 462.528pt x 345.4506pt>
 File: images/sd15x_10rounds/Figure_3.png Graphic file (type png)
 <use images/sd15x_10rounds/Figure_3.png>
 Package pdftex.def Info: images/sd15x_10rounds/Figure_3.png  used on input line
- 723.
+ 735.
 (pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 723--724
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 735--736
  [][] 
  []
 
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 724--724
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 736--736
 [] [] 
  []
 
-<images/sd15x_10rounds/Figure_4.png, id=655, 462.528pt x 345.4506pt>
+<images/sd15x_10rounds/Figure_4.png, id=705, 462.528pt x 345.4506pt>
 File: images/sd15x_10rounds/Figure_4.png Graphic file (type png)
 <use images/sd15x_10rounds/Figure_4.png>
 Package pdftex.def Info: images/sd15x_10rounds/Figure_4.png  used on input line
- 731.
+ 743.
 (pdftex.def)             Requested size: 227.62204pt x 170.00496pt.
 
-Overfull \hbox (14.22636pt too wide) in paragraph at lines 731--732
+Overfull \hbox (14.22636pt too wide) in paragraph at lines 743--744
  [][] 
  []
 
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 732--732
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 744--744
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 720--736
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 732--748
 []$[]$ $[]$ 
  []
 
 
-Overfull \hbox (7.415pt too wide) in paragraph at lines 749--758
+Overfull \hbox (7.415pt too wide) in paragraph at lines 761--770
  [][] 
  []
 
@@ -1798,70 +1792,69 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [26 <./images/sd15x_10rounds/Figure_3.png> <./images/sd15x_10rounds/Figure_4.p
 ng>]
 [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 808--809
+Underfull \hbox (badness 10000) in paragraph at lines 820--821
 
  []
 
 [29]
-<images/synImageOriginal.png, id=734, 316.18124pt x 559.33969pt>
+<images/synImageOriginal.png, id=790, 315.42844pt x 548.0475pt>
 File: images/synImageOriginal.png Graphic file (type png)
 <use images/synImageOriginal.png>
-Package pdftex.def Info: images/synImageOriginal.png  used on input line 859.
-(pdftex.def)             Requested size: 199.16928pt x 352.34319pt.
+Package pdftex.def Info: images/synImageOriginal.png  used on input line 871.
+(pdftex.def)             Requested size: 193.47882pt x 336.16496pt.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 860--860
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 872--872
 [] [] 
  []
 
-<images/synImage.png, id=735, 317.68687pt x 548.80031pt>
+<images/synImage.png, id=791, 317.68687pt x 548.80031pt>
 File: images/synImage.png Graphic file (type png)
 <use images/synImage.png>
-Package pdftex.def Info: images/synImage.png  used on input line 867.
-(pdftex.def)             Requested size: 199.16928pt x 344.07121pt.
+Package pdftex.def Info: images/synImage.png  used on input line 879.
+(pdftex.def)             Requested size: 193.47882pt x 334.24013pt.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 868--868
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 880--880
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 856--872
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 868--884
 []$[]$ $[]$ 
  []
 
 [30 <./images/synImageOriginal.png> <./images/synImage.png>] [31]
-<images/cardCodesNoObst.png, id=753, 1111.15125pt x 228.855pt>
+<images/cardCodesNoObst.png, id=809, 1111.15125pt x 228.855pt>
 File: images/cardCodesNoObst.png Graphic file (type png)
 <use images/cardCodesNoObst.png>
-Package pdftex.def Info: images/cardCodesNoObst.png  used on input line 912.
-(pdftex.def)             Requested size: 426.79134pt x 87.90166pt.
-<images/cardCodesGlare.png, id=754, 927.465pt x 195.73125pt>
+Package pdftex.def Info: images/cardCodesNoObst.png  used on input line 925.
+(pdftex.def)             Requested size: 386.95764pt x 79.69885pt.
+<images/cardCodesGlare.png, id=810, 927.465pt x 188.95593pt>
 File: images/cardCodesGlare.png Graphic file (type png)
 <use images/cardCodesGlare.png>
-Package pdftex.def Info: images/cardCodesGlare.png  used on input line 918.
-(pdftex.def)             Requested size: 426.79134pt x 90.07031pt.
- [32 <./images/cardCodesNoObst.png> <./images/cardCodesGlare.png>]) [33]
+Package pdftex.def Info: images/cardCodesGlare.png  used on input line 931.
+(pdftex.def)             Requested size: 386.95764pt x 78.8362pt.
+) [32 <./images/cardCodesNoObst.png> <./images/cardCodesGlare.png>]
 \openout2 = `modells.aux'.
 
  (modells.tex
-[34
+Chapter 6.
+[33
 
 
 
 ]
-Chapter 6.
-[35]
-<images/nn/loc.jpg, id=781, 327.99461pt x 156.21439pt>
+<images/nn/loc.jpg, id=838, 327.99461pt x 156.21439pt>
 File: images/nn/loc.jpg Graphic file (type jpg)
 <use images/nn/loc.jpg>
 Package pdftex.def Info: images/nn/loc.jpg  used on input line 26.
 (pdftex.def)             Requested size: 284.52756pt x 135.52164pt.
-<images/nn/conv.jpg, id=783, 262.39569pt x 302.97807pt>
+<images/nn/conv.jpg, id=843, 262.39569pt x 302.97807pt>
 File: images/nn/conv.jpg Graphic file (type jpg)
 <use images/nn/conv.jpg>
 Package pdftex.def Info: images/nn/conv.jpg  used on input line 35.
 (pdftex.def)             Requested size: 284.52756pt x 328.55675pt.
- [36 <./images/nn/loc.jpg>] [37 <./images/nn/conv.jpg>] [38]
-<images/nn/rec.png, id=806, 524.71031pt x 402.00188pt>
+ [34 <./images/nn/loc.jpg>] [35 <./images/nn/conv.jpg>] [36]
+<images/nn/rec.png, id=882, 524.71031pt x 402.00188pt>
 File: images/nn/rec.png Graphic file (type png)
 <use images/nn/rec.png>
 Package pdftex.def Info: images/nn/rec.png  used on input line 79.
@@ -1876,19 +1869,19 @@ Overfull \hbox (2.61105pt too wide) in paragraph at lines 73--84
 []$[]$ $[]$ 
  []
 
-[39 <./images/nn/rec.png>]
+[37 <./images/nn/rec.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 90.
 
-<images/nn/conv1d.jpg, id=816, 219.219pt x 192.72pt>
+<images/nn/conv1d.jpg, id=897, 219.219pt x 192.72pt>
 File: images/nn/conv1d.jpg Graphic file (type jpg)
 <use images/nn/conv1d.jpg>
 Package pdftex.def Info: images/nn/conv1d.jpg  used on input line 95.
 (pdftex.def)             Requested size: 284.52756pt x 250.16837pt.
-[40 <./images/nn/conv1d.jpg>]
+[38 <./images/nn/conv1d.jpg>]
 Chapter 7.
-<images/nn/comp.jpg, id=826, 210.13892pt x 166.77692pt>
+<images/nn/comp.jpg, id=911, 210.13892pt x 166.77692pt>
 File: images/nn/comp.jpg Graphic file (type jpg)
 <use images/nn/comp.jpg>
 Package pdftex.def Info: images/nn/comp.jpg  used on input line 114.
@@ -1903,163 +1896,207 @@ Overfull \hbox (2.61105pt too wide) in paragraph at lines 108--119
 []$[]$ $[]$ 
  []
 
-) [41
+) [39
 
  <./images/nn/comp.jpg>]
 \openout2 = `training_and_analysis.aux'.
 
- (training_and_analysis.tex [42
+ (training_and_analysis.tex [40
 
 
 
 ]
 Chapter 8.
-[43]
-<images/1dCnnStructureChanged.png, id=844, 1632.0975pt x 880.28876pt>
+[41]
+<images/1dCnnStructureChanged.png, id=941, 1632.0975pt x 880.28876pt>
 File: images/1dCnnStructureChanged.png Graphic file (type png)
 <use images/1dCnnStructureChanged.png>
-Package pdftex.def Info: images/1dCnnStructureChanged.png  used on input line 7
-2.
+Package pdftex.def Info: images/1dCnnStructureChanged.png  used on input line 9
+9.
 (pdftex.def)             Requested size: 426.79134pt x 230.18602pt.
-<images/2dCnnStructure_new.png, id=848, 1244.39906pt x 603.75563pt>
+ [42 <./images/1dCnnStructureChanged.png>]
+<images/2dCnnStructure_new.png, id=953, 1244.39906pt x 603.75563pt>
 File: images/2dCnnStructure_new.png Graphic file (type png)
 <use images/2dCnnStructure_new.png>
-Package pdftex.def Info: images/2dCnnStructure_new.png  used on input line 85.
-(pdftex.def)             Requested size: 426.79134pt x 207.07065pt.
- [44 <./images/1dCnnStructureChanged.png>] [45 <./images/2dCnnStructure_new.png
->] [46] [47] [48]
-<images/bestAccPlot.png, id=885, 462.528pt x 345.4506pt>
-File: images/bestAccPlot.png Graphic file (type png)
-<use images/bestAccPlot.png>
-Package pdftex.def Info: images/bestAccPlot.png  used on input line 451.
-(pdftex.def)             Requested size: 278.83708pt x 208.2682pt.
+Package pdftex.def Info: images/2dCnnStructure_new.png  used on input line 117.
 
-Overfull \hbox (22.75967pt too wide) in paragraph at lines 451--452
+(pdftex.def)             Requested size: 426.79134pt x 207.07065pt.
+ [43 <./images/2dCnnStructure_new.png>] [44] [45] [46]
+<images/bestAccPlotNew.png, id=988, 462.528pt x 310.761pt>
+File: images/bestAccPlotNew.png Graphic file (type png)
+<use images/bestAccPlotNew.png>
+Package pdftex.def Info: images/bestAccPlotNew.png  used on input line 516.
+(pdftex.def)             Requested size: 278.83708pt x 187.35423pt.
+
+Overfull \hbox (22.75967pt too wide) in paragraph at lines 516--517
  [][] 
  []
 
 
-Overfull \hbox (42.67848pt too wide) in paragraph at lines 452--452
+Overfull \hbox (42.67848pt too wide) in paragraph at lines 517--517
 [] [] 
  []
 
 
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 445--456
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 510--521
 []$[]$ $[]$ 
  []
 
-[49 <./images/bestAccPlot.png>]
-<images/bestHistories/1d_10s_sd9x_acc.png, id=900, 429.10312pt x 316.18124pt>
-File: images/bestHistories/1d_10s_sd9x_acc.png Graphic file (type png)
-<use images/bestHistories/1d_10s_sd9x_acc.png>
-Package pdftex.def Info: images/bestHistories/1d_10s_sd9x_acc.png  used on inpu
-t line 516.
+[47 <./images/bestAccPlotNew.png>]
+<images/bestHistories/edit/1d_10s_sd9x_acc.png, id=1005, 429.10312pt x 316.1812
+4pt>
+File: images/bestHistories/edit/1d_10s_sd9x_acc.png Graphic file (type png)
+<use images/bestHistories/edit/1d_10s_sd9x_acc.png>
+Package pdftex.def Info: images/bestHistories/edit/1d_10s_sd9x_acc.png  used on
+ input line 581.
 (pdftex.def)             Requested size: 213.39566pt x 157.2411pt.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 517--517
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 582--582
 [] [] 
  []
 
-<images/bestHistories/1d_20s_sd0x_acc.png, id=901, 423.83344pt x 316.18124pt>
-File: images/bestHistories/1d_20s_sd0x_acc.png Graphic file (type png)
-<use images/bestHistories/1d_20s_sd0x_acc.png>
-Package pdftex.def Info: images/bestHistories/1d_20s_sd0x_acc.png  used on inpu
-t line 524.
-(pdftex.def)             Requested size: 213.39566pt x 159.19504pt.
+<images/bestHistories/edit/1d_20s_sd0x_acc_new.png, id=1006, 423.08063pt x 312.
+41719pt>
+File: images/bestHistories/edit/1d_20s_sd0x_acc_new.png Graphic file (type png)
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 525--525
+<use images/bestHistories/edit/1d_20s_sd0x_acc_new.png>
+Package pdftex.def Info: images/bestHistories/edit/1d_20s_sd0x_acc_new.png  use
+d on input line 589.
+(pdftex.def)             Requested size: 213.39566pt x 157.57635pt.
+
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 590--590
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 513--530
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 578--595
 []$[]$ $[]$ 
  []
 
-[50]
-<images/bestHistories/2d_30s_sd9x_acc.png, id=906, 427.5975pt x 316.93407pt>
-File: images/bestHistories/2d_30s_sd9x_acc.png Graphic file (type png)
-<use images/bestHistories/2d_30s_sd9x_acc.png>
-Package pdftex.def Info: images/bestHistories/2d_30s_sd9x_acc.png  used on inpu
-t line 534.
+[48]
+<images/bestHistories/edit/2d_30s_sd9x_acc.png, id=1011, 427.5975pt x 316.93407
+pt>
+File: images/bestHistories/edit/2d_30s_sd9x_acc.png Graphic file (type png)
+<use images/bestHistories/edit/2d_30s_sd9x_acc.png>
+Package pdftex.def Info: images/bestHistories/edit/2d_30s_sd9x_acc.png  used on
+ input line 599.
 (pdftex.def)             Requested size: 213.39566pt x 158.16681pt.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 535--535
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 600--600
 [] [] 
  []
 
-<images/bestHistories/2d_40s_sd4x_acc.png, id=907, 423.08063pt x 315.42844pt>
-File: images/bestHistories/2d_40s_sd4x_acc.png Graphic file (type png)
-<use images/bestHistories/2d_40s_sd4x_acc.png>
-Package pdftex.def Info: images/bestHistories/2d_40s_sd4x_acc.png  used on inpu
-t line 544.
+<images/bestHistories/edit/2d_40s_sd4x_acc.png, id=1012, 423.08063pt x 315.4284
+4pt>
+File: images/bestHistories/edit/2d_40s_sd4x_acc.png Graphic file (type png)
+<use images/bestHistories/edit/2d_40s_sd4x_acc.png>
+Package pdftex.def Info: images/bestHistories/edit/2d_40s_sd4x_acc.png  used on
+ input line 609.
 (pdftex.def)             Requested size: 213.39566pt x 159.09517pt.
 
-Overfull \hbox (64.01935pt too wide) in paragraph at lines 545--545
+Overfull \hbox (64.01935pt too wide) in paragraph at lines 610--610
 [] [] 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 531--551
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 596--616
 []$[]$ $[]$ 
  []
 
-) [51 <./images/bestHistories/1d_10s_sd9x_acc.png> <./images/bestHistories/1d_2
-0s_sd0x_acc.png> <./images/bestHistories/2d_30s_sd9x_acc.png> <./images/bestHis
-tories/2d_40s_sd4x_acc.png>]
+) [49 <./images/bestHistories/edit/1d_10s_sd9x_acc.png> <./images/bestHistories
+/edit/1d_20s_sd0x_acc_new.png> <./images/bestHistories/edit/2d_30s_sd9x_acc.png
+> <./images/bestHistories/edit/2d_40s_sd4x_acc.png>]
 \openout2 = `voting.aux'.
 
- (voting.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [52
+ (voting.tex [50
 
 
-]
-[53]) [54]
+] [51])
+[52]
 \openout2 = `prospect.aux'.
 
  (prospect.tex
 Chapter 9.
-[55
+[53
 
 
 
-]) [56]
+]) [54]
 \openout2 = `appendix.aux'.
 
  (appendix.tex
 Appendix A.
-[57
+[55
 
 
 
-] [58]) [59] [60
+] [56]) [57] [58
 
 
-] (thesis.bbl) [61
+] (thesis.bbl
+Underfull \hbox (badness 4217) in paragraph at lines 16--21
+[]\T1/lmr/m/n/12 (+20) M. Amu-nategui.  Con-vo-lu-tional neu-ral net-works and 
+un-con-
+ []
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 179.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 179.
- (thesis.aux (titlepage.aux)
-(erklaerung.aux) (abstract.aux) (chapter1_introduction.aux) (memory_game.aux)
-(simulator.aux) (collected_data.aux) (data_preperation.aux) (modells.aux)
+
+Underfull \hbox (badness 6412) in paragraph at lines 16--21
+\T1/lmr/m/n/12 (+20) ven-tional data - pre-dict-ing the stock mar-ket us-ing im
+-ages.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--21
+\T1/lmr/m/n/12 (+20) http://amunategui.github.io/unconventional-convolutional-n
+etworks/.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--29
+[]\T1/lmr/m/n/12 (+20) Jason Brown-lee.  Es-ti-mate the num-ber of ex-per-i-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--29
+\T1/lmr/m/n/12 (+20) ment re-peats for stochas-tic ma-chine learn-ing al-go-rit
+hms.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--29
+\T1/lmr/m/n/12 (+20) https://machinelearningmastery.com/estimate-number-experim
+ent-
+ []
+
+
+Underfull \hbox (badness 8019) in paragraph at lines 23--29
+\T1/lmr/m/n/12 (+20) repeats-stochastic-machine-learning-algorithms/.  Last ac-
+cessed:
+ []
+
+[59
+
+]) [60]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+ (thesis.aux (titlepage.aux) (erklaerung.aux) (abstract.aux)
+(chapter1_introduction.aux) (memory_game.aux) (simulator.aux)
+(collected_data.aux) (data_preperation.aux) (modells.aux)
 (training_and_analysis.aux) (voting.aux) (prospect.aux) (appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 179.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 179.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 84E47DBDEF326263CC41FC5EF603FB50;3125.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 179.
+(rerunfilecheck)             Checksum: 056F461AF3DC4BAB668BE9BE69155EF6;3143.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
- 30702 strings out of 480769
- 580701 string characters out of 2894272
- 1332840 words of memory out of 3000000
- 45532 multiletter control sequences out of 15000+200000
- 621231 words of font info for 145 fonts, out of 3000000 for 9000
+ 30758 strings out of 480769
+ 581617 string characters out of 2894272
+ 1343904 words of memory out of 3000000
+ 45571 multiletter control sequences out of 15000+200000
+ 618621 words of font info for 145 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,15n,100p,2705b,1406s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,15n,100p,2752b,1408s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
 c}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.e
 nc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.e
@@ -2069,23 +2106,22 @@ mathit.enc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm
 /lm-mathsy.enc}{C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
 s/base/8r.enc}<C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmbx12.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/lm/lmcsc10.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/lm/lmex10.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/lm/lmmi12.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/lm/lmmi8.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/dylin/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/dylin/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/dylin/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/dylin/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Users/dylin/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/dylin/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Users/dylin/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dylin/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/dyl
-in/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (75 pages, 2097422 bytes).
+/public/lm/lmex10.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/lm/lmmi12.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/lm/lmmi8.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/lm/lmr10.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/dylin/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/dylin/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/dylin/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Users/dylin/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/dylin/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/lm/lmro12.pfb><C:/Users/dylin/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/dylin/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/dylin/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on thesis.pdf (74 pages, 2101179 bytes).
 PDF statistics:
- 1093 PDF objects out of 1200 (max. 8388607)
- 247 named destinations out of 1000 (max. 500000)
- 30228 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1211 PDF objects out of 1440 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
+ 28180 words of extra memory for PDF output out of 29859 (max. 10000000)
 

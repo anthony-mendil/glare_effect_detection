@@ -48,9 +48,9 @@
 
 \section{Models}
 \label{models}
-For determining whether probands were blinded, one dimensional and two dimensional convolutional neural networks were utilized. One dimensional convolutional neural networks have become popular for time series classifications \todo{source}, while wo dimensional coovolutinal neural networks are mostly used for image processing. However, a possibility is to create synthetic images from the data ,as done in section \ref{2d_cnn_features} \nameref{2d_cnn_features}, and use these images in a two dimensional convolutional network. The dimensions of the data and the feature maps in the visualizations are calculafed for the case that all 20 rounds are used. If a different number of rounds is used the values differ. 
+For determining whether subjects played a game without any obstacles or a game effected by the glare effect, one dimensional and two dimensional convolutional neural networks are utilized. As the task at hand is naturally a sequence classification, using 1D convnets is the more conventional approach of the two. 2D convnets on the other hand hand are almost universally used in computer vision applications \cite[Chapter~5]{cnn}. However, a possibility is to create synthetic images from the sequential data and use these images in a 2D convnet \cite{2dcnn}. The synthetic images are created in section \ref{2d_cnn_features} \nameref{2d_cnn_features}. The dimensions of the data and the feature maps in figure \ref{fig:1dCnnStructure} and \ref{fig:2dCnnStructure} are calculated for the case that all 20 rounds are used. If a different number of rounds is used the values differ. 
 
-The models do not neccessarily produce the best results possible. We use best practice CNN 1d \todo{source} and 2d \todo{source} topology. As the amount of collected real data with 20 recordings for each label is very limited, it was decided not to split the data into training, test and validation data, and instead only into training and test data using leave-one-out cross validation method, where we train each model with data from n-1 subjects and thus we test on the data from the remaining subject. As there is no separate validation set, meaning an optimization would have to be done on the test data, it was avoided to optimize the hyper parameters individually for each model to ensure generalizing on new testing data. Instead, common best practice hyper parameters were optimized over all the models for better generalizing ability.
+The models do not necessarily produce the best results possible since best practice 1D convnet \cite{1dcnn} and 2D convnet \cite{2dcnn} topologies are used. As the amount of collected real data with 20 recordings for each label is very limited, it was decided not to split the data into training, test and validation data, and instead only into training and test data using leave-one-out cross validation, where each model is trained with data from n-1 subjects and thus tested on the data from the remaining subject \cite[Chapter~1]{oneOut}. As there is no separate validation set, an optimization would have to be done on the test data. If the parameters are optimized using the test set, the measurement of generalization would be flawed \cite[Chaper~4]{cnn}. Therefore, it was avoided to optimize the hyper parameters individually for each model to ensure generalizing on new testing data. Instead, common best practice hyper parameters were optimized over all the models for better generalizing ability.
 
 %In order to optimize the models a separate validation set would be neccessary. It could be used to tune the hyper parameters of the model and the models would be tested on the test data that was not part of the process of the optimization. 
 
@@ -62,34 +62,68 @@ The models do not neccessarily produce the best results possible. We use best pr
 
 %\todo{statt begründung die quellenangeben. Von wo..}
 
+
+\begin{comment}
+	The visualisations are based (and heavily adjusted) on the latex code provided by the following license:
+	
+	MIT License
+	
+	Copyright (c) 2018 HarisIqbal88
+	
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+\end{comment}
+
 \newpage
 
-\subsection{1D CNN}
+\subsection{1D convnet}
 \label{1d_cnn}
-The structure of the 1D CNN used is shown in figure \ref{fig:1dCnnStructure}.
+The structure of the 1D convnet used is shown in figure \ref{fig:1dCnnStructure}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{images/1dCnnStructureChanged.png}
-	\caption[Bild kurz]{Visualization of the utilized 1d cnn topology. The dimensions represent those of the feature map in that layer. As example, the first convolutional layer produces a feature map with the size 32 x 36 with 36 being the number of filters computed.}
+	\caption[Visualization of the utilized 1D convnet topology.]{Visualization of the utilized 1D convnet topology. The dimensions represent those of the feature map in that layer. For example, the first convolution layer produces a feature map with the size 36 x 32 with 32 being the number of filters computed.\\ The input is on the left and the output on the right.}
 	\label{fig:1dCnnStructure}
 \end{figure}
-The input data consist of the 5 statical features, explained in section \ref{1d_cnn_features} \nameref{1d_cnn_features}, for each of the 40 steps (20 rounds), resulting in the input dimensions 40 $\cdot$ 5. Initially the data is passed to the first convolutional layer of the network. 32 filters are computed by the first layer and the convolutional kernel has a size of 5, meaning that every step from the kernel includes all data from 5 steps in the game. The resulting feature map has a size of 32 x 36. This feature maps is passed to the second convolutional layer that computes the same number of filters and with the same kernel size as the first layer. This results in a feature map with a size of 32 x 32. Afterwards a dropout layer with a rate of 0.5 randomly sets input features to 0 to reduce overfitting. Then a one dimensional max pooling layer with a pool size of 2 reduces the size of the feature map to 32 x 16. Afterwards, a flatten layer forms the features into one dimension. These features are finally passed to a densely connected network, consisting of two dense layers. Both convolutional layers, and the first dense layer use a rectified linear unit as activation function. The last dense layer uses softmax as activation function to bring the data down two two values for the two classes. The elements of the output vector are between 0 and 1, sum up to 1 and specify the result of the classification. In total 57486 parameters are trained in this model. 
+The input data consist of the 5 statistical features, explained in section \ref{1d_cnn_features} \nameref{1d_cnn_features}, for each of the 40 steps (20 rounds), resulting in the input dimensions 40 x 5. Initially the data is passed to the first convolution layer of the network. The first layer computes 32 filters and the convolutional kernel has a size of 5, meaning that every step from the kernel includes all data from 5 steps in the game. The resulting feature map has a size of 36 x 32. This feature map is passed to the second convolution layer that computes the same number of filters. The kernel also has the same size like in the first layer. This results in a feature map with a size of 32 x 32. Afterwards, a dropout layer with a rate of 0.5 randomly sets input features to 0 to reduce overfitting. Then a one dimensional max-pooling layer with a pool size of 2 reduces the size of the feature map to 16 x 32. Afterwards, a flatten layer forms the features into one dimension. These features are finally passed to a densely connected network, consisting of two dense layers. Both convolution layers, and the first dense layer use a rectified linear unit as activation function. The last dense layer uses softmax as activation function to bring the data down to two values that specify the result of the classification. In total 57486 parameters are trained in this model. 
 
-As optimizer the Adam optimizer from keras is used that implements the Adam algorithm. Adam optimization is a stochastic gradient descent method \todo{source keras}. The learning rate is set to 0.0001 and not changed during the training. The batch size is set to 32 and the model is trained for 2500 epochs. As mentioned before, this is a best practice configuration, optimized over all the 1d cnn models and not indivually for each model. 
+For the optimization, the Adam algorithm is used that is already implemented in Keras. Adam optimization is a stochastic gradient descent method \cite{keras}. The learning rate is set to 0.0001 and not changed during the training. The batch size is set to 32 and the model is trained for 2500 epochs. 
+%Later many models had to be retrained due to complications and the epochs were reduced to 1500, because 2500 was unnecessarily high (accuracy continually decreased already after less than 1500 epochs).% As mentioned before, this is a best practice configuration
 
-\subsection{2D CNN}
+%As mentioned before, this is a best practice configuration, optimized over all the 1D convnet models and not individually for each model. 
+
+\newpage
+
+\subsection{2D convnet}
 \label{2d_cnn}
-The structure of the 2D CNN used is shown in figure \ref{fig:2dCnnStructure}.
+The structure of the 2D convnet used is shown in figure \ref{fig:2dCnnStructure}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{images/2dCnnStructure_new.png}
-	\caption[Bild kurz]{Visualization of the utilized 2d cnn topology. The dimensions represent those of the feature map in that layer. As example, the first convolutional layer produces a feature map with the size 72 x 36 x 64 with 64 describing the number of filters computed.}
+	\caption[Visualization of the utilized 2D convnet topology.]{Visualization of the utilized 2D convnet topology. The dimensions represent those of the feature map in that layer. For example, the first convolution layer produces a feature map with the size 72 x 36 x 64 with 64 describing the number of filters computed.\\ The input is on the left and the output on the right.}
 	\label{fig:2dCnnStructure}
 \end{figure}
-The input data consist of the synthetic images generated in section \ref{2d_cnn_features} \nameref{2d_cnn_features}, using the 5 statistical features. This results in the input dimensions 76 $\cdot$ 40 $\cdot$ 1. Initially the data is passed to the first convolutional layer of the network. 64 filters are computed and the kernel has a size of 5 x 5, meaning that each step from the kernel includes a 5 $\cdot$ 5 sized area of the synthetic image. This convolution results in a feature map with a size of 64 x 72 x 36. This feature map is passed to the second convolutional layer that computes 32 filters with a kernel of size of 3 $\cdot$ 3. This results in a feature map with the size of 32 x 70 x 34. Then a two dimensional max pooling layer with a pool size of 2 $\cdot$ 2 reduces the size of the feature map to 32 x 35 x 17. Afterwards a dropout layer with a rate of 0.2 randomly sets input units to 0 to reduce overfitting. Afterwards, a flatten layer forms the features into one dimension. These features are finally passed to a densely connected network, consisting of three dense layers. Both convolutional layers, and the first two dense layers use a rectified linear unit as activation function. The last dense layer uses a softmax activation function to bring the data down two two values for the two classes. The elements of the output vector are between 0 and 1, sum up to 1 and specify the result of the classification. In total 2463928 parameters are trained in this model.
+The input data consist of the synthetic images generated in section \ref{2d_cnn_features} \nameref{2d_cnn_features}, using the 5 statistical features. This results in the input dimensions 76 x 40 x 1. Initially the data is passed to the first convolution layer of the network. It computes 64 filters and the convolutional kernel has a size of 5 x 5, meaning that each step from the kernel includes a 5 x 5 sized area of the synthetic image. This convolution results in a feature map with a size of 72 x 36 x 64. This feature map is passed to the second convolution layer that computes 32 filters with a kernel of size of 3 x 3. This results in a feature map with the size of 70 x 34 x 32. Then a two dimensional max pooling layer with a pool size of 2 x 2 reduces the size of the feature map to 35 x 17 x 32. Afterwards, a dropout layer with a rate of 0.2 randomly sets input units to 0 to reduce overfitting. Then a flatten layer forms the features into one dimension. These features are finally passed to a densely connected network, consisting of three dense layers. Both convolution layers, and the first two dense layers use a rectified linear unit as activation function. The last dense layer uses a softmax activation function to bring the data down to two values that specify the result of the classification. In total 2463928 parameters are trained in this model.
 
-As optimizer the Adam optimizer from keras is used that implements the Adam algorithm. Adam optimization is a stochastic gradient descent method \todo{soruce keras}. The learning rate is set to 0.00001 and not changed during the training. The batch size is set to 32 and the model is trained for 1000 epochs. As mentioned before, this is a best practice configuration, optimized over all the 2d cnn models and not indivually for each model. 
+For the optimization, the Adam algorithm is used that is already implemented in Keras. Adam optimization is a stochastic gradient descent method \cite{keras}. The learning rate is set to 0.00001 and not changed during the training. The batch size is set to 32 and the model was initially trained for 500 epochs. Later, many 2D convnets had to be retrained due to complications and the epochs were reduced to 200, because 500 was unnecessarily high (accuracy continually decreased already after less than 500 epochs). This can be seen in figure \ref{fig:2d40}. 
+% As mentioned before, this is a best practice configuration. 
 
+%As mentioned before, this is a best practice configuration, optimized over all the 2D convnet models and not individually for each model. 
 
 \begin{comment}
 
@@ -160,7 +194,9 @@ It can be seen that the original structure of the image is still recognizable af
 
 \section{Training setup}
 \label{training_setup}
-There is one script each for training the 1D cnn and the 2d cnn. The only differences are in the structure and the hyper parameters of the cnns and that before training the 2d cnn the loaded statistical feaures must first be used to create the synthetic images. Both scripts load the same statistical features, already divided into 20 splits. As there are statistical features for 20 real and 20000 simlauted no obstacles games as well as the same amount for glare effects games, this results in each split containing data from 19 real and 19000 simualted games for each of the two classes, resulting in 38 real and 38000 simulated games available for the training. From 2 real and 2000 simulated games not used for training, only the data from the real games is used for testing. \todo{leave one out cross validation erwähnen, generell umformulieren weil es maximal so viele simulierte sind und nicht generell} This is done becauuse for the real world isuge it is not relevant how the models perform on simulated data. Furthermore it can be chosen for which ratios between simualted and real games models should be trained. It was chosen to use ratios of one real game to 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 20 simulated games. Moreover it can be chosen how many turns in the game should be used (a turn consists of flipping 2 cards). In real world scenarios, the less the faster the decision is made and assistance can be applied, but if waited the longer the decision will likely be correct more often. To analyse this, models for different amounts of turns are trained. The turns chosen are the first 5, 10, 15 and 20. More than 20 turns were not recorded. 
+There is one script each for training the 1D convnet and the 2D convnet. The only differences are in the structure and the hyper parameters of the convnets and that before training the 2D convnet the loaded statistical features must first be used to create the synthetic images. Both scripts load the same statistical features, already divided into 20 splits that are used for leave-one-out cross validation. Each split contains a training and a test set. A training set consists of 19 real and 19000 simulated games for each of the two classes, while a test set contains one real game for each of the classes. The 2000 simulated games excluded from the training are not used for testing, because the results would not be representative of the real world performance of the models. Furthermore, only a certain number of the best simulations are included in the training. The ratio of n simulated games for each real games will be abbreviated with sdnx. For instance, sd5x means that 5 simulated games for each real game were included in the training. 
+%As there are statistical features for 20 real and 20000 simulated no obstacles games as well as the same amount for glare effects games, this results in each split containing data from 19 real and 19000 simulated games for each of the two classes, resulting in 38 real and 38000 simulated games available for the training. From 2 real and 2000 simulated games not used for training, only the data from the real games is used for testing. \todo{leave one out cross validation erwähnen, generell umformulieren weil es maximal so viele simulierte sind und nicht generell} Testing on simulated data would not be representative of the real world performance of the models. Furthermore it can be chosen for which ratios between simulated and real games models should be trained. 
+Each training of a model is done for the following ratios: sd0x, sd1x, sd2x, sd3x, sd4x, sd5x, sd6x, sd7x, sd8x, sd9x, sd10x and sd20x. Moreover, the training is done on different numbers of rounds (each round consists of flipping two cards). In real world scenarios, the less turns waited the faster the decision is made and assistance can be applied. However, if waited longer the decision will likely be correct more often. To analyse this, the models are trained each for 5, 10, 15 and 20 rounds. More than 20 turns were not recorded. As convnets are stochastic machine learning algorithms, different runs of the same algorithm on the same data can result in different outcomes. Therefore, it is not sufficient to train each model only once as the result is not reliable. Instead, the training of a model is repeated multiple times and the results are averaged to summarize the performance of the model \cite{repetition}. The decision was made to repeat the training of each model 20 times. 
 % Training models for ranges of turns in the middle, for instance from turn 10 to 15, was left out, because this is not very interesting when conscidering real world usage. 
 
 %All models are trained twice. Once on the simulated data created before modifying the simulator and once afterwards. This can potentially show whether the changes improved the classification results. 
@@ -169,7 +205,9 @@ There is one script each for training the 1D cnn and the 2d cnn. The only differ
 
 %The structure and hyper parameters of the modells for all 1d cnns are identical. Same goes for all 2d models. The only differnece is the input shape of the modells since it depends on teh number of steps used in the training. Identical structure for modells of the same type are used so that different training results for different amount of steps can be reliably compared. It should be noted the structure and hyper paramters are not the same between the 1d and 2d cnns. 
 
-Once one of the scripts is executed, required directory structures are created and training processes for the different ratios of real to simulated games are performed successively. The training for one ratio consists of parallelized training of 20 splits using multiprocessing. The training for each split is repeated 20 times. As a result for each ratio 20 models are created for every split. This means that 400 models are trained for every ratio. As there are 12 different ratios trained, this results in 4800 models trained for each execution of one of the scripts. As mentioned above, the training is done for 4 different amounts of steps for the 1d cnn and the 2d cnn. This adds up to 38400 models being trained. Furthermore this done twice: Once before the changes to the simulator and once afterwards, to see if the changes improved the performance of the models. All in all this results in 76800 models. For each model the training history is saved in a file. Saving and loading the historeis is neccessary due to the parallel training of multiple models through multiprocessing.  Once the training of the 4800 models of one script is completed, the training histories are loaded from the files. The results from the 400 training histories for each ratio of real to simulated games are averaged, plotted and the final figures are saved for the analysis. The reason for averaging the results over many models is, that deep neural networks by default initialize their weights randomly, resulting in potentially different outcomes of each training \todo{stattdessen begründung mit stochastic models mit referenz}. By averaging the results, the values and therefore the interpretation becomes more reliable and meaningful. All models are trained on the CPU. The fact that 76800 models are trained led to the decision, not to save all models but instead first evaluate the results and then retrain and save the models that create the best results. 
+Once one of the scripts is executed, required directory structures are created and training processes for the different ratios of real to simulated games are performed successively. The training for one ratio consists of parallelized training of 20 splits using multiprocessing. As the training for each split is repeated 20 times, for each ratio 20 models are created  for every split. This means that 400 models are trained for every ratio. As there are 12 different ratios trained, this results in 4800 models trained for each execution of one of the scripts. As mentioned above, the training is done for 4 different amounts of rounds for the 1D convnet and the 2D convnet. This adds up to 38400 models being trained. Furthermore, this is done twice: Once before the changes to the simulator and once afterwards, to see if the changes improved the performance of the models. All in all, this results in 76800 models. For each model the training history is saved in a file. Saving and loading the histories is necessary due to the parallel training of multiple models through multiprocessing. Once the training of the 4800 models of one script is completed, the training histories are loaded from the files. The results from the 400 training histories for each ratio of real to simulated games are averaged, plotted and the final figures are saved for the analysis.
+% The reason for averaging the results over many models is, that deep neural networks by default initialize their weights randomly, resulting in potentially different outcomes of each training \todo{stattdessen begründung mit stochastic models mit referenz}. By averaging the results, the values and therefore the interpretation becomes more reliable and meaningful. 
+All models are trained on the CPU. The fact that 76800 models are trained led to the decision, not to save all models but instead first evaluate the results and then retrain and save the models that create the best results thus using less memory.  
 
 \begin{comment}
 
@@ -206,17 +244,44 @@ child {node {...}
    
 \section{Training results and evaluation}
 \label{training_results_and_evaluation}
+The training results for the various configurations can be seen in table \ref{tab:1d_before}, \ref{tab:2d_before}, \ref{tab:1d_after} and \ref{tab:2d_after}. The first two tables contain the results before the changes to the simulator and the last two the results afterwards. The analysis will only focus on the accuracy, but the loss is also listed for the sake of completeness. The best accuracies for each number of turns in each table are highlighted in green. If multiple ratios of real to simulated games for a certain number of turns produce the same accuracy only the one with the smallest amount of simulations is highlighted. The accuracies in the tables are those from the best epochs. In most of the cases the models start overfitting after a certain epoch resulting in a deterioration of the accuracy after reaching a local maximum. In rare cases the test accuracy converges. Such a case can be observed in figure \ref{fig:1d20}.
+%All models except the 1D convnet for 5 rounds and ratios of sd0x and sd1x reach such a local maximum in accuracy before the training is stopped. 
 
-\todo{ sd und alle anderen abkürzungen erklären}
-
-The training results for the various configurations can be seen in table \ref{tab:1d_before}, \ref{tab:2d_before}, \ref{tab:1d_after} and \ref{tab:2d_after}. The first two tables contain the results before the changes to the simulator and the last to the results afterwards. The analyiss will only focus on the accuracy, but the loss is also listed for the sake of completeness. The best accuracies for each number of turns in each table are highlighted in green. If multiple ratios of real to simulated game for a certain number of turns produce the same accuracy only the one with the smallest amount of simulations is highlighted. The accuracies in the tables are those from the best epochs. In most of the cases the models start overfitting after a certain epoch resulting in a deterioration of the accuracy after reaching a local maximum. All models except the 1d cnns for 5 rounds and ratios of sd0x and sd1x reach such a local maximum in accuracy before the training is stopped. 
-
-It should be claryfied that the chosen configurations of models to be trained make no claim to completeness. 
-
-
+It should be clarified that the chosen configurations of models to be trained make no claim to completeness and do not claim to produce the best results, as they are not optimized individually. In all following tables the word round is abbreviated with r. and accuracy with acc. 
 
 
 \newpage
+
+\begin{comment}
+	\begin{table}[H]
+	\centering
+	
+	\resizebox{0.9\columnwidth}{!}{%
+	\begin{tabular}{|c||ccccc|ccccc|ccccc|ccccc|}
+	\hline
+	&&& 5 r. &&&&& 10 r. &&&&& 15 r. &&&&& 20 r. &&\\
+	\hline
+	&& Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &\\
+	\hline\hline
+	sd0x &&     65.12\% && 0.6584 &&& \textbf{\textcolor{mygreen}{81.12\%}} && 0.5116 &&& \textbf{\textcolor{mygreen}{78.37\%}} && 0.5377 &&& 79.62\% && 0.492 &\\
+	sd1x &&     71.25\% && 0.6385 &&& 80.88\% && 0.4777 &&& 77.25\% && 0.5355 &&& 80.12\% && 0.4999 &\\
+	sd2x &&     68.5\% && 0.6476 &&& 77.38\% && 0.5283 &&& 78.25\% && 0.5275 &&& \textbf{\textcolor{mygreen}{81.25\%}} && 0.4887 &\\
+	sd3x &&     69.38\% && 0.6494 &&& 75.5\% && 0.5252 &&& 76.13\% && 0.5329 &&& 79.75\% && 0.4999 &\\
+	sd4x &&     67.5\% && 0.6436 &&& 75.88\% && 0.538 &&& 77.25\% && 0.5322 &&& 81.25\% && 0.4975 &\\
+	sd5x &&     72.25\% && 0.6212 &&& 76.5\% && 0.5252 &&& 77.75\% && 0.5338 &&& 81.25\% && 0.4985 &\\
+	sd6x &&     71.87\% && 0.6346 &&& 74.75\% && 0.547 &&& 76.25\% && 0.5376 &&& 79.38\% && 0.5075 &\\
+	sd7x &&     70.25\% && 0.6252 &&& 73.62\% && 0.5395 &&& 76.0\% && 0.5326 &&& 80.0\% && 0.5078 &\\
+	sd8x &&     74.25\% && 0.6121 &&& 72.5\% && 0.5509 &&& 77.0\% && 0.535 &&& 79.75\% && 0.4993 &\\
+	sd9x &&     \textbf{\textcolor{mygreen}{74.88\%}} && 0.5826 &&& 74.63\% && 0.5483 &&& 76.0\% && 0.542 &&& 81.75\% && 0.4987 &\\
+	sd10x &&    74.87\% && 0.5971 &&& 74.5\% && 0.5558 &&& 77.12\% && 0.5394 &&& 80.87\% && 0.5036 &\\
+	sd20x &&    73.25\% && 0.5831 &&& 73.5\% && 0.5493 &&& 75.63\% && 0.5355 &&& 80.75\% && 0.5013 &\\
+	\hline
+	\end{tabular}
+	}
+	\caption[Best accuracies and losses produced by the 1D convnet. Before the changes to the simulator.]{Best accuracies and losses for 5, 10, 15 and 20 rounds produced by the 1D convnet. Before the changes to the simulator.}
+	\label{tab:1d_before_old}
+	\end{table}
+\end{comment}
 
 \begin{table}[H]
 	\centering
@@ -228,22 +293,22 @@ It should be claryfied that the chosen configurations of models to be trained ma
 			\hline
 			&& Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &\\
 			\hline\hline
-			sd0x &&     65.12\% && 0.6584 &&& \textcolor{mygreen}{81.12\%} && 0.5116 &&& \textcolor{mygreen}{78.37\%} && 0.5377 &&& 79.62\% && 0.492 &\\
-			sd1x &&     71.25\% && 0.6385 &&& 80.88\% && 0.4777 &&& 77.25\% && 0.5355 &&& 80.12\% && 0.4999 &\\
-			sd2x &&     68.5\% && 0.6476 &&& 77.38\% && 0.5283 &&& 78.25\% && 0.5275 &&& \textcolor{mygreen}{81.25\%} && 0.4887 &\\
-			sd3x &&     69.38\% && 0.6494 &&& 75.5\% && 0.5252 &&& 76.13\% && 0.5329 &&& 79.75\% && 0.4999 &\\
-			sd4x &&     67.5\% && 0.6436 &&& 75.88\% && 0.538 &&& 77.25\% && 0.5322 &&& 81.25\% && 0.4975 &\\
-			sd5x &&     72.25\% && 0.6212 &&& 76.5\% && 0.5252 &&& 77.75\% && 0.5338 &&& 81.25\% && 0.4985 &\\
-			sd6x &&     71.87\% && 0.6346 &&& 74.75\% && 0.547 &&& 76.25\% && 0.5376 &&& 79.38\% && 0.5075 &\\
-			sd7x &&     70.25\% && 0.6252 &&& 73.62\% && 0.5395 &&& 76.0\% && 0.5326 &&& 80.0\% && 0.5078 &\\
-			sd8x &&     74.25\% && 0.6121 &&& 72.5\% && 0.5509 &&& 77.0\% && 0.535 &&& 79.75\% && 0.4993 &\\
-			sd9x &&     \textcolor{mygreen}{74.88\%} && 0.5826 &&& 74.63\% && 0.5483 &&& 76.0\% && 0.542 &&& 81.75\% && 0.4987 &\\
-			sd10x &&    74.87\% && 0.5971 &&& 74.5\% && 0.5558 &&& 77.12\% && 0.5394 &&& 80.87\% && 0.5036 &\\
-			sd20x &&    73.25\% && 0.5831 &&& 73.5\% && 0.5493 &&& 75.63\% && 0.5355 &&& 80.75\% && 0.5013 &\\
+			sd0x &&     65.12\% && 0.6584 &&& \textbf{\textcolor{mygreen}{81.88\%}} && 0.507 &&& \textbf{\textcolor{mygreen}{78.63\%}} && 0.5415 &&& 78.75\% && 0.5039 &\\
+			sd1x &&     71.25\% && 0.6385 &&& 81.75\% && 0.4899 &&& 77.38\% && 0.5399 &&& 80.62\% && 0.4893 &\\
+			sd2x &&     68.5\% && 0.6476 &&& 77.38\% && 0.5128 &&& 77.25\% && 0.539 &&& 80.0\% && 0.4965 &\\
+			sd3x &&     69.38\% && 0.6494 &&& 77.5\% && 0.5135 &&& 75.75\% && 0.5364 &&& 79.88\% && 0.4928 &\\
+			sd4x &&     67.5\% && 0.6436 &&& 77.5\% && 0.5446 &&& 76.13\% && 0.5418 &&& \textbf{\textcolor{mygreen}{81.12\%}} && 0.501 &\\
+			sd5x &&     72.25\% && 0.6212 &&& 74.5\% && 0.5404 &&& 78.25\% && 0.5286 &&& 81.0\% && 0.5005 &\\
+			sd6x &&     71.87\% && 0.6346 &&& 75.25\% && 0.5412 &&& 77.12\% && 0.5356 &&& 80.25\% && 0.4967 &\\
+			sd7x &&     70.25\% && 0.6252 &&& 73.38\% && 0.5453 &&& 75.63\% && 0.5357 &&& 81.12\% && 0.4918 &\\
+			sd8x &&     74.25\% && 0.6121 &&& 73.38\% && 0.5486 &&& 77.0\% && 0.5316 &&& 80.38\% && 0.5036 &\\
+			sd9x &&     \textbf{\textcolor{mygreen}{74.88\%}} && 0.5826 &&& 74.25\% && 0.5369 &&& 76.5\% && 0.5408 &&& 80.25\% && 0.4909 &\\
+			sd10x &&    74.87\% && 0.5971 &&& 76.38\% && 0.5594 &&& 76.25\% && 0.548 &&& 80.25\% && 0.501 &\\
+			sd20x &&    73.25\% && 0.5831 &&& 73.25\% && 0.5414 &&& 76.0\% && 0.5387 &&& 80.87\% && 0.4935 &\\
 			\hline
 		\end{tabular}
 	}
-	\caption[tabelle kurz]{Best accuracies and losses for 5, 10, 15 and 20 steps produced by the 1d cnn. Before the changes to the simulator.}
+	\caption[Best accuracies and losses produced by the 1D convnet, prior to the changes to the simulator.]{Best accuracies and losses for 5, 10, 15 and 20 rounds produced by the 1D convnet, prior to the changes to the simulator.}
 	\label{tab:1d_before}
 \end{table}
 
@@ -259,20 +324,20 @@ It should be claryfied that the chosen configurations of models to be trained ma
 		\hline\hline
 		sd0x &&     63.5\% && 0.6471 &&& 74.0\% && 0.4991 &&& 79.62\% && 0.4726 &&& 79.0\% && 0.4778 &\\
 		sd1x &&     68.12\% && 0.619 &&& 76.62\% && 0.5171 &&& 79.5\% && 0.4984 &&& 81.75\% && 0.4735 &\\
-		sd2x &&     68.25\% && 0.6382 &&& \textcolor{mygreen}{80.0\%} && 0.5243 &&& 80.38\% && 0.4851 &&& 84.12\% && 0.4573 &\\
+		sd2x &&     68.25\% && 0.6382 &&& \textbf{\textcolor{mygreen}{80.0\%}} && 0.5243 &&& 80.38\% && 0.4851 &&& 84.12\% && 0.4573 &\\
 		sd3x &&     69.5\% && 0.6392 &&& 78.88\% && 0.5518 &&& 80.25\% && 0.5038 &&& 84.62\% && 0.4718 &\\
-		sd4x &&     67.63\% && 0.6415 &&& 76.38\% && 0.5685 &&& 79.62\% && 0.5106 &&& \textcolor{mygreen}{85.0\%} && 0.4726 &\\
+		sd4x &&     67.63\% && 0.6415 &&& 76.38\% && 0.5685 &&& 79.62\% && 0.5106 &&& \textbf{\textcolor{mygreen}{85.0\%}} && 0.4726 &\\
 		sd5x &&     70.88\% && 0.6339 &&& 74.63\% && 0.5668 &&& 80.0\% && 0.51 &&& 84.88\% && 0.474 &\\
 		sd6x &&     70.62\% && 0.638 &&& 77.0\% && 0.5623 &&& 80.12\% && 0.5077 &&& 84.88\% && 0.4776 &\\
 		sd7x &&     69.75\% && 0.6543 &&& 75.38\% && 0.5762 &&& 79.5\% && 0.5176 &&& 85.0\% && 0.4839 &\\
 		sd8x &&     70.0\% && 0.6467 &&& 74.25\% && 0.5775 &&& 80.38\% && 0.5164 &&& 85.0\% && 0.484 &\\
-		sd9x &&     71.25\% && 0.6395 &&& 78.75\% && 0.5696 &&& \textcolor{mygreen}{81.5\%} && 0.5064 &&& 85.0\% && 0.4814 &\\
+		sd9x &&     71.25\% && 0.6395 &&& 78.75\% && 0.5696 &&& \textbf{\textcolor{mygreen}{81.5\%}} && 0.5064 &&& 85.0\% && 0.4814 &\\
 		sd10x &&    68.75\% && 0.6296 &&& 77.75\% && 0.5674 &&& 80.12\% && 0.5098 &&& 85.0\% && 0.4802 &\\
 		sd20x &&    \textbf{\textcolor{mygreen}{73.0\%}} && 0.5833 &&& 76.63\% && 0.5486 &&& 79.75\% && 0.5064 &&& 84.88\% && 04704 &\\
 		\hline
 	\end{tabular}
 	}
-	\caption[tabelle kurz]{Best accuracies and losses for 5, 10, 15 and 20 steps produced by the 2D CNN. Before the changes to the simulator.}
+	\caption[Best accuracies and losses produced by the 2D convnet, prior to the changes to the simulator.]{Best accuracies and losses for 5, 10, 15 and 20 rounds produced by the 2D convnet, prior to the changes to the simulator.}
 	\label{tab:2d_before}
 \end{table}
 
@@ -286,22 +351,22 @@ It should be claryfied that the chosen configurations of models to be trained ma
 			\hline
 			 && Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &&& Acc. && Loss &\\
 			\hline\hline
-			sd0x &&     63.87\% && 0.6698 &&& \textcolor{mygreen}{81.88\%} && 0.5014 &&& 78.5\% && 0.5401 &&& 78.62\% && 0.5107 &\\
+			sd0x &&     63.87\% && 0.6698 &&& \textbf{\textcolor{mygreen}{81.88\%}} && 0.5014 &&& 78.5\% && 0.5401 &&& 78.62\% && 0.5107 &\\
 			sd1x &&     67.75\% && 0.6648 &&& 79.0\% && 0.5095 &&& 75.75\% && 0.5305 &&& 79.38\% && 0.5101 &\\
 			sd2x &&     66.0\% && 0.6506 &&& 79.25\% && 0.4845 &&& 76.0\% && 0.5325 &&& 78.37\% && 0.514 &\\
 			sd3x &&     64.38\% && 0.6585 &&& 77.38\% && 0.5037 &&& 77.62\% && 0.5261 &&& 79.25\% && 0.5113 &\\
-			sd4x &&     67.0\% && 0.6377 &&& 75.38\% && 0.5289 &&& 77.62\% && 0.5331 &&& \textcolor{mygreen}{80.25\%} && 0.5027 &\\
-			sd5x &&     67.0\% && 0.6452 &&& 76.75\% && 0.5146 &&& \textcolor{mygreen}{78.75\%} && 0.5226 &&& 79.0 && 0.5042 &\\
+			sd4x &&     67.0\% && 0.6377 &&& 75.38\% && 0.5289 &&& 77.62\% && 0.5331 &&& \textbf{\textcolor{mygreen}{80.25\%}} && 0.5027 &\\
+			sd5x &&     67.0\% && 0.6452 &&& 76.75\% && 0.5146 &&& \textbf{\textcolor{mygreen}{78.75\%}} && 0.5226 &&& 79.0 && 0.5042 &\\
 			sd6x &&     70.25\% && 0.6427 &&& 75.25\% && 0.5335 &&& 78.75\% && 0.5208 &&& 79.38\% && 0.5049 &\\
 			sd7x &&     70.25\% && 0.6449 &&& 76.88\% && 0.5114 &&& 78.0\% && 0.5129 &&& 78.75\% && 0.5115 &\\
 			sd8x &&     71\% && 0.628 &&& 76.25\% && 0.523 &&& 77.25\% && 0.5261 &&& 79.12\% && 0.5156 &\\
 			sd9x &&     70\% && 0.6276 &&& 75.37\% && 0.5226 &&& 77.62\% && 0.5281 &&& 78.63\% && 0.522 &\\
 			sd10x &&    71.5\% && 0.6242 &&& 76.25\% && 0.5261 &&& 76.38\% && 0.5331 &&& 78.62\% && 0.4986 &\\
-			sd20x &&    \textcolor{mygreen}{71.88\%} && 0.6246 &&& 72.38\% && 0.5617 &&& 76.25\% && 0.5416 &&& 79.12\% && 0.5 &\\
+			sd20x &&    \textbf{\textcolor{mygreen}{71.88\%}} && 0.6246 &&& 72.38\% && 0.5617 &&& 76.25\% && 0.5416 &&& 79.12\% && 0.5 &\\
 			\hline
 		\end{tabular}
 	}
-	\caption[tabelle kurz]{Best accuracies and losses for 5, 10, 15 and 20 steps produced by the 1D CNN. After the changes to the simulator.}
+	\caption[Best accuracies and losses produced by the 1D convnet, after the changes to the simulator.]{Best accuracies and losses for 5, 10, 15 and 20 rounds produced by the 1D convnet, after the changes to the simulator.}
 	\label{tab:1d_after}
 \end{table}
 
@@ -317,11 +382,11 @@ It should be claryfied that the chosen configurations of models to be trained ma
 			\hline\hline
 			sd0x &&     63.62\% && 0.6461 &&& 73.87\% && 0.4929 &&& 80.0\% && 0.4557 &&& 78.5\% && 0.476 &\\
 			sd1x &&     67.88\% && 0.6446 &&& 76.12\% && 0.531 &&& 79.5\% && 0.4911 &&& 79.75\% && 0.4874 &\\
-			sd2x &&     69.75\% && 0.6463 &&& \textcolor{mygreen}{79.62\%} && 0.5243 &&& 80.87\% && 0.4905 &&& \textcolor{mygreen}{80.0\%} && 0.4859 &\\
-			sd3x &&     69.5\% && 0.6449 &&& 77.5\% && 0.5507 &&& \textcolor{mygreen}{82.25\%} && 0.4994 &&& 80.0\% && 0.4865 &\\
+			sd2x &&     69.75\% && 0.6463 &&& \textbf{\textcolor{mygreen}{79.62\%}} && 0.5243 &&& 80.87\% && 0.4905 &&& \textbf{\textcolor{mygreen}{80.0\%}} && 0.4859 &\\
+			sd3x &&     69.5\% && 0.6449 &&& 77.5\% && 0.5507 &&& \textbf{\textcolor{mygreen}{82.25\%}} && 0.4994 &&& 80.0\% && 0.4865 &\\
 			sd4x &&     69.0\% && 0.6347 &&& 72.75\% && 0.5684 &&& 80.12\% && 0.5156 &&& 80.0\% && 0.495 &\\
 			sd5x &&     69.38\% && 0.6342 &&& 73.62\% && 0.5634 &&& 80.5\% && 0.5122 &&& 80.0\% && 0.4917 &\\
-			sd6x &&     \textcolor{mygreen}{71.0\%} && 0.6326 &&& 74.5\% && 0.5586 &&& 80.62\% && 0.5038 &&& 79.5\% && 0.4874 &\\
+			sd6x &&     \textbf{\textcolor{mygreen}{71.0\%}} && 0.6326 &&& 74.5\% && 0.5586 &&& 80.62\% && 0.5038 &&& 79.5\% && 0.4874 &\\
 			sd7x &&     70.0\% && 0.6328 &&& 71.62\% && 0.555 &&& 80.0\% && 0.5061 &&& 79.5\% && 0.4874 &\\
 			sd8x &&     69.88\% && 0.6287 &&& 72.75\% && 0.5567 &&& 80.25\% && 0.5057 &&& 79.62\% && 0.4874 &\\
 			sd9x &&     69.12\% && 0.6238 &&& 72.38\% && 0.5532 &&& 79.5\% && 0.5067 &&& 78.88\% && 0.4887 &\\
@@ -330,7 +395,7 @@ It should be claryfied that the chosen configurations of models to be trained ma
 			\hline
 		\end{tabular}
 	}
-	\caption[tabelle kurz]{Best accuracies and losses for 5, 10, 15 and 20 steps produced by the 2D CNN. After the changes to the simulator.}
+	\caption[Best accuracies and losses produced by the 2D convnet, after the changes to the simulator.]{Best accuracies and losses for 5, 10, 15 and 20 rounds produced by the 2D convnet, after the changes to the simulator.}
 	\label{tab:2d_after}
 \end{table}
 
@@ -440,21 +505,21 @@ It should be claryfied that the chosen configurations of models to be trained ma
 
 %- interessant: 1d cnn 5 rounds gucken ob sich der trend weiter führt und sogar noch besser wird
 
-The results show that using a certain number of simulated games for the training can often significantly improve the classificatin resuls over using only the real data. A good example is the accuracy for sd0x compared to sd4x for 20 rounds for the 2d cnn in table \ref{tab:2d_before}. Using no simulations the accuracy is 79.0\% while for a ratio of 9 simulations for each real game the accuracy is 85.0\%. Furthermore is can be seen that using to many simulations compared to real games can decrease the accuracy. In table \ref{tab:2d_before}, for 10 rounds, the accuracy for sd2x is 80.0\% and less when using more simulations. This behaviour highly varies depending on the configuration of the model. Sometimes the models produce the best results without any simulations, while other times using simulations strongly outperforms using only real data. It is possible that the optimal ratios of simulated to real games are not included the tested configurations. Especially the 2d cnn for 5 rounds before the changes to the simulator achieves the best accuracy with the highest ratio that was tested. Therefore the optimal ratio could be higher than 20 simulations for each real game. 
+The results show that using a certain number of simulated games for the training can often significantly improve the classification results over using only the real data. A good example is the accuracy for sd0x compared to sd4x for 20 rounds for the 2D convnet in table \ref{tab:2d_before}. Using no simulations the accuracy is 79.0\% while for a ratio of 4 simulations for each real game the accuracy is 85.0\%. Furthermore, it can be seen that using too many simulations compared to real games can decrease the accuracy. In table \ref{tab:2d_before}, for 10 rounds, the accuracy for sd2x is 80.0\% and less when using more simulations. This behaviour highly varies depending on the configuration of the model. Sometimes the models produce the best results without any simulations, while other times using simulations strongly outperforms using only real data. It is possible that the optimal ratios of simulated to real games are not included the tested configurations. Especially the 2D convnet for 5 rounds before the changes to the simulator achieves its best accuracy with the highest ratio that was tested. Therefore, the optimal ratio could be higher than 20 simulations for each real game. 
 
 \begin{minipage}[c]{0.4\textwidth}
-	When looking at the best accuracies of 1d and 2d cnns for each number of rounds, it can be observed, that the accuracy of the 1d cnns do not get much better and sometimes even worse after more than 10 rounds, while this is not the case for 2d cnns. This can be seen in figure \ref{fig:bestAccPlot}. The fact that the 1d cnns do not profit from more than 10 rounds might be related to the findings from section \ref{evaluation_of_simulation} \nameref{evaluation_of_simulation}, that indicate that the simulaor perfroms worse in later rounds.
+	When looking at the best accuracies of 1D and 2D convnets for each number of rounds, it can be observed, that the best accuracies of the 1D convnets are lower on 15 and 20 rounds than on 10, while this is not the case for 2D convnets. This can be seen in figure \ref{fig:bestAccPlot}. The fact that the 1D convnets do not profit from more than 10 rounds might be related to the findings from section \ref{evaluation_of_simulation} \nameref{evaluation_of_simulation}, which indicate that the simulator performs worse in later rounds.
 \end{minipage}
 \begin{minipage}[c]{0.6\textwidth}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=9.8cm]{images/bestAccPlot.png}
-		\caption[Bild kurz]{Best results for the different number\\\hspace{0\textheight} of rounds before the changes to the simulator. Ratios\\\hspace{0\textheight} of real to simulated games is additionally described.}
+		\includegraphics[width=9.8cm]{images/bestAccPlotNew.png}
+		\caption[Best results for the different number of rounds before the changes to the simulator.]{Best results for the different number\\\hspace{0\textheight} of rounds before the changes to the simulator. Ratios\\\hspace{0\textheight} of real to simulated games is additionally described.}
 		\label{fig:bestAccPlot}
 	\end{figure}
 \end{minipage}
 
- However, if the case, this begs the questions why this does not apply to 2d cnns. There is a possibility, that the worse perfromance in later turns has a strong impact on the statistacal features fed to the 1d cnn, but once these feautures are used to create the synthetic images for the 2d cnn this negative impact decreases. Figure \ref{fig:bestAccPlot} additionally shows the ratios of simulated to real data for each of the best results. The fact that the 2d cnn after 10 rounds still have the best results when using a substantial amount of simulations while the the best results for the 1d cnns after the 10th round use very little simulations, supports the theory from above. Nonetheless the findings are not sufficient to verify the theory. For that more research would be required. However, if found to be true, it could mean that 2d cnns using synthetic images have the potential to handle inacurate simulations better than 1d cnns. From a different perspective, this could also indicate that, assuming the simulator does actually perform worse in later rounds and is improved in that regard, the accuracy of the 1d cnns after 20 rounds could be improved.
+ However, if the case, this begs the questions why this does not apply to 2D convnets. There is a possibility that the worse performance in later turns has a strong impact on the statistical features fed to the 1D convnet, but once these features are used to create the synthetic images for the 2D convnet this negative impact decreases. Figure \ref{fig:bestAccPlot} additionally shows the ratios of simulated to real data for each of the best results. The fact that the 2D convnets for 15 rounds have the best results when using 9 simulated games for each real game while the best configurations of the 1D convnets for 15 rounds use no simulations, supports the theory from above. Nonetheless the findings are not sufficient to verify the theory. For that more research would be required. However, if found to be true, it could mean that 2D convnets using synthetic images have the potential to handle inaccurate simulations better than 1D convnets. From a different perspective, this could also indicate that, assuming the simulator does actually perform worse in later rounds and is improved in that regard, the accuracy of the 1D convnets after 10 rounds could be improved.
 
 
 \newpage
@@ -464,7 +529,7 @@ The results show that using a certain number of simulated games for the training
 
 % easy to believe that in some cases more the optimal ratio has not been reached yet, if only looking at the tables. However there are more factors that influnece the result. This becomes evident when plotting the trainig histories for accuracy and loss. ... plott wo wan sieht das divergence nicht erreicht wurde... The fact that the trainings with a lower ratio result in worse accuracy dont neccessarily are caused by the fact that more simulated games would be better, but could also be influenced by the fact that the divergence has not been reache yet, meaning that either a different learning rate or more epochs could increase the accuray. Therefore it can not be said with certainty that ore simulated games would in that case lead to the optimal result, as the optimal result could also be with less simulated but with changed hyper parameters. However, the hyper paramaters were intentinally chossen the same so that the results could be compared with each other.
  
-It was conscidered to perform statical tests comparing different models and ratios to reveal significant or insignificant differeneces. However, the decision was made that this does not realy gives reliable results, because the results are not neccesarily the best achievable as the models were not individually optimized. Therefoe the results of ststistical tests performed on the achieved accuracies, would not justify any staements regarding whether 1d cnns or 2d cnns perform significntly better in different configurations. Such statistical test would only show significant differences or indiffierences in the results, but could not be interpreted for any valuable findings, as not all models are used to their full potential. For choosing the best configurations from those tested no statistical tests are used. Instead simply those with the highest accuracies are chosen.
+It was considered to perform statistical tests comparing different models and ratios to reveal significant or insignificant differences. However, the decision was made that this does not really give reliable results, because the results are not necessarily the best achievable as the models were not individually optimized. Therefore, the results of statistical tests performed on the achieved accuracies, would not justify any statements regarding whether 1D convnets or 2D convnets perform significantly better. Such statistical tests would only show significant differences or indifferences in the results, but could not be interpreted for any valuable findings, as not all models are used to their full potential. For choosing the best configurations from those tested no statistical tests are used. Instead simply those with the highest accuracies are chosen.
 
 %If hyper paremeters such as the leraning rate or the number of epochs are not chosen equal accross all models of one tabel (menaing all models for 1d cnns, etc) and instead would be chosen more indivuidually to optimize the models specifically for each number of rounds and ratoin between simuated and real games, the accuracie could be signifcantly different. Additionally the topologies of all models of one type are chosen the same, although this might not produce the best results for each configuration.
 
@@ -477,19 +542,19 @@ It was conscidered to perform statical tests comparing different models and rati
 			 & 5 r. & 10 r. & 15 r. & 20 r. & Average  \\
 			\hline
 			\hline
-			1D CNN - before & 74.88\% (sd9x) & 81.12\% (sd0x) &78.37\% (sd0x) & 81.25\% (sd2x) & 78.91\% \\
-			1D CNN - afterwards& 71.88\% (sd20x) & 81.88\% (sd0x) &78.75\% (sd5x) & 80.25\% (sd4x)  & 78.19\%  \\
+			1D convnet - before & 74.88\% (sd9x) & 81.88\% (sd0x) &78.63\% (sd0x) & 81.12\% (sd4x) & 79.13\% \\
+			1D convnet - afterwards& 71.88\% (sd20x) & 81.88\% (sd0x) &78.75\% (sd5x) & 80.25\% (sd4x)  & 78.19\%  \\
 			\hline
-			2D CNN - before & 73.0\% (sd20x) & 80.0\% (sd2x) &81.5\% (sd9x) & 85.0\% (sd4x)  & 79.88\% \\
-			2D CNN - afterwards & 71.0\% (sd6x) & 79.62\% (sd2x) & 82.25\% (sd3x) & 80.0\% (sd2x) & 78.22\% \\
+			2D convnet - before & 73.0\% (sd20x) & 80.0\% (sd2x) &81.5\% (sd9x) & 85.0\% (sd4x)  & 79.88\% \\
+			2D convnet - afterwards & 71.0\% (sd6x) & 79.62\% (sd2x) & 82.25\% (sd3x) & 80.0\% (sd2x) & 78.22\% \\
 			\hline
 		\end{tabular}
 	}
-	\caption[tabelle kurz]{Highest accuracies before and after the changes to the simulator. Furthermore the rations of simulated to real games and the average accuracies of the best results from each configuration are shown.}
+	\caption[Highest accuracies before and after the changes to the simulator.]{Highest accuracies before and after the changes to the simulator. Furthermore, the rations of simulated to real games and the average accuracies of the best results from each configuration are shown.}
 	\label{tab:best_acc}
 \end{table}
 
-Table \ref{tab:best_acc} shoes the best result for all categories before and after changing the simulator. It can be seen that although some accuracies are slightly better after the changes to the simulator the results are on average noticeably worse than before. For instance is the accuracy of 85.0\% from the 2d cnn for 20 rounds decreased to 80.0\%. The reason for this is unknown and can be highly complex, due to the many factors involved. A theory is, that reucing the randomness of the simulator and therefore making the simulated games more similar to the real games, may have resulted in decreased generalisation in the models and therefore less robustness on unknown data. However, this theory can hardly be varified. The descreased performce after the changes leads to the decision to only use the models trained on the simulated data created before the changes to the simulator. The chosen configurations can be seen in table \ref{tab:chosen_configs}. 
+Table \ref{tab:best_acc} shows the best result for all categories before and after changing the simulator. It can be seen that although some accuracies are slightly better after the changes to the simulator the results are on average noticeably worse than before. The accuracy from the 2D convnet for 20 rounds, for instance, is decreased from 85.0\% to 80.0\%. The reason for this is unknown and can be highly complex, due to the many factors involved. A theory is, that reducing the randomness of the simulator and therefore making the simulated games more similar to the real games, may have resulted in a decreased generalising ability of the models and therefore less robustness on unknown data. However, this theory can hardly be verified. The overall decreased performance after the changes leads to the decision to only use the models trained on the simulated data created before the changes to the simulator. The chosen configurations for the different numbers of rounds can be seen in table \ref{tab:chosen_configs}. 
 
 \begin{table}[H]
 	\centering
@@ -499,30 +564,30 @@ Table \ref{tab:best_acc} shoes the best result for all categories before and aft
 			& 5 r. & 10 r. & 15 r. & 20 r.  \\
 			\hline
 			\hline
-			1D CNN & 74.88\% (sd9x) & 81.12\% (sd0x) & &  \\
+			1D convnet & 74.88\% (sd9x) & 81.88\% (sd0x) & &  \\
 			\hline
-			2D CNN &  & & 81.5\% (sd9x) & 85.0\% (sd4x)  \\
+			2D convnet &  & & 81.5\% (sd9x) & 85.0\% (sd4x)  \\
 			\hline
 		\end{tabular}
-	\caption[tabelle kurz]{The chosen configurations and their accuracies (averaged over 400 models each). }%\label{tab1}
+	\caption[The chosen configurations and their accuracies.]{The chosen configurations and their accuracies (averaged over 400 models each). }%\label{tab1}
 	\label{tab:chosen_configs}
 \end{table}
 
-The 1dnns trained, perform better for 5 and 10 rounds than 2d cnns while 2d cnns perform better for 15 and 12 rounds. Depending on the number of rounds it can therefore be benefitial to use either 1d cnns or 2d cnns. The 4 best configurations for the differnet numbers of rounds are used in section \ref{voting} \nameref{voting}. Figures \ref{fig:1d10}, \ref{fig:1d20}, \ref{fig:2d30} and \ref{fig:2d40} show the average training and test accurcy during the course of training the models of these 4 configurations. 
+The 1D convnets trained, perform better for 5 and 10 rounds than 2D convnets, while 2D convnets perform better for 15 and 12 rounds. Depending on the number of rounds it can therefore be beneficial to use either 1D convnets or 2D convnets. The 4 best configurations for the different numbers of rounds are used in section \ref{voting} \nameref{voting}. Figures \ref{fig:1d10}, \ref{fig:1d20}, \ref{fig:2d30} and \ref{fig:2d40} show the average training and test accuracy during the course of training the models of these 4 configurations. 
 
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=7.5cm]{images/bestHistories/1d_10s_sd9x_acc.png}
-		\caption[Bild kurz]{Average training and \\\hspace{0\textwidth}validation accuracy of 1d cnns on 5\\\hspace{0\textwidth} rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best validation \\\hspace{0\textwidth}accuracy is 74.88\% at epoch 812.}
+		\includegraphics[width=7.5cm]{images/bestHistories/edit/1d_10s_sd9x_acc.png}
+		\caption[Average training and test accuracy of 400 1D convnets on 5 rounds and a ratio of 9 simulated games for each real game.]{Average training and \\\hspace{0\textwidth}test accuracy of 400 1D convnets \\\hspace{0\textwidth}on 5 rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best test \\\hspace{0\textwidth}accuracy is 74.88\% at epoch 812.}
 		\label{fig:1d10}
 	\end{figure}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=7.5cm]{images/bestHistories/1d_20s_sd0x_acc.png}
-		\caption[Bild kurz]{Average training and \\\hspace{0\textwidth}validation accuracy of 1d cnns on 10\\\hspace{0\textwidth} rounds using no simulated games.\\\hspace{0\textwidth} Best validation accuracy\\\hspace{0\textwidth} is 81.12\% at epoch 1317.}
+		\includegraphics[width=7.5cm]{images/bestHistories/edit/1d_20s_sd0x_acc_new.png}
+		\caption[Average training and test accuracy of 400 1D convnets on 10 rounds using no simulated games.]{Average training and \\\hspace{0\textwidth}test accuracy of 400 1D convnets \\\hspace{0\textwidth}on 10 rounds using no simulated \\\hspace{0\textwidth}games. Best test accuracy\\\hspace{0\textwidth} is 81.88\% at epoch 2498.}
 		%\caption[Bild kurz]{Training history of 1d cnn\\\hspace{0\textwidth} on 10 rounds and using no  \\\hspace{0\textwidth} simulated games. Best validation \\\hspace{0\textwidth}accuracy is 81.12\% at epoch 1317.}
 		\label{fig:1d20}
 	\end{figure}
@@ -531,8 +596,8 @@ The 1dnns trained, perform better for 5 and 10 rounds than 2d cnns while 2d cnns
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=7.5cm]{images/bestHistories/2d_30s_sd9x_acc.png}
-		\caption[Bild kurz]{Average training and \\\hspace{0\textwidth}validation accuracy of 2d cnns on 15\\\hspace{0\textwidth} rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best validation \\\hspace{0\textwidth}accuracy is 81.5\% at epoch 111.}
+		\includegraphics[width=7.5cm]{images/bestHistories/edit/2d_30s_sd9x_acc.png}
+		\caption[Average training and test accuracy of 400 2D convnets on 15 rounds and a ratio of 9 simulated games for each real game.]{Average training and \\\hspace{0\textwidth}test accuracy of 400 2D convnets \\\hspace{0\textwidth}on 15 rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best test \\\hspace{0\textwidth}accuracy is 81.5\% at epoch 111.}
 		%\caption[Bild kurz]{Training history of 2d cnn\\\hspace{0\textwidth} on 10 rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best validation \\\hspace{0\textwidth}accuracy is 74.88\% at epoch 812.}
 		%\caption[Bild kurz]{best validation \\\hspace{0\textwidth}accuracy 81.5\% (at epoch 111)}
 		\label{fig:2d30}
@@ -541,14 +606,15 @@ The 1dnns trained, perform better for 5 and 10 rounds than 2d cnns while 2d cnns
 \begin{minipage}{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=7.5cm]{images/bestHistories/2d_40s_sd4x_acc.png}
-		\caption[Bild kurz]{Average training and \\\hspace{0\textwidth}validation accuracy of 1d cnns on 20\\\hspace{0\textwidth} rounds and a ratio of 4 simulated games \\\hspace{0\textwidth} for each real game. Best validation \\\hspace{0\textwidth}accuracy is 85.0\% at epoch 75.}
+		\includegraphics[width=7.5cm]{images/bestHistories/edit/2d_40s_sd4x_acc.png}
+		\caption[Average training and test accuracy of 400 2D convnets on 20 rounds and a ratio of 4 simulated games for each real game.]{Average training and \\\hspace{0\textwidth}test accuracy of 400 2D convnets \\\hspace{0\textwidth}on 20 rounds and a ratio of 4 simulated \\\hspace{0\textwidth}games for each real game. Best test \\\hspace{0\textwidth}accuracy is 85.0\% at epoch 75.}
 		%\caption[Bild kurz]{Training history of 1d cnn\\\hspace{0\textwidth} on 10 rounds and a ratio of 9 simulated  \\\hspace{0\textwidth}games for each real game. Best validation \\\hspace{0\textwidth}accuracy is 74.88\% at epoch 812.}
 		%\caption[Bild kurz]{best validation \\\hspace{0\textwidth}accuracy 85.0\% (at epoch 75)}
 		\label{fig:2d40}
 	\end{figure}
 \end{minipage}
 
+%Due to complications many configurations had to be retrained. As it was known from prior tests that certain configurations do not improve after a certain number of epochs and due to the time constraints of this work the models were retrained with not as many epochs to save time. For instant the test accuracies of the 2D convnets trained on 20 rounds do not improve any more after around 60 or 70 epochs and therefore the retraining of the models was only done on 200 epochs as shown in figure \ref{fig:2d40}. 
 
 %- vielleiht gucken welche falsch erkannt werden und woran es liegt, also wenn die zum beispiel echt schlect oder gut sind obwohl es nicht so sein sollte (rausnhemen und gucken wie ergebnisse sind, vielleicht nur bei bestem modell) -> glaube eher nicht\\
 %- training auf welchem rechner/n,was von: cpu oder gpu oder beides, hardware kurz erwähnen, vpn (fernzugriff)\\

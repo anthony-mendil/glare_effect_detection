@@ -22,47 +22,49 @@ Warning--entry type for "Mir" isn't style-file defined
 --line 19 of file thesis.bib
 Warning--entry type for "fischer" isn't style-file defined
 --line 78 of file thesis.bib
+Warning--to sort, need author or key in Cie
 Warning--empty booktitle in memory
 Warning--empty booktitle in blind
-You've used 9 entries,
+Warning--empty journal in smartphone
+You've used 23 entries,
             2543 wiz_defined-function locations,
-            619 strings with 6170 characters,
-and the built_in function-call counts, 3690 in all, are:
-= -- 348
-> -- 181
-< -- 6
-+ -- 64
-- -- 62
-* -- 248
-:= -- 589
-add.period$ -- 24
-call.type$ -- 9
-change.case$ -- 60
-chr.to.int$ -- 8
-cite$ -- 11
-duplicate$ -- 148
-empty$ -- 283
-format.name$ -- 73
-if$ -- 768
+            698 strings with 8509 characters,
+and the built_in function-call counts, 8602 in all, are:
+= -- 827
+> -- 402
+< -- 14
++ -- 137
+- -- 135
+* -- 564
+:= -- 1388
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 143
+chr.to.int$ -- 22
+cite$ -- 28
+duplicate$ -- 346
+empty$ -- 665
+format.name$ -- 164
+if$ -- 1785
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 6
-newline$ -- 46
-num.names$ -- 27
-pop$ -- 82
+missing$ -- 16
+newline$ -- 118
+num.names$ -- 66
+pop$ -- 199
 preamble$ -- 1
-purify$ -- 69
+purify$ -- 167
 quote$ -- 0
-skip$ -- 133
+skip$ -- 292
 stack$ -- 0
-substring$ -- 180
-swap$ -- 30
-text.length$ -- 6
-text.prefix$ -- 4
+substring$ -- 390
+swap$ -- 55
+text.length$ -- 14
+text.prefix$ -- 11
 top$ -- 0
-type$ -- 72
-warning$ -- 2
-while$ -- 30
-width$ -- 10
-write$ -- 108
-(There were 5 warnings)
+type$ -- 180
+warning$ -- 4
+while$ -- 67
+width$ -- 25
+write$ -- 283
+(There were 7 warnings)

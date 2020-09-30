@@ -20,8 +20,8 @@
 \BOOKMARK [2][-]{subsection.5.6.2}{Using a subset of the data}{section.5.6}% 20
 \BOOKMARK [2][-]{subsection.5.6.3}{Conclusion of the evaluation}{section.5.6}% 21
 \BOOKMARK [1][-]{section.5.7}{Feature generation}{chapter.5}% 22
-\BOOKMARK [2][-]{subsection.5.7.1}{1D CNN features}{section.5.7}% 23
-\BOOKMARK [2][-]{subsection.5.7.2}{2D CNN features}{section.5.7}% 24
+\BOOKMARK [2][-]{subsection.5.7.1}{1D convnet features}{section.5.7}% 23
+\BOOKMARK [2][-]{subsection.5.7.2}{2D convnet features}{section.5.7}% 24
 \BOOKMARK [0][-]{chapter.6}{Convolutional neural networks}{}% 25
 \BOOKMARK [1][-]{section.6.1}{Layers}{chapter.6}% 26
 \BOOKMARK [2][-]{subsection.6.1.1}{Convolution layers}{section.6.1}% 27
@@ -35,11 +35,11 @@
 \BOOKMARK [0][-]{chapter.7}{Training neural networks}{}% 35
 \BOOKMARK [0][-]{chapter.8}{Classification}{}% 36
 \BOOKMARK [1][-]{section.8.1}{Models}{chapter.8}% 37
-\BOOKMARK [2][-]{subsection.8.1.1}{1D CNN}{section.8.1}% 38
-\BOOKMARK [2][-]{subsection.8.1.2}{2D CNN}{section.8.1}% 39
+\BOOKMARK [2][-]{subsection.8.1.1}{1D convnet}{section.8.1}% 38
+\BOOKMARK [2][-]{subsection.8.1.2}{2D convnet}{section.8.1}% 39
 \BOOKMARK [1][-]{section.8.2}{Training setup}{chapter.8}% 40
 \BOOKMARK [1][-]{section.8.3}{Training results and evaluation}{chapter.8}% 41
-\BOOKMARK [1][-]{section.8.4}{Voting based systems}{chapter.8}% 42
+\BOOKMARK [1][-]{section.8.4}{Ensemble-based systems}{chapter.8}% 42
 \BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 43
 \BOOKMARK [1][-]{section.9.1}{Prospect}{chapter.9}% 44
 \BOOKMARK [0][-]{appendix.A}{Appendix}{}% 45

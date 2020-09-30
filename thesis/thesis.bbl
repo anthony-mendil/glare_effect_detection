@@ -7,6 +7,47 @@ John Anderson, Daniel Bothell, Michael Byrne, Scott Douglass, Christian
 \newblock An integrated theory of the mind.
 \newblock {\em Psychological review}, 111:1036--60, 11 2004.
 
+\bibitem[Ada20]{convIm}
+Nikolas Adaloglou.
+\newblock Understanding the receptive field of deep convolutional networks.
+\newblock {\em https://theaisummer.com/}, 2020.
+
+\bibitem[Amu]{2dcnn}
+M.~Amunategui.
+\newblock Convolutional neural networks and unconventional data - predicting
+  the stock market using images.
+\newblock http://amunategui.github.io/unconventional-convolutional-networks/.
+\newblock Last accessed: 2020-09-24.
+
+\bibitem[Bro]{repetition}
+Jason Brownlee.
+\newblock Estimate the number of experiment repeats for stochastic machine
+  learning algorithms.
+\newblock
+  https://machinelearningmastery.com/estimate-number-experiment-repeats-stochastic-machine-learning-algorithms/.
+\newblock Last accessed: 2020-09-24.
+
+\bibitem[Cho17]{cnn}
+François Chollet.
+\newblock {\em Deep Learning with Python}.
+\newblock Manning, November 2017.
+
+\bibitem[Cie]{Cie}
+Cie2000 calculator.
+\newblock http://colormine.org/delta-e-calculator/cie2000.
+\newblock Last accessed: 2020-09-26.
+
+\bibitem[Co18]{keras}
+Fran{\c{c}}ois {Chollet} and {others}.
+\newblock {Keras: The Python Deep Learning library}, June 2018.
+
+\bibitem[DHK13]{hyper}
+L.~{Deng}, G.~{Hinton}, and B.~{Kingsbury}.
+\newblock New types of deep neural network learning for speech recognition and
+  related applications: an overview.
+\newblock In {\em 2013 IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, pages 8599--8603, 2013.
+
 \bibitem[Fis02]{fischer}
 J.~Fischer.
 \newblock Untersuchung der farbabstandsformeln des cielab farbraums auf ihre
@@ -19,6 +60,12 @@ M.~Ihrig.
   verschiedenen versionen eines memory-spiels zum test adaptiver
   hilfestellungen, 2019.
 
+\bibitem[LLUZ17]{receptive}
+Wenjie Luo, Yujia Li, Raquel Urtasun, and Richard~S. Zemel.
+\newblock Understanding the effective receptive field in deep convolutional
+  neural networks.
+\newblock {\em CoRR}, abs/1701.04128, 2017.
+
 \bibitem[Mir18]{Mir}
 R.~Miranda.
 \newblock Recognising \& dynamically adapting to visual and memory-based hci
@@ -29,6 +76,17 @@ George Paschos.
 \newblock Perceptually uniform color spaces for color texture analysis: An
   empirical evaluation.
 \newblock {\em Image Processing, IEEE Transactions on}, 10:932 -- 937, 07 2001.
+
+\bibitem[{Pol}06]{ebs}
+R.~{Polikar}.
+\newblock Ensemble based systems in decision making.
+\newblock {\em IEEE Circuits and Systems Magazine}, 6(3):21--45, 2006.
+
+\bibitem[SHK{\etalchar{+}}14]{hinton}
+Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
+  Salakhutdinov.
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15(56):1929--1958, 2014.
 
 \bibitem[SP18a]{salous_putze_2018esann}
 Mazen Salous and Felix Putze.
@@ -50,10 +108,38 @@ Mazen Salous, Felix Putze, Markus Ihrig, and Tanja Schultz.
   user interface adaptations analysis.
 \newblock 10 2019.
 
+\bibitem[Ten20]{smartphone}
+F.~Tenzer.
+\newblock Anzahl der smartphone-nutzer in deutschland in den jahren 2009 bis
+  2019.
+\newblock 2020.
+
+\bibitem[To]{1dcnn}
+Yosi {Taguri} and {others}.
+\newblock Keras conv1d: Working with 1d convolutional neural networks in keras.
+\newblock
+  https://missinglink.ai/guides/keras/keras-conv1d-working-1d-convolutional-neural-networks-keras/.
+\newblock Last accessed: 2020-09-23.
+
 \bibitem[WLW{\etalchar{+}}16]{imbalance}
 S.~{Wang}, W.~{Liu}, J.~{Wu}, L.~{Cao}, Q.~{Meng}, and P.~J. {Kennedy}.
 \newblock Training deep neural networks on imbalanced data sets.
 \newblock In {\em 2016 International Joint Conference on Neural Networks
   (IJCNN)}, pages 4368--4374, 2016.
+
+\bibitem[Won15]{oneOut}
+Tzu-Tsung Wong.
+\newblock Performance evaluation of classification algorithms by k-fold and
+  leave-one-out cross validation.
+\newblock {\em Pattern Recognition}, 48(9):2839 -- 2846, 2015.
+
+\bibitem[YRK{\etalchar{+}}15]{evolution}
+Steven~R. Young, Derek~C. Rose, Thomas~P. Karnowski, Seung-Hwan Lim, and
+  Robert~M. Patton.
+\newblock Optimizing deep learning hyper-parameters through an evolutionary
+  algorithm.
+\newblock In {\em Proceedings of the Workshop on Machine Learning in
+  High-Performance Computing Environments}, MLHPC '15, New York, NY, USA, 2015.
+  Association for Computing Machinery.
 
 \end{thebibliography}

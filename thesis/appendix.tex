@@ -3,9 +3,9 @@
 \chapter{Appendix}
 
 \section{Scripts}
-In this work code was added two three existing projects. Furthermore multiple scripts independent from those projects were written. 
+Besides some small changes, various classes and scripts were added to existing projects. Furthermore, multiple scripts independent from those projects were written. 
 
-All scripts independent from already existing projects are located in the digital folder \textit{scripts} that was added to the digital submission. The folder contains a subfolder called \textit{classification} as well as the following scripts: 
+All scripts independent from already existing projects are located in the digital folder \textit{ba\_glare\_effect\_scripts} that was added to the submission. The folder contains a subfolder called \textit{classification} as well as the following scripts: 
 \begin{itemize}
 	\item similarity\_matrix\_generator.py
 	\item similarity\_matrix\_mapper.py
@@ -14,7 +14,7 @@ All scripts independent from already existing projects are located in the digita
 	\item feature\_generation.py
 	\item best\_results\_plotting.py
 \end{itemize}
-The first three script are were used to create the similarity matrix, add it to the existing game logs and to create figure \ref{fig:simMatrix}. If the required images are provided in full hd it can be used to create a similarity matrix for any type of visual obstacle. Otherwise the areas pixels are extracted from need to be adjusted. The script \textit{valid\_logs\_collector.py} loads all real game logs and saves the valid ones in new files. Once the games are simulated, the script \textit{feature\_generation.py} loads all raw game logs and creates the statistical features for them, mentioned in section \ref{1d_cnn_features} \nameref{1d_cnn_features}. Lastly \textit{best\_results\_plotting.py} was used to create figure \ref{fig:bestAccPlot}. Some parts in \textit{similarity\_matrix\_mapper.py} and \textit{feature\_generation.py} are taken from the Memory-Statistic project but a lot had to be added or rewritten in order to be utilized for this work.
+The first three scripts were used to create the similarity matrix, add it to the existing game logs and to create figure \ref{fig:simMatrix}. If the required images are provided in a resolution of 1920 x 1080, it can be used to create a similarity matrix for any type of visual obstacle. Otherwise the areas pixels are extracted from need to be adjusted. The script \textit{valid\_logs\_collector.py} loads the real game logs and saves the valid ones in new files. Once the games are simulated, the script \textit{feature\_generation.py} loads all raw game logs and creates the statistical features for them, mentioned in section \ref{1d_cnn_features} \nameref{1d_cnn_features}. Lastly \textit{best\_results\_plotting.py} was used to create figure \ref{fig:bestAccPlot}. Some parts in \textit{similarity\_matrix\_mapper.py} and \textit{feature\_generation.py} are taken from the Memory-Statistic project but most of it had to be changed or rewritten in order to be utilized for this work.
 
 \newpage
 
@@ -24,39 +24,41 @@ The aforementioned subfolder \textit{classification} contains the following scri
 	\item glare\_effect\_classification\_cnn\_2D.py
 	\item glare\_effect\_cnn\_voting.py
 \end{itemize}
-The first two are the script for training and testing the 1d and 2d cnnc, while \textit{glare\_effect\_cnn\_voting.py} contains the code for the voting based systems. 
+The first two are the script for training and testing the 1D and 2D convnets, while \textit{glare\_effect\_cnn\_voting.py} contains the code for the ensemble-based systems. 
 
-The following additions were made to the CMM project:
+The following additions were made to the CMM project on a new branch called \textit{glare\_effect\_simulation}:
 \begin{itemize}
 	\item NoObst\_ConfigGenerator\_dataCollection2020.java
 	\item GlareEffect\_ConfigGenerator\_dataCollection2020.java
 	\item NoObstWinStrategyTrainingDataGenerator\_dataCollection2020.java
 	\item GlareEffectWinStrategyTrainingDataGenerator\_dataCollection2020.java
 \end{itemize}
-The first two are used to create configuration files that contain the optimized parameters for the simulation and the last two load the files and simulate the according no obstacle and glare effect games. They use functionalities from the simulator and already existing script served as example. These additions are uploaded on a new branch of the project called \todo{namen suchen}. The changes made in an attempt to improve the simulator can also be found in this branch. 
+The first two are used to create configuration files that contain the optimized parameters for the simulation and the last two load the files and simulate the according no obstacle and glare effect games. They use functionalities from the simulator and already existing scripts served as example. The changes made in an attempt to improve the simulator can also be found on this branch. 
 
-Furthermore these additions were made to the Memory-Statistic project: 
+Furthermore, the following additions were made to the Memory-Statistic project on a new branch called \textit{Glare\_Effect\_Statistics}: 
 \begin{itemize}
 	\item memory\_data\_analysis\_glare\_effect.py
-	\item sorting\_simulated\_data\_quality\_glare.py
-	\item glare\_effect\_plotting.py
+	\item sorting\_simulated\_data\_quality\_glare\_effect.py
+	\item similarity\_evaluation\_glare\_effect.py
 	\item leave\_one\_subject\_out\_glare\_effect.py
 \end{itemize}
-The first one is simply a copy of an already existing script that contained functionalities to which minor adjustment were made so that is could be used in the context of this work. The other three use those functionalities.\\ \textit{sorting\_simulated\_data\_quality\_glare.py} was used to sort the simulations according to how close their performance is to the real games and \textit{glare\_effect\_plotting.py} loads those sorted simulations as well as the real game in order to plot the two performance measurements, mentioned in section \ref{evaluation_of_simulation} \nameref{evaluation_of_simulation}. Furthermore it was used to perform the various paired sample t-tests. Finally the script\\ \textit{leave\_one\_subject\_out\_glare\_effect.py} creates the splits with the raw games logs, from which the statistical features are calculated. Most of the code in these four scripts created with already existing scripts as example. 
+The first one is simply a copy of an already existing script that contained functionalities to which minor adjustment were made so that is could be used in the context of this work. The other three use those functionalities.\\ \textit{sorting\_simulated\_data\_quality\_glare\_effect.py} was used to sort the simulations according to how close their performance is to the real games and\\ \textit{similarity\_evaluation\_glare\_effect.py} loads those sorted simulations as well as the real games in order to plot the two performance measurements, mentioned in section \ref{evaluation_of_simulation} \nameref{evaluation_of_simulation}. Furthermore, it was used to perform the various paired sample t-tests. Finally the script \textit{leave\_one\_subject\_out\_glare\_effect.py} creates the splits with the raw game logs, from which the statistical features are calculated. 
 
-Lastly the changes to the Memory-Game project made to collect the data for the creation of the similarity matrix are also uploaded on a new branch called \todo{namen suchen}.
+Lastly, the changes to the Memory-Game project made to collect the data for the creation of the similarity matrix are uploaded on a new repository called \textit{Memory\_Game\_Glare\_Effect}. Uploading the changes on a new branch of the original project was not possible due to the lack of permissions.
 
 \newpage
 
 \section{Data}
 The following data is stored on the \textit{share} server:
 \begin{itemize}
-	\item screenshots used for the creation of the similarity matrix
-	\item raw game logs as well as statical features for those games before and after the changes to the simulator
+	\item screenshots and the data used for the creation of the similarity matrix
+	\item raw game logs as well as statistical features for those games before and after the changes to the simulator
+	\item the statically and dynamically mapped logs
+	\item all data from the simulations
 	\item training results before and after the changes to the simulator 
-	\item scripts used for training and testing
-	\item models used in four voting based systems 
-	\item a presentation that was held regarding the two approaches for 1d and 2d cnns
+	\item scripts used for training and testing as well as the other ones that were also created independent from existing projects 
+	\item models used in the four ensemble-based systems 
+	\item a presentation that was held regarding the two approaches for 1D and 2D convnets
 \end{itemize}
  
 
